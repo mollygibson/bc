@@ -14,6 +14,7 @@
 OUT = _site
 TMP = tmp
 LINK_OUT = /tmp/bc-links
+BOOK = _book
 
 # Source and destination Markdown/HTML pages.
 MARKDOWN_SRC = \
@@ -44,10 +45,27 @@ NOTEBOOK_DST = \
 # Make won't delete them after rebuilding.
 .SECONDARY : $(NOTEBOOK_TMP)
 
+# Book source and destination material.
+BOOK_SRC = \
+	$(OUT)/bash/novice/index.html $(wildcard $(OUT)/bash/novice/*-*.html) \
+	$(OUT)/git/novice/index.html $(wildcard $(OUT)/git/novice/*-*.html) \
+	$(OUT)/python/novice/index.html $(wildcard $(OUT)/python/novice/*-*.html) \
+	$(OUT)/sql/novice/index.html $(wildcard $(OUT)/sql/novice/*-*.html) \
+	$(OUT)/bib.html \
+	$(OUT)/gloss.html \
+	$(OUT)/rules.html \
+	$(OUT)/LICENSE.html
+
 #-----------------------------------------------------------
 
 # Default action: show available commands (marked with double '#').
 all : commands
+
+book : $(BOOK)/index.html
+
+$(BOOK)/index.html : $(BOOK_SRC)
+	@mkdir -p $$(dirname $@)
+	python bin/extract-content.py $^ > $@
 
 ## commands : show all commands
 commands :

@@ -579,9 +579,8 @@ and we will see it in many other tools as we go on.</p>
 The extension isn't required,
 and doesn't guarantee anything,
 but is normally used to indicate the type of data in the file.</li>
-    <li><code>cd &lt;em&gt;path&lt;/em&gt;</code> changes the current working directory.</li>
-    <li><code>ls &lt;em&gt;path&lt;/em&gt;</code> prints a listing of a specific file or directory;
-<code>ls</code> on its own lists the current working directory.</li>
+    <li><code>cd <em>path</em></code> changes the current working directory.</li>
+    <li><code>ls <em>path</em></code> prints a listing of a specific file or directory; <code>ls</code> on its own lists the current working directory.</li>
     <li><code>pwd</code> prints the user's current working directory (current default location in the filesystem).</li>
     <li><code>whoami</code> shows the user's current identity.</li>
     <li>Most commands take options (flags) which begin with a '-'.</li>
@@ -702,7 +701,7 @@ for and saves files. If you start it from the shell, it will (probably)
 use your current working directory as its default location. If you use
 your computer's start menu, it may want to save files in your desktop or
 documents directory instead. You can change this by navigating to
-another directory the first time you "Save As&#8230;"</p>
+another directory the first time you "Save As..."</p>
 </blockquote>
 
 <p>Let's type in a few lines of text,
@@ -772,7 +771,7 @@ $ cd ..</pre>
 we get an error message:</p>
 
 <pre>$ rm thesis
-rm: cannot remove `thesis': Is a directory</pre>
+rm: cannot remove 'thesis': Is a directory</pre>
 
 <p>This happens because <code>rm</code> only works on files, not directories.
 The right command is <code>rmdir</code>,
@@ -781,7 +780,7 @@ It doesn't work yet either, though,
 because the directory we're trying to remove isn't empty:</p>
 
 <pre>$ rmdir thesis
-rmdir: failed to remove `thesis': Directory not empty</pre>
+rmdir: failed to remove 'thesis': Directory not empty</pre>
 
 <p>This little safety feature can save you a lot of grief,
 particularly if you are a bad typist.
@@ -2323,7 +2322,7 @@ we can ask Git to show us the project's history:</p>
 <pre>
 $ git log
 commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
-Author: Vlad Dracula <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#118;&#108;&#097;&#100;&#064;&#116;&#114;&#097;&#110;&#046;&#115;&#121;&#108;&#118;&#097;&#110;&#046;&#105;&#097;">&#118;&#108;&#097;&#100;&#064;&#116;&#114;&#097;&#110;&#046;&#115;&#121;&#108;&#118;&#097;&#110;&#046;&#105;&#097;</a>
+Author: Vlad Dracula &lt;vlad@tran.sylvan.ia&gt;
 Date:   Thu Aug 22 09:51:46 2013 -0400
 
 Starting to think about Mars</pre>
@@ -2436,9 +2435,9 @@ Cold and dry, but everything is my favorite color
 The two moons may be a problem for Wolfman
 But the Mummy will appreciate the lack of humidity</p>
 $ git diff
-diff &#8211;git a/mars.txt b/mars.txt
+diff -git a/mars.txt b/mars.txt
 index 315bf3a..b36abfd 100644
-&#8212; a/mars.txt
+--- a/mars.txt
 +++ b/mars.txt
 @@ -1,2 +1,3 @@
  Cold and dry, but everything is my favorite color
@@ -2490,50 +2489,49 @@ nothing to commit, working directory clean</pre>
 <p>and look at the history of what we've done so far:</p>
 
 <pre>$ git log
-git log
 commit 005937fbe2a98fb83f0ade869025dc2636b4dad5
-Author: Vlad Dracula <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#118;&#108;&#097;&#100;&#064;&#116;&#114;&#097;&#110;&#046;&#115;&#121;&#108;&#118;&#097;&#110;&#046;&#105;&#097;">&#118;&#108;&#097;&#100;&#064;&#116;&#114;&#097;&#110;&#046;&#115;&#121;&#108;&#118;&#097;&#110;&#046;&#105;&#097;</a>
+Author: Vlad Dracula &lt;vlad@tran.sylvan.ia&gt;
 Date:   Thu Aug 22 10:14:07 2013 -0400
-Thoughts about the climate</pre>
 
-<p>commit 34961b159c27df3b475cfe4415d94a6d1fcd064d
-Author: Vlad Dracula <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#118;&#108;&#097;&#100;&#064;&#116;&#114;&#097;&#110;&#046;&#115;&#121;&#108;&#118;&#097;&#110;&#046;&#105;&#097;">&#118;&#108;&#097;&#100;&#064;&#116;&#114;&#097;&#110;&#046;&#115;&#121;&#108;&#118;&#097;&#110;&#046;&#105;&#097;</a>
-Date:   Thu Aug 22 10:07:21 2013 -0400</p>
+    Thoughts about the climate
 
-<pre>Concerns about Mars's moons on my furry friend</pre>
+commit 34961b159c27df3b475cfe4415d94a6d1fcd064d
+Author: Vlad Dracula &lt;vlad@tran.sylvan.ia&gt;
+Date:   Thu Aug 22 10:07:21 2013 -0400
 
-<p>commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
-Author: Vlad Dracula <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#118;&#108;&#097;&#100;&#064;&#116;&#114;&#097;&#110;&#046;&#115;&#121;&#108;&#118;&#097;&#110;&#046;&#105;&#097;">&#118;&#108;&#097;&#100;&#064;&#116;&#114;&#097;&#110;&#046;&#115;&#121;&#108;&#118;&#097;&#110;&#046;&#105;&#097;</a>
-Date:   Thu Aug 22 09:51:46 2013 -0400</p>
+    Concerns about Mars's moons on my furry friend
 
-<pre>Starting to think about Mars ```</pre>
+commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
+Author: Vlad Dracula &lt;vlad@tran.sylvan.ia&gt;
+Date:   Thu Aug 22 09:51:46 2013 -0400
+
+    Starting to think about Mars
+</pre>
 
 <p>If we want to see what we changed when,
 we use <code>git diff</code> again,
 but refer to old versions
 using the notation <code>HEAD~1</code>, <code>HEAD~2</code>, and so on:</p>
 
-<p>```
-$ git diff HEAD~1 mars.txt
-diff &#8211;git a/mars.txt b/mars.txt
+<pre>$ git diff HEAD~1 mars.txt
+diff -git a/mars.txt b/mars.txt
 index 315bf3a..b36abfd 100644
-&#8212; a/mars.txt
+--- a/mars.txt
 +++ b/mars.txt
 @@ -1,2 +1,3 @@
  Cold and dry, but everything is my favorite color
  The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity</p>
++But the Mummy will appreciate the lack of humidity</pre>
 
-<p>$ git diff HEAD~2 mars.txt
-diff &#8211;git a/mars.txt b/mars.txt
+<pre>$ git diff HEAD~2 mars.txt
+diff -git a/mars.txt b/mars.txt
 index df0654a..b36abfd 100644
-&#8212; a/mars.txt
+--- a/mars.txt
 +++ b/mars.txt
 @@ -1 +1,3 @@
  Cold and dry, but everything is my favorite color
 +The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
-```</p>
++But the Mummy will appreciate the lack of humidity</pre>
 
 <p><code>HEAD</code> means "the most recently saved version".
 <code>HEAD~1</code> (pronounced "head minus one")
@@ -2574,7 +2572,7 @@ index df0654a..b36abfd 100644
 +But the Mummy will appreciate the lack of humidity</pre>
 
 <p>All right:
-we can save changes to files and see what we've changed&#8212;how
+we can save changes to files and see what we've changed&mdash;how
 can we restore older versions of things?
 Let's suppose we accidentally overwrite our file:</p>
 
@@ -2597,15 +2595,13 @@ no changes added to commit (use "git add" and/or "git commit -a")</pre>
 
 <p>We can put things back the way they were like this:</p>
 
-<p>```
-$ git reset &#8211;hard HEAD
-HEAD is now at 005937f Thoughts about the climate</p>
+<pre>$ git reset -hard HEAD
+HEAD is now at 005937f Thoughts about the climate
 
-<p>$ cat mars.txt
+$ cat mars.txt
 Cold and dry, but everything is my favorite color
 The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
-```</p>
+But the Mummy will appreciate the lack of humidity</pre>
 
 <p>The <code>--hard</code> argument to <code>git reset</code> tells it to throw away local changes:
 without that,
@@ -2771,18 +2767,14 @@ Our computer now has two copies of the repository:</p>
 
 <p>Let's make a change in the copy in <code>/tmp/planets</code>:</p>
 
-<p>```
-$ cd /tmp/planets</p>
-
-<p>$ nano pluto.txt
+<pre>$ cd /tmp/planets
+$ nano pluto.txt
 $ cat pluto.txt
-It is so a planet!</p>
-
-<p>$ git add pluto.txt
+It is so a planet!
+$ git add pluto.txt
 $ git commit -m "Some notes about Pluto"
  1 file changed, 1 insertion(+)
- create mode 100644 pluto.txt
-```</p>
+ create mode 100644 pluto.txt</pre>
 
 <p>then push the change to GitHub:</p>
 
@@ -2862,22 +2854,18 @@ This line added to our home copy</pre>
 
 <p>and then push the change to GitHub:</p>
 
-<p>```
-$ git add mars.txt</p>
-
-<p>$ git commit -m "Adding a line in our home copy"
+<pre>$ git add mars.txt
+$ git commit -m "Adding a line in our home copy"
 [master 5ae9631] Adding a line in our home copy
- 1 file changed, 1 insertion(+)</p>
-
-<p>$ git push origin master
+ 1 file changed, 1 insertion(+)
+$ git push origin master
 Counting objects: 5, done.
 Delta compression using up to 4 threads.
 Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 352 bytes, done.
 Total 3 (delta 1), reused 0 (delta 0)
 To https://github.com/vlad/planets
-   29aba7c..dabb4c8  master -&gt; master
-```</p>
+   29aba7c..dabb4c8  master -&gt; master</pre>
 
 <p>Our repositories are now in this state:</p>
 
@@ -2897,13 +2885,10 @@ We added a different line in the temporary copy</pre>
 
 <p>We can commit the change locally:</p>
 
-<p>```
-$ git add mars.txt</p>
-
-<p>$ git commit -m "Adding a line in the temporary copy"
+<pre>$ git add mars.txt
+$ git commit -m "Adding a line in the temporary copy"
 [master 07ebc69] Adding a line in the temporary copy
- 1 file changed, 1 insertion(+)
-```</p>
+ 1 file changed, 1 insertion(+)</pre>
 
 <p>but Git won't let us push it to GitHub:</p>
 
@@ -2947,7 +2932,7 @@ We added a different line in the temporary copy
 This line added to our home copy
 &gt;&gt;&gt;&gt;&gt;&gt;&gt; dabb4c8c450e8475aee9b14b4383acc99f42af1d</pre>
 
-<p>Our change&#8212;the one in <code>HEAD</code>&#8212;is preceded by <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>.
+<p>Our change&mdash;the one in <code>HEAD</code>&mdash;is preceded by <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>.
 Git has then inserted <code>=======</code> as a separator between the conflicting changes
 and marked the end of the content downloaded from GitHub with <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>.
 (The string of letters and digits after that marker
@@ -2972,10 +2957,8 @@ We removed the conflict on this line</pre>
 we add <code>mars.txt</code> to the changes being made by the merge
 and then commit:</p>
 
-<p>```
-$ git add mars.txt</p>
-
-<p>$ git status
+<pre>$ git add mars.txt
+$ git status
 # On branch master
 # All conflicts fixed but you are still merging.
 #   (use "git commit" to conclude merge)
@@ -2983,11 +2966,9 @@ $ git add mars.txt</p>
 # Changes to be committed:
 #
 #	modified:   mars.txt
-#</p>
-
-<p>$ git commit -m "Merging changes from GitHub"
-[master 2abf2b1] Merging changes from GitHub
-```</p>
+#
+$ git commit -m "Merging changes from GitHub"
+[master 2abf2b1] Merging changes from GitHub</pre>
 
 <p>Our repositories now look like this:</p>
 
@@ -3070,7 +3051,7 @@ that is occasionally backed up by her department.</li>
 to analyze that data.</li>
   <li>Once she has some results,
 she writes them up and submits her paper.
-She might include her data&#8212;a growing number of journals require this&#8212;but
+She might include her data&mdash;a growing number of journals require this&mdash;but
 she probably doesn't include her code.</li>
   <li>Time passes.</li>
   <li>The journal sends her reviews written anonymously by a handful of other people in her field.
@@ -3231,20 +3212,18 @@ You may also want to include a file called <code>CITATION</code> or <code>CITATI
 that describes how to reference your project;
 the one for Software Carpentry states:</p>
 
-<p>```
-To reference Software Carpentry in publications, please cite both of the following:</p>
+<pre>To reference Software Carpentry in publications, please cite both of the following:
 
-<p>Greg Wilson: "Software Carpentry: Lessons Learned". arXiv:1307.5448, July 2013.</p>
+Greg Wilson: "Software Carpentry: Lessons Learned". arXiv:1307.5448, July 2013.
 
-<p>@online{wilson-software-carpentry-2013,
+@online{wilson-software-carpentry-2013,
   author      = {Greg Wilson},
   title       = {Software Carpentry: Lessons Learned},
   version     = {1},
   date        = {2013-07-20},
   eprinttype  = {arxiv},
   eprint      = {1307.5448}
-}
-```</p>
+}</pre>
 
 <h3 id="hosting">Hosting</h3>
 
@@ -3610,7 +3589,7 @@ number of values in the slice.</p>
  [ 0.  0.  0.  3.  1.  5.  6.  5.  5.  8.]
  [ 0.  1.  1.  2.  1.  3.  5.  3.  5.  8.]]</pre>
 
-<p>and we don't have to take all the values in the slice&#8212;if we provide a
+<p>and we don't have to take all the values in the slice&mdash;if we provide a
 <a href="#gloss:stride">stride</a>,
 Python takes values spaced that far apart:</p>
 
@@ -4045,7 +4024,7 @@ though,
 so if we want 5/9 to give us the right answer,
 we have to write it as 5.0/9, 5/9.0, or some other variation.</p>
 
-<p>Back to defining functions&#8230;
+<p>Back to defining functions...
 Now that we've seen how to turn Fahrenheit into Kelvin,
 it's easy to turn Kelvin into Celsius:</p>
 
@@ -4514,7 +4493,7 @@ loadtxt(fname, dtype=&lt;type 'float'&gt;, comments='#', delimiter=None, convert
     ----------
     fname : file or str
         File, filename, or generator to read.  If the filename extension is
-        ``.gz`` or ``.bz2``, the file is first decompressed. Note that
+        <code>.gz</code> or <code>.bz2</code>, the file is first decompressed. Note that
         generators should return byte strings for Python 3k.
     dtype : data-type, optional
         Data-type of the resulting array; default: float.  If this is a
@@ -4531,21 +4510,21 @@ loadtxt(fname, dtype=&lt;type 'float'&gt;, comments='#', delimiter=None, convert
     converters : dict, optional
         A dictionary mapping column number to a function that will convert
         that column to a float.  E.g., if column 0 is a date string:
-        ``converters = {0: datestr2num}``.  Converters can also be used to
-        provide a default value for missing data (but see also `genfromtxt`):
-        ``converters = {3: lambda s: float(s.strip() or 0)}``.  Default: None.
+        <code>converters = {0: datestr2num}</code>.  Converters can also be used to
+        provide a default value for missing data (but see also <code>genfromtxt</code>):
+        <code>converters = {3: lambda s: float(s.strip() or 0)}</code>.  Default: None.
     skiprows : int, optional
-        Skip the first `skiprows` lines; default: 0.
+        Skip the first <code>skiprows</code> lines; default: 0.
     usecols : sequence, optional
         Which columns to read, with 0 being the first.  For example,
-        ``usecols = (1,4,5)`` will extract the 2nd, 5th and 6th columns.
+        <code>usecols = (1,4,5)</code> will extract the 2nd, 5th and 6th columns.
         The default, None, results in all columns being read.
     unpack : bool, optional
         If True, the returned array is transposed, so that arguments may be
-        unpacked using ``x, y, z = loadtxt(...)``.  When used with a record
+        unpacked using <code>x, y, z = loadtxt(...)</code>.  When used with a record
         data-type, arrays are returned for each field.  Default is False.
     ndmin : int, optional
-        The returned array will have at least `ndmin` dimensions.
+        The returned array will have at least <code>ndmin</code> dimensions.
         Otherwise mono-dimensional axes will be squeezed.
         Legal values: 0 (default), 1 or 2.
         .. versionadded:: 1.6.0
@@ -4564,7 +4543,7 @@ loadtxt(fname, dtype=&lt;type 'float'&gt;, comments='#', delimiter=None, convert
     Notes
     -----
     This function aims to be a fast reader for simply formatted files.  The
-    `genfromtxt` function provides more sophisticated handling of, e.g.,
+    <code>genfromtxt</code> function provides more sophisticated handling of, e.g.,
     lines with missing values.
 
     Examples
@@ -4591,19 +4570,15 @@ loadtxt(fname, dtype=&lt;type 'float'&gt;, comments='#', delimiter=None, convert
 <p>There's a lot of information here,
 but the most important part is the first couple of lines:</p>
 
-<pre>```
-loadtxt(fname, dtype=&lt;type 'float'&gt;, comments='#', delimiter=None, converters=None, skiprows=0, usecols=None,
-        unpack=False, ndmin=0)
-```</pre>
+<pre>loadtxt(fname, dtype=&lt;type 'float'&gt;, comments='#', delimiter=None, converters=None, skiprows=0, usecols=None,
+        unpack=False, ndmin=0)</pre>
 
 <p>This tells us that <code>loadtxt</code> has one parameter called <code>fname</code> that doesn't have
 a default value,
 and eight others that do.
 If we call the function like this:</p>
 
-<pre>```
-numpy.loadtxt('inflammation-01.csv', ',')
-```</pre>
+<pre>numpy.loadtxt('inflammation-01.csv', ',')</pre>
 
 <p>then the filename is assigned to <code>fname</code> (which is what we want),
 but the delimiter string <code>','</code> is assigned to <code>dtype</code> rather than <code>delimiter</code>,
@@ -4771,8 +4746,8 @@ e
 a
 d</pre>
 
-<p>This is shorter&#8212;certainly shorter than something that prints every character
-in a hundred-letter string&#8212;and
+<p>This is shorter&mdash;certainly shorter than something that prints every character
+in a hundred-letter string&mdash;and
 more robust as well:</p>
 
 <pre>print_characters('oxygen')</pre>
@@ -4784,9 +4759,8 @@ g
 e
 n</pre>
 
-<p>The improved version of <code>print_characters</code> uses a <a href="../../gloss.html
-#for-loop">for loop</a>
-to repeat an operation&#8212;in this case, printing&#8212;once for each thing in a
+<p>The improved version of <code>print_characters</code> uses a <a href="#gloss:for-loop">for loop</a>
+to repeat an operation&mdash;in this case, printing&mdash;once for each thing in a
 collection.
 The general form of a loop is:</p>
 
@@ -5271,7 +5245,7 @@ rather than a single equals sign
 because the latter is used to mean assignment.
 This convention was inherited from C,
 and while many other programming languages work the same way,
-it does take a bit of getting used to&#8230;</p>
+it does take a bit of getting used to...</p>
 
 <p>We can also combine tests using <code>and</code> and <code>or</code>.
 <code>and</code> is only true if both parts are true:</p>
@@ -5859,15 +5833,13 @@ a chance to check (consciously or otherwise)
 that their understanding matches what the code is doing.</p>
 
 <p>Most good programmers follow two rules when adding assertions to their code.
-The first is, "<a href="../../rules.html#fail-early-fail-
-often">fail early, fail often</a>".
+The first is, "<a href="../../rules.html#fail-early-fail-often">fail early, fail often</a>".
 The greater the distance between when and where an error occurs and when it's
 noticed,
 the harder the error will be to debug,
 so good code catches mistakes as early as possible.</p>
 
-<p>The second rule is, "<a href="../../rules.html#turn-
-bugs-into-assertions-or-tests">turn bugs into assertions or tests</a>".
+<p>The second rule is, "<a href="../../rules.html#turn-bugs-into-assertions-or-tests">turn bugs into assertions or tests</a>".
 If you made a mistake in a piece of code,
 the odds are good that you have made other mistakes nearby,
 or will make the same mistake (or a related one)
@@ -6230,8 +6202,7 @@ That doesn't must mean we'll get less data in more time:
 we're also more likely to be distracted by other things as we wait for our
 program to fail,
 which means the time we <em>are</em> spending on the problem is less focused.
-It's therefore critical to <a href="../../rules.html#make-it-fail-
-fast">make it fail fast</a>.</p>
+It's therefore critical to <a href="../../rules.html#make-it-fail-fast">make it fail fast</a>.</p>
 
 <p>As well as making the program fail fast in time,
 we want to make it fail fast in space,
@@ -6263,8 +6234,7 @@ means more than one thing we don't need to worry about.</p>
 if you got it wrong the first time,
 you'll probably get it wrong the second and third as well.)
 Good programmers therefore
-<a href="../../rules.html#change-one-thing-
-at-a-time">change one thing at a time, for a reason</a>
+<a href="../../rules.html#change-one-thing-at-a-time">change one thing at a time, for a reason</a>
 They are either trying to gather more information
 ("is the bug still there if we change the order of the loops?")
 or test a fix
@@ -7093,7 +7063,7 @@ but that handful accounts for most of what scientists do.</p>
 <table>
 <tr>
 <td valign="top">
-**Person**: people who took readings.
+<strong>Person</strong>: people who took readings.
 
 <table>
   <tr> <th>ident</th> <th>personal</th> <th>family</th> </tr>
@@ -7104,7 +7074,7 @@ but that handful accounts for most of what scientists do.</p>
   <tr> <td>danforth</td> <td>Frank</td> <td>Danforth</td> </tr>
 </table>
 
-**Site**: locations where readings were taken.
+<strong>Site</strong>: locations where readings were taken.
 
 <table>
   <tr> <th>name</th> <th>lat</th> <th>long</th> </tr>
@@ -7113,7 +7083,7 @@ but that handful accounts for most of what scientists do.</p>
   <tr> <td>MSK-4</td> <td>-48.87</td> <td>-123.4</td> </tr>
 </table>
 
-**Visited**: when readings were taken at specific sites.
+<strong>Visited</strong>: when readings were taken at specific sites.
 
 <table>
   <tr> <th>ident</th> <th>site</th> <th>dated</th> </tr>
@@ -7128,7 +7098,7 @@ but that handful accounts for most of what scientists do.</p>
 </table>
 </td>
 <td valign="top">
-**Survey**: the actual readings.
+<strong>Survey</strong>: the actual readings.
 
 <table>
   <tr> <th>taken</th> <th>person</th> <th>quant</th> <th>reading</th> </tr>
@@ -7169,8 +7139,7 @@ Our query and its output look like this:</p>
 
 <pre>%load_ext sqlitemagic</pre>
 
-<pre>%%sqlite survey.db
-select family, personal from Person;</pre>
+<pre>select family, personal from Person;</pre>
 
 <p>The semi-colon at the end of the query
 tells the database manager that the query is complete and ready to run.
@@ -7180,8 +7149,7 @@ but we don't have to:
 as the example below shows,
 SQL is <a href="#gloss:case-insensitive">case insensitive</a>.</p>
 
-<pre>%%sqlite survey.db
-SeLeCt FaMiLy, PeRsOnAl FrOm PeRsOn;</pre>
+<pre>SeLeCt FaMiLy, PeRsOnAl FrOm PeRsOn;</pre>
 
 <p>Whatever casing convention you choose,
 please be consistent:
@@ -7197,19 +7165,16 @@ but we can control that in various ways.
 For example,
 we could swap the columns in the output by writing our query as:</p>
 
-<pre>%%sqlite survey.db
-select personal, family from Person;</pre>
+<pre>select personal, family from Person;</pre>
 
 <p>or even repeat columns:</p>
 
-<pre>%%sqlite survey.db
-select ident, ident, ident from Person;</pre>
+<pre>select ident, ident, ident from Person;</pre>
 
 <p>As a shortcut,
 we can select all of the columns in a table using <code>*</code>:</p>
 
-<pre>%%sqlite survey.db
-select * from Person;</pre>
+<pre>select * from Person;</pre>
 
 <h3 id="challenges">Challenges</h3>
 
@@ -7248,23 +7213,20 @@ we get this:</p>
 
 <pre>%load_ext sqlitemagic</pre>
 
-<pre>%%sqlite survey.db
-select quant from Survey;</pre>
+<pre>select quant from Survey;</pre>
 
 <p>We can eliminate the redundant output
 to make the result more readable
 by adding the <code>distinct</code> keyword
 to our query:</p>
 
-<pre>%%sqlite survey.db
-select distinct quant from Survey;</pre>
+<pre>select distinct quant from Survey;</pre>
 
 <p>If we select more than one column&mdash;for example,
 both the survey site ID and the quantity measured&mdash;then
 the distinct pairs of values are returned:</p>
 
-<pre>%%sqlite survey.db
-select distinct taken, quant from Survey;</pre>
+<pre>select distinct taken, quant from Survey;</pre>
 
 <p>Notice in both cases that duplicates are removed
 even if they didn't appear to be adjacent in the database.
@@ -7286,8 +7248,7 @@ we often want to sort them in a different way,
 e.g., by the name of the project instead of by the name of the scientist.
 We can do this in SQL by adding an <code>order by</code> clause to our query:</p>
 
-<pre>%%sqlite survey.db
-select * from Person order by ident;</pre>
+<pre>select * from Person order by ident;</pre>
 
 <p>By default,
 results are sorted in ascending order
@@ -7295,8 +7256,7 @@ results are sorted in ascending order
 from least to greatest).
 We can sort in the opposite order using <code>desc</code> (for "descending"):</p>
 
-<pre>%%sqlite survey.db
-select * from person order by ident desc;</pre>
+<pre>select * from person order by ident desc;</pre>
 
 <p>(And if we want to make it clear that we're sorting in ascending order,
 we can use <code>asc</code> instead of <code>desc</code>.)</p>
@@ -7307,13 +7267,11 @@ this query sorts results first in ascending order by <code>taken</code>,
 and then in descending order by <code>person</code>
 within each group of equal <code>taken</code> values:</p>
 
-<pre>%%sqlite survey.db
-select taken, person from Survey order by taken asc, person desc;</pre>
+<pre>select taken, person from Survey order by taken asc, person desc;</pre>
 
 <p>This is easier to understand if we also remove duplicates:</p>
 
-<pre>%%sqlite survey.db
-select distinct taken, person from Survey order by taken asc, person desc;</pre>
+<pre>select distinct taken, person from Survey order by taken asc, person desc;</pre>
 
 <h3 id="challenges-1">Challenges</h3>
 
@@ -7342,8 +7300,7 @@ by using a <code>where</code> clause in our query:</p>
 
 <pre>%load_ext sqlitemagic</pre>
 
-<pre>%%sqlite survey.db
-select * from Visited where site='DR-1';</pre>
+<pre>select * from Visited where site='DR-1';</pre>
 
 <p>The database manager executes this query in two stages.
 First,
@@ -7356,8 +7313,7 @@ to determine what columns to display.</p>
 we can filter records using <code>where</code>
 based on values in columns that aren't then displayed:</p>
 
-<pre>%%sqlite survey.db
-select ident from Visited where site='DR-1';</pre>
+<pre>select ident from Visited where site='DR-1';</pre>
 
 <p><img src="sql/novice/img/sql-filter.svg" alt="SQL Filtering in Action" /></p>
 
@@ -7365,8 +7321,7 @@ select ident from Visited where site='DR-1';</pre>
 For example,
 we can ask for all information from the DR-1 site collected since 1930:</p>
 
-<pre>%%sqlite survey.db
-select * from Visited where (site='DR-1') and (dated&gt;='1930-00-00');</pre>
+<pre>select * from Visited where (site='DR-1') and (dated&gt;='1930-00-00');</pre>
 
 <p>(The parentheses around the individual tests aren't strictly required,
 but they help make the query easier to read.)</p>
@@ -7395,36 +7350,31 @@ but not nearly as complicated as figuring out
 <p>If we want to find out what measurements were taken by either Lake or Roerich,
 we can combine the tests on their names using <code>or</code>:</p>
 
-<pre>%%sqlite survey.db
-select * from Survey where person='lake' or person='roe';</pre>
+<pre>select * from Survey where person='lake' or person='roe';</pre>
 
 <p>Alternatively,
 we can use <code>in</code> to see if a value is in a specific set:</p>
 
-<pre>%%sqlite survey.db
-select * from Survey where person in ('lake', 'roe');</pre>
+<pre>select * from Survey where person in ('lake', 'roe');</pre>
 
 <p>We can combine <code>and</code> with <code>or</code>,
 but we need to be careful about which operator is executed first.
 If we <em>don't</em> use parentheses,
 we get this:</p>
 
-<pre>%%sqlite survey.db
-select * from Survey where quant='sal' and person='lake' or person='roe';</pre>
+<pre>select * from Survey where quant='sal' and person='lake' or person='roe';</pre>
 
 <p>which is salinity measurements by Lake,
 and <em>any</em> measurement by Roerich.
 We probably want this instead:</p>
 
-<pre>%%sqlite survey.db
-select * from Survey where quant='sal' and (person='lake' or person='roe');</pre>
+<pre>select * from Survey where quant='sal' and (person='lake' or person='roe');</pre>
 
 <p>Finally,
 we can use <code>distinct</code> with <code>where</code>
 to give a second level of filtering:</p>
 
-<pre>%%sqlite survey.db
-select distinct person, quant from Survey where person='lake' or person='roe';</pre>
+<pre>select distinct person, quant from Survey where person='lake' or person='roe';</pre>
 
 <p>But remember:
 <code>distinct</code> is applied to the values displayed in the chosen columns,
@@ -7485,11 +7435,11 @@ to mean "match zero or more characters".</p>
   <tr> <td><code>'alpha' like 'a%'</code></td> <td>True</td> </tr>
   <tr> <td><code>'alpha' like 'a%p%'</code> <td>True</td>
 
-The expression `*column-name* not like *pattern*`
+The expression <code><em>column-name</em> not like <em>pattern</em></code>
 inverts the test.
-Using `like`,
+Using <code>like</code>,
 write a query that finds all the records in `Visited`
-that *aren't* from sites labelled 'DR-something'.
+that <em>aren't</em> from sites labelled 'DR-something'.
 </td></tr></table>
   </li>
 </ol>
@@ -7512,8 +7462,7 @@ as part of our query:</p>
 
 <pre>%load_ext sqlitemagic</pre>
 
-<pre>%%sqlite survey.db
-select 1.05 * reading from Survey where quant='rad';</pre>
+<pre>select 1.05 * reading from Survey where quant='rad';</pre>
 
 <p>When we run the query,
 the expression <code>1.05 * reading</code> is evaluated for each row.
@@ -7525,14 +7474,12 @@ For example,
 we can convert temperature readings from Fahrenheit to Celsius
 and round to two decimal places:</p>
 
-<pre>%%sqlite survey.db
-select taken, round(5*(reading-32)/9, 2) from Survey where quant='temp';</pre>
+<pre>select taken, round(5*(reading-32)/9, 2) from Survey where quant='temp';</pre>
 
 <p>We can also combine values from different fields,
 for example by using the string concatenation operator <code>||</code>:</p>
 
-<pre>%%sqlite survey.db
-select personal || ' ' || family from Person;</pre>
+<pre>select personal || ' ' || family from Person;</pre>
 
 <blockquote>
   <p>It may seem strange to use <code>personal</code> and <code>family</code> as field names
@@ -7546,27 +7493,20 @@ consider the following rules:</p>
   <tr> <th>Full Name</th> <th>Alphabetized Under</th> <th>Reason</th> </tr>
   <tr> <td>Liu Xiaobo</td> <td>Liu</td> <td>Chinese family names come first</td>
 </tr>
-  <tr> <td> Leonardo da Vinci</td> <td>Leonardo</td> <td>"da Vinci" just means
-"from Vinci"</td> </tr>
+  <tr> <td> Leonardo da Vinci</td> <td>Leonardo</td> <td>"da Vinci" just means "from Vinci"</td> </tr>
   <tr> <td> Catherine de Medici</td> <td>Medici</td> <td>family name</td> </tr>
-  <tr> <td> Jean de La Fontaine</td> <td>La Fontaine</td> <td>family name is "La
-Fontaine"</td> </tr>
-  <tr> <td> Juan Ponce de Leon</td> <td>Ponce de Leon</td> <td>full family name
-is "Ponce de Leon"</td> </tr>
-  <tr> <td> Gabriel Garcia Marquez</td> <td>Garcia Marquez</td> <td>double-
-barrelled Spanish surnames</td> </tr>
-  <tr> <td> Wernher von Braun</td> <td>von <em>or</em> Braun</td> <td>depending
-on whether he was in Germany or the US</td> </tr>
-  <tr> <td> Elizabeth Alexandra May Windsor</td> <td>Elizabeth</td> <td>monarchs
-alphabetize by the name under which they reigned</td> </tr>
-  <tr> <td> Thomas a Beckett</td> <td>Thomas</td> <td>and saints according to
-the names by which they were canonized</td> </tr>
+  <tr> <td> Jean de La Fontaine</td> <td>La Fontaine</td> <td>family name is "La Fontaine"</td> </tr>
+  <tr> <td> Juan Ponce de Leon</td> <td>Ponce de Leon</td> <td>full family name is "Ponce de Leon"</td> </tr>
+  <tr> <td> Gabriel Garcia Marquez</td> <td>Garcia Marquez</td> <td>double-barrelled Spanish surnames</td> </tr>
+  <tr> <td> Wernher von Braun</td> <td>von <em>or</em> Braun</td> <td>depending on whether he was in Germany or the US</td> </tr>
+  <tr> <td> Elizabeth Alexandra May Windsor</td> <td>Elizabeth</td> <td>monarchs alphabetize by the name under which they reigned</td> </tr>
+  <tr> <td> Thomas a Beckett</td> <td>Thomas</td> <td>and saints according to the names by which they were canonized</td> </tr>
 </table>
 
 <blockquote>
   <p>Clearly,
 even a two-part division into "personal" and "family"
-isn't enough&#8230;</p>
+isn't enough...</p>
 </blockquote>
 
 <h3 id="challenges">Challenges</h3>
@@ -7585,8 +7525,7 @@ with the values divided by 100.</p>
   </li>
 </ol>
 
-<pre>%%sqlite survey.db
-select * from Person where ident='dyer' union select * from Person where ident='roe';</pre>
+<pre>select * from Person where ident='dyer' union select * from Person where ident='roe';</pre>
 
 <p>Use <code>union</code> to create a consolidated list of salinity measurements
 in which Roerich's, and only Roerich's,
@@ -7609,8 +7548,7 @@ The output should be something like:</p>
 separated by a '-':</li>
 </ol>
 
-<pre>%%sqlite survey.db
-select distinct site from Visited;</pre>
+<pre>select distinct site from Visited;</pre>
 
 <p>Some major site identifiers are two letters long and some are three.
 The "in string" function <code>instr(X, Y)</code>
@@ -7646,20 +7584,17 @@ its date is null:</p>
 
 <pre>%load_ext sqlitemagic</pre>
 
-<pre>%%sqlite survey.db
-select * from Visited;</pre>
+<pre>select * from Visited;</pre>
 
 <p>Null doesn't behave like other values.
 If we select the records that come before 1930:</p>
 
-<pre>%%sqlite survey.db
-select * from Visited where dated&lt;'1930-00-00';</pre>
+<pre>select * from Visited where dated&lt;'1930-00-00';</pre>
 
 <p>we get two results,
 and if we select the ones that come during or after 1930:</p>
 
-<pre>%%sqlite survey.db
-select * from Visited where dated&gt;='1930-00-00';</pre>
+<pre>select * from Visited where dated&gt;='1930-00-00';</pre>
 
 <p>we get five,
 but record #752 isn't in either set of results.
@@ -7686,22 +7621,18 @@ and so on.
 In particular,
 comparing things to null with = and != produces null:</p>
 
-<pre>%%sqlite survey.db
-select * from Visited where dated=NULL;</pre>
+<pre>select * from Visited where dated=NULL;</pre>
 
-<pre>%%sqlite survey.db
-select * from Visited where dated!=NULL;</pre>
+<pre>select * from Visited where dated!=NULL;</pre>
 
 <p>To check whether a value is <code>null</code> or not,
 we must use a special test <code>is null</code>:</p>
 
-<pre>%%sqlite survey.db
-select * from Visited where dated is NULL;</pre>
+<pre>select * from Visited where dated is NULL;</pre>
 
 <p>or its inverse <code>is not null</code>:</p>
 
-<pre>%%sqlite survey.db
-select * from Visited where dated is not NULL;</pre>
+<pre>select * from Visited where dated is not NULL;</pre>
 
 <p>Null values cause headaches wherever they appear.
 For example,
@@ -7709,8 +7640,7 @@ suppose we want to find the all of salinity measurements
 that weren't taken by Dyer.
 It's natural to write the query like this:</p>
 
-<pre>%%sqlite survey.db
-select * from Survey where quant='sal' and person!='lake';</pre>
+<pre>select * from Survey where quant='sal' and person!='lake';</pre>
 
 <p>but this query filters omits the records
 where we don't know who took the measurement.
@@ -7721,8 +7651,7 @@ so the record isn't kept in our results.
 If we want to keep these records
 we need to add an explicit check:</p>
 
-<pre>%%sqlite survey.db
-select * from Survey where quant='sal' and (person!='lake' or person is null);</pre>
+<pre>select * from Survey where quant='sal' and (person!='lake' or person is null);</pre>
 
 <p>We still have to decide whether this is the right thing to do or not.
 If we want to be absolutely sure that
@@ -7770,8 +7699,7 @@ We know how to select all of the dates from the <code>Visited</code> table:</p>
 
 <pre>%load_ext sqlitemagic</pre>
 
-<pre>%%sqlite survey.db
-select dated from Visited;</pre>
+<pre>select dated from Visited;</pre>
 
 <p>but to combine them,
 wee must use an <a href="#gloss:aggregation-function">aggregation function</a>
@@ -7779,13 +7707,11 @@ such as <code>min</code> or <code>max</code>.
 Each of these functions takes a set of records as input,
 and produces a single record as output:</p>
 
-<pre>%%sqlite survey.db
-select min(dated) from Visited;</pre>
+<pre>select min(dated) from Visited;</pre>
 
 <p><img src="sql/novice/img/sql-aggregation.svg" alt="SQL Aggregation" /></p>
 
-<pre>%%sqlite survey.db
-select max(dated) from Visited;</pre>
+<pre>select max(dated) from Visited;</pre>
 
 <p><code>min</code> and <code>max</code> are just two of
 the aggregation functions built into SQL.
@@ -7793,14 +7719,11 @@ Three others are <code>avg</code>,
 <code>count</code>,
 and <code>sum</code>:</p>
 
-<pre>%%sqlite survey.db
-select avg(reading) from Survey where quant='sal';</pre>
+<pre>select avg(reading) from Survey where quant='sal';</pre>
 
-<pre>%%sqlite survey.db
-select count(reading) from Survey where quant='sal';</pre>
+<pre>select count(reading) from Survey where quant='sal';</pre>
 
-<pre>%%sqlite survey.db
-select sum(reading) from Survey where quant='sal';</pre>
+<pre>select sum(reading) from Survey where quant='sal';</pre>
 
 <p>We used <code>count(reading)</code> here,
 but we could just as easily have counted <code>quant</code>
@@ -7814,14 +7737,12 @@ We can,
 for example,
 find the range of sensible salinity measurements:</p>
 
-<pre>%%sqlite survey.db
-select min(reading), max(reading) from Survey where quant='sal' and reading&lt;=1.0;</pre>
+<pre>select min(reading), max(reading) from Survey where quant='sal' and reading&lt;=1.0;</pre>
 
 <p>We can also combine aggregated results with raw results,
 although the output might surprise you:</p>
 
-<pre>%%sqlite survey.db
-select person, count(*) from Survey where quant='sal' and reading&lt;=1.0;</pre>
+<pre>select person, count(*) from Survey where quant='sal' and reading&lt;=1.0;</pre>
 
 <p>Why does Lake's name appear rather than Roerich's or Dyer's?
 The answer is that when it has to aggregate a field,
@@ -7835,8 +7756,7 @@ or something else entirely.</p>
 aggregation's result is "don't know"
 rather than zero or some other arbitrary value:</p>
 
-<pre>%%sqlite survey.db
-select person, max(reading), sum(reading) from Survey where quant='missing';</pre>
+<pre>select person, max(reading), sum(reading) from Survey where quant='missing';</pre>
 
 <p>One final important feature of aggregation functions is that
 they are inconsistent with the rest of SQL in a very useful way.
@@ -7853,13 +7773,11 @@ for aggregation functions to ignore null values
 and only combine those that are non-null.
 This behavior lets us write our queries as:</p>
 
-<pre>%%sqlite survey.db
-select min(dated) from Visited;</pre>
+<pre>select min(dated) from Visited;</pre>
 
 <p>instead of always having to filter explicitly:</p>
 
-<pre>%%sqlite survey.db
-select min(dated) from Visited where dated is not null;</pre>
+<pre>select min(dated) from Visited where dated is not null;</pre>
 
 <p>Aggregating all records at once doesn't always make sense.
 For example,
@@ -7867,8 +7785,7 @@ suppose Gina suspects that there is a systematic bias in her data,
 and that some scientists' radiation readings are higher than others.
 We know that this doesn't work:</p>
 
-<pre>%%sqlite survey.db
-select person, count(reading), round(avg(reading), 2)
+<pre>select person, count(reading), round(avg(reading), 2)
 from  Survey
 where quant='rad';</pre>
 
@@ -7877,8 +7794,7 @@ rather than aggregating separately for each scientist.
 Since there are only five scientists,
 she could write five queries of the form:</p>
 
-<pre>%%sqlite survey.db
-select person, count(reading), round(avg(reading), 2)
+<pre>select person, count(reading), round(avg(reading), 2)
 from  Survey
 where quant='rad'
 and   person='dyer';</pre>
@@ -7891,8 +7807,7 @@ the chances of her getting all of those queries right is small.</p>
 tell the database manager to aggregate the hours for each scientist separately
 using a <code>group by</code> clause:</p>
 
-<pre>%%sqlite survey.db
-select   person, count(reading), round(avg(reading), 2)
+<pre>select   person, count(reading), round(avg(reading), 2)
 from     Survey
 where    quant='rad'
 group by person;</pre>
@@ -7911,8 +7826,7 @@ To get the average reading by scientist and quantity measured,
 for example,
 we just add another field to the <code>group by</code> clause:</p>
 
-<pre>%%sqlite survey.db
-select   person, quant, count(reading), round(avg(reading), 2)
+<pre>select   person, quant, count(reading), round(avg(reading), 2)
 from     Survey
 group by person, quant;</pre>
 
@@ -7922,8 +7836,7 @@ since the results wouldn't make much sense otherwise.</p>
 <p>Let's go one step further and remove all the entries
 where we don't know who took the measurement:</p>
 
-<pre>%%sqlite survey.db
-select   person, quant, count(reading), round(avg(reading), 2)
+<pre>select   person, quant, count(reading), round(avg(reading), 2)
 from     Survey
 where    person is not null
 group by person, quant
@@ -8019,8 +7932,7 @@ let's start by joining the <code>Site</code> and <code>Visited</code> tables:</p
 
 <pre>%load_ext sqlitemagic</pre>
 
-<pre>%%sqlite survey.db
-select * from Site join Visited;</pre>
+<pre>select * from Site join Visited;</pre>
 
 <p><code>join</code> creates
 the <a href="#gloss:cross-product">cross product</a>
@@ -8041,8 +7953,7 @@ To do that,
 we add a clause specifying that
 we're only interested in combinations that have the same site name:</p>
 
-<pre>%%sqlite survey.db
-select * from Site join Visited on Site.name=Visited.site;</pre>
+<pre>select * from Site join Visited on Site.name=Visited.site;</pre>
 
 <p><code>on</code> does the same job as <code>where</code>:
 it only keeps records that pass some test.
@@ -8068,8 +7979,7 @@ from each of the original tables.</p>
 to select the three columns we actually want
 out of our join:</p>
 
-<pre>%%sqlite survey.db
-select Site.lat, Site.long, Visited.dated
+<pre>select Site.lat, Site.long, Visited.dated
 from   Site join Visited
 on     Site.name=Visited.site;</pre>
 
@@ -8081,8 +7991,7 @@ simply by adding more <code>join</code> clauses to our query,
 and more <code>on</code> tests to filter out combinations of records
 that don't make sense:</p>
 
-<pre>%%sqlite survey.db
-select Site.lat, Site.long, Visited.dated, Survey.quant, Survey.reading
+<pre>select Site.lat, Site.long, Visited.dated, Survey.quant, Survey.reading
 from   Site join Visited join Survey
 on     Site.name=Visited.site
 and    Visited.ident=Survey.taken
@@ -8123,16 +8032,14 @@ As the query below demonstrates,
 SQLite automatically numbers records as they're added to tables,
 and we can use those record numbers in queries:</p>
 
-<pre>%%sqlite survey.db
-select rowid, * from Person;</pre>
+<pre>select rowid, * from Person;</pre>
 
 <h2 id="data-hygiene">Data Hygiene</h2>
 
 <p>Now that we have seen how joins work,
 we can see why the relational model is so useful
 and how best to use it.
-The first rule is that every value should be <a href="#gloss:atomic-
-value">atomic</a>,
+The first rule is that every value should be <a href="#gloss:atomic-value">atomic</a>,
 i.e.,
 not contain parts that we might want to work with separately.
 We store personal and family names in separate columns instead of putting the
@@ -8312,8 +8219,7 @@ but that's never supposed to happen:
 and all our queries assume there will be a row in the latter
 matching every value in the former.</p>
 
-<p>This problem is called <a href="#gloss:referential-
-integrity">referential integrity</a>:
+<p>This problem is called <a href="#gloss:referential-integrity">referential integrity</a>:
 we need to ensure that all references between tables can always be resolved
 correctly.
 One way to do this is to delete all the records
@@ -8573,7 +8479,7 @@ or reading everything into memory and filtering in Python?</p>
     <p>Paul F. Dubois:
 "Maintaining Correctness in Scientific Programs".
 <em>Computing in Science &amp; Engineering</em>,
-May–June 2005.
+May-June 2005.
 <br />
 This paper shows how several good programming practices fit together
 to create defense in depth,

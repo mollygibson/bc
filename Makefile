@@ -32,6 +32,16 @@ HTML_DST = \
 	$(patsubst %.md,$(OUT)/%.html,$(MARKDOWN_SRC)) \
 	$(patsubst %.md,$(OUT)/%.html,$(NOTEBOOK_MD))
 
+BOOK_SRC = \
+	$(OUT)/bash/novice/index.html $(wildcard $(OUT)/bash/novice/*-*.html) \
+	$(OUT)/git/novice/index.html $(wildcard $(OUT)/git/novice/*-*.html) \
+	$(OUT)/python/novice/index.html $(wildcard $(OUT)/python/novice/*-*.html) \
+	$(OUT)/sql/novice/index.html $(wildcard $(OUT)/sql/novice/*-*.html) \
+	$(OUT)/bib.html \
+	$(OUT)/gloss.html \
+	$(OUT)/rules.html \
+	$(OUT)/LICENSE.html
+
 .SECONDARY : $(NOTEBOOK_MD)
 
 #-----------------------------------------------------------
@@ -50,6 +60,11 @@ $(OUT)/index.html : $(MARKDOWN_SRC) $(NOTEBOOK_MD)
 # Build Markdown versions of IPython Notebooks.
 %.md : %.ipynb
 	ipython nbconvert --template=./swc.tpl --to=markdown --output="$(subst .md,,$@)" "$<"
+
+book : book.html
+
+book.html : $(BOOK_SRC)
+	python bin/make-book.py $^ > $@
 
 #-----------------------------------------------------------
 

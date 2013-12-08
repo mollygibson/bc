@@ -10,60 +10,10 @@
   </head>
   <body>
     <div class="container">
-
       <div class="row-fluid">
         <div class="span10 offset1">
+
           <h1>The Unix Shell</h1>
-          <p>The Unix shell has been around longer than most of its users have been alive.
-It has survived so long because it's a power tool
-that allows people to do complex things with just a few keystrokes.
-More importantly,
-it helps them combine existing programs in new ways
-and automate repetitive tasks
-so that they don't have to type the same things over and over again.</p>
-
-<h2 id="topics">Topics</h2>
-<ol>
-  <li><a href="00-intro.html">Introducing the Shell</a></li>
-  <li><a href="01-filedir.html">Files and Directories</a></li>
-  <li><a href="02-create.html">Creating Things</a></li>
-  <li><a href="03-pipefilter.html">Pipes and Filters</a></li>
-  <li><a href="04-loop.html">Loops</a></li>
-  <li><a href="05-script.html">Shell Scripts</a></li>
-  <li><a href="06-find.html">Finding Things</a></li>
-</ol>
-
-<h2 id="see-also">See Also</h2>
-<ul>
-  <li><a href="guide.html">Instructor's Guide</a></li>
-  <li><a href="reference.html">Reference</a></li>
-</ul>
-
-<h2 id="resources">Resources</h2>
-<ul>
-  <li><code>filesystem</code>: filesystem used in "Files and Directories"</li>
-  <li><code>creatures</code>: DNA data used in "Loops"</li>
-  <li><code>finding</code>: data using in "Finding Things"</li>
-  <li><code>molecules</code>: PDB files used in "Pipes and Filters"</li>
-  <li><code>scripting</code>: files and directories used in "Shell Scripts"</li>
-</ul>
-
-	</div>
-      </div>
-
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h1>Introducing the Shell</h1>
-          <div class="objectives">
-  <h2 id="objectives">Objectives</h2>
-  <ul>
-    <li>Explain how the shell relates to the keyboard, the screen, the operating system, and users' programs.</li>
-    <li>Explain when and why command-line interfaces should be used instead of graphical interfaces.</li>
-  </ul>
-</div>
-
-<h2 id="lesson">Lesson</h2>
 
 <p>Nelle Nemo, a marine biologist,
 has just returned from a six-month survey of the
@@ -110,7 +60,23 @@ As a bonus,
 once she has put a processing pipeline together,
 she will be able to use it again whenever she collects more data.</p>
 
-<h2 id="what-and-why">What and Why</h2>
+          <p>The Unix shell has been around longer than most of its users have been alive.
+It has survived so long because it's a power tool
+that allows people to do complex things with just a few keystrokes.
+More importantly,
+it helps them combine existing programs in new ways
+and automate repetitive tasks
+so that they don't have to type the same things over and over again.</p>
+
+          <h2>Introducing the Shell</h2>
+
+          <div class="objectives">
+  <h3>Objectives</h3>
+  <ul>
+    <li>Explain how the shell relates to the keyboard, the screen, the operating system, and users' programs.</li>
+    <li>Explain when and why command-line interfaces should be used instead of graphical interfaces.</li>
+  </ul>
+</div>
 
 <p>At a high level, computers do four things:</p>
 
@@ -183,7 +149,7 @@ As clusters and cloud computing become more popular for scientific data crunchin
 being able to drive them is becoming a necessary skill.</p>
 
 <div class="keypoints">
-  <h2 id="key-points">Key Points</h2>
+  <h3>Key Points</h3>
   <ul>
     <li>A shell is a program whose primary purpose is to read commands and run other programs.</li>
     <li>The shell's main advantages are its high action-to-keystroke ratio,
@@ -194,15 +160,10 @@ and how cryptic its commands and operation can be.</li>
   </ul>
 </div>
 
-	</div>
-      </div>
+          <h2>Files and Directories</h2>
 
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h1>Files and Directories</h1>
           <div class="objectives">
-  <h2 id="objectives">Objectives</h2>
+  <h3>Objectives</h3>
   <ul>
     <li>Explain the similarities and differences between a file and a directory.</li>
     <li>Translate an absolute path into a relative path and vice versa.</li>
@@ -212,8 +173,6 @@ and how cryptic its commands and operation can be.</li>
     <li>Demonstrate the use of tab completion, and explain its advantages.</li>
   </ul>
 </div>
-
-<h2 id="lesson">Lesson</h2>
 
 <p>The part of the operating system responsible for managing files and directories
 is called the <a href="#gloss:filesystem">file system</a>.
@@ -274,7 +233,7 @@ which is Vlad's <a href="#gloss:home-directory">home directory</a>:</p>
 $</pre>
 
 <blockquote>
-  <h3 id="alphabet-soup">Alphabet Soup</h3>
+  <h3>Alphabet Soup</h3>
 
   <p>If the command to find out who we are is <code>whoami</code>, the command to find
 out where we are ought to be called <code>whereami</code>, so why is it <code>pwd</code>
@@ -359,7 +318,7 @@ the shell thinks we're trying to run a command called <code>ls-F</code>,
 which doesn't exist.</p>
 
 <blockquote>
-  <h3 id="whats-in-a-name">What's In A Name?</h3>
+  <h3>What's In A Name?</h3>
 
   <p>You may have noticed that all of Vlad's files' names are "something dot
 something". This is just a convention: we can call a file <code>mythesis</code> or
@@ -489,7 +448,7 @@ It may seem redundant to have a name for it,
 but we'll see some uses for it soon.</p>
 
 <blockquote>
-  <h3 id="orthogonality">Orthogonality</h3>
+  <h3>Orthogonality</h3>
 
   <p>The special names <code>.</code> and <code>..</code> don't belong to <code>ls</code>;
 they are interpreted the same way by every program.
@@ -502,7 +461,7 @@ Orthogonal systems tend to be easier for people to learn
 because there are fewer special cases and exceptions to keep track of.</p>
 </blockquote>
 
-<h2 id="nelles-pipeline-organizing-files">Nelle's Pipeline: Organizing Files</h2>
+<h3>Nelle's Pipeline: Organizing Files</h3>
 
 <p>Knowing just this much about files and directories,
 Nelle is ready to organize the files that the protein assay machine will create.
@@ -564,7 +523,7 @@ This is called <a href="#gloss:tab-completion">tab completion</a>,
 and we will see it in many other tools as we go on.</p>
 
 <div class="keypoints">
-  <h2 id="key-points">Key Points</h2>
+  <h3>Key Points</h3>
   <ul>
     <li>The file system is responsible for managing information on disk.</li>
     <li>Information is stored in files, which are stored in directories (folders).</li>
@@ -588,7 +547,7 @@ but is normally used to indicate the type of data in the file.</li>
 </div>
 
 <div class="challenges">
-  <h2 id="challenges">Challenges</h2>
+  <h3>Challenges</h3>
 
   <p><img src="bash/novice/img/filesystem-challenge.svg" alt="Filesystem for Challenge Questions" /></p>
 
@@ -627,12 +586,10 @@ but is normally used to indicate the type of data in the file.</li>
 	</div>
       </div>
 
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h1>Creating Things</h1>
+          <h2>Creating Things</h2>
+
           <div class="objectives">
-  <h2 id="objectives">Objectives</h2>
+  <h3>Objectives</h3>
   <ul>
     <li>Create a directory hierarchy that matches a given diagram.</li>
     <li>Create files in that hierarchy using an editor or by copying and renaming existing files.</li>
@@ -640,8 +597,6 @@ but is normally used to indicate the type of data in the file.</li>
     <li>Delete specified files and/or directories.</li>
   </ul>
 </div>
-
-<h2 id="lesson">Lesson</h2>
 
 <p>We now know how to explore files and directories,
 but how do we create them in the first place?
@@ -683,7 +638,7 @@ then run a text editor called Nano to create a file called <code>draft.txt</code
 $ nano draft.txt</pre>
 
 <blockquote>
-  <h3 id="which-editor">Which Editor?</h3>
+  <h3>Which Editor?</h3>
 
   <p>When we say, "<code>nano</code> is a text editor," we really do mean "text": it can
 only work with plain character data, not tables, images, or any other
@@ -748,7 +703,7 @@ which tells us that our file is gone:</p>
 <pre>$ ls</pre>
 
 <blockquote>
-  <h3 id="deleting-is-forever">Deleting Is Forever</h3>
+  <h3>Deleting Is Forever</h3>
 
   <p>Unix doesn't have a trash bin: when we delete files, they are unhooked
 from the file system so that their storage space on disk can be
@@ -793,7 +748,7 @@ To really get rid of <code>thesis</code> we must first delete the file <code>dra
 <pre>$ rmdir thesis</pre>
 
 <blockquote>
-  <h3 id="with-great-power-comes-great-responsibility">With Great Power Comes Great Responsibility</h3>
+  <h3>With Great Power Comes Great Responsibility</h3>
 
   <p>Removing the files in a directory just so that we can remove the
 directory quickly becomes tedious. Instead, we can use <code>rm</code> with the
@@ -883,7 +838,7 @@ ls: cannot access quotes.txt: No such file or directory
 thesis/quotations.txt</pre>
 
 <blockquote>
-  <h3 id="another-useful-abbreviation">Another Useful Abbreviation</h3>
+  <h3>Another Useful Abbreviation</h3>
 
   <p>The shell interprets the character <code>~</code> (tilde) at the start of a path to
 mean "the current user's home directory". For example, if Vlad's home
@@ -893,7 +848,7 @@ path: <code>here/there/~/elsewhere</code> is <em>not</em> <code>/home/vlad/elsew
 </blockquote>
 
 <div class="keypoints">
-  <h2 id="key-points">Key Points</h2>
+  <h3>Key Points</h3>
   <ul>
     <li>Unix documentation uses '^A' to mean "control-A".</li>
     <li>The shell does not have a trash bin: once something is deleted, it's really gone.</li>
@@ -908,7 +863,7 @@ path: <code>here/there/~/elsewhere</code> is <em>not</em> <code>/home/vlad/elsew
 </div>
 
 <div class="challenges">
-  <h2 id="challenges">Challenges</h2>
+  <h3>Challenges</h3>
 
   <ol>
     <li>
@@ -961,15 +916,10 @@ In what order does <code>ls -R -t</code> display things?</p>
   </ol>
 </div>
 
-	</div>
-      </div>
+          <h2>Loops</h2>
 
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h1>Loops</h1>
           <div class="objectives">
-  <h2 id="objectives">Objectives</h2>
+  <h3>Objectives</h3>
   <ul>
     <li>Write a loop that applies one or more commands separately to each file in a set of files.</li>
     <li>Trace the values taken on by a loop variable during execution of the loop.</li>
@@ -979,8 +929,6 @@ In what order does <code>ls -R -t</code> display things?</p>
     <li>Re-run recently executed commands without retyping them.</li>
   </ul>
 </div>
-
-<h2 id="lesson">Lesson</h2>
 
 <p>Wildcards and tab completion are two ways to reduce typing (and typing mistakes).
 Another is to tell the shell to do something over and over again.
@@ -1029,7 +977,7 @@ the command that's actually being run is our old friend <code>head</code>,
 so this loop prints out the first three lines of each data file in turn.</p>
 
 <blockquote>
-  <h3 id="follow-the-prompt">Follow the Prompt</h3>
+  <h3>Follow the Prompt</h3>
 
   <p>The shell prompt changes from <code>$</code> to <code>&gt;</code> and back again as we were
 typing in our loop. The second prompt, <code>&gt;</code>, is different to remind
@@ -1096,7 +1044,7 @@ Finally,
 the <code>head</code> and <code>tail</code> combination selects lines 81-100 from whatever file is being processed.</p>
 
 <blockquote>
-  <h3 id="spaces-in-names">Spaces in Names</h3>
+  <h3>Spaces in Names</h3>
 
   <p>Filename expansion in loops is another reason you should not use spaces in filenames.
 Suppose our data files are named:</p>
@@ -1160,7 +1108,7 @@ the shell executes:</p>
 <pre>mv unicorn.dat original-unicorn.dat</pre>
 
 <blockquote>
-  <h3 id="measure-twice-run-once">Measure Twice, Run Once</h3>
+  <h3>Measure Twice, Run Once</h3>
 
   <p>A loop is a way to do many things at once&mdash;or to make many mistakes at
 once if it does the wrong thing. One way to check what a loop <em>would</em> do
@@ -1184,7 +1132,7 @@ isn't foolproof, but it's a handy way to see what's going to happen when
 you're still learning how loops work.</p>
 </blockquote>
 
-<h3 id="nelles-pipeline-processing-files">Nelle's Pipeline: Processing Files</h3>
+<h3>Nelle's Pipeline: Processing Files</h3>
 
 <p>Nelle is now ready to process her data files.
 Since she's still learning how to use the shell,
@@ -1271,7 +1219,7 @@ It looks good,
 so she decides to get some coffee and catch up on her reading.</p>
 
 <blockquote>
-  <h3 id="those-who-know-history-can-choose-to-repeat-it">Those Who Know History Can Choose to Repeat It</h3>
+  <h3>Those Who Know History Can Choose to Repeat It</h3>
 
   <p>Another way to repeat previous work is to use the <code>history</code> command to
 get a list of the last few hundred commands that have been executed, and
@@ -1290,7 +1238,7 @@ repeat one of those commands. For example, if Nelle types this:</p>
 </blockquote>
 
 <div class="keypoints">
-  <h2 id="key-points">Key Points</h2>
+  <h3>Key Points</h3>
   <ul>
     <li>Use a <code>for</code> loop to repeat commands once for every thing in a list.</li>
     <li>Every <code>for</code> loop needs a variable to refer to the current "thing".</li>
@@ -1303,7 +1251,7 @@ repeat one of those commands. For example, if Nelle types this:</p>
 </div>
 
 <div class="challenges">
-  <h2 id="challenges">Challenges</h2>
+  <h3>Challenges</h3>
 
   <ol>
     <li>
@@ -1365,16 +1313,10 @@ done</pre>
     </li>
   </ol>
 </div>
+          <h2>Shell Scripts</h2>
 
-	</div>
-      </div>
-
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h1>Shell Scripts</h1>
           <div class="objectives">
-  <h2 id="objectives">Objectives</h2>
+  <h3>Objectives</h3>
   <ul>
     <li>Write a shell script that runs a command or series of commands for a fixed set of files.</li>
     <li>Run a shell script from the command line.</li>
@@ -1382,8 +1324,6 @@ done</pre>
     <li>Create pipelines that include user-written shell scripts.</li>
   </ul>
 </div>
-
-<h2 id="lesson">Lesson</h2>
 
 <p>We are finally ready to see what makes the shell such a powerful programming environment.
 We are going to take the commands we repeat frequently and save them in files
@@ -1417,7 +1357,7 @@ ATOM     18  C           1      -4.705   2.108  -0.396  1.00  0.00</pre>
 our script's output is exactly what we would get if we ran that pipeline directly.</p>
 
 <blockquote>
-  <h3 id="text-vs-whatever">Text vs. Whatever</h3>
+  <h3>Text vs. Whatever</h3>
 
   <p>We usually call programs like Microsoft Word or LibreOffice Writer "text
 editors", but we need to be a bit more careful when it comes to
@@ -1501,7 +1441,7 @@ $ bash sorted.sh *.dat backup/*.dat
      182 girmanis.dat</pre>
 
 <blockquote>
-  <h3 id="why-isnt-it-doing-anything">Why Isn't It Doing Anything?</h3>
+  <h3>Why Isn't It Doing Anything?</h3>
 
   <p>What happens if a script is supposed to process a bunch of files, but we
 don't give it any filenames? For example, what if we type:</p>
@@ -1561,7 +1501,7 @@ we can do this:</p>
 we have a completely accurate record of how we created that figure.</p>
 
 <blockquote>
-  <h3 id="unnumbering">Unnumbering</h3>
+  <h3>Unnumbering</h3>
 
   <p>Nelle could also use <code>colrm</code> (short for "column removal") to remove the
 serial numbers on her previous commands.</p>
@@ -1574,7 +1514,7 @@ This style of work allows people to recycle
 what they discover about their data and their workflow
 with just a few extra keystrokes.</p>
 
-<h3 id="nelles-pipeline-creating-a-script">Nelle's Pipeline: Creating a Script</h3>
+<h3>Nelle's Pipeline: Creating a Script</h3>
 
 <p>An off-hand comment from her supervisor has made Nelle realize that
 she should have provided a couple of extra parameters to <code>goostats</code> when she processed her files.
@@ -1629,7 +1569,7 @@ and use <code>*[AB].txt</code> if none were provided.
 Of course, this introduces another tradeoff between flexibility and complexity.</p>
 
 <div class="keypoints">
-  <h2 id="key-points">Key Points</h2>
+  <h3>Key Points</h3>
   <ul>
     <li>Save commands in files (usually called shell scripts) for re-use.</li>
     <li>Use <code>bash filename</code> to run saved commands.</li>
@@ -1640,7 +1580,7 @@ Of course, this introduces another tradeoff between flexibility and complexity.<
 </div>
 
 <div class="challenges">
-  <h2 id="challenges">Challenges</h2>
+  <h3>Challenges</h3>
 
   <ol>
     <li>
@@ -1717,15 +1657,10 @@ echo $*.dat</pre>
 </table>
 </div>
 
-	</div>
-      </div>
+          <h2>Finding Things</h2>
 
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h1>Finding Things</h1>
           <div class="objectives">
-  <h2 id="objectives">Objectives</h2>
+  <h3>Objectives</h3>
   <ul>
     <li>Use <code>grep</code> to select lines from text files that match simple patterns.</li>
     <li>Use <code>find</code> to find files whose names match simple patterns.</li>
@@ -1733,8 +1668,6 @@ echo $*.dat</pre>
     <li>Explain what is meant by "text" and "binary" files, and why many common tools don't handle the latter well.</li>
   </ul>
 </div>
-
-<h2 id="lesson">Lesson</h2>
 
 <p>You can guess someone's age by how they talk about search:
 young people use "Google" as a verb,
@@ -1856,7 +1789,7 @@ OPTIONS
     ...        ...        ...</pre>
 
 <blockquote>
-  <h3 id="wildcards">Wildcards</h3>
+  <h3>Wildcards</h3>
 
 <p><code>grep</code>'s real power doesn't come from its options, though; it comes from
 the fact that patterns can include wildcards. (The technical name for
@@ -2009,7 +1942,7 @@ by looking for the string "FE" in all the <code>.pdb</code> files below the curr
 ./human/heme.pdb:ATOM  25  FE  1  -0.924  0.535  -0.518</pre>
 
 <blockquote>
-  <h3 id="binary-files">Binary Files</h3>
+  <h3>Binary Files</h3>
 
   <p>We have focused exclusively on finding things in text files. What if
 your data is stored as images, in databases, or in some other format?
@@ -2034,21 +1967,8 @@ modern programming languages, Python included, have borrowed a lot of
 ideas from it, and imitation is also the sincerest form of praise.</p>
 </blockquote>
 
-<h2 id="conclusion">Conclusion</h2>
-
-<p>The Unix shell is older than most of the people who use it. It has
-survived so long because it is one of the most productive programming
-environments ever created&mdash;maybe even <em>the</em> most productive. Its syntax
-may be cryptic, but people who have mastered it can experiment with
-different commands interactively, then use what they have learned to
-automate their work. Graphical user interfaces may be better at the
-first, but the shell is still unbeaten at the second. And as Alfred
-North Whitehead wrote in 1911, "Civilization advances by extending the
-number of important operations which we can perform without thinking
-about them."</p>
-
 <div class="keypoints">
-  <h2 id="key-points">Key Points</h2>
+  <h3>Key Points</h3>
   <ul>
     <li>Everything is stored as bytes, but the bytes in binary files do not represent characters.</li>
     <li>Use nested loops to run commands for every combination of two lists of things.</li>
@@ -2062,7 +1982,7 @@ about them."</p>
 </div>
 
 <div class="challenges">
-  <h2 id="challenges">Challenges</h2>
+  <h3>Challenges</h3>
 
   <ol>
     <li>
@@ -2094,53 +2014,8 @@ end in <code>ose.dat</code> (e.g., <code>sucrose.dat</code> or <code>maltose.dat
     </li>
   </ol>
 </div>
-
-	</div>
-      </div>
-
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
           <h1>Version Control with Git</h1>
-          <p>Version control is the lab notebook of the digital world:
-it's what professionals use to keep track of what they've done
-and to collaborate with other people.
-Every large software development project relies on it,
-and most programmers use it for their small jobs as well.
-And it isn't just for software:
-books (like this one),
-papers,
-small data sets,
-and anything that changes over time or needs to be shared
-can and should be stored in a version control system.</p>
 
-<h2 id="topics">Topics</h2>
-<ol>
-  <li><a href="00-intro.html">Introducing Version Control</a></li>
-  <li><a href="01-backup.html">A Better Kind of Backup</a></li>
-  <li><a href="02-collab.html">Collaborating</a></li>
-  <li><a href="03-conflict.html">Conflicts</a></li>
-  <li><a href="04-open.html">Open Science</a></li>
-</ol>
-
-<h2 id="see-also">See Also</h2>
-<ul>
-  <li><a href="guide.html">Instructor's Guide</a></li>
-  <li><a href="reference.html">Reference</a></li>
-</ul>
-
-<h2 id="resources">Resources</h2>
-<ul>
-  <li><code>img</code>: images used in lessons</li>
-</ul>
-
-	</div>
-      </div>
-
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h1>Introducing Version Control</h1>
           <p>Wolfman and Dracula have been hired by Universal Missions
 (a space services spinoff from Euphoric State University)
 to figure out where the company should send its next planetary lander.
@@ -2177,13 +2052,20 @@ No matter which version control system you use,
 the most important thing to learn is not the details of their more obscure commands,
 but the workflow that they encourage.</p>
 
-	</div>
-      </div>
+          <p>Version control is the lab notebook of the digital world:
+it's what professionals use to keep track of what they've done
+and to collaborate with other people.
+Every large software development project relies on it,
+and most programmers use it for their small jobs as well.
+And it isn't just for software:
+books (like this one),
+papers,
+small data sets,
+and anything that changes over time or needs to be shared
+can and should be stored in a version control system.</p>
 
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h1>A Better Kind of Backup</h1>
+          <h2>A Better Kind of Backup</h2>
+
           <p>The first time we use Git on a new machine,
 we need to configure a few things:</p>
 
@@ -2252,8 +2134,7 @@ let's add some notes about Mars's suitability as a base.
 but in real life this isn't necessary.
 We'll also insert blank lines between groups of shell commands to make them easier to read.)</p>
 
-<pre>
-$ nano mars.txt
+<pre>$ nano mars.txt
 $ cat mars.txt
 Cold and dry, but everything is my favorite color
 $ ls
@@ -2264,11 +2145,10 @@ $ git status
 # Initial commit
 #
 # Untracked files:
-#   (use "git add <file>..." to include in what will be committed)
+#   (use "git add &lt;file&gt;..." to include in what will be committed)
 #
 #	mars.txt
-nothing added to commit but untracked files present (use "git add" to track)
-</pre>
+nothing added to commit but untracked files present (use "git add" to track)</pre>
 
 <p>The "untracked files" message means that there's a file in the directory
 that Git isn't keeping track of.
@@ -2428,12 +2308,11 @@ and <code>git commit</code> then copies them to long-term storage:</p>
 
 <p>The following commands show this in action:</p>
 
-<pre>
-$ nano mars.txt
+<pre>$ nano mars.txt
 $ cat mars.txt
 Cold and dry, but everything is my favorite color
 The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity</p>
+But the Mummy will appreciate the lack of humidity
 $ git diff
 diff -git a/mars.txt b/mars.txt
 index 315bf3a..b36abfd 100644
@@ -2442,8 +2321,7 @@ index 315bf3a..b36abfd 100644
 @@ -1,2 +1,3 @@
  Cold and dry, but everything is my favorite color
  The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
-</pre>
++But the Mummy will appreciate the lack of humidity</pre>
 
 <p>So far, so good:
 we've made a change,
@@ -2644,13 +2522,8 @@ If the introduction and conclusion are stored in separate files,
 on the other hand,
 moving backward and forward in time becomes much easier.</p>
 
-	</div>
-      </div>
+          <h2>Collaborating</h2>
 
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h1>Collaborating</h1>
           <p>Version control really comes into its own
 when we begin to collaborate with other people.
 We already have most of the machinery we need to do this;
@@ -2733,7 +2606,7 @@ Branch master set up to track remote branch master from origin.</pre>
 <p><img src="git/novice/img/github-repo-after-first-push.svg" alt="GitHub Repository After First Push" /></p>
 
 <blockquote>
-  <h3 id="the--u-flag">The '-u' Flag</h3>
+  <h3>The '-u' Flag</h3>
 
   <p>You may see a <code>-u</code> option used with <code>git push</code>.
 This tells Git what <a href="#gloss:branch">branch</a> to use
@@ -2817,13 +2690,8 @@ or on someone else's computer.
 Pushing and pulling changes gives us a reliable way
 to share work between different people and machines.</p>
 
-	</div>
-      </div>
+          <h2>Conflicts</h2>
 
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h1>Conflicts</h1>
           <p>As soon as people can work in parallel,
 someone's going to step on someone else's toes.
 This will even happen with a single person:
@@ -3025,13 +2893,8 @@ the version control system is essentially trying to tell its users
 that they ought to clarify who's responsible for what,
 or find a way to divide the work up differently.</p>
 
-	</div>
-      </div>
+          <h2>Open Science</h2>
 
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h1>Open Science</h1>
           <blockquote>
 The opposite of "open" isn't "closed".
 The opposite of "open" is "broken".
@@ -3102,7 +2965,7 @@ However,
 people who want to work this way need to make some decisions
 about what exactly "open" means in practice.</p>
 
-<h3 id="licensing">Licensing</h3>
+<h3>Licensing</h3>
 
 <p>The first question is licensing.
 Broadly speaking,
@@ -3225,7 +3088,7 @@ Greg Wilson: "Software Carpentry: Lessons Learned". arXiv:1307.5448, July 2013.
   eprint      = {1307.5448}
 }</pre>
 
-<h3 id="hosting">Hosting</h3>
+<h3>Hosting</h3>
 
 <p>The second big question for groups that want to open up their work
 is where to host their code and data.
@@ -3269,63 +3132,7 @@ but many institutions may not allow researchers to do this,
 either because they want to protect future patent applications
 or simply because what's new is often also frightening.</p>
 
-	</div>
-      </div>
-
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
           <h1>Programming with Python</h1>
-          <p>The best way to learn how to program is to do something useful,
-so this introduction to Python is built around a common scientific task:
-data analysis.</p>
-
-<p>Our real goal isn't to teach you Python,
-but to teach you the basic concepts that all programming depends on.
-We use Python in our lessons because:</p>
-
-<ol>
-  <li>we have to use <em>something</em> for examples;</li>
-  <li>it's free, well-documented, and runs almost everywhere;</li>
-  <li>it has a large (and growing) user base among scientists; and</li>
-  <li>experience shows that it's easier for novices to pick up than most other languages.</li>
-</ol>
-
-<h2 id="topics">Topics</h2>
-<ol>
-  <li><a href="01-numpy.html">Analyzing Patient Data</a></li>
-  <li><a href="02-func.html">Creating Functions</a></li>
-  <li><a href="03-loop.html">Analyzing Multiple Data Sets</a></li>
-  <li><a href="04-cond.html">Making Choices</a></li>
-  <li><a href="05-defensive.html">Defensive Programming</a></li>
-  <li><a href="06-cmdline.html">Command-Line Programs</a></li>
-</ol>
-
-<h2 id="see-also">See Also</h2>
-<ul>
-  <li><a href="guide.html">Instructor's Guide</a></li>
-  <li><a href="reference.html">Reference</a></li>
-</ul>
-
-<h2 id="resources">Resources</h2>
-<ul>
-  <li><code>inflammation-*.csv</code>: data files used in notebooks.</li>
-  <li><code>readings-*.py</code>: successive versions of command-line script.</li>
-  <li><code>small-*.csv</code>: small data files used to test command-line script.</li>
-  <li><code>argv-list.py</code>: example command-line script.</li>
-  <li><code>count-stdin.py</code>: example command-line script.</li>
-  <li><code>sys-version.py</code>: example command-line script.</li>
-  <li><code>img/*</code>: images used in notebooks</li>
-</ul>
-
-	</div>
-      </div>
-
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h1>Some Title</h1>
-          <h1 id="analyzing-patient-data">Analyzing Patient Data</h1>
 
 <p>We are studying inflammation in patients who have been given a new treatment for
 arthritis,
@@ -3352,7 +3159,23 @@ The first few rows of our first file look like this:</p>
 
 <p>To do all that, we'll have to learn a little bit about programming.</p>
 
-<h2 id="objectives">Objectives</h2>
+          <p>The best way to learn how to program is to do something useful,
+so this introduction to Python is built around a common scientific task:
+data analysis.</p>
+
+<p>Our real goal isn't to teach you Python,
+but to teach you the basic concepts that all programming depends on.
+We use Python in our lessons because:</p>
+
+<ol>
+  <li>we have to use <em>something</em> for examples;</li>
+  <li>it's free, well-documented, and runs almost everywhere;</li>
+  <li>it has a large (and growing) user base among scientists; and</li>
+  <li>experience shows that it's easier for novices to pick up than most other languages.</li>
+</ol>
+
+<div class="objectives">
+<h3>Objectives</h3>
 
 <ul>
   <li>Explain what a library is, and what libraries are used for.</li>
@@ -3363,8 +3186,9 @@ The first few rows of our first file look like this:</p>
   <li>Perform operations on arrays of data.</li>
   <li>Display simple graphs.</li>
 </ul>
+</div>
 
-<h2 id="loading-data">Loading Data</h2>
+<h3>Loading Data</h3>
 
 <p>In order to load the data,
 we need to <a href="#gloss:import">import</a> a library called NumPy
@@ -3485,27 +3309,7 @@ we can print the variable's value:</p>
  [ 0.  0.  0. ...,  0.  2.  0.]
  [ 0.  0.  1. ...,  1.  1.  0.]]</pre>
 
-<h3 id="challenges">Challenges</h3>
-
-<ol>
-  <li>
-    <p>Draw diagrams showing what variables refer to what values after each
-statement in the following program:</p>
-<pre>mass = 47.5
-age = 122
-mass = mass * 2.0
-age = age - 20</pre>
-  </li>
-  <li>
-    <p>What does the following program print out?
-<pre>
-first, second = 'Grace', 'Hopper'
-third, fourth = second, first
-print third, fourth</pre>
-  </li>
-</ol>
-
-<h2 id="manipulating-data">Manipulating Data</h2>
+<h3>Manipulating Data</h3>
 
 <p>Now that our data is in memory,
 we can start doing things with it.
@@ -3716,41 +3520,7 @@ If we average across axis 1, we get:</p>
 
 <p>which is the average inflammation per patient across all days.</p>
 
-<h3 id="challenges-1">Challenges</h3>
-
-<p>A subsection of an array is called a <a href="#gloss:slice">slice</a>.
-We can take slices of character strings as well:</p>
-
-<pre>element = 'oxygen'
-print 'first three characters:', element[0:3]
-print 'last three characters:', element[3:6]</pre>
-
-<pre>first three characters: oxy
-last three characters: gen</pre>
-
-<ol>
-  <li>
-    <p>What is the value of <code>element[:4]</code>?
-What about <code>element[4:]</code>?
-Or <code>element[:]</code>?</p>
-  </li>
-  <li>
-    <p>What is <code>element[-1]</code>?
-What is <code>element[-2]</code>?
-Given those answers,
-explain what <code>element[1:-1]</code> does.</p>
-  </li>
-  <li>
-    <p>The expression <code>element[3:3]</code> produces an <a href="../../gloss.html
-#empty-string">empty string</a>,
-i.e., a string that contains no characters.
-If <code>data</code> holds our array of patient data,
-what does <code>data[3:3, 4:4]</code> produce?
-What about <code>data[3:3, :]</code>?</p>
-  </li>
-</ol>
-
-<h2 id="plotting">Plotting</h2>
+<h3>Plotting</h3>
 
 <p>The mathematician Richard Hamming once said,
 "The purpose of computing is insight, not numbers,"
@@ -3815,21 +3585,7 @@ Neither result seems particularly likely,
 so either there's a mistake in our calculations
 or something is wrong with our data.</p>
 
-<h3 id="challenges-2">Challenges</h3>
-
-<ol>
-  <li>
-    <p>Why do all of our plots stop just short of the upper end of our graph?
-Why are the vertical lines in our plot of the minimum inflammation per day
-not vertical?</p>
-  </li>
-  <li>
-    <p>Create a plot showing the standard deviation of the inflammation data for
-each day across all patients.</p>
-  </li>
-</ol>
-
-<h2 id="wrapping-up">Wrapping Up</h2>
+<h3>Wrapping Up</h3>
 
 <p>It's very common to create an <a href="#gloss:alias-library">alias</a> for a
 library when importing it
@@ -3872,14 +3628,8 @@ and that we want a tight layout.
 if we leave out that call on line 20,
 the layout will actually be squeezed more than with it.)</p>
 
-<h3 id="challenges-3">Challenges</h3>
-
-<ol>
-  <li>Modify the program to display the three plots on top of one another instead
-of side by side.</li>
-</ol>
-
-<h2 id="key-points">Key Points</h2>
+<div class="keypoints">
+<h3>Key Points</h3>
 
 <ul>
   <li>Import a library into a program using <code>import libraryname</code>.</li>
@@ -3901,26 +3651,76 @@ across the specified axis.</li>
   <li>Use the <code>pyplot</code> library from <code>matplotlib</code> for creating simple
 visualizations.</li>
 </ul>
+</div>
 
-<h2 id="next-steps">Next Steps</h2>
+<div class="challenges">
+<h3>Challenges</h3>
 
-<p>Our work so far has convinced us that something's wrong with our first data
-file.
-We would like to check the other 11 the same way,
-but typing in the same commands repeatedly is tedious and error-prone.
-Since computers don't get bored (that we know of),
-we should create a way to do a complete analysis with a single command,
-and then figure out how to repeat that step once for each file.
-These operations are the subjects of the next two lessons.</p>
+<ol>
+  <li>
+    <p>Draw diagrams showing what variables refer to what values after each
+statement in the following program:</p>
+<pre>mass = 47.5
+age = 122
+mass = mass * 2.0
+age = age - 20</pre>
+  </li>
+  <li>
+    <p>What does the following program print out?</p>
+<pre>
+first, second = 'Grace', 'Hopper'
+third, fourth = second, first
+print third, fourth</pre>
+  </li>
+</ol>
 
-	</div>
-      </div>
+<p>A subsection of an array is called a <a href="#gloss:slice">slice</a>.
+We can take slices of character strings as well:</p>
 
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h1>Some Title</h1>
-          <h1 id="creating-functions">Creating Functions</h1>
+<pre>element = 'oxygen'
+print 'first three characters:', element[0:3]
+print 'last three characters:', element[3:6]</pre>
+
+<pre>first three characters: oxy
+last three characters: gen</pre>
+
+<ol>
+  <li>
+    <p>What is the value of <code>element[:4]</code>?
+What about <code>element[4:]</code>?
+Or <code>element[:]</code>?</p>
+  </li>
+  <li>
+    <p>What is <code>element[-1]</code>?
+What is <code>element[-2]</code>?
+Given those answers,
+explain what <code>element[1:-1]</code> does.</p>
+  </li>
+  <li>
+    <p>The expression <code>element[3:3]</code> produces an <a href="../../gloss.html#empty-string">empty string</a>,
+i.e., a string that contains no characters.
+If <code>data</code> holds our array of patient data,
+what does <code>data[3:3, 4:4]</code> produce?
+What about <code>data[3:3, :]</code>?</p>
+  </li>
+  <li>
+    <p>Why do all of our plots stop just short of the upper end of our graph?
+Why are the vertical lines in our plot of the minimum inflammation per day
+not vertical?</p>
+  </li>
+  <li>
+    <p>Create a plot showing the standard deviation of the inflammation data for
+each day across all patients.</p>
+  </li>
+</ol>
+
+<ol>
+  <li>Modify the program to display the three plots on top of one another instead
+of side by side.</li>
+</ol>
+</div>
+
+          <h2>Creating Functions</h2>
 
 <p>If we only had one data set to analyze,
 it would probably be faster to load the file into a spreadsheet
@@ -3931,7 +3731,7 @@ In this lesson,
 we'll learn how to write a function
 so that we can repeat several operations with a single command.</p>
 
-<h2 id="objectives">Objectives</h2>
+<h3>Objectives</h3>
 
 <ul>
   <li>Define a function that takes parameters.</li>
@@ -3942,7 +3742,7 @@ functions are called.</li>
   <li>Explain why we should divide programs into small, single-purpose functions.</li>
 </ul>
 
-<h2 id="defining-a-function">Defining a Function</h2>
+<h3>Defining a Function</h3>
 
 <p>Let's start by definition a function <code>fahr_to_kelvin</code> that converts temperatures
 from Fahrenheit to Kelvin:</p>
@@ -4055,32 +3855,7 @@ print 'freezing point of water in Celsius:', fahr_to_celsius(32.0)</pre>
 we define basic operations,
 then combine them in ever-large chunks to get the effect we want.</p>
 
-<h3 id="challenges">Challenges</h3>
-
-<ol>
-  <li>
-    <p>"Adding" two strings produces their concatention:
-<code>'a' + 'b'</code> is <code>'ab'</code>.
-Write a function called <code>fence</code> that takes two parameters called <code>original</code>
-and <code>wrapper</code>
-and returns a new string that has the wrapper character at the beginning and
-end of the original:</p>
-<pre>print fence('name', '*')
-*name*</pre>
-  </li>
-  <li>
-    <p>If the variable <code>s</code> refers to a string,
-then <code>s[0]</code> is the string's first character
-and <code>s[-1]</code> is its last.
-Write a function called <code>outer</code>
-that returns a string made up of just the first and last characters of its
-input:</p>
-<pre>print outer('helium')
-hm</pre>
-  </li>
-</ol>
-
-<h2 id="the-call-stack">The Call Stack</h2>
+<h3>The Call Stack</h3>
 
 <p>Let's take a closer look at what happens when we call <code>fahr_to_celsius(32.0)</code>.
 To make things clearer,
@@ -4212,17 +3987,7 @@ if they do,
 we have to pay attention to the details once again,
 which quickly overloads our short-term memory.</p>
 
-<h3 id="challenges-1">Challenges</h3>
-
-<ol>
-  <li>We previously wrote functions called <code>fence</code> and <code>outer</code>.
-Draw a diagram showing how the call stack changes when we run the following:
-<code>
-print outer(fence('carbon', '+'))
-</code></li>
-</ol>
-
-<h2 id="testing-and-documenting">Testing and Documenting</h2>
+<h3>Testing and Documenting</h3>
 
 <p>Once we start putting things in functions so that we can re-use them,
 we need to start testing that those functions are working correctly.
@@ -4343,34 +4108,7 @@ center(data, desired)
     Return a new array containing the original data centered around the desired value.
     Example: center([1, 2, 3], 0) =&gt; [-1, 0, 1]</pre>
 
-<h3 id="challenges-2">Challenges</h3>
-
-<ol>
-  <li>
-    <p>Write a function called <code>analyze</code> that takes a filename as a parameter
-and displays the three graphs produced in the <a href="01-numpy.ipynb">previous
-lesson</a>,
-i.e.,
-<code>analyze('inflammation-01.csv')</code> should produce the graphs already shown,
-while <code>analyze('inflammation-02.csv')</code> should produce corresponding graphs
-for the second data set.</p>
-  </li>
-  <li>
-    <p>Write a function <code>rescale</code> that takes an array as input
-and returns a corresponding array of values scaled to lie in the range 0.0
-to 1.0.
-(If $L$ and $H$ are the lowest and highest values in the original array,
-then the replacement for a value $v$ should be $(v-L) / (H-L)$.)
-Be sure to give the function a docstring.</p>
-  </li>
-  <li>
-    <p>Run the commands <code>help(numpy.arange)</code> and <code>help(numpy.linspace)</code>
-to see how to use these functions to generate regularly-spaced values,
-then use those values to test your <code>rescale</code> function.</p>
-  </li>
-</ol>
-
-<h2 id="defining-defaults">Defining Defaults</h2>
+<h3>Defining Defaults</h3>
 
 <p>We have passed parameters to functions in two ways:
 directly, as in <code>span(data)</code>,
@@ -4586,17 +4324,7 @@ because <code>dtype</code> is the second parameter in the list.
 That's why we don't have to provide <code>fname=</code> for the filename,
 but <em>do</em> have to provide <code>delimiter=</code> for the second parameter.</p>
 
-<h3 id="challenges-3">Challenges</h3>
-
-<ol>
-  <li>Rewrite the <code>normalize</code> function so that it scales data to lie between 0.0
-and 1.0 by default,
-but will allow the caller to specify lower and upper bounds if they want.
-Compare your implementation to your neighbor's:
-do the two functions always behave the same way?</li>
-</ol>
-
-<h2 id="key-points">Key Points</h2>
+<h3>Key Points</h3>
 
 <ul>
   <li>Define a function using <code>def name(...params...)</code>.</li>
@@ -4615,37 +4343,69 @@ them at the top level.</li>
 <code>name=value</code> in the parameter list.</li>
 </ul>
 
-<h2 id="next-steps">Next Steps</h2>
+<div class="challenges">
+<ol>
+  <li>
+    <p>"Adding" two strings produces their concatention:
+<code>'a' + 'b'</code> is <code>'ab'</code>.
+Write a function called <code>fence</code> that takes two parameters called <code>original</code>
+and <code>wrapper</code>
+and returns a new string that has the wrapper character at the beginning and
+end of the original:</p>
+<pre>print fence('name', '*')
+*name*</pre>
+  </li>
+  <li>
+    <p>If the variable <code>s</code> refers to a string,
+then <code>s[0]</code> is the string's first character
+and <code>s[-1]</code> is its last.
+Write a function called <code>outer</code>
+that returns a string made up of just the first and last characters of its
+input:</p>
+<pre>print outer('helium')
+hm</pre>
+  </li>
+  <li>We previously wrote functions called <code>fence</code> and <code>outer</code>.
+Draw a diagram showing how the call stack changes when we run the following:
+<code>
+print outer(fence('carbon', '+'))
+</code></li>
+  <li>
+    <p>Write a function called <code>analyze</code> that takes a filename as a parameter
+and displays the three graphs produced in the <a href="01-numpy.ipynb">previous
+lesson</a>,
+i.e.,
+<code>analyze('inflammation-01.csv')</code> should produce the graphs already shown,
+while <code>analyze('inflammation-02.csv')</code> should produce corresponding graphs
+for the second data set.</p>
+  </li>
+  <li>
+    <p>Write a function <code>rescale</code> that takes an array as input
+and returns a corresponding array of values scaled to lie in the range 0.0
+to 1.0.
+(If $L$ and $H$ are the lowest and highest values in the original array,
+then the replacement for a value $v$ should be $(v-L) / (H-L)$.)
+Be sure to give the function a docstring.</p>
+  </li>
+  <li>
+    <p>Run the commands <code>help(numpy.arange)</code> and <code>help(numpy.linspace)</code>
+to see how to use these functions to generate regularly-spaced values,
+then use those values to test your <code>rescale</code> function.</p>
+  </li>
+  <li>Rewrite the <code>normalize</code> function so that it scales data to lie between 0.0
+and 1.0 by default,
+but will allow the caller to specify lower and upper bounds if they want.
+Compare your implementation to your neighbor's:
+do the two functions always behave the same way?</li>
+</ol>
 
-<p>We now have a function called <code>analyze</code> to visualize a single data set.
-We could use it to explore all 12 of our current data sets like this:</p>
-
-<pre>analyze('inflammation-01.csv')
-analyze('inflammation-02.csv')
-...
-analyze('inflammation-12.csv')</pre>
-
-<p>but the chances of us typing all 12 filenames correctly aren't great,
-and we'll be even worse off if we get another hundred files.
-What we need is a way to tell Python to do something once for each file,
-and that will be the subject of the next lesson.</p>
-
-	</div>
-      </div>
-
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h1>Some Title</h1>
-          <h1 id="analyzing-multiple-data-sets">Analyzing Multiple Data Sets</h1>
+          <h2>Analyzing Multiple Data Sets</h2>
 
 <p>We have created a function called <code>analyze</code> that creates graphs of the minimum,
 average, and maximum daily inflammation rates
 for a single data set:</p>
 
-<pre>%matplotlib inline
-
-import numpy as np
+<pre>import numpy as np
 from matplotlib import pyplot as plt
 
 def analyze(filename):
@@ -4683,7 +4443,7 @@ We want to create plots for all our data sets with a single statement.
 To do that,
 we'll have to teach the computer how to repeat things.</p>
 
-<h2 id="objectives">Objectives</h2>
+<h3>Objectives</h3>
 
 <ul>
   <li>Explain what a for loop does.</li>
@@ -4697,7 +4457,7 @@ wildcard pattern.</li>
   <li>Use a for loop to process multiple files.</li>
 </ul>
 
-<h2 id="for-loops">For Loops</h2>
+<h3>For Loops</h3>
 
 <p>Suppose we want to print each character in the word "lead" on a line of its own.
 One way is to use four <code>print</code> statements:</p>
@@ -4813,47 +4573,7 @@ and much easier to read than a two-line loop;
 it will also give us the length of many other things that we haven't met yet,
 so we should always use it when we can.</p>
 
-<h3 id="challenges">Challenges</h3>
-
-<ol>
-  <li>
-    <p>Python has a built-in function called <code>range</code> that creates a list of
-numbers:
-<code>range(3)</code> produces <code>[0, 1, 2]</code>, <code>range(2, 5)</code> produces <code>[2, 3, 4]</code>, and
-<code>range(2, 10, 3)</code> produces <code>[2, 5, 8]</code>.
-Using <code>range</code>,
-write a function that prints the $N$ natural numbers:
-<pre>
-print_N(3)
-1
-2
-3</pre>
-  </li>
-  <li>
-    <p>Exponentiation is built into Python:
-<code>
-print 2**4
-16
-</code>
-It also has a function called <code>pow</code> that calculates the same value.
-Write a function called <code>expo</code> that uses a loop to calculate the same
-result.</p>
-  </li>
-  <li>
-    <p>Python's strings have methods, just like NumPy's arrays.
-One of these is called <code>reverse</code>:
-<pre>
-print 'Newton'.reverse()
-notweN
-</pre>
-Write a function called <code>rev</code> that does the same thing:
-<pre>
-print rev('Newton')
-notweN</pre>
-  </li>
-</ol>
-
-<h2 id="lists">Lists</h2>
+<h3>Lists</h3>
 
 <p>Just as a <code>for</code> loop is a way to do operations many times,
 a list is a way to store many values.
@@ -4925,16 +4645,7 @@ print 'odds after removing the first element:', odds</pre>
 <pre>odds.reverse()
 print 'odds after reversing:', odds</pre>
 
-<h3 id="challenges-1">Challenges</h3>
-
-<ol>
-  <li>Write a function called <code>total</code> that calculates the sum of the values in a
-list.
-(Python has a built-in function called <code>sum</code> that does this for you.
-Please don't use it for this exercise.)</li>
-</ol>
-
-<h2 id="processing-multiple-files">Processing Multiple Files</h2>
+<h3>Processing Multiple Files</h3>
 
 <p>We now have almost everything we need to process all our data files.
 The only thing that's missing is a library with a rather unpleasant name:</p>
@@ -4973,15 +4684,8 @@ for f in filenames:
 the maxima of these data sets show exactly the same ramp as the first,
 and their minima show the same staircase structure.</p>
 
-<h3 id="challenges-2">Challenges</h3>
-
-<ol>
-  <li>Write a function called <code>analyze_all</code> that takes a filename pattern as its
-sole argument
-and runs <code>analyze</code> for each file whose name matches the pattern.</li>
-</ol>
-
-<h2 id="key-points">Key Points</h2>
+<div class="keypoints">
+<h3>Key Points</h3>
 
 <ul>
   <li>Use <code>for variable in collection</code> to process the elements of a collection one
@@ -4998,32 +4702,56 @@ pattern.</li>
   <li>Use <code>*</code> in a pattern to match zero or more characters, and <code>?</code> to match any
 single character.</li>
 </ul>
+</div>
 
-<h2 id="next-steps">Next Steps</h2>
-
-<p>We have now solved our original problem:
-we can analyze any number of data files with a single command.
-More importantly,
-we have met two of the most important ideas in programming:</p>
-
+<div class="challenges">
 <ol>
-  <li>Use functions to make code easier to re-use and easier to understand.</li>
-  <li>Use lists and arrays to store related values, and loops to repeat operations
-on them.</li>
+  <li>
+    <p>Python has a built-in function called <code>range</code> that creates a list of
+numbers:
+<code>range(3)</code> produces <code>[0, 1, 2]</code>, <code>range(2, 5)</code> produces <code>[2, 3, 4]</code>, and
+<code>range(2, 10, 3)</code> produces <code>[2, 5, 8]</code>.
+Using <code>range</code>,
+write a function that prints the <em>N</em> natural numbers:</p>
+<pre>
+print_N(3)
+1
+2
+3</pre>
+  </li>
+  <li>
+    <p>Exponentiation is built into Python:
+<code>
+print 2**4
+16
+</code>
+It also has a function called <code>pow</code> that calculates the same value.
+Write a function called <code>expo</code> that uses a loop to calculate the same
+result.</p>
+  </li>
+  <li>
+    <p>Python's strings have methods, just like NumPy's arrays.
+One of these is called <code>reverse</code>:</p>
+<pre>
+print 'Newton'.reverse()
+notweN
+</pre>
+<p>Write a function called <code>rev</code> that does the same thing:</p>
+<pre>
+print rev('Newton')
+notweN</pre>
+  </li>
+  <li>Write a function called <code>total</code> that calculates the sum of the values in a
+list.
+(Python has a built-in function called <code>sum</code> that does this for you.
+Please don't use it for this exercise.)</li>
+  <li>Write a function called <code>analyze_all</code> that takes a filename pattern as its
+sole argument
+and runs <code>analyze</code> for each file whose name matches the pattern.</li>
 </ol>
+</div>
 
-<p>We have one more big idea to introduce,
-and then we will be able to go back and create a heat map
-like the one we initially used to display our first data set.</p>
-
-	</div>
-      </div>
-
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h1>Some Title</h1>
-          <h1 id="making-choices">Making Choices</h1>
+          <h2>Making Choices</h2>
 
 <p>Our previous lessons have shown us how to manipulate data,
 define our own functions,
@@ -5035,7 +4763,8 @@ We want programs to make choices based on the values they are manipulating.
 To help us see what decisions they're making,
 we'll start by looking at how computers manipulate images.</p>
 
-<h2 id="objectives">Objectives</h2>
+<div class="objectives">
+<h3>Objectives</h3>
 
 <ul>
   <li>Create a simple "image" made out of colored blocks.</li>
@@ -5046,8 +4775,9 @@ we'll start by looking at how computers manipulate images.</p>
   <li>Correctly write and interpret code containing nested loops and conditionals.</li>
   <li>Explain the advantages of putting frequently-modified code in a function.</li>
 </ul>
+</div>
 
-<h2 id="image-grids">Image Grids</h2>
+<h3>Image Grids</h3>
 
 <p>Let's start by creating some simple heat maps of our own
 using a library called <code>ipythonblocks</code>.
@@ -5165,23 +4895,7 @@ c[2, 0] = colors['LimeGreen']
 c[2, 1] = colors['HotPink']
 c.show()</pre>
 
-<h3 id="challenges">Challenges</h3>
-
-<ol>
-  <li>
-    <p>Fill in the <code>____</code> in the code below to create a bar that changes color from
-dark blue to black.</p>
-<pre>bar = ImageGrid(10, 1)
-for x in range(10):
-    bar[x, 0] = (0, 0, ____)
-bar.show()</pre>
-  </li>
-  <li>
-    <p>Why do computers use red, green, and blue as their primary colors?</p>
-  </li>
-</ol>
-
-<h2 id="conditionals">Conditionals</h2>
+<h3>Conditionals</h3>
 
 <p>The other thing we need in order to create a heat map of our own
 is a way to pick a color based on a data value.
@@ -5267,34 +4981,7 @@ else:
 <p>In this case,
 "either" means "either or both", not "either one or the other but not both".</p>
 
-<h3 id="challenges-1">Challenges</h3>
-
-<ol>
-  <li>
-    <p><code>True</code> and <code>False</code> aren't the only values in Python that are true and false.
-In fact, <em>any</em> value can be used in an <code>if</code> or <code>elif</code>.
-After reading and running the code below,
-explain what the rule is for which values are considered true and which are
-considered false.
-(Note that if the body of a conditional is a single statement, we can write
-it on the same line as the <code>if</code>.)</p>
-<pre>if '': print 'empty string is true'
-if 'word': print 'word is true'
-if []: print 'empty list is true'
-if [1, 2, 3]: print 'non-empty list is true'
-if 0: print 'zero is true'
-if 1: print 'one is true'</pre>
-  </li>
-  <li>
-    <p>Write a function called <code>near</code> that returns <code>True</code> if its first parameter is
-within 10% of its second
-and <code>False</code> otherwise.
-Compare your implementation with your partner's:
-do you return the same answer for all possible pairs of numbers?</p>
-  </li>
-</ol>
-
-<h2 id="nesting">Nesting</h2>
+<h3>Nesting</h3>
 
 <p>Another thing to realize is that <code>if</code> statements can be combined with loops
 just as easily as they can be combined with functions.
@@ -5359,33 +5046,7 @@ square.show()</pre>
 <p>This is our first hand-made data visualization:
 the colors show where <code>x</code> is less than, equal to, or greater than <code>y</code>.</p>
 
-<h3 id="challenges-2">Challenges</h3>
-
-<ol>
-  <li>
-    <p>Will changing the nesting of the loops in the code above&mdash;i.e.,
-wrapping the Y-axis loop around the X-axis loop&mdash;change the final
-image?
-Why or why not?</p>
-  </li>
-  <li>
-    <p>Python (and most other languages in the C family) provides <a href="#gloss:in-place-operator">in-place
-operators</a>
-that work like this:</p>
-
-<pre>x = 1  # original value
-x += 1 # add one to x, assigning result back to x
-x *= 3 # multiply x by 3
-print x
-6</pre>
-
-    <p>Rewrite the code that sums the positive and negative numbers in a list
-using in-place operators.
-Do you think the result is more or less readable than the original?</p>
-  </li>
-</ol>
-
-<h2 id="creating-a-heat-map">Creating a Heat Map</h2>
+<h3>Creating a Heat Map</h3>
 
 <p>The last step is to turn our data into something we can see.
 As in previous lessons,
@@ -5553,9 +5214,84 @@ h.show()</pre>
 which means we can concentrate on our science
 and not on our programming.</p>
 
-<h3 id="challenges-3">Challenges</h3>
+<div class="keypoints">
+<h3>Key Points</h3>
 
+<ul>
+  <li>Use the <code>ImageGrid</code> class from the <code>ipythonblocks</code> library to create simple
+"images" made of colored blocks.</li>
+  <li>Specify colors use (red, green, blue) triples, each component of which is an
+integer in the range 0..255.</li>
+  <li>Use <code>if condition</code> to start a conditional statement, <code>elif condition</code> to
+provide additional tests, and <code>else</code> to provide a default.</li>
+  <li>The bodies of the branches of conditional statements must be indented.</li>
+  <li>Use <code>==</code> to test for equality.</li>
+  <li><code>X and Y</code> is only true if both X and Y are true.</li>
+  <li><code>X or Y</code> is true if either X or Y, or both, are true.</li>
+  <li>Zero, the empty string, and the empty list are considered false; all other
+numbers, strings, and lists are considered true.</li>
+  <li>Nest loops to operate on multi-dimensional data.</li>
+  <li>Put code whose parameters change frequently in a function, then call it with
+different parameter values to customize its behavior.</li>
+</ul>
+</div>
+
+<div class="challenges">
 <ol>
+  <li>
+    <p>Fill in the <code>____</code> in the code below to create a bar that changes color from
+dark blue to black.</p>
+<pre>bar = ImageGrid(10, 1)
+for x in range(10):
+    bar[x, 0] = (0, 0, ____)
+bar.show()</pre>
+  </li>
+  <li>
+    <p>Why do computers use red, green, and blue as their primary colors?</p>
+  </li>
+  <li>
+    <p><code>True</code> and <code>False</code> aren't the only values in Python that are true and false.
+In fact, <em>any</em> value can be used in an <code>if</code> or <code>elif</code>.
+After reading and running the code below,
+explain what the rule is for which values are considered true and which are
+considered false.
+(Note that if the body of a conditional is a single statement, we can write
+it on the same line as the <code>if</code>.)</p>
+<pre>if '': print 'empty string is true'
+if 'word': print 'word is true'
+if []: print 'empty list is true'
+if [1, 2, 3]: print 'non-empty list is true'
+if 0: print 'zero is true'
+if 1: print 'one is true'</pre>
+  </li>
+  <li>
+    <p>Write a function called <code>near</code> that returns <code>True</code> if its first parameter is
+within 10% of its second
+and <code>False</code> otherwise.
+Compare your implementation with your partner's:
+do you return the same answer for all possible pairs of numbers?</p>
+  </li>
+  <li>
+    <p>Will changing the nesting of the loops in the code above&mdash;i.e.,
+wrapping the Y-axis loop around the X-axis loop&mdash;change the final
+image?
+Why or why not?</p>
+  </li>
+  <li>
+    <p>Python (and most other languages in the C family) provides <a href="#gloss:in-place-operator">in-place
+operators</a>
+that work like this:</p>
+
+<pre>x = 1  # original value
+x += 1 # add one to x, assigning result back to x
+x *= 3 # multiply x by 3
+print x
+6</pre>
+
+    <p>Rewrite the code that sums the positive and negative numbers in a list
+using in-place operators.
+Do you think the result is more or less readable than the original?</p>
+  </li>
   <li>
     <p>Why did we transpose our data outside our heat map function?
 Why not have the function perform the transpose?</p>
@@ -5581,43 +5317,9 @@ Which do you find easier to read?</p>
   </li>
 </ol>
 
-<h2 id="key-points">Key Points</h2>
+</div>
 
-<ul>
-  <li>Use the <code>ImageGrid</code> class from the <code>ipythonblocks</code> library to create simple
-"images" made of colored blocks.</li>
-  <li>Specify colors use (red, green, blue) triples, each component of which is an
-integer in the range 0..255.</li>
-  <li>Use <code>if condition</code> to start a conditional statement, <code>elif condition</code> to
-provide additional tests, and <code>else</code> to provide a default.</li>
-  <li>The bodies of the branches of conditional statements must be indented.</li>
-  <li>Use <code>==</code> to test for equality.</li>
-  <li><code>X and Y</code> is only true if both X and Y are true.</li>
-  <li><code>X or Y</code> is true if either X or Y, or both, are true.</li>
-  <li>Zero, the empty string, and the empty list are considered false; all other
-numbers, strings, and lists are considered true.</li>
-  <li>Nest loops to operate on multi-dimensional data.</li>
-  <li>Put code whose parameters change frequently in a function, then call it with
-different parameter values to customize its behavior.</li>
-</ul>
-
-<h2 id="next-steps">Next Steps</h2>
-
-<p>Our final heatmap function is 17 lines long,
-which means that if there's a 95% chance of each line being correct,
-the odds of the whole function being right are only 41%.
-Before we go any further,
-we need to learn how to test whether our code is doing what we want it to do,
-and that will be the subject of the next lesson.</p>
-
-	</div>
-      </div>
-
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h1>Some Title</h1>
-          <h1 id="defensive-programming">Defensive Programming</h1>
+          <h2>Defensive Programming</h2>
 
 <p>Our previous lessons have introduced the basic tools of programming:
 variables and lists,
@@ -5643,7 +5345,8 @@ which means we need to:</p>
 doing these things will actually speed up our programming,
 not slow it down.</p>
 
-<h2 id="objectives">Objectives</h2>
+<div class="objectives">
+<h3>Objectives</h3>
 
 <ul>
   <li>Explain what an assertion is.</li>
@@ -5655,8 +5358,9 @@ functions.</li>
 than arbitrary constants.</li>
   <li>Debug code containing an error systematically.</li>
 </ul>
+</div>
 
-<h2 id="assertions">Assertions</h2>
+<h3>Assertions</h3>
 
 <p>The first step toward getting the right answers from our programs
 is to assume that mistakes <em>will</em> happen
@@ -5852,34 +5556,7 @@ and helps to warn people who are reading the code
 (including your future self)
 that this bit is tricky.</p>
 
-<h3 id="challenges">Challenges</h3>
-
-<ol>
-  <li>
-    <p>Suppose you are writing a function called <code>average</code> that calculates the
-average of the numbers in a list.
-What pre-conditions and post-conditions would you write for it?
-Compare your answer to your neighbor's:
-can you think of a function that will past your tests but not hers or vice
-versa?</p>
-  </li>
-  <li>
-    <p>Explain in words what the assertions in this code check,
-and for each one,
-give an example of input that will make that assertion fail.</p>
-
-<pre>def running(values):
-assert len(values) &gt; 0
-result = [values[0]]
-for v in values[1:]:
-    assert result[-1] &gt;= 0
-    result.append(result[-1] + v)
-assert result[-1] &gt;= result[0]
-return result</pre>
-  </li>
-</ol>
-
-<h2 id="test-driven-development">Test-Driven Development</h2>
+<h3>Test-Driven Development</h3>
 
 <p>An assertion checks that something is true at a particular point in the program.
 The next step is to check the overall behavior of a piece of code,
@@ -6073,13 +5750,7 @@ This violates another important rule of programming:
 "<a href="../../rules.html#always-initialize-from-data">always initialize from data</a>".
 We'll leave it as an exercise to fix <code>range_overlap</code>.</p>
 
-<h3 id="challenges-1">Challenges</h3>
-
-<ol>
-  <li>Fix <code>range_overlap</code>. Re-run <code>test_range_overlap</code> after each change you make.</li>
-</ol>
-
-<h2 id="debugging">Debugging</h2>
+<h3>Debugging</h3>
 
 <p>Once testing has uncovered problems,
 the next step is to fix them.
@@ -6091,7 +5762,7 @@ The more experienced a programmer is,
 the more systematically they debug,
 and most follow some variation on the rules explained below.</p>
 
-<h3 id="know-what-its-supposed-to-do">Know What It's Supposed to Do</h3>
+<h4 id="know-what-its-supposed-to-do">Know What It's Supposed to Do</h4>
 
 <p>The first step in debugging something is to
 <a href="../../rules.html#know-what-its-supposed-to-do">know what it's supposed to do</a>.
@@ -6170,7 +5841,7 @@ since it's very hard to compare two visualizations automatically.</p>
   </li>
 </ol>
 
-<h3 id="make-it-fail-every-time">Make It Fail Every Time</h3>
+<h4 id="make-it-fail-every-time">Make It Fail Every Time</h4>
 
 <p>We can only debug something when it fails,
 so the second step is always to find a test case that
@@ -6194,7 +5865,7 @@ and up against a deadline,
 which is one of the reasons late-night (or overnight) coding sessions
 are almost never worthwhile.</p>
 
-<h3 id="make-it-fail-fast">Make It Fail Fast</h3>
+<h4 id="make-it-fail-fast">Make It Fail Fast</h4>
 
 <p>If it takes 20 minutes for the bug to surface,
 we can only do three experiments an hour.
@@ -6227,7 +5898,7 @@ means more than one thing we don't need to worry about.</p>
   </li>
 </ol>
 
-<h3 id="change-one-thing-at-a-time-for-a-reason">Change One Thing at a Time, For a Reason</h3>
+<h4 id="change-one-thing-at-a-time-for-a-reason">Change One Thing at a Time, For a Reason</h4>
 
 <p>Replacing random chunks of code unlikely to do much good.
 (After all,
@@ -6251,7 +5922,7 @@ more than half of fixes made to code introduce (or re-introduce) bugs,
 so re-running all of our tests tells us whether we have
 <a href="#gloss:regression">regressed</a>.</p>
 
-<h3 id="keep-track-of-what-youve-done">Keep Track of What You've Done</h3>
+<h4 id="keep-track-of-what-youve-done">Keep Track of What You've Done</h4>
 
 <p>Good scientists keep track of what they've done
 so that they can reproduce their work,
@@ -6274,7 +5945,7 @@ People are more likely to listen to us
 when we can explain clearly what we did,
 and we're better able to give them the information they need to be useful.</p>
 
-<h3 id="be-humble">Be Humble</h3>
+<h4 id="be-humble">Be Humble</h4>
 
 <p>And speaking of help:
 if we can't find a bug in 10 minutes,
@@ -6310,7 +5981,8 @@ and to turn every assumption (or mistake) into an assertion,
 it will actually take us <em>less</em> time to produce working programs,
 not more.</p>
 
-<h2 id="key-points">Key Points</h2>
+<div class="keypoints">
+<h3>Key Points</h3>
 
 <ul>
   <li>Program defensively, i.e., assume that errors are going to arise, and write
@@ -6328,24 +6000,37 @@ code is supposed to do.</li>
   <li>Keep track of what you've done.</li>
   <li>Be humble.</li>
 </ul>
+</div>
 
-<h2 id="next-steps">Next Steps</h2>
+<div class="challenges">
+<ol>
+  <li>
+    <p>Suppose you are writing a function called <code>average</code> that calculates the
+average of the numbers in a list.
+What pre-conditions and post-conditions would you write for it?
+Compare your answer to your neighbor's:
+can you think of a function that will past your tests but not hers or vice
+versa?</p>
+  </li>
+  <li>
+    <p>Explain in words what the assertions in this code check,
+and for each one,
+give an example of input that will make that assertion fail.</p>
 
-<p>We have now seen the basics of building and testing Python code in the IPython
-Notebook.
-The last thing we need to learn is how to build command-line programs
-that we can use in pipelines and shell scripts,
-so that we can integrate our tools with other people's work.
-This will be the subject of our next and final lesson.</p>
+<pre>def running(values):
+assert len(values) &gt; 0
+result = [values[0]]
+for v in values[1:]:
+    assert result[-1] &gt;= 0
+    result.append(result[-1] + v)
+assert result[-1] &gt;= result[0]
+return result</pre>
+  </li>
+  <li>Fix <code>range_overlap</code>. Re-run <code>test_range_overlap</code> after each change you make.</li>
+</ol>
+</div>
 
-	</div>
-      </div>
-
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h1>Some Title</h1>
-          <h1 id="command-line-programs">Command-Line Programs</h1>
+          <h2>Command-Line Programs</h2>
 
 <p>The IPython Notebook and other interactive tools are great for prototyping code
 and exploring data,
@@ -6390,7 +6075,8 @@ we need to know how to handle command-line arguments in a program,
 and how to get at standard input.
 We'll tackle these questions in turn below.</p>
 
-<h2 id="objectives">Objectives</h2>
+<div class="objectives">
+<h3>Objectives</h3>
 
 <ul>
   <li>Use the values of command-line arguments in a program.</li>
@@ -6398,8 +6084,9 @@ We'll tackle these questions in turn below.</p>
   <li>Read data from standard input in a program so that it can be used in a
 pipeline.</li>
 </ul>
+</div>
 
-<h2 id="command-line-arguments">Command-Line Arguments</h2>
+<h3>Command-Line Arguments</h3>
 
 <p>Using the text editor of your choice,
 save the following in a text file:</p>
@@ -6570,32 +6257,7 @@ main()</pre>
 7.05
 5.9</pre>
 
-<h3 id="challenges">Challenges</h3>
-
-<ol>
-  <li>
-    <p>Write a command-line program that does addition and subtraction:
-<pre>
-python arith.py 1 + 2
-3
-python arith.py 3 - 4
--1</pre>
-
-    <p>What goes wrong if you try to add multiplication using '*' to the program?</p>
-  </li>
-  <li>
-    <p>Using the <code>glob</code> module introduced <a href="earlier">03-loop.ipynb</a>,
-write a simple version of <code>ls</code> that shows files in the current directory
-with a particular suffix:
-<pre>
-python my_ls.py py
-left.py
-right.py
-zero.py</pre>
-  </li>
-</ol>
-
-<h2 id="handling-multiple-files">Handling Multiple Files</h2>
+<h3>Handling Multiple Files</h3>
 
 <p>The next step is to teach our program how to handle multiple files.
 Since 60 lines of output per file is a lot to page through,
@@ -6677,16 +6339,7 @@ For teaching,
 though,
 we need all the successive versions side by side.</p>
 
-<h3 id="challenges-1">Challenges</h3>
-
-<ol>
-  <li>Write a program called <code>check.py</code> that takes the names of one or more
-inflammation data files as arguments
-and checks that all the files have the same number of rows and columns.
-What is the best way to test your program?</li>
-</ol>
-
-<h2 id="handling-command-line-flags">Handling Command-Line Flags</h2>
+<h3>Handling Command-Line Flags</h3>
 
 <p>The next step is to teach our program to pay attention to the <code>--min</code>, <code>--mean</code>,
 and <code>--max</code> flags.
@@ -6778,29 +6431,7 @@ main()</pre>
 <p>This is four lines longer than its predecessor,
 but broken into more digestible chunks of 8 and 12 lines.</p>
 
-<h3 id="challenges-2">Challenges</h3>
-
-<ol>
-  <li>
-    <p>Rewrite this program so that it uses <code>-n</code>, <code>-m</code>, and <code>-x</code> instead of
-<code>--min</code>, <code>--mean</code>, and <code>--max</code> respectively.
-Is the code easier to read?
-Is the program easier to understand?</p>
-  </li>
-  <li>
-    <p>Separately,
-modify the program so that if no parameters are given
-(i.e., no action is specified and no filenames are given),
-it prints a message explaining how it should be used.</p>
-  </li>
-  <li>
-    <p>Separately,
-modify the program so that if no action is given
-it displays the means of the data.</p>
-  </li>
-</ol>
-
-<h2 id="handling-standard-input">Handling Standard Input</h2>
+<h3>Handling Standard Input</h3>
 
 <p>The next thing our program has to do is read data from standard input if no
 filenames are given
@@ -6913,9 +6544,61 @@ In fact,
 that's done:
 the program now does everything we set out to do.</p>
 
-<h3 id="challenges-3">Challenges</h3>
+<div class="keypoints">
+<h3>Key Points</h3>
 
+<ul>
+  <li>The <code>sys</code> library connects a Python program to the system it is running on.</li>
+  <li>The list <code>sys.argv</code> contains the command-line arguments that a program was
+run with.</li>
+  <li>Avoid silent failures.</li>
+  <li>The "file" <code>sys.stdin</code> connects to a program's standard input.</li>
+  <li>The "file" <code>sys.stdout</code> connects to a program's standard output.</li>
+</ul>
+</div>
+
+<div class="challenges">
 <ol>
+  <li>
+    <p>Write a command-line program that does addition and subtraction:</p>
+<pre>
+python arith.py 1 + 2
+3
+python arith.py 3 - 4
+-1</pre>
+    <p>What goes wrong if you try to add multiplication using '*' to the program?</p>
+  </li>
+  <li>
+    <p>Using the <code>glob</code> module introduced <a href="earlier">03-loop.ipynb</a>,
+write a simple version of <code>ls</code> that shows files in the current directory
+with a particular suffix:</p>
+<pre>
+python my_ls.py py
+left.py
+right.py
+zero.py</pre>
+  </li>
+  <li>Write a program called <code>check.py</code> that takes the names of one or more
+inflammation data files as arguments
+and checks that all the files have the same number of rows and columns.
+What is the best way to test your program?</li>
+  <li>
+    <p>Rewrite this program so that it uses <code>-n</code>, <code>-m</code>, and <code>-x</code> instead of
+<code>--min</code>, <code>--mean</code>, and <code>--max</code> respectively.
+Is the code easier to read?
+Is the program easier to understand?</p>
+  </li>
+  <li>
+    <p>Separately,
+modify the program so that if no parameters are given
+(i.e., no action is specified and no filenames are given),
+it prints a message explaining how it should be used.</p>
+  </li>
+  <li>
+    <p>Separately,
+modify the program so that if no action is given
+it displays the means of the data.</p>
+  </li>
   <li>Write a program called <code>line-count.py</code> that works like the Unix <code>wc</code>
 command:
     <ul>
@@ -6926,25 +6609,10 @@ each, followed by the total number of lines.</li>
     </ul>
   </li>
 </ol>
+</div>
 
-<h2 id="key-points">Key Points</h2>
-
-<ul>
-  <li>The <code>sys</code> library connects a Python program to the system it is running on.</li>
-  <li>The list <code>sys.argv</code> contains the command-line arguments that a program was
-run with.</li>
-  <li>Avoid silent failures.</li>
-  <li>The "file" <code>sys.stdin</code> connects to a program's standard input.</li>
-  <li>The "file" <code>sys.stdout</code> connects to a program's standard output.</li>
-</ul>
-
-	</div>
-      </div>
-
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
           <h1>Using Databases and SQL</h1>
+
           <p>Almost everyone has used spreadsheets,
 and almost everyone has eventually run up against their limitations.
 The more complicated a data set is,
@@ -6961,40 +6629,6 @@ And even if we never need to create a database ourselves,
 knowing how they work will help us understand why so many of the systems we use
 behave the way we do,
 and why they insist on structuring data in certain ways.</p>
-
-<h2 id="topics">Topics</h2>
-<ol>
-  <li><a href="01-select.html">Selecting Data</a></li>
-  <li><a href="02-sort-dup.html">Sorting and Removing Duplicates</a></li>
-  <li><a href="03-filter.html">Filtering</a></li>
-  <li><a href="04-calc.html">Calculating New Values</a></li>
-  <li><a href="05-null.html">Missing Data</a></li>
-  <li><a href="06-agg.html">Aggregation</a></li>
-  <li><a href="07-join.html">Combining Data</a></li>
-  <li><a href="08-create.html">Creating and Modifying Data</a></li>
-  <li><a href="09-prog.html">Programming with Databases</a></li>
-</ol>
-
-<h2 id="see-also">See Also</h2>
-<ul>
-  <li><a href="guide.html">Instructor's Guide</a></li>
-  <li><a href="reference.html">Reference</a></li>
-</ul>
-
-<h2 id="resources">Resources</h2>
-<ul>
-  <li><code>gen-survey-database.sql</code>: re-generate survey database used in examples.</li>
-  <li><code>sqlitemagic.py</code>: IPython Notebook plugin to support SQLite interaction.</li>
-</ul>
-
-	</div>
-      </div>
-
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h1>Some Title</h1>
-          <h1 id="selecting-data">Selecting Data</h1>
 
 <p>In the late 1920s and early 1930s,
 William Dyer,
@@ -7021,7 +6655,7 @@ they don't handle large or complex data sets very well.
 We would therefore like to put this data in a database,
 and these lessons will show how to do that.</p>
 
-<h2 id="a-few-definitions">A Few Definitions</h2>
+          <h2>Selecting Data</h2>
 
 <p>A <a href="#gloss:relational-database">relational database</a>
 is a way to store and manipulate information
@@ -7137,25 +6771,13 @@ We do this using the SQL command <code>select</code>,
 giving it the names of the columns we want and the table we want them from.
 Our query and its output look like this:</p>
 
-<pre>%load_ext sqlitemagic</pre>
-
 <pre>select family, personal from Person;</pre>
 <table>
-<TR><TD>Dyer</TD>
-<TD>William</TD>
-</TR>
-<TR><TD>Pabodie</TD>
-<TD>Frank</TD>
-</TR>
-<TR><TD>Lake</TD>
-<TD>Anderson</TD>
-</TR>
-<TR><TD>Roerich</TD>
-<TD>Valentina</TD>
-</TR>
-<TR><TD>Danforth</TD>
-<TD>Frank</TD>
-</TR>
+<tr><td>Dyer</td><td>William</td></tr>
+<tr><td>Pabodie</td><td>Frank</td></tr>
+<tr><td>Lake</td><td>Anderson</td></tr>
+<tr><td>Roerich</td><td>Valentina</td></tr>
+<tr><td>Danforth</td><td>Frank</td></tr>
 </table>
 
 <p>The semi-colon at the end of the query
@@ -7184,47 +6806,22 @@ we could swap the columns in the output by writing our query as:</p>
 
 <pre>select personal, family from Person;</pre>
 <table>
-<TR><TD>William</TD>
-<TD>Dyer</TD>
-</TR>
-<TR><TD>Frank</TD>
-<TD>Pabodie</TD>
-</TR>
-<TR><TD>Anderson</TD>
-<TD>Lake</TD>
-</TR>
-<TR><TD>Valentina</TD>
-<TD>Roerich</TD>
-</TR>
-<TR><TD>Frank</TD>
-<TD>Danforth</TD>
-</TR>
+<tr><td>William</td><td>Dyer</td></tr>
+<tr><td>Frank</td><td>Pabodie</td></tr>
+<tr><td>Anderson</td><td>Lake</td></tr>
+<tr><td>Valentina</td><td>Roerich</td></tr>
+<tr><td>Frank</td><td>Danforth</td></tr>
 </table>
 
 <p>or even repeat columns:</p>
 
 <pre>select ident, ident, ident from Person;</pre>
 <table>
-<TR><TD>dyer</TD>
-<TD>dyer</TD>
-<TD>dyer</TD>
-</TR>
-<TR><TD>pb</TD>
-<TD>pb</TD>
-<TD>pb</TD>
-</TR>
-<TR><TD>lake</TD>
-<TD>lake</TD>
-<TD>lake</TD>
-</TR>
-<TR><TD>roe</TD>
-<TD>roe</TD>
-<TD>roe</TD>
-</TR>
-<TR><TD>danforth</TD>
-<TD>danforth</TD>
-<TD>danforth</TD>
-</TR>
+<tr><td>dyer</td><td>dyer</td><td>dyer</td></tr>
+<tr><td>pb</td><td>pb</td><td>pb</td></tr>
+<tr><td>lake</td><td>lake</td><td>lake</td></tr>
+<tr><td>roe</td><td>roe</td><td>roe</td></tr>
+<tr><td>danforth</td><td>danforth</td><td>danforth</td></tr>
 </table>
 
 <p>As a shortcut,
@@ -7232,30 +6829,15 @@ we can select all of the columns in a table using <code>*</code>:</p>
 
 <pre>select * from Person;</pre>
 <table>
-<TR><TD>dyer</TD>
-<TD>William</TD>
-<TD>Dyer</TD>
-</TR>
-<TR><TD>pb</TD>
-<TD>Frank</TD>
-<TD>Pabodie</TD>
-</TR>
-<TR><TD>lake</TD>
-<TD>Anderson</TD>
-<TD>Lake</TD>
-</TR>
-<TR><TD>roe</TD>
-<TD>Valentina</TD>
-<TD>Roerich</TD>
-</TR>
-<TR><TD>danforth</TD>
-<TD>Frank</TD>
-<TD>Danforth</TD>
-</TR>
+<tr><td>dyer</td><td>William</td><td>Dyer</td></tr>
+<tr><td>pb</td><td>Frank</td><td>Pabodie</td></tr>
+<tr><td>lake</td><td>Anderson</td><td>Lake</td></tr>
+<tr><td>roe</td><td>Valentina</td><td>Roerich</td></tr>
+<tr><td>danforth</td><td>Frank</td><td>Danforth</td></tr>
 </table>
 
-<h3 id="challenges">Challenges</h3>
-
+<div class="challenges">
+<h3>Challenges</h3>
 <ol>
   <li>
     <p>Write a query that selects only site names from the <code>Site</code> table.</p>
@@ -7272,15 +6854,9 @@ we can select all of the columns in a table using <code>*</code>:</p>
     <p>What style do you find easiest to read, and why?</p>
   </li>
 </ol>
+</div>
 
-	</div>
-      </div>
-
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h1>Some Title</h1>
-          <h1 id="sorting-and-removing-duplicates">Sorting and Removing Duplicates</h1>
+          <h2>Sorting and Removing Duplicates</h2>
 
 <p>Data is often redundant,
 so queries often return redundant information.
@@ -7291,48 +6867,27 @@ we get this:</p>
 
 <pre>select quant from Survey;</pre>
 <table>
-<TR><TD>rad</TD>
-</TR>
-<TR><TD>sal</TD>
-</TR>
-<TR><TD>rad</TD>
-</TR>
-<TR><TD>sal</TD>
-</TR>
-<TR><TD>rad</TD>
-</TR>
-<TR><TD>sal</TD>
-</TR>
-<TR><TD>temp</TD>
-</TR>
-<TR><TD>rad</TD>
-</TR>
-<TR><TD>sal</TD>
-</TR>
-<TR><TD>temp</TD>
-</TR>
-<TR><TD>rad</TD>
-</TR>
-<TR><TD>temp</TD>
-</TR>
-<TR><TD>sal</TD>
-</TR>
-<TR><TD>rad</TD>
-</TR>
-<TR><TD>sal</TD>
-</TR>
-<TR><TD>temp</TD>
-</TR>
-<TR><TD>sal</TD>
-</TR>
-<TR><TD>rad</TD>
-</TR>
-<TR><TD>sal</TD>
-</TR>
-<TR><TD>sal</TD>
-</TR>
-<TR><TD>rad</TD>
-</TR>
+<tr><td>rad</td></tr>
+<tr><td>sal</td></tr>
+<tr><td>rad</td></tr>
+<tr><td>sal</td></tr>
+<tr><td>rad</td></tr>
+<tr><td>sal</td></tr>
+<tr><td>temp</td></tr>
+<tr><td>rad</td></tr>
+<tr><td>sal</td></tr>
+<tr><td>temp</td></tr>
+<tr><td>rad</td></tr>
+<tr><td>temp</td></tr>
+<tr><td>sal</td></tr>
+<tr><td>rad</td></tr>
+<tr><td>sal</td></tr>
+<tr><td>temp</td></tr>
+<tr><td>sal</td></tr>
+<tr><td>rad</td></tr>
+<tr><td>sal</td></tr>
+<tr><td>sal</td></tr>
+<tr><td>rad</td></tr>
 </table>
 
 <p>We can eliminate the redundant output
@@ -7342,12 +6897,9 @@ to our query:</p>
 
 <pre>select distinct quant from Survey;</pre>
 <table>
-<TR><TD>rad</TD>
-</TR>
-<TR><TD>sal</TD>
-</TR>
-<TR><TD>temp</TD>
-</TR>
+<tr><td>rad</td></tr>
+<tr><td>sal</td></tr>
+<tr><td>temp</td></tr>
 </table>
 
 <p>If we select more than one column&mdash;for example,
@@ -7356,63 +6908,25 @@ the distinct pairs of values are returned:</p>
 
 <pre>select distinct taken, quant from Survey;</pre>
 <table>
-<TR><TD>619</TD>
-<TD>rad</TD>
-</TR>
-<TR><TD>619</TD>
-<TD>sal</TD>
-</TR>
-<TR><TD>622</TD>
-<TD>rad</TD>
-</TR>
-<TR><TD>622</TD>
-<TD>sal</TD>
-</TR>
-<TR><TD>734</TD>
-<TD>rad</TD>
-</TR>
-<TR><TD>734</TD>
-<TD>sal</TD>
-</TR>
-<TR><TD>734</TD>
-<TD>temp</TD>
-</TR>
-<TR><TD>735</TD>
-<TD>rad</TD>
-</TR>
-<TR><TD>735</TD>
-<TD>sal</TD>
-</TR>
-<TR><TD>735</TD>
-<TD>temp</TD>
-</TR>
-<TR><TD>751</TD>
-<TD>rad</TD>
-</TR>
-<TR><TD>751</TD>
-<TD>temp</TD>
-</TR>
-<TR><TD>751</TD>
-<TD>sal</TD>
-</TR>
-<TR><TD>752</TD>
-<TD>rad</TD>
-</TR>
-<TR><TD>752</TD>
-<TD>sal</TD>
-</TR>
-<TR><TD>752</TD>
-<TD>temp</TD>
-</TR>
-<TR><TD>837</TD>
-<TD>rad</TD>
-</TR>
-<TR><TD>837</TD>
-<TD>sal</TD>
-</TR>
-<TR><TD>844</TD>
-<TD>rad</TD>
-</TR>
+<tr><td>619</td><td>rad</td></tr>
+<tr><td>619</td><td>sal</td></tr>
+<tr><td>622</td><td>rad</td></tr>
+<tr><td>622</td><td>sal</td></tr>
+<tr><td>734</td><td>rad</td></tr>
+<tr><td>734</td><td>sal</td></tr>
+<tr><td>734</td><td>temp</td></tr>
+<tr><td>735</td><td>rad</td></tr>
+<tr><td>735</td><td>sal</td></tr>
+<tr><td>735</td><td>temp</td></tr>
+<tr><td>751</td><td>rad</td></tr>
+<tr><td>751</td><td>temp</td></tr>
+<tr><td>751</td><td>sal</td></tr>
+<tr><td>752</td><td>rad</td></tr>
+<tr><td>752</td><td>sal</td></tr>
+<tr><td>752</td><td>temp</td></tr>
+<tr><td>837</td><td>rad</td></tr>
+<tr><td>837</td><td>sal</td></tr>
+<tr><td>844</td><td>rad</td></tr>
 </table>
 
 <p>Notice in both cases that duplicates are removed
@@ -7420,12 +6934,6 @@ even if they didn't appear to be adjacent in the database.
 Again,
 it's important to remember that rows aren't actually ordered:
 they're just displayed that way.</p>
-
-<h3 id="challenges">Challenges</h3>
-
-<ol>
-  <li>Write a query that selects distinct dates from the <code>Site</code> table.</li>
-</ol>
 
 <p>As we mentioned earlier,
 database records are not stored in any particular order.
@@ -7437,26 +6945,11 @@ We can do this in SQL by adding an <code>order by</code> clause to our query:</p
 
 <pre>select * from Person order by ident;</pre>
 <table>
-<TR><TD>danforth</TD>
-<TD>Frank</TD>
-<TD>Danforth</TD>
-</TR>
-<TR><TD>dyer</TD>
-<TD>William</TD>
-<TD>Dyer</TD>
-</TR>
-<TR><TD>lake</TD>
-<TD>Anderson</TD>
-<TD>Lake</TD>
-</TR>
-<TR><TD>pb</TD>
-<TD>Frank</TD>
-<TD>Pabodie</TD>
-</TR>
-<TR><TD>roe</TD>
-<TD>Valentina</TD>
-<TD>Roerich</TD>
-</TR>
+<tr><td>danforth</td><td>Frank</td><td>Danforth</td></tr>
+<tr><td>dyer</td><td>William</td><td>Dyer</td></tr>
+<tr><td>lake</td><td>Anderson</td><td>Lake</td></tr>
+<tr><td>pb</td><td>Frank</td><td>Pabodie</td></tr>
+<tr><td>roe</td><td>Valentina</td><td>Roerich</td></tr>
 </table>
 
 <p>By default,
@@ -7467,26 +6960,11 @@ We can sort in the opposite order using <code>desc</code> (for "descending"):</p
 
 <pre>select * from person order by ident desc;</pre>
 <table>
-<TR><TD>roe</TD>
-<TD>Valentina</TD>
-<TD>Roerich</TD>
-</TR>
-<TR><TD>pb</TD>
-<TD>Frank</TD>
-<TD>Pabodie</TD>
-</TR>
-<TR><TD>lake</TD>
-<TD>Anderson</TD>
-<TD>Lake</TD>
-</TR>
-<TR><TD>dyer</TD>
-<TD>William</TD>
-<TD>Dyer</TD>
-</TR>
-<TR><TD>danforth</TD>
-<TD>Frank</TD>
-<TD>Danforth</TD>
-</TR>
+<tr><td>roe</td><td>Valentina</td><td>Roerich</td></tr>
+<tr><td>pb</td><td>Frank</td><td>Pabodie</td></tr>
+<tr><td>lake</td><td>Anderson</td><td>Lake</td></tr>
+<tr><td>dyer</td><td>William</td><td>Dyer</td></tr>
+<tr><td>danforth</td><td>Frank</td><td>Danforth</td></tr>
 </table>
 
 <p>(And if we want to make it clear that we're sorting in ascending order,
@@ -7500,131 +6978,58 @@ within each group of equal <code>taken</code> values:</p>
 
 <pre>select taken, person from Survey order by taken asc, person desc;</pre>
 <table>
-<TR><TD>619</TD>
-<TD>dyer</TD>
-</TR>
-<TR><TD>619</TD>
-<TD>dyer</TD>
-</TR>
-<TR><TD>622</TD>
-<TD>dyer</TD>
-</TR>
-<TR><TD>622</TD>
-<TD>dyer</TD>
-</TR>
-<TR><TD>734</TD>
-<TD>pb</TD>
-</TR>
-<TR><TD>734</TD>
-<TD>pb</TD>
-</TR>
-<TR><TD>734</TD>
-<TD>lake</TD>
-</TR>
-<TR><TD>735</TD>
-<TD>pb</TD>
-</TR>
-<TR><TD>735</TD>
-<TD></TD>
-</TR>
-<TR><TD>735</TD>
-<TD></TD>
-</TR>
-<TR><TD>751</TD>
-<TD>pb</TD>
-</TR>
-<TR><TD>751</TD>
-<TD>pb</TD>
-</TR>
-<TR><TD>751</TD>
-<TD>lake</TD>
-</TR>
-<TR><TD>752</TD>
-<TD>roe</TD>
-</TR>
-<TR><TD>752</TD>
-<TD>lake</TD>
-</TR>
-<TR><TD>752</TD>
-<TD>lake</TD>
-</TR>
-<TR><TD>752</TD>
-<TD>lake</TD>
-</TR>
-<TR><TD>837</TD>
-<TD>roe</TD>
-</TR>
-<TR><TD>837</TD>
-<TD>lake</TD>
-</TR>
-<TR><TD>837</TD>
-<TD>lake</TD>
-</TR>
-<TR><TD>844</TD>
-<TD>roe</TD>
-</TR>
+<tr><td>619</td><td>dyer</td></tr>
+<tr><td>619</td><td>dyer</td></tr>
+<tr><td>622</td><td>dyer</td></tr>
+<tr><td>622</td><td>dyer</td></tr>
+<tr><td>734</td><td>pb</td></tr>
+<tr><td>734</td><td>pb</td></tr>
+<tr><td>734</td><td>lake</td></tr>
+<tr><td>735</td><td>pb</td></tr>
+<tr><td>735</td><td></td></tr>
+<tr><td>735</td><td></td></tr>
+<tr><td>751</td><td>pb</td></tr>
+<tr><td>751</td><td>pb</td></tr>
+<tr><td>751</td><td>lake</td></tr>
+<tr><td>752</td><td>roe</td></tr>
+<tr><td>752</td><td>lake</td></tr>
+<tr><td>752</td><td>lake</td></tr>
+<tr><td>752</td><td>lake</td></tr>
+<tr><td>837</td><td>roe</td></tr>
+<tr><td>837</td><td>lake</td></tr>
+<tr><td>837</td><td>lake</td></tr>
+<tr><td>844</td><td>roe</td></tr>
 </table>
 
 <p>This is easier to understand if we also remove duplicates:</p>
 
 <pre>select distinct taken, person from Survey order by taken asc, person desc;</pre>
 <table>
-<TR><TD>619</TD>
-<TD>dyer</TD>
-</TR>
-<TR><TD>622</TD>
-<TD>dyer</TD>
-</TR>
-<TR><TD>734</TD>
-<TD>pb</TD>
-</TR>
-<TR><TD>734</TD>
-<TD>lake</TD>
-</TR>
-<TR><TD>735</TD>
-<TD>pb</TD>
-</TR>
-<TR><TD>735</TD>
-<TD></TD>
-</TR>
-<TR><TD>751</TD>
-<TD>pb</TD>
-</TR>
-<TR><TD>751</TD>
-<TD>lake</TD>
-</TR>
-<TR><TD>752</TD>
-<TD>roe</TD>
-</TR>
-<TR><TD>752</TD>
-<TD>lake</TD>
-</TR>
-<TR><TD>837</TD>
-<TD>roe</TD>
-</TR>
-<TR><TD>837</TD>
-<TD>lake</TD>
-</TR>
-<TR><TD>844</TD>
-<TD>roe</TD>
-</TR>
+<tr><td>619</td><td>dyer</td></tr>
+<tr><td>622</td><td>dyer</td></tr>
+<tr><td>734</td><td>pb</td></tr>
+<tr><td>734</td><td>lake</td></tr>
+<tr><td>735</td><td>pb</td></tr>
+<tr><td>735</td><td></td></tr>
+<tr><td>751</td><td>pb</td></tr>
+<tr><td>751</td><td>lake</td></tr>
+<tr><td>752</td><td>roe</td></tr>
+<tr><td>752</td><td>lake</td></tr>
+<tr><td>837</td><td>roe</td></tr>
+<tr><td>837</td><td>lake</td></tr>
+<tr><td>844</td><td>roe</td></tr>
 </table>
 
-<h3 id="challenges-1">Challenges</h3>
-
+<div class="challenges">
+<h3>Challenges</h3>
 <ol>
+  <li>Write a query that selects distinct dates from the <code>Site</code> table.</li>
   <li>Write a query that displays scientists' full names, but orders them by
 surname.</li>
 </ol>
+</div>
 
-	</div>
-      </div>
-
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h1>Some Title</h1>
-          <h1 id="filtering">Filtering</h1>
+          <h2>Filtering</h2>
 
 <p>One of the most powerful features of a database is
 the ability to <a href="#gloss:filter">filter</a> data,
@@ -7637,18 +7042,9 @@ by using a <code>where</code> clause in our query:</p>
 
 <pre>select * from Visited where site='DR-1';</pre>
 <table>
-<TR><TD>619</TD>
-<TD>DR-1</TD>
-<TD>1927-02-08</TD>
-</TR>
-<TR><TD>622</TD>
-<TD>DR-1</TD>
-<TD>1927-02-10</TD>
-</TR>
-<TR><TD>844</TD>
-<TD>DR-1</TD>
-<TD>1932-03-22</TD>
-</TR>
+<tr><td>619</td><td>DR-1</td><td>1927-02-08</td></tr>
+<tr><td>622</td><td>DR-1</td><td>1927-02-10</td></tr>
+<tr><td>844</td><td>DR-1</td><td>1932-03-22</td></tr>
 </table>
 
 <p>The database manager executes this query in two stages.
@@ -7664,12 +7060,9 @@ based on values in columns that aren't then displayed:</p>
 
 <pre>select ident from Visited where site='DR-1';</pre>
 <table>
-<TR><TD>619</TD>
-</TR>
-<TR><TD>622</TD>
-</TR>
-<TR><TD>844</TD>
-</TR>
+<tr><td>619</td></tr>
+<tr><td>622</td></tr>
+<tr><td>844</td></tr>
 </table>
 
 <p><img src="sql/novice/img/sql-filter.svg" alt="SQL Filtering in Action" /></p>
@@ -7680,10 +7073,7 @@ we can ask for all information from the DR-1 site collected since 1930:</p>
 
 <pre>select * from Visited where (site='DR-1') and (dated&gt;='1930-00-00');</pre>
 <table>
-<TR><TD>844</TD>
-<TD>DR-1</TD>
-<TD>1932-03-22</TD>
-</TR>
+<tr><td>844</td><td>DR-1</td><td>1932-03-22</td></tr>
 </table>
 
 <p>(The parentheses around the individual tests aren't strictly required,
@@ -7715,56 +7105,16 @@ we can combine the tests on their names using <code>or</code>:</p>
 
 <pre>select * from Survey where person='lake' or person='roe';</pre>
 <table>
-<TR><TD>734</TD>
-<TD>lake</TD>
-<TD>sal</TD>
-<TD>0.05</TD>
-</TR>
-<TR><TD>751</TD>
-<TD>lake</TD>
-<TD>sal</TD>
-<TD>0.1</TD>
-</TR>
-<TR><TD>752</TD>
-<TD>lake</TD>
-<TD>rad</TD>
-<TD>2.19</TD>
-</TR>
-<TR><TD>752</TD>
-<TD>lake</TD>
-<TD>sal</TD>
-<TD>0.09</TD>
-</TR>
-<TR><TD>752</TD>
-<TD>lake</TD>
-<TD>temp</TD>
-<TD>-16.0</TD>
-</TR>
-<TR><TD>752</TD>
-<TD>roe</TD>
-<TD>sal</TD>
-<TD>41.6</TD>
-</TR>
-<TR><TD>837</TD>
-<TD>lake</TD>
-<TD>rad</TD>
-<TD>1.46</TD>
-</TR>
-<TR><TD>837</TD>
-<TD>lake</TD>
-<TD>sal</TD>
-<TD>0.21</TD>
-</TR>
-<TR><TD>837</TD>
-<TD>roe</TD>
-<TD>sal</TD>
-<TD>22.5</TD>
-</TR>
-<TR><TD>844</TD>
-<TD>roe</TD>
-<TD>rad</TD>
-<TD>11.25</TD>
-</TR>
+<tr><td>734</td><td>lake</td><td>sal</td><td>0.05</td></tr>
+<tr><td>751</td><td>lake</td><td>sal</td><td>0.1</td></tr>
+<tr><td>752</td><td>lake</td><td>rad</td><td>2.19</td></tr>
+<tr><td>752</td><td>lake</td><td>sal</td><td>0.09</td></tr>
+<tr><td>752</td><td>lake</td><td>temp</td><td>-16.0</td></tr>
+<tr><td>752</td><td>roe</td><td>sal</td><td>41.6</td></tr>
+<tr><td>837</td><td>lake</td><td>rad</td><td>1.46</td></tr>
+<tr><td>837</td><td>lake</td><td>sal</td><td>0.21</td></tr>
+<tr><td>837</td><td>roe</td><td>sal</td><td>22.5</td></tr>
+<tr><td>844</td><td>roe</td><td>rad</td><td>11.25</td></tr>
 </table>
 
 <p>Alternatively,
@@ -7772,56 +7122,16 @@ we can use <code>in</code> to see if a value is in a specific set:</p>
 
 <pre>select * from Survey where person in ('lake', 'roe');</pre>
 <table>
-<TR><TD>734</TD>
-<TD>lake</TD>
-<TD>sal</TD>
-<TD>0.05</TD>
-</TR>
-<TR><TD>751</TD>
-<TD>lake</TD>
-<TD>sal</TD>
-<TD>0.1</TD>
-</TR>
-<TR><TD>752</TD>
-<TD>lake</TD>
-<TD>rad</TD>
-<TD>2.19</TD>
-</TR>
-<TR><TD>752</TD>
-<TD>lake</TD>
-<TD>sal</TD>
-<TD>0.09</TD>
-</TR>
-<TR><TD>752</TD>
-<TD>lake</TD>
-<TD>temp</TD>
-<TD>-16.0</TD>
-</TR>
-<TR><TD>752</TD>
-<TD>roe</TD>
-<TD>sal</TD>
-<TD>41.6</TD>
-</TR>
-<TR><TD>837</TD>
-<TD>lake</TD>
-<TD>rad</TD>
-<TD>1.46</TD>
-</TR>
-<TR><TD>837</TD>
-<TD>lake</TD>
-<TD>sal</TD>
-<TD>0.21</TD>
-</TR>
-<TR><TD>837</TD>
-<TD>roe</TD>
-<TD>sal</TD>
-<TD>22.5</TD>
-</TR>
-<TR><TD>844</TD>
-<TD>roe</TD>
-<TD>rad</TD>
-<TD>11.25</TD>
-</TR>
+<tr><td>734</td><td>lake</td><td>sal</td><td>0.05</td></tr>
+<tr><td>751</td><td>lake</td><td>sal</td><td>0.1</td></tr>
+<tr><td>752</td><td>lake</td><td>rad</td><td>2.19</td></tr>
+<tr><td>752</td><td>lake</td><td>sal</td><td>0.09</td></tr>
+<tr><td>752</td><td>lake</td><td>temp</td><td>-16.0</td></tr>
+<tr><td>752</td><td>roe</td><td>sal</td><td>41.6</td></tr>
+<tr><td>837</td><td>lake</td><td>rad</td><td>1.46</td></tr>
+<tr><td>837</td><td>lake</td><td>sal</td><td>0.21</td></tr>
+<tr><td>837</td><td>roe</td><td>sal</td><td>22.5</td></tr>
+<tr><td>844</td><td>roe</td><td>rad</td><td>11.25</td></tr>
 </table>
 
 <p>We can combine <code>and</code> with <code>or</code>,
@@ -7831,41 +7141,13 @@ we get this:</p>
 
 <pre>select * from Survey where quant='sal' and person='lake' or person='roe';</pre>
 <table>
-<TR><TD>734</TD>
-<TD>lake</TD>
-<TD>sal</TD>
-<TD>0.05</TD>
-</TR>
-<TR><TD>751</TD>
-<TD>lake</TD>
-<TD>sal</TD>
-<TD>0.1</TD>
-</TR>
-<TR><TD>752</TD>
-<TD>lake</TD>
-<TD>sal</TD>
-<TD>0.09</TD>
-</TR>
-<TR><TD>752</TD>
-<TD>roe</TD>
-<TD>sal</TD>
-<TD>41.6</TD>
-</TR>
-<TR><TD>837</TD>
-<TD>lake</TD>
-<TD>sal</TD>
-<TD>0.21</TD>
-</TR>
-<TR><TD>837</TD>
-<TD>roe</TD>
-<TD>sal</TD>
-<TD>22.5</TD>
-</TR>
-<TR><TD>844</TD>
-<TD>roe</TD>
-<TD>rad</TD>
-<TD>11.25</TD>
-</TR>
+<tr><td>734</td><td>lake</td><td>sal</td><td>0.05</td></tr>
+<tr><td>751</td><td>lake</td><td>sal</td><td>0.1</td></tr>
+<tr><td>752</td><td>lake</td><td>sal</td><td>0.09</td></tr>
+<tr><td>752</td><td>roe</td><td>sal</td><td>41.6</td></tr>
+<tr><td>837</td><td>lake</td><td>sal</td><td>0.21</td></tr>
+<tr><td>837</td><td>roe</td><td>sal</td><td>22.5</td></tr>
+<tr><td>844</td><td>roe</td><td>rad</td><td>11.25</td></tr>
 </table>
 
 <p>which is salinity measurements by Lake,
@@ -7874,36 +7156,12 @@ We probably want this instead:</p>
 
 <pre>select * from Survey where quant='sal' and (person='lake' or person='roe');</pre>
 <table>
-<TR><TD>734</TD>
-<TD>lake</TD>
-<TD>sal</TD>
-<TD>0.05</TD>
-</TR>
-<TR><TD>751</TD>
-<TD>lake</TD>
-<TD>sal</TD>
-<TD>0.1</TD>
-</TR>
-<TR><TD>752</TD>
-<TD>lake</TD>
-<TD>sal</TD>
-<TD>0.09</TD>
-</TR>
-<TR><TD>752</TD>
-<TD>roe</TD>
-<TD>sal</TD>
-<TD>41.6</TD>
-</TR>
-<TR><TD>837</TD>
-<TD>lake</TD>
-<TD>sal</TD>
-<TD>0.21</TD>
-</TR>
-<TR><TD>837</TD>
-<TD>roe</TD>
-<TD>sal</TD>
-<TD>22.5</TD>
-</TR>
+<tr><td>734</td><td>lake</td><td>sal</td><td>0.05</td></tr>
+<tr><td>751</td><td>lake</td><td>sal</td><td>0.1</td></tr>
+<tr><td>752</td><td>lake</td><td>sal</td><td>0.09</td></tr>
+<tr><td>752</td><td>roe</td><td>sal</td><td>41.6</td></tr>
+<tr><td>837</td><td>lake</td><td>sal</td><td>0.21</td></tr>
+<tr><td>837</td><td>roe</td><td>sal</td><td>22.5</td></tr>
 </table>
 
 <p>Finally,
@@ -7912,21 +7170,11 @@ to give a second level of filtering:</p>
 
 <pre>select distinct person, quant from Survey where person='lake' or person='roe';</pre>
 <table>
-<TR><TD>lake</TD>
-<TD>sal</TD>
-</TR>
-<TR><TD>lake</TD>
-<TD>rad</TD>
-</TR>
-<TR><TD>lake</TD>
-<TD>temp</TD>
-</TR>
-<TR><TD>roe</TD>
-<TD>sal</TD>
-</TR>
-<TR><TD>roe</TD>
-<TD>rad</TD>
-</TR>
+<tr><td>lake</td><td>sal</td></tr>
+<tr><td>lake</td><td>rad</td></tr>
+<tr><td>lake</td><td>temp</td></tr>
+<tr><td>roe</td><td>sal</td></tr>
+<tr><td>roe</td><td>rad</td></tr>
 </table>
 
 <p>But remember:
@@ -7956,8 +7204,8 @@ records
 and use that.</p>
 </blockquote>
 
-<h3 id="challenges">Challenges</h3>
-
+<div class="challenges">
+<h3>Challenges</h3>
 <ol>
   <li>
     <p>Suppose we want to select all sites that lie within 30&deg; of the equator.
@@ -7996,15 +7244,9 @@ that <em>aren't</em> from sites labelled 'DR-something'.
 </td></tr></table>
   </li>
 </ol>
+</div>
 
-	</div>
-      </div>
-
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h1>Some Title</h1>
-          <h1 id="calculating-new-values">Calculating New Values</h1>
+          <h2>Calculating New Values</h2>
 
 <p>After carefully re-reading the expedition logs,
 we realize that the radiation measurements they report
@@ -8015,22 +7257,14 @@ as part of our query:</p>
 
 <pre>select 1.05 * reading from Survey where quant='rad';</pre>
 <table>
-<TR><TD>10.311</TD>
-</TR>
-<TR><TD>8.19</TD>
-</TR>
-<TR><TD>8.8305</TD>
-</TR>
-<TR><TD>7.581</TD>
-</TR>
-<TR><TD>4.5675</TD>
-</TR>
-<TR><TD>2.2995</TD>
-</TR>
-<TR><TD>1.533</TD>
-</TR>
-<TR><TD>11.8125</TD>
-</TR>
+<tr><td>10.311</td></tr>
+<tr><td>8.19</td></tr>
+<tr><td>8.8305</td></tr>
+<tr><td>7.581</td></tr>
+<tr><td>4.5675</td></tr>
+<tr><td>2.2995</td></tr>
+<tr><td>1.533</td></tr>
+<tr><td>11.8125</td></tr>
 </table>
 
 <p>When we run the query,
@@ -8050,16 +7284,11 @@ for example by using the string concatenation operator <code>||</code>:</p>
 
 <pre>select personal || ' ' || family from Person;</pre>
 <table>
-<TR><TD>William Dyer</TD>
-</TR>
-<TR><TD>Frank Pabodie</TD>
-</TR>
-<TR><TD>Anderson Lake</TD>
-</TR>
-<TR><TD>Valentina Roerich</TD>
-</TR>
-<TR><TD>Frank Danforth</TD>
-</TR>
+<tr><td>William Dyer</td></tr>
+<tr><td>Frank Pabodie</td></tr>
+<tr><td>Anderson Lake</td></tr>
+<tr><td>Valentina Roerich</td></tr>
+<tr><td>Frank Danforth</td></tr>
 </table>
 
 <blockquote>
@@ -8090,7 +7319,8 @@ even a two-part division into "personal" and "family"
 isn't enough...</p>
 </blockquote>
 
-<h3 id="challenges">Challenges</h3>
+<div class="challenges">
+<h3>Challenges</h3>
 
 <ol>
   <li>
@@ -8103,8 +7333,6 @@ with the values divided by 100.</p>
   </li>
   <li>
     <p>The <code>union</code> operator combines the results of two queries:</p>
-  </li>
-</ol>
 
 <pre>select * from Person where ident='dyer' union select * from Person where ident='roe';</pre>
 
@@ -8123,11 +7351,10 @@ The output should be something like:</p>
   <tr> <td>837</td> <td>0.21</td> </tr>
   <tr> <td>837</td> <td>0.225</td> </tr>
 </table>
-
-<ol>
-  <li>The site identifiers in the <code>Visited</code> table have two parts
-separated by a '-':</li>
-</ol>
+</li>
+  <li>
+    <p>The site identifiers in the <code>Visited</code> table have two parts
+separated by a '-':</p>
 
 <pre>select distinct site from Visited;</pre>
 
@@ -8140,15 +7367,11 @@ returns the substring of X starting at index I.
 Use these two functions to produce a list of unique major site identifiers.
 (For this data,
 the list should contain only "DR" and "MSK").</p>
+</li>
+</ol>
+</div>
 
-	</div>
-      </div>
-
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h1>Some Title</h1>
-          <h1 id="missing-data">Missing Data</h1>
+          <h2>Missing Data</h2>
 
 <p>Real-world data is never complete&mdash;there are always holes.
 Databases represent these holes using special value called <code>null</code>.
@@ -8165,38 +7388,14 @@ its date is null:</p>
 
 <pre>select * from Visited;</pre>
 <table>
-<TR><TD>619</TD>
-<TD>DR-1</TD>
-<TD>1927-02-08</TD>
-</TR>
-<TR><TD>622</TD>
-<TD>DR-1</TD>
-<TD>1927-02-10</TD>
-</TR>
-<TR><TD>734</TD>
-<TD>DR-3</TD>
-<TD>1939-01-07</TD>
-</TR>
-<TR><TD>735</TD>
-<TD>DR-3</TD>
-<TD>1930-01-12</TD>
-</TR>
-<TR><TD>751</TD>
-<TD>DR-3</TD>
-<TD>1930-02-26</TD>
-</TR>
-<TR><TD>752</TD>
-<TD>DR-3</TD>
-<TD></TD>
-</TR>
-<TR><TD>837</TD>
-<TD>MSK-4</TD>
-<TD>1932-01-14</TD>
-</TR>
-<TR><TD>844</TD>
-<TD>DR-1</TD>
-<TD>1932-03-22</TD>
-</TR>
+<tr><td>619</td><td>DR-1</td><td>1927-02-08</td></tr>
+<tr><td>622</td><td>DR-1</td><td>1927-02-10</td></tr>
+<tr><td>734</td><td>DR-3</td><td>1939-01-07</td></tr>
+<tr><td>735</td><td>DR-3</td><td>1930-01-12</td></tr>
+<tr><td>751</td><td>DR-3</td><td>1930-02-26</td></tr>
+<tr><td>752</td><td>DR-3</td><td></td></tr>
+<tr><td>837</td><td>MSK-4</td><td>1932-01-14</td></tr>
+<tr><td>844</td><td>DR-1</td><td>1932-03-22</td></tr>
 </table>
 
 <p>Null doesn't behave like other values.
@@ -8204,14 +7403,8 @@ If we select the records that come before 1930:</p>
 
 <pre>select * from Visited where dated&lt;'1930-00-00';</pre>
 <table>
-<TR><TD>619</TD>
-<TD>DR-1</TD>
-<TD>1927-02-08</TD>
-</TR>
-<TR><TD>622</TD>
-<TD>DR-1</TD>
-<TD>1927-02-10</TD>
-</TR>
+<tr><td>619</td><td>DR-1</td><td>1927-02-08</td></tr>
+<tr><td>622</td><td>DR-1</td><td>1927-02-10</td></tr>
 </table>
 
 <p>we get two results,
@@ -8219,26 +7412,11 @@ and if we select the ones that come during or after 1930:</p>
 
 <pre>select * from Visited where dated&gt;='1930-00-00';</pre>
 <table>
-<TR><TD>734</TD>
-<TD>DR-3</TD>
-<TD>1939-01-07</TD>
-</TR>
-<TR><TD>735</TD>
-<TD>DR-3</TD>
-<TD>1930-01-12</TD>
-</TR>
-<TR><TD>751</TD>
-<TD>DR-3</TD>
-<TD>1930-02-26</TD>
-</TR>
-<TR><TD>837</TD>
-<TD>MSK-4</TD>
-<TD>1932-01-14</TD>
-</TR>
-<TR><TD>844</TD>
-<TD>DR-1</TD>
-<TD>1932-03-22</TD>
-</TR>
+<tr><td>734</td><td>DR-3</td><td>1939-01-07</td></tr>
+<tr><td>735</td><td>DR-3</td><td>1930-01-12</td></tr>
+<tr><td>751</td><td>DR-3</td><td>1930-02-26</td></tr>
+<tr><td>837</td><td>MSK-4</td><td>1932-01-14</td></tr>
+<tr><td>844</td><td>DR-1</td><td>1932-03-22</td></tr>
 </table>
 
 <p>we get five,
@@ -8275,44 +7453,20 @@ we must use a special test <code>is null</code>:</p>
 
 <pre>select * from Visited where dated is NULL;</pre>
 <table>
-<TR><TD>752</TD>
-<TD>DR-3</TD>
-<TD></TD>
-</TR>
+<tr><td>752</td><td>DR-3</td><td></td></tr>
 </table>
 
 <p>or its inverse <code>is not null</code>:</p>
 
 <pre>select * from Visited where dated is not NULL;</pre>
 <table>
-<TR><TD>619</TD>
-<TD>DR-1</TD>
-<TD>1927-02-08</TD>
-</TR>
-<TR><TD>622</TD>
-<TD>DR-1</TD>
-<TD>1927-02-10</TD>
-</TR>
-<TR><TD>734</TD>
-<TD>DR-3</TD>
-<TD>1939-01-07</TD>
-</TR>
-<TR><TD>735</TD>
-<TD>DR-3</TD>
-<TD>1930-01-12</TD>
-</TR>
-<TR><TD>751</TD>
-<TD>DR-3</TD>
-<TD>1930-02-26</TD>
-</TR>
-<TR><TD>837</TD>
-<TD>MSK-4</TD>
-<TD>1932-01-14</TD>
-</TR>
-<TR><TD>844</TD>
-<TD>DR-1</TD>
-<TD>1932-03-22</TD>
-</TR>
+<tr><td>619</td><td>DR-1</td><td>1927-02-08</td></tr>
+<tr><td>622</td><td>DR-1</td><td>1927-02-10</td></tr>
+<tr><td>734</td><td>DR-3</td><td>1939-01-07</td></tr>
+<tr><td>735</td><td>DR-3</td><td>1930-01-12</td></tr>
+<tr><td>751</td><td>DR-3</td><td>1930-02-26</td></tr>
+<tr><td>837</td><td>MSK-4</td><td>1932-01-14</td></tr>
+<tr><td>844</td><td>DR-1</td><td>1932-03-22</td></tr>
 </table>
 
 <p>Null values cause headaches wherever they appear.
@@ -8323,26 +7477,10 @@ It's natural to write the query like this:</p>
 
 <pre>select * from Survey where quant='sal' and person!='lake';</pre>
 <table>
-<TR><TD>619</TD>
-<TD>dyer</TD>
-<TD>sal</TD>
-<TD>0.13</TD>
-</TR>
-<TR><TD>622</TD>
-<TD>dyer</TD>
-<TD>sal</TD>
-<TD>0.09</TD>
-</TR>
-<TR><TD>752</TD>
-<TD>roe</TD>
-<TD>sal</TD>
-<TD>41.6</TD>
-</TR>
-<TR><TD>837</TD>
-<TD>roe</TD>
-<TD>sal</TD>
-<TD>22.5</TD>
-</TR>
+<tr><td>619</td><td>dyer</td><td>sal</td><td>0.13</td></tr>
+<tr><td>622</td><td>dyer</td><td>sal</td><td>0.09</td></tr>
+<tr><td>752</td><td>roe</td><td>sal</td><td>41.6</td></tr>
+<tr><td>837</td><td>roe</td><td>sal</td><td>22.5</td></tr>
 </table>
 
 <p>but this query filters omits the records
@@ -8356,31 +7494,11 @@ we need to add an explicit check:</p>
 
 <pre>select * from Survey where quant='sal' and (person!='lake' or person is null);</pre>
 <table>
-<TR><TD>619</TD>
-<TD>dyer</TD>
-<TD>sal</TD>
-<TD>0.13</TD>
-</TR>
-<TR><TD>622</TD>
-<TD>dyer</TD>
-<TD>sal</TD>
-<TD>0.09</TD>
-</TR>
-<TR><TD>735</TD>
-<TD></TD>
-<TD>sal</TD>
-<TD>0.06</TD>
-</TR>
-<TR><TD>752</TD>
-<TD>roe</TD>
-<TD>sal</TD>
-<TD>41.6</TD>
-</TR>
-<TR><TD>837</TD>
-<TD>roe</TD>
-<TD>sal</TD>
-<TD>22.5</TD>
-</TR>
+<tr><td>619</td><td>dyer</td><td>sal</td><td>0.13</td></tr>
+<tr><td>622</td><td>dyer</td><td>sal</td><td>0.09</td></tr>
+<tr><td>735</td><td></td><td>sal</td><td>0.06</td></tr>
+<tr><td>752</td><td>roe</td><td>sal</td><td>41.6</td></tr>
+<tr><td>837</td><td>roe</td><td>sal</td><td>22.5</td></tr>
 </table>
 
 <p>We still have to decide whether this is the right thing to do or not.
@@ -8388,6 +7506,8 @@ If we want to be absolutely sure that
 we aren't including any measurements by Lake in our results,
 we need to exclude all the records for which we don't know who did the work.</p>
 
+<div class="challenges">
+<h3>Challenges</h3>
 <ol>
   <li>
     <p>Write a query that sorts the records in <code>Visited</code> by date,
@@ -8414,37 +7534,23 @@ What does this simplify?
 What burdens or risks does it introduce?</p>
   </li>
 </ol>
+</div>
 
-	</div>
-      </div>
-
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h1>Some Title</h1>
-          <h1 id="aggregation">Aggregation</h1>
+          <h2>Aggregation</h2>
 
 <p>We now want to calculate ranges and averages for our data.
 We know how to select all of the dates from the <code>Visited</code> table:</p>
 
 <pre>select dated from Visited;</pre>
 <table>
-<TR><TD>1927-02-08</TD>
-</TR>
-<TR><TD>1927-02-10</TD>
-</TR>
-<TR><TD>1939-01-07</TD>
-</TR>
-<TR><TD>1930-01-12</TD>
-</TR>
-<TR><TD>1930-02-26</TD>
-</TR>
-<TR><TD></TD>
-</TR>
-<TR><TD>1932-01-14</TD>
-</TR>
-<TR><TD>1932-03-22</TD>
-</TR>
+<tr><td>1927-02-08</td></tr>
+<tr><td>1927-02-10</td></tr>
+<tr><td>1939-01-07</td></tr>
+<tr><td>1930-01-12</td></tr>
+<tr><td>1930-02-26</td></tr>
+<tr><td></td></tr>
+<tr><td>1932-01-14</td></tr>
+<tr><td>1932-03-22</td></tr>
 </table>
 
 <p>but to combine them,
@@ -8455,16 +7561,14 @@ and produces a single record as output:</p>
 
 <pre>select min(dated) from Visited;</pre>
 <table>
-<TR><TD>1927-02-08</TD>
-</TR>
+<tr><td>1927-02-08</td></tr>
 </table>
 
 <p><img src="sql/novice/img/sql-aggregation.svg" alt="SQL Aggregation" /></p>
 
 <pre>select max(dated) from Visited;</pre>
 <table>
-<TR><TD>1939-01-07</TD>
-</TR>
+<tr><td>1939-01-07</td></tr>
 </table>
 
 <p><code>min</code> and <code>max</code> are just two of
@@ -8475,20 +7579,17 @@ and <code>sum</code>:</p>
 
 <pre>select avg(reading) from Survey where quant='sal';</pre>
 <table>
-<TR><TD>7.20333333333333</TD>
-</TR>
+<tr><td>7.20333333333333</td></tr>
 </table>
 
 <pre>select count(reading) from Survey where quant='sal';</pre>
 <table>
-<TR><TD>9</TD>
-</TR>
+<tr><td>9</td></tr>
 </table>
 
 <pre>select sum(reading) from Survey where quant='sal';</pre>
 <table>
-<TR><TD>64.83</TD>
-</TR>
+<tr><td>64.83</td></tr>
 </table>
 
 <p>We used <code>count(reading)</code> here,
@@ -8505,9 +7606,7 @@ find the range of sensible salinity measurements:</p>
 
 <pre>select min(reading), max(reading) from Survey where quant='sal' and reading&lt;=1.0;</pre>
 <table>
-<TR><TD>0.05</TD>
-<TD>0.21</TD>
-</TR>
+<tr><td>0.05</td><td>0.21</td></tr>
 </table>
 
 <p>We can also combine aggregated results with raw results,
@@ -8515,9 +7614,7 @@ although the output might surprise you:</p>
 
 <pre>select person, count(*) from Survey where quant='sal' and reading&lt;=1.0;</pre>
 <table>
-<TR><TD>lake</TD>
-<TD>7</TD>
-</TR>
+<tr><td>lake</td><td>7</td></tr>
 </table>
 
 <p>Why does Lake's name appear rather than Roerich's or Dyer's?
@@ -8534,10 +7631,7 @@ rather than zero or some other arbitrary value:</p>
 
 <pre>select person, max(reading), sum(reading) from Survey where quant='missing';</pre>
 <table>
-<TR><TD></TD>
-<TD></TD>
-<TD></TD>
-</TR>
+<tr><td></td><td></td><td></td></tr>
 </table>
 
 <p>One final important feature of aggregation functions is that
@@ -8557,16 +7651,14 @@ This behavior lets us write our queries as:</p>
 
 <pre>select min(dated) from Visited;</pre>
 <table>
-<TR><TD>1927-02-08</TD>
-</TR>
+<tr><td>1927-02-08</td></tr>
 </table>
 
 <p>instead of always having to filter explicitly:</p>
 
 <pre>select min(dated) from Visited where dated is not null;</pre>
 <table>
-<TR><TD>1927-02-08</TD>
-</TR>
+<tr><td>1927-02-08</td></tr>
 </table>
 
 <p>Aggregating all records at once doesn't always make sense.
@@ -8579,10 +7671,7 @@ We know that this doesn't work:</p>
 from  Survey
 where quant='rad';</pre>
 <table>
-<TR><TD>roe</TD>
-<TD>8</TD>
-<TD>6.56</TD>
-</TR>
+<tr><td>roe</td><td>8</td><td>6.56</td></tr>
 </table>
 
 <p>because the database manager selects a single arbitrary scientist's name
@@ -8595,10 +7684,7 @@ from  Survey
 where quant='rad'
 and   person='dyer';</pre>
 <table>
-<TR><TD>dyer</TD>
-<TD>2</TD>
-<TD>8.81</TD>
-</TR>
+<tr><td>dyer</td><td>2</td><td>8.81</td></tr>
 </table>
 
 <p>but this would be tedious,
@@ -8614,22 +7700,10 @@ from     Survey
 where    quant='rad'
 group by person;</pre>
 <table>
-<TR><TD>dyer</TD>
-<TD>2</TD>
-<TD>8.81</TD>
-</TR>
-<TR><TD>lake</TD>
-<TD>2</TD>
-<TD>1.82</TD>
-</TR>
-<TR><TD>pb</TD>
-<TD>3</TD>
-<TD>6.66</TD>
-</TR>
-<TR><TD>roe</TD>
-<TD>1</TD>
-<TD>11.25</TD>
-</TR>
+<tr><td>dyer</td><td>2</td><td>8.81</td></tr>
+<tr><td>lake</td><td>2</td><td>1.82</td></tr>
+<tr><td>pb</td><td>3</td><td>6.66</td></tr>
+<tr><td>roe</td><td>1</td><td>11.25</td></tr>
 </table>
 
 <p><code>group by</code> does exactly what its name implies:
@@ -8650,61 +7724,17 @@ we just add another field to the <code>group by</code> clause:</p>
 from     Survey
 group by person, quant;</pre>
 <table>
-<TR><TD></TD>
-<TD>sal</TD>
-<TD>1</TD>
-<TD>0.06</TD>
-</TR>
-<TR><TD></TD>
-<TD>temp</TD>
-<TD>1</TD>
-<TD>-26.0</TD>
-</TR>
-<TR><TD>dyer</TD>
-<TD>rad</TD>
-<TD>2</TD>
-<TD>8.81</TD>
-</TR>
-<TR><TD>dyer</TD>
-<TD>sal</TD>
-<TD>2</TD>
-<TD>0.11</TD>
-</TR>
-<TR><TD>lake</TD>
-<TD>rad</TD>
-<TD>2</TD>
-<TD>1.82</TD>
-</TR>
-<TR><TD>lake</TD>
-<TD>sal</TD>
-<TD>4</TD>
-<TD>0.11</TD>
-</TR>
-<TR><TD>lake</TD>
-<TD>temp</TD>
-<TD>1</TD>
-<TD>-16.0</TD>
-</TR>
-<TR><TD>pb</TD>
-<TD>rad</TD>
-<TD>3</TD>
-<TD>6.66</TD>
-</TR>
-<TR><TD>pb</TD>
-<TD>temp</TD>
-<TD>2</TD>
-<TD>-20.0</TD>
-</TR>
-<TR><TD>roe</TD>
-<TD>rad</TD>
-<TD>1</TD>
-<TD>11.25</TD>
-</TR>
-<TR><TD>roe</TD>
-<TD>sal</TD>
-<TD>2</TD>
-<TD>32.05</TD>
-</TR>
+<tr><td></td><td>sal</td><td>1</td><td>0.06</td></tr>
+<tr><td></td><td>temp</td><td>1</td><td>-26.0</td></tr>
+<tr><td>dyer</td><td>rad</td><td>2</td><td>8.81</td></tr>
+<tr><td>dyer</td><td>sal</td><td>2</td><td>0.11</td></tr>
+<tr><td>lake</td><td>rad</td><td>2</td><td>1.82</td></tr>
+<tr><td>lake</td><td>sal</td><td>4</td><td>0.11</td></tr>
+<tr><td>lake</td><td>temp</td><td>1</td><td>-16.0</td></tr>
+<tr><td>pb</td><td>rad</td><td>3</td><td>6.66</td></tr>
+<tr><td>pb</td><td>temp</td><td>2</td><td>-20.0</td></tr>
+<tr><td>roe</td><td>rad</td><td>1</td><td>11.25</td></tr>
+<tr><td>roe</td><td>sal</td><td>2</td><td>32.05</td></tr>
 </table>
 
 <p>Note that we have added <code>person</code> to the list of fields displayed,
@@ -8719,51 +7749,15 @@ where    person is not null
 group by person, quant
 order by person, quant;</pre>
 <table>
-<TR><TD>dyer</TD>
-<TD>rad</TD>
-<TD>2</TD>
-<TD>8.81</TD>
-</TR>
-<TR><TD>dyer</TD>
-<TD>sal</TD>
-<TD>2</TD>
-<TD>0.11</TD>
-</TR>
-<TR><TD>lake</TD>
-<TD>rad</TD>
-<TD>2</TD>
-<TD>1.82</TD>
-</TR>
-<TR><TD>lake</TD>
-<TD>sal</TD>
-<TD>4</TD>
-<TD>0.11</TD>
-</TR>
-<TR><TD>lake</TD>
-<TD>temp</TD>
-<TD>1</TD>
-<TD>-16.0</TD>
-</TR>
-<TR><TD>pb</TD>
-<TD>rad</TD>
-<TD>3</TD>
-<TD>6.66</TD>
-</TR>
-<TR><TD>pb</TD>
-<TD>temp</TD>
-<TD>2</TD>
-<TD>-20.0</TD>
-</TR>
-<TR><TD>roe</TD>
-<TD>rad</TD>
-<TD>1</TD>
-<TD>11.25</TD>
-</TR>
-<TR><TD>roe</TD>
-<TD>sal</TD>
-<TD>2</TD>
-<TD>32.05</TD>
-</TR>
+<tr><td>dyer</td><td>rad</td><td>2</td><td>8.81</td></tr>
+<tr><td>dyer</td><td>sal</td><td>2</td><td>0.11</td></tr>
+<tr><td>lake</td><td>rad</td><td>2</td><td>1.82</td></tr>
+<tr><td>lake</td><td>sal</td><td>4</td><td>0.11</td></tr>
+<tr><td>lake</td><td>temp</td><td>1</td><td>-16.0</td></tr>
+<tr><td>pb</td><td>rad</td><td>3</td><td>6.66</td></tr>
+<tr><td>pb</td><td>temp</td><td>2</td><td>-20.0</td></tr>
+<tr><td>roe</td><td>rad</td><td>1</td><td>11.25</td></tr>
+<tr><td>roe</td><td>sal</td><td>2</td><td>32.05</td></tr>
 </table>
 
 <p>Looking more closely,
@@ -8793,8 +7787,8 @@ since they're all equal).</p>
   </li>
 </ol>
 
-<h3 id="challenges">Challenges</h3>
-
+<div class="challenges">
+<h3>Challenges</h3>
 <ol>
   <li>
     <p>How many temperature readings did Frank Pabodie record,
@@ -8830,15 +7824,9 @@ Danforth</pre>
     <p>Can you find a way to order the list by surname?</p>
   </li>
 </ol>
+</div>
 
-	</div>
-      </div>
-
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h1>Some Title</h1>
-          <h1 id="combining-data">Combining Data</h1>
+          <h2>Combining Data</h2>
 
 <p>In order to submit her data to a web site
 that aggregates historical meteorological data,
@@ -8856,174 +7844,30 @@ let's start by joining the <code>Site</code> and <code>Visited</code> tables:</p
 
 <pre>select * from Site join Visited;</pre>
 <table>
-<TR><TD>DR-1</TD>
-<TD>-49.85</TD>
-<TD>-128.57</TD>
-<TD>619</TD>
-<TD>DR-1</TD>
-<TD>1927-02-08</TD>
-</TR>
-<TR><TD>DR-1</TD>
-<TD>-49.85</TD>
-<TD>-128.57</TD>
-<TD>622</TD>
-<TD>DR-1</TD>
-<TD>1927-02-10</TD>
-</TR>
-<TR><TD>DR-1</TD>
-<TD>-49.85</TD>
-<TD>-128.57</TD>
-<TD>734</TD>
-<TD>DR-3</TD>
-<TD>1939-01-07</TD>
-</TR>
-<TR><TD>DR-1</TD>
-<TD>-49.85</TD>
-<TD>-128.57</TD>
-<TD>735</TD>
-<TD>DR-3</TD>
-<TD>1930-01-12</TD>
-</TR>
-<TR><TD>DR-1</TD>
-<TD>-49.85</TD>
-<TD>-128.57</TD>
-<TD>751</TD>
-<TD>DR-3</TD>
-<TD>1930-02-26</TD>
-</TR>
-<TR><TD>DR-1</TD>
-<TD>-49.85</TD>
-<TD>-128.57</TD>
-<TD>752</TD>
-<TD>DR-3</TD>
-<TD></TD>
-</TR>
-<TR><TD>DR-1</TD>
-<TD>-49.85</TD>
-<TD>-128.57</TD>
-<TD>837</TD>
-<TD>MSK-4</TD>
-<TD>1932-01-14</TD>
-</TR>
-<TR><TD>DR-1</TD>
-<TD>-49.85</TD>
-<TD>-128.57</TD>
-<TD>844</TD>
-<TD>DR-1</TD>
-<TD>1932-03-22</TD>
-</TR>
-<TR><TD>DR-3</TD>
-<TD>-47.15</TD>
-<TD>-126.72</TD>
-<TD>619</TD>
-<TD>DR-1</TD>
-<TD>1927-02-08</TD>
-</TR>
-<TR><TD>DR-3</TD>
-<TD>-47.15</TD>
-<TD>-126.72</TD>
-<TD>622</TD>
-<TD>DR-1</TD>
-<TD>1927-02-10</TD>
-</TR>
-<TR><TD>DR-3</TD>
-<TD>-47.15</TD>
-<TD>-126.72</TD>
-<TD>734</TD>
-<TD>DR-3</TD>
-<TD>1939-01-07</TD>
-</TR>
-<TR><TD>DR-3</TD>
-<TD>-47.15</TD>
-<TD>-126.72</TD>
-<TD>735</TD>
-<TD>DR-3</TD>
-<TD>1930-01-12</TD>
-</TR>
-<TR><TD>DR-3</TD>
-<TD>-47.15</TD>
-<TD>-126.72</TD>
-<TD>751</TD>
-<TD>DR-3</TD>
-<TD>1930-02-26</TD>
-</TR>
-<TR><TD>DR-3</TD>
-<TD>-47.15</TD>
-<TD>-126.72</TD>
-<TD>752</TD>
-<TD>DR-3</TD>
-<TD></TD>
-</TR>
-<TR><TD>DR-3</TD>
-<TD>-47.15</TD>
-<TD>-126.72</TD>
-<TD>837</TD>
-<TD>MSK-4</TD>
-<TD>1932-01-14</TD>
-</TR>
-<TR><TD>DR-3</TD>
-<TD>-47.15</TD>
-<TD>-126.72</TD>
-<TD>844</TD>
-<TD>DR-1</TD>
-<TD>1932-03-22</TD>
-</TR>
-<TR><TD>MSK-4</TD>
-<TD>-48.87</TD>
-<TD>-123.4</TD>
-<TD>619</TD>
-<TD>DR-1</TD>
-<TD>1927-02-08</TD>
-</TR>
-<TR><TD>MSK-4</TD>
-<TD>-48.87</TD>
-<TD>-123.4</TD>
-<TD>622</TD>
-<TD>DR-1</TD>
-<TD>1927-02-10</TD>
-</TR>
-<TR><TD>MSK-4</TD>
-<TD>-48.87</TD>
-<TD>-123.4</TD>
-<TD>734</TD>
-<TD>DR-3</TD>
-<TD>1939-01-07</TD>
-</TR>
-<TR><TD>MSK-4</TD>
-<TD>-48.87</TD>
-<TD>-123.4</TD>
-<TD>735</TD>
-<TD>DR-3</TD>
-<TD>1930-01-12</TD>
-</TR>
-<TR><TD>MSK-4</TD>
-<TD>-48.87</TD>
-<TD>-123.4</TD>
-<TD>751</TD>
-<TD>DR-3</TD>
-<TD>1930-02-26</TD>
-</TR>
-<TR><TD>MSK-4</TD>
-<TD>-48.87</TD>
-<TD>-123.4</TD>
-<TD>752</TD>
-<TD>DR-3</TD>
-<TD></TD>
-</TR>
-<TR><TD>MSK-4</TD>
-<TD>-48.87</TD>
-<TD>-123.4</TD>
-<TD>837</TD>
-<TD>MSK-4</TD>
-<TD>1932-01-14</TD>
-</TR>
-<TR><TD>MSK-4</TD>
-<TD>-48.87</TD>
-<TD>-123.4</TD>
-<TD>844</TD>
-<TD>DR-1</TD>
-<TD>1932-03-22</TD>
-</TR>
+<tr><td>DR-1</td><td>-49.85</td><td>-128.57</td><td>619</td><td>DR-1</td><td>1927-02-08</td></tr>
+<tr><td>DR-1</td><td>-49.85</td><td>-128.57</td><td>622</td><td>DR-1</td><td>1927-02-10</td></tr>
+<tr><td>DR-1</td><td>-49.85</td><td>-128.57</td><td>734</td><td>DR-3</td><td>1939-01-07</td></tr>
+<tr><td>DR-1</td><td>-49.85</td><td>-128.57</td><td>735</td><td>DR-3</td><td>1930-01-12</td></tr>
+<tr><td>DR-1</td><td>-49.85</td><td>-128.57</td><td>751</td><td>DR-3</td><td>1930-02-26</td></tr>
+<tr><td>DR-1</td><td>-49.85</td><td>-128.57</td><td>752</td><td>DR-3</td><td></td></tr>
+<tr><td>DR-1</td><td>-49.85</td><td>-128.57</td><td>837</td><td>MSK-4</td><td>1932-01-14</td></tr>
+<tr><td>DR-1</td><td>-49.85</td><td>-128.57</td><td>844</td><td>DR-1</td><td>1932-03-22</td></tr>
+<tr><td>DR-3</td><td>-47.15</td><td>-126.72</td><td>619</td><td>DR-1</td><td>1927-02-08</td></tr>
+<tr><td>DR-3</td><td>-47.15</td><td>-126.72</td><td>622</td><td>DR-1</td><td>1927-02-10</td></tr>
+<tr><td>DR-3</td><td>-47.15</td><td>-126.72</td><td>734</td><td>DR-3</td><td>1939-01-07</td></tr>
+<tr><td>DR-3</td><td>-47.15</td><td>-126.72</td><td>735</td><td>DR-3</td><td>1930-01-12</td></tr>
+<tr><td>DR-3</td><td>-47.15</td><td>-126.72</td><td>751</td><td>DR-3</td><td>1930-02-26</td></tr>
+<tr><td>DR-3</td><td>-47.15</td><td>-126.72</td><td>752</td><td>DR-3</td><td></td></tr>
+<tr><td>DR-3</td><td>-47.15</td><td>-126.72</td><td>837</td><td>MSK-4</td><td>1932-01-14</td></tr>
+<tr><td>DR-3</td><td>-47.15</td><td>-126.72</td><td>844</td><td>DR-1</td><td>1932-03-22</td></tr>
+<tr><td>MSK-4</td><td>-48.87</td><td>-123.4</td><td>619</td><td>DR-1</td><td>1927-02-08</td></tr>
+<tr><td>MSK-4</td><td>-48.87</td><td>-123.4</td><td>622</td><td>DR-1</td><td>1927-02-10</td></tr>
+<tr><td>MSK-4</td><td>-48.87</td><td>-123.4</td><td>734</td><td>DR-3</td><td>1939-01-07</td></tr>
+<tr><td>MSK-4</td><td>-48.87</td><td>-123.4</td><td>735</td><td>DR-3</td><td>1930-01-12</td></tr>
+<tr><td>MSK-4</td><td>-48.87</td><td>-123.4</td><td>751</td><td>DR-3</td><td>1930-02-26</td></tr>
+<tr><td>MSK-4</td><td>-48.87</td><td>-123.4</td><td>752</td><td>DR-3</td><td></td></tr>
+<tr><td>MSK-4</td><td>-48.87</td><td>-123.4</td><td>837</td><td>MSK-4</td><td>1932-01-14</td></tr>
+<tr><td>MSK-4</td><td>-48.87</td><td>-123.4</td><td>844</td><td>DR-1</td><td>1932-03-22</td></tr>
 </table>
 
 <p><code>join</code> creates
@@ -9047,62 +7891,14 @@ we're only interested in combinations that have the same site name:</p>
 
 <pre>select * from Site join Visited on Site.name=Visited.site;</pre>
 <table>
-<TR><TD>DR-1</TD>
-<TD>-49.85</TD>
-<TD>-128.57</TD>
-<TD>619</TD>
-<TD>DR-1</TD>
-<TD>1927-02-08</TD>
-</TR>
-<TR><TD>DR-1</TD>
-<TD>-49.85</TD>
-<TD>-128.57</TD>
-<TD>622</TD>
-<TD>DR-1</TD>
-<TD>1927-02-10</TD>
-</TR>
-<TR><TD>DR-1</TD>
-<TD>-49.85</TD>
-<TD>-128.57</TD>
-<TD>844</TD>
-<TD>DR-1</TD>
-<TD>1932-03-22</TD>
-</TR>
-<TR><TD>DR-3</TD>
-<TD>-47.15</TD>
-<TD>-126.72</TD>
-<TD>734</TD>
-<TD>DR-3</TD>
-<TD>1939-01-07</TD>
-</TR>
-<TR><TD>DR-3</TD>
-<TD>-47.15</TD>
-<TD>-126.72</TD>
-<TD>735</TD>
-<TD>DR-3</TD>
-<TD>1930-01-12</TD>
-</TR>
-<TR><TD>DR-3</TD>
-<TD>-47.15</TD>
-<TD>-126.72</TD>
-<TD>751</TD>
-<TD>DR-3</TD>
-<TD>1930-02-26</TD>
-</TR>
-<TR><TD>DR-3</TD>
-<TD>-47.15</TD>
-<TD>-126.72</TD>
-<TD>752</TD>
-<TD>DR-3</TD>
-<TD></TD>
-</TR>
-<TR><TD>MSK-4</TD>
-<TD>-48.87</TD>
-<TD>-123.4</TD>
-<TD>837</TD>
-<TD>MSK-4</TD>
-<TD>1932-01-14</TD>
-</TR>
+<tr><td>DR-1</td><td>-49.85</td><td>-128.57</td><td>619</td><td>DR-1</td><td>1927-02-08</td></tr>
+<tr><td>DR-1</td><td>-49.85</td><td>-128.57</td><td>622</td><td>DR-1</td><td>1927-02-10</td></tr>
+<tr><td>DR-1</td><td>-49.85</td><td>-128.57</td><td>844</td><td>DR-1</td><td>1932-03-22</td></tr>
+<tr><td>DR-3</td><td>-47.15</td><td>-126.72</td><td>734</td><td>DR-3</td><td>1939-01-07</td></tr>
+<tr><td>DR-3</td><td>-47.15</td><td>-126.72</td><td>735</td><td>DR-3</td><td>1930-01-12</td></tr>
+<tr><td>DR-3</td><td>-47.15</td><td>-126.72</td><td>751</td><td>DR-3</td><td>1930-02-26</td></tr>
+<tr><td>DR-3</td><td>-47.15</td><td>-126.72</td><td>752</td><td>DR-3</td><td></td></tr>
+<tr><td>MSK-4</td><td>-48.87</td><td>-123.4</td><td>837</td><td>MSK-4</td><td>1932-01-14</td></tr>
 </table>
 
 <p><code>on</code> does the same job as <code>where</code>:
@@ -9133,38 +7929,14 @@ out of our join:</p>
 from   Site join Visited
 on     Site.name=Visited.site;</pre>
 <table>
-<TR><TD>-49.85</TD>
-<TD>-128.57</TD>
-<TD>1927-02-08</TD>
-</TR>
-<TR><TD>-49.85</TD>
-<TD>-128.57</TD>
-<TD>1927-02-10</TD>
-</TR>
-<TR><TD>-49.85</TD>
-<TD>-128.57</TD>
-<TD>1932-03-22</TD>
-</TR>
-<TR><TD>-47.15</TD>
-<TD>-126.72</TD>
-<TD></TD>
-</TR>
-<TR><TD>-47.15</TD>
-<TD>-126.72</TD>
-<TD>1930-01-12</TD>
-</TR>
-<TR><TD>-47.15</TD>
-<TD>-126.72</TD>
-<TD>1930-02-26</TD>
-</TR>
-<TR><TD>-47.15</TD>
-<TD>-126.72</TD>
-<TD>1939-01-07</TD>
-</TR>
-<TR><TD>-48.87</TD>
-<TD>-123.4</TD>
-<TD>1932-01-14</TD>
-</TR>
+<tr><td>-49.85</td><td>-128.57</td><td>1927-02-08</td></tr>
+<tr><td>-49.85</td><td>-128.57</td><td>1927-02-10</td></tr>
+<tr><td>-49.85</td><td>-128.57</td><td>1932-03-22</td></tr>
+<tr><td>-47.15</td><td>-126.72</td><td></td></tr>
+<tr><td>-47.15</td><td>-126.72</td><td>1930-01-12</td></tr>
+<tr><td>-47.15</td><td>-126.72</td><td>1930-02-26</td></tr>
+<tr><td>-47.15</td><td>-126.72</td><td>1939-01-07</td></tr>
+<tr><td>-48.87</td><td>-123.4</td><td>1932-01-14</td></tr>
 </table>
 
 <p>If joining two tables is good,
@@ -9181,108 +7953,23 @@ on     Site.name=Visited.site
 and    Visited.ident=Survey.taken
 and    Visited.dated is not null;</pre>
 <table>
-<TR><TD>-49.85</TD>
-<TD>-128.57</TD>
-<TD>1927-02-08</TD>
-<TD>rad</TD>
-<TD>9.82</TD>
-</TR>
-<TR><TD>-49.85</TD>
-<TD>-128.57</TD>
-<TD>1927-02-08</TD>
-<TD>sal</TD>
-<TD>0.13</TD>
-</TR>
-<TR><TD>-49.85</TD>
-<TD>-128.57</TD>
-<TD>1927-02-10</TD>
-<TD>rad</TD>
-<TD>7.8</TD>
-</TR>
-<TR><TD>-49.85</TD>
-<TD>-128.57</TD>
-<TD>1927-02-10</TD>
-<TD>sal</TD>
-<TD>0.09</TD>
-</TR>
-<TR><TD>-47.15</TD>
-<TD>-126.72</TD>
-<TD>1939-01-07</TD>
-<TD>rad</TD>
-<TD>8.41</TD>
-</TR>
-<TR><TD>-47.15</TD>
-<TD>-126.72</TD>
-<TD>1939-01-07</TD>
-<TD>sal</TD>
-<TD>0.05</TD>
-</TR>
-<TR><TD>-47.15</TD>
-<TD>-126.72</TD>
-<TD>1939-01-07</TD>
-<TD>temp</TD>
-<TD>-21.5</TD>
-</TR>
-<TR><TD>-47.15</TD>
-<TD>-126.72</TD>
-<TD>1930-01-12</TD>
-<TD>rad</TD>
-<TD>7.22</TD>
-</TR>
-<TR><TD>-47.15</TD>
-<TD>-126.72</TD>
-<TD>1930-01-12</TD>
-<TD>sal</TD>
-<TD>0.06</TD>
-</TR>
-<TR><TD>-47.15</TD>
-<TD>-126.72</TD>
-<TD>1930-01-12</TD>
-<TD>temp</TD>
-<TD>-26.0</TD>
-</TR>
-<TR><TD>-47.15</TD>
-<TD>-126.72</TD>
-<TD>1930-02-26</TD>
-<TD>rad</TD>
-<TD>4.35</TD>
-</TR>
-<TR><TD>-47.15</TD>
-<TD>-126.72</TD>
-<TD>1930-02-26</TD>
-<TD>sal</TD>
-<TD>0.1</TD>
-</TR>
-<TR><TD>-47.15</TD>
-<TD>-126.72</TD>
-<TD>1930-02-26</TD>
-<TD>temp</TD>
-<TD>-18.5</TD>
-</TR>
-<TR><TD>-48.87</TD>
-<TD>-123.4</TD>
-<TD>1932-01-14</TD>
-<TD>rad</TD>
-<TD>1.46</TD>
-</TR>
-<TR><TD>-48.87</TD>
-<TD>-123.4</TD>
-<TD>1932-01-14</TD>
-<TD>sal</TD>
-<TD>0.21</TD>
-</TR>
-<TR><TD>-48.87</TD>
-<TD>-123.4</TD>
-<TD>1932-01-14</TD>
-<TD>sal</TD>
-<TD>22.5</TD>
-</TR>
-<TR><TD>-49.85</TD>
-<TD>-128.57</TD>
-<TD>1932-03-22</TD>
-<TD>rad</TD>
-<TD>11.25</TD>
-</TR>
+<tr><td>-49.85</td><td>-128.57</td><td>1927-02-08</td><td>rad</td><td>9.82</td></tr>
+<tr><td>-49.85</td><td>-128.57</td><td>1927-02-08</td><td>sal</td><td>0.13</td></tr>
+<tr><td>-49.85</td><td>-128.57</td><td>1927-02-10</td><td>rad</td><td>7.8</td></tr>
+<tr><td>-49.85</td><td>-128.57</td><td>1927-02-10</td><td>sal</td><td>0.09</td></tr>
+<tr><td>-47.15</td><td>-126.72</td><td>1939-01-07</td><td>rad</td><td>8.41</td></tr>
+<tr><td>-47.15</td><td>-126.72</td><td>1939-01-07</td><td>sal</td><td>0.05</td></tr>
+<tr><td>-47.15</td><td>-126.72</td><td>1939-01-07</td><td>temp</td><td>-21.5</td></tr>
+<tr><td>-47.15</td><td>-126.72</td><td>1930-01-12</td><td>rad</td><td>7.22</td></tr>
+<tr><td>-47.15</td><td>-126.72</td><td>1930-01-12</td><td>sal</td><td>0.06</td></tr>
+<tr><td>-47.15</td><td>-126.72</td><td>1930-01-12</td><td>temp</td><td>-26.0</td></tr>
+<tr><td>-47.15</td><td>-126.72</td><td>1930-02-26</td><td>rad</td><td>4.35</td></tr>
+<tr><td>-47.15</td><td>-126.72</td><td>1930-02-26</td><td>sal</td><td>0.1</td></tr>
+<tr><td>-47.15</td><td>-126.72</td><td>1930-02-26</td><td>temp</td><td>-18.5</td></tr>
+<tr><td>-48.87</td><td>-123.4</td><td>1932-01-14</td><td>rad</td><td>1.46</td></tr>
+<tr><td>-48.87</td><td>-123.4</td><td>1932-01-14</td><td>sal</td><td>0.21</td></tr>
+<tr><td>-48.87</td><td>-123.4</td><td>1932-01-14</td><td>sal</td><td>22.5</td></tr>
+<tr><td>-49.85</td><td>-128.57</td><td>1932-03-22</td><td>rad</td><td>11.25</td></tr>
 </table>
 
 <p>We can tell which records from <code>Site</code>, <code>Visited</code>, and <code>Survey</code>
@@ -9322,34 +8009,14 @@ and we can use those record numbers in queries:</p>
 
 <pre>select rowid, * from Person;</pre>
 <table>
-<TR><TD>1</TD>
-<TD>dyer</TD>
-<TD>William</TD>
-<TD>Dyer</TD>
-</TR>
-<TR><TD>2</TD>
-<TD>pb</TD>
-<TD>Frank</TD>
-<TD>Pabodie</TD>
-</TR>
-<TR><TD>3</TD>
-<TD>lake</TD>
-<TD>Anderson</TD>
-<TD>Lake</TD>
-</TR>
-<TR><TD>4</TD>
-<TD>roe</TD>
-<TD>Valentina</TD>
-<TD>Roerich</TD>
-</TR>
-<TR><TD>5</TD>
-<TD>danforth</TD>
-<TD>Frank</TD>
-<TD>Danforth</TD>
-</TR>
+<tr><td>1</td><td>dyer</td><td>William</td><td>Dyer</td></tr>
+<tr><td>2</td><td>pb</td><td>Frank</td><td>Pabodie</td></tr>
+<tr><td>3</td><td>lake</td><td>Anderson</td><td>Lake</td></tr>
+<tr><td>4</td><td>roe</td><td>Valentina</td><td>Roerich</td></tr>
+<tr><td>5</td><td>danforth</td><td>Frank</td><td>Danforth</td></tr>
 </table>
 
-<h2 id="data-hygiene">Data Hygiene</h2>
+<h3>Data Hygiene</h3>
 
 <p>Now that we have seen how joins work,
 we can see why the relational model is so useful
@@ -9407,8 +8074,8 @@ but we don't know if that means she was using parts per million instead of parts
 per thousand,
 or whether there actually was a saline anomaly at that site in 1932.</p>
 
-<h3 id="challenges">Challenges</h3>
-
+<div class="challenges">
+<h3>Challenges</h3>
 <ol>
   <li>
     <p>Write a query that lists all radiation readings from the DR-1 site.</p>
@@ -9424,15 +8091,9 @@ on Site.lat&lt;-49.0 and Site.name=Visited.site and
 Visited.dated&gt;='1932-00-00';</pre>
   </li>
 </ol>
+</div>
 
-	</div>
-      </div>
-
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h1>Some Title</h1>
-          <h1 id="creating-and-modifying-data">Creating and Modifying Data</h1>
+          <h2>Creating and Modifying Data</h2>
 
 <p>So far we have only looked at how to get information out of a database,
 both because that is more frequent than adding information,
@@ -9560,8 +8221,8 @@ the database inside the application keeps track of the MP3 files,
 but the files themselves live on disk.</p>
 </blockquote>
 
-<h3 id="challenges">Challenges</h3>
-
+<div class="challenges">
+<h3>Challenges</h3>
 <ol>
   <li>
     <p>Write an SQL statement to replace all uses of <code>null</code>
@@ -9598,15 +8259,9 @@ is a good way to track and manage changes to the database.
 What are the pros and cons of this approach?</p>
   </li>
 </ol>
+</div>
 
-	</div>
-      </div>
-
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h1>Some Title</h1>
-          <h1 id="programming-with-databases">Programming with Databases</h1>
+          <h2>Programming with Databases</h2>
 
 <p>To close,
 let's have a look at how to access a database from
@@ -9755,8 +8410,7 @@ and translates any special characters in the values
 into their escaped equivalents
 so that they are safe to use.</p>
 
-<h3 id="challenges">Challenges</h3>
-
+<div class="challenges">
 <ol>
   <li>
     <p>Write a Python program that creates a new database
@@ -9779,15 +8433,10 @@ filtering values in the query,
 or reading everything into memory and filtering in Python?</p>
   </li>
 </ol>
+</div>
 
-	</div>
-      </div>
-
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
           <h1>Recommended Reading</h1>
-          <h2 id="papers">Papers</h2>
+          <h2>Papers</h2>
 
 <ul>
   <li>
@@ -9858,7 +8507,7 @@ over the last 15 years.</p>
   </li>
 </ul>
 
-<h2 id="books">Books</h2>
+<h2>Books</h2>
 
 <ul>
   <li>
@@ -9914,12 +8563,7 @@ A gentle introduction to Unix, with many examples.</p>
   </li>
 </ul>
 
-	</div>
-      </div>
 
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
           <h1>Glossary</h1>
           <p><strong>absolute path</strong>: <a name="absolute-path"></a>
 A <a href="#path">path</a> that refers to a particular location in a file system.
@@ -10434,12 +9078,6 @@ In the Unix shell,
 the wildcard "*" matches zero or more characters,
 so that <code>*.txt</code> matches all files whose names end in <code>.txt</code>.</p>
 
-	</div>
-      </div>
-
-<hr/>
-      <div class="row-fluid">
-        <div class="span10 offset1">
           <h1>The Rules</h1>
           <ul>
   <li>

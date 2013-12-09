@@ -1,4 +1,4 @@
--- markdown="1"-
+---
 layout: lesson
 root: ../..
 title: Pipes and Filters

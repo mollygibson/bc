@@ -9,1268 +9,1783 @@
     <meta http-equiv="last-modified" content="" />
   </head>
   <body>
-    <div class="container">
-      <div class="row-fluid">
-        <div class="span10 offset1">
 
-<div align="center">
-<img src="img/software-carpentry-banner.png" alt="Software Carpentry logo" />
-<h1>Software Carpentry: A Guide for the Perplexed</h1>
-<h2>Greg Wilson</h2>
-</div>
+    <div align="center">
+      <img src="img/software-carpentry-banner.png" alt="Software Carpentry logo" />
+      <h1>Software Carpentry: A Guide for the Perplexed</h1>
+      <h2>Greg Wilson</h2>
+    </div>
 
-          <h1>The Unix Shell</h1>
+    <h1>The Unix Shell</h1>
 
-<p>Nelle Nemo, a marine biologist,
-has just returned from a six-month survey of the
-<a href="http://en.wikipedia.org/wiki/North_Pacific_Gyre">North Pacific Gyre</a>,
-where she has been sampling gelatinous marine life in the
-<a href="http://en.wikipedia.org/wiki/Great_Pacific_Garbage_Patch">Great Pacific Garbage Patch</a>.
-She has 1520 samples in all, and now needs to:</p>
+    <p>Nelle Nemo, a marine biologist,
+      has just returned from a six-month survey of the
+      <a href="http://en.wikipedia.org/wiki/North_Pacific_Gyre">North Pacific Gyre</a>,
+      where she has been sampling gelatinous marine life in the
+      <a href="http://en.wikipedia.org/wiki/Great_Pacific_Garbage_Patch">Great Pacific Garbage Patch</a>.
+      She has 1520 samples in all, and now needs to:</p>
 
-<ol>
-  <li>Run each sample through an assay machine
-that will measure the relative abundance of 300 different proteins.
-The machine's output for a single sample is
-a file with one line for each protein.</li>
-  <li>Calculate statistics for each of the proteins separately
-using a program her supervisor wrote called <code>goostat</code>.</li>
-  <li>Compare the statistics for each protein
-with corresponding statistics for each other protein
-using a program one of the other graduate students wrote called <code>goodiff</code>.</li>
-  <li>Write up.
-Her supervisor would really like her to do this by the end of the month
-so that her paper can appear in an upcoming special issue of <em>Aquatic Goo Letters</em>.</li>
-</ol>
+    <ol>
+      <li>Run each sample through an assay machine
+        that will measure the relative abundance of 300 different proteins.
+        The machine's output for a single sample is
+        a file with one line for each protein.</li>
+      <li>Calculate statistics for each of the proteins separately
+        using a program her supervisor wrote called <code>goostat</code>.</li>
+      <li>Compare the statistics for each protein
+        with corresponding statistics for each other protein
+        using a program one of the other graduate students wrote called <code>goodiff</code>.</li>
+      <li>Write up.
+        Her supervisor would really like her to do this by the end of the month
+        so that her paper can appear in an upcoming special issue of <em>Aquatic Goo Letters</em>.</li>
+    </ol>
 
-<p>It takes about half an hour for the assay machine to process each sample.
-The good news is,
-it only takes two minutes to set each one up.
-Since her lab has eight assay machines that she can use in parallel,
-this step will "only" take about two weeks.</p>
+    <p>It takes about half an hour for the assay machine to process each sample.
+      The good news is,
+      it only takes two minutes to set each one up.
+      Since her lab has eight assay machines that she can use in parallel,
+      this step will "only" take about two weeks.</p>
 
-<p>The bad news is that if she has to run <code>goostat</code> and <code>goodiff</code> by hand,
-she'll have to enter filenames and click "OK" roughly 300<sup>2</sup> times
-(300 runs of <code>goostat</code>, plus 300&times;299 runs of <code>goodiff</code>).
-At 30 seconds each,
-that will take 18 weeks.
-Not only would she miss her paper deadline,
-the chances of her getting all 90,000 commands right are approximately zero.</p>
+    <p>The bad news is that if she has to run <code>goostat</code> and <code>goodiff</code> by hand,
+      she'll have to enter filenames and click "OK" roughly 300<sup>2</sup> times
+      (300 runs of <code>goostat</code>, plus 300&times;299 runs of <code>goodiff</code>).
+      At 30 seconds each,
+      that will take 18 weeks.
+      Not only would she miss her paper deadline,
+      the chances of her getting all 90,000 commands right are approximately zero.</p>
 
-<p>The next few lessons will explore what she should do instead.
-More specifically,
-they explain how she can use a command shell
-to automate the repetitive steps in her processing pipeline
-so that her computer can work 24 hours a day while she writes her paper.
-As a bonus,
-once she has put a processing pipeline together,
-she will be able to use it again whenever she collects more data.</p>
+    <p>The next few lessons will explore what she should do instead.
+      More specifically,
+      they explain how she can use a command shell
+      to automate the repetitive steps in her processing pipeline
+      so that her computer can work 24 hours a day while she writes her paper.
+      As a bonus,
+      once she has put a processing pipeline together,
+      she will be able to use it again whenever she collects more data.</p>
 
-          <p>The Unix shell has been around longer than most of its users have been alive.
-It has survived so long because it's a power tool
-that allows people to do complex things with just a few keystrokes.
-More importantly,
-it helps them combine existing programs in new ways
-and automate repetitive tasks
-so that they don't have to type the same things over and over again.</p>
+    <p>The Unix shell has been around longer than most of its users have been alive.
+      It has survived so long because it's a power tool
+      that allows people to do complex things with just a few keystrokes.
+      More importantly,
+      it helps them combine existing programs in new ways
+      and automate repetitive tasks
+      so that they don't have to type the same things over and over again.</p>
+    
+    <h2>Introducing the Shell</h2>
 
-          <h2>Introducing the Shell</h2>
+    <div class="objectives">
+      <h3>Objectives</h3>
+      <ul>
+        <li>Explain how the shell relates to the keyboard, the screen, the operating system, and users' programs.</li>
+        <li>Explain when and why command-line interfaces should be used instead of graphical interfaces.</li>
+      </ul>
+    </div>
 
-          <div class="objectives">
-  <h3>Objectives</h3>
-  <ul>
-    <li>Explain how the shell relates to the keyboard, the screen, the operating system, and users' programs.</li>
-    <li>Explain when and why command-line interfaces should be used instead of graphical interfaces.</li>
-  </ul>
-</div>
+    <p>At a high level, computers do four things:</p>
 
-<p>At a high level, computers do four things:</p>
+    <ul>
+      <li>run programs;</li>
+      <li>store data;</li>
+      <li>communicate with each other; and</li>
+      <li>interact with us.</li>
+    </ul>
 
-<ul>
-  <li>run programs;</li>
-  <li>store data;</li>
-  <li>communicate with each other; and</li>
-  <li>interact with us.</li>
-</ul>
+    <p>They can do the last of these in many different ways,
+      including direct brain-computer links and speech interfaces.
+      Since these are still in their infancy,
+      most of us use windows, icons, mice, and pointers.
+      These technologies didn't become widespread until the 1980s,
+      but their roots go back to Doug Engelbart's work in the 1960s,
+      which you can see in what has been called
+      "<a href="http://video.google.com/videoplay?docid=-8734787622017763097#">The Mother of All Demos</a>".</p>
 
-<p>They can do the last of these in many different ways,
-including direct brain-computer links and speech interfaces.
-Since these are still in their infancy,
-most of us use windows, icons, mice, and pointers.
-These technologies didn't become widespread until the 1980s,
-but their roots go back to Doug Engelbart's work in the 1960s,
-which you can see in what has been called
-"<a href="http://video.google.com/videoplay?docid=-8734787622017763097#">The Mother of All Demos</a>".</p>
+    <p>Going back even further,
+      the only way to interact with early computers was to rewire them.
+      But in between,
+      from the 1950s to the 1980s,
+      most people used line printers.
+      These devices only allowed input and output of the letters, numbers, and punctuation found on a standard keyboard,
+      so programming languages and interfaces had to be designed around that constraint.</p>
 
-<p>Going back even further,
-the only way to interact with early computers was to rewire them.
-But in between,
-from the 1950s to the 1980s,
-most people used line printers.
-These devices only allowed input and output of the letters, numbers, and punctuation found on a standard keyboard,
-so programming languages and interfaces had to be designed around that constraint.</p>
+    <p>This kind of interface is called a
+      <a href="#gloss:cli">command-line interface</a>, or CLI,
+      to distinguish it from the
+      <a href="#gloss:gui">graphical user interface</a>, or GUI,
+      that most people now use.
+      The heart of a CLI is a <a href="#gloss:repl">read-evaluate-print loop</a>, or REPL:
+      when the user types a command and then presses the enter (or return) key,
+      the computer reads it,
+      executes it,
+      and prints its output.
+      The user then types another command,
+      and so on until the user logs off.</p>
 
-<p>This kind of interface is called a
-<a href="#gloss:cli">command-line interface</a>, or CLI,
-to distinguish it from the
-<a href="#gloss:gui">graphical user interface</a>, or GUI,
-that most people now use.
-The heart of a CLI is a <a href="#gloss:repl">read-evaluate-print loop</a>, or REPL:
-when the user types a command and then presses the enter (or return) key,
-the computer reads it,
-executes it,
-and prints its output.
-The user then types another command,
-and so on until the user logs off.</p>
+    <p>This description makes it sound as though the user sends commands directly to the computer,
+      and the computer sends output directly to the user.
+      In fact,
+      there is usually a program in between called a
+      <a href="#gloss:shell">command shell</a>.
+      What the user types goes into the shell;
+      it figures out what commands to run and orders the computer to execute them.</p>
 
-<p>This description makes it sound as though the user sends commands directly to the computer,
-and the computer sends output directly to the user.
-In fact,
-there is usually a program in between called a
-<a href="#gloss:shell">command shell</a>.
-What the user types goes into the shell;
-it figures out what commands to run and orders the computer to execute them.</p>
+    <p>A shell is a program like any other.
+      What's special about it is that its job is to run other programs
+      rather than to do calculations itself.
+      The most popular Unix shell is Bash,
+      the Bourne Again SHell
+      (so-called because it's derived from a shell written by Stephen Bourne&mdash;this
+      is what passes for wit among programmers).
+      Bash is the default shell on most modern implementations of Unix,
+      and in most packages that provide Unix-like tools for Windows.</p>
 
-<p>A shell is a program like any other.
-What's special about it is that its job is to run other programs
-rather than to do calculations itself.
-The most popular Unix shell is Bash,
-the Bourne Again SHell
-(so-called because it's derived from a shell written by Stephen Bourne&mdash;this
-is what passes for wit among programmers).
-Bash is the default shell on most modern implementations of Unix,
-and in most packages that provide Unix-like tools for Windows.</p>
+    <p>Using Bash or any other shell
+      sometimes feels more like programming than like using a mouse.
+      Commands are terse (often only a couple of characters long),
+      their names are frequently cryptic,
+      and their output is lines of text rather than something visual like a graph.
+      On the other hand,
+      the shell allows us to combine existing tools in powerful ways with only a few keystrokes.
+      and to set up pipelines to handle large volumes of data automatically.
+      In addition,
+      the command line is often the easiest way to interact with remote machines.
+      As clusters and cloud computing become more popular for scientific data crunching,
+      being able to drive them is becoming a necessary skill.</p>
 
-<p>Using Bash or any other shell
-sometimes feels more like programming than like using a mouse.
-Commands are terse (often only a couple of characters long),
-their names are frequently cryptic,
-and their output is lines of text rather than something visual like a graph.
-On the other hand,
-the shell allows us to combine existing tools in powerful ways with only a few keystrokes.
-and to set up pipelines to handle large volumes of data automatically.
-In addition,
-the command line is often the easiest way to interact with remote machines.
-As clusters and cloud computing become more popular for scientific data crunching,
-being able to drive them is becoming a necessary skill.</p>
+    <div class="keypoints">
+      <h3>Key Points</h3>
+      <ul>
+        <li>A shell is a program whose primary purpose is to read commands and run other programs.</li>
+        <li>The shell's main advantages are its high action-to-keystroke ratio,
+          its support for automating repetitive tasks,
+          and that it can be used to access networked machines.</li>
+        <li>The shell's main disadvantages are its primarily textual nature
+          and how cryptic its commands and operation can be.</li>
+      </ul>
+    </div>
 
-<div class="keypoints">
-  <h3>Key Points</h3>
-  <ul>
-    <li>A shell is a program whose primary purpose is to read commands and run other programs.</li>
-    <li>The shell's main advantages are its high action-to-keystroke ratio,
-its support for automating repetitive tasks,
-and that it can be used to access networked machines.</li>
-    <li>The shell's main disadvantages are its primarily textual nature
-and how cryptic its commands and operation can be.</li>
-  </ul>
-</div>
+    <h2>Files and Directories</h2>
 
-          <h2>Files and Directories</h2>
+    <div class="objectives">
+      <h3>Objectives</h3>
+      <ul>
+        <li>Explain the similarities and differences between a file and a directory.</li>
+        <li>Translate an absolute path into a relative path and vice versa.</li>
+        <li>Construct absolute and relative paths that identify specific files and directories.</li>
+        <li>Explain the steps in the shell's read-run-print cycle.</li>
+        <li>Identify the actual command, flags, and filenames in a command-line call.</li>
+        <li>Demonstrate the use of tab completion, and explain its advantages.</li>
+      </ul>
+    </div>
 
-          <div class="objectives">
-  <h3>Objectives</h3>
-  <ul>
-    <li>Explain the similarities and differences between a file and a directory.</li>
-    <li>Translate an absolute path into a relative path and vice versa.</li>
-    <li>Construct absolute and relative paths that identify specific files and directories.</li>
-    <li>Explain the steps in the shell's read-run-print cycle.</li>
-    <li>Identify the actual command, flags, and filenames in a command-line call.</li>
-    <li>Demonstrate the use of tab completion, and explain its advantages.</li>
-  </ul>
-</div>
+    <p>The part of the operating system responsible for managing files and directories
+      is called the <a href="#gloss:filesystem">file system</a>.
+      It organizes our data into files,
+      which hold information,
+      and directories (also called "folders"),
+      which hold files or other directories.</p>
 
-<p>The part of the operating system responsible for managing files and directories
-is called the <a href="#gloss:filesystem">file system</a>.
-It organizes our data into files,
-which hold information,
-and directories (also called "folders"),
-which hold files or other directories.</p>
+    <p>Several commands are frequently used to create, inspect, rename, and delete files and directories.
+      To start exploring them,
+      let's log in to the computer by typing our user ID and password.
+      Most systems will print stars to obscure the password,
+      or nothing at all,
+      in case some evildoer is shoulder surfing behind us:</p>
 
-<p>Several commands are frequently used to create, inspect, rename, and delete files and directories.
-To start exploring them,
-let's log in to the computer by typing our user ID and password.
-Most systems will print stars to obscure the password,
-or nothing at all,
-in case some evildoer is shoulder surfing behind us:</p>
-
-<pre>login: vlad
-password: ********
+<pre>login: <span class="in">vlad</span>
+password: <span class="in">********</span>
 $</pre>
 
-<p>Once we have logged in we'll see a <a href="#gloss:prompt">prompt</a>,
-which is how the shell tells us that it's waiting for input.
-This is usually just a dollar sign,
-but which may show extra information such as our user ID or the current time.
-Type the command <code>whoami</code>,
-then press the Enter key (sometimes marked Return) to send the command to the shell.
-The command's output is the ID of the current user,
-i.e.,
-it shows us who the shell thinks we are:</p>
+    <p>Once we have logged in we'll see a <a href="#gloss:prompt">prompt</a>,
+      which is how the shell tells us that it's waiting for input.
+      This is usually just a dollar sign,
+      but which may show extra information such as our user ID or the current time.
+      Type the command <code>whoami</code>,
+      then press the Enter key (sometimes marked Return) to send the command to the shell.
+      The command's output is the ID of the current user,
+      i.e.,
+      it shows us who the shell thinks we are:</p>
 
-<pre>$ whoami
-vlad
+<pre>$ <span class="in">whoami</span>
+<span class="out">vlad</span>
 $</pre>
 
-<p>More specifically, when we type <code>whoami</code> the shell:</p>
+    <p>More specifically, when we type <code>whoami</code> the shell:</p>
 
-<ol>
-  <li>finds a program called <code>whoami</code>,</li>
-  <li>runs it,</li>
-  <li>waits for it to produce some output (which the shell displays), and</li>
-  <li>displays a new prompt to tell us that it's ready for more commands.</li>
-</ol>
+    <ol>
+      <li>finds a program called <code>whoami</code>,</li>
+      <li>runs it,</li>
+      <li>waits for it to produce some output (which the shell displays), and</li>
+      <li>displays a new prompt to tell us that it's ready for more commands.</li>
+    </ol>
 
-<p>Next,
-let's find out where we are by running a command called <code>pwd</code>
-(which stands for "print working directory").
-At any moment,
-our <a href="#gloss:current-working-directory">current working directory</a>
-is our current default directory,
-i.e.,
-the directory that the computer assumes we want to run commands in
-unless we explicitly specify something else.
-Here,
-the computer's response is <code>/users/vlad</code>,
-which is Vlad's <a href="#gloss:home-directory">home directory</a>:</p>
+    <p>Next,
+      let's find out where we are by running a command called <code>pwd</code>
+      (which stands for "print working directory").
+      At any moment,
+      our <a href="#gloss:current-working-directory">current working directory</a>
+      is our current default directory,
+      i.e.,
+      the directory that the computer assumes we want to run commands in
+      unless we explicitly specify something else.
+      Here,
+      the computer's response is <code>/users/vlad</code>,
+      which is Vlad's <a href="#gloss:home-directory">home directory</a>:</p>
 
-<pre>$ pwd
-/users/vlad
+<pre>$ <span class="in">pwd</span>
+<span class="out">/users/vlad</span>
 $</pre>
 
-<blockquote>
-  <h3>Alphabet Soup</h3>
+    <blockquote>
+      <h3>Alphabet Soup</h3>
 
-  <p>If the command to find out who we are is <code>whoami</code>, the command to find
-out where we are ought to be called <code>whereami</code>, so why is it <code>pwd</code>
-instead? The usual answer is that in the early 1970s, when Unix was
-first being developed, every keystroke counted: the devices of the day
-were slow, and backspacing on a teletype was so painful that cutting the
-number of keystrokes in order to cut the number of typing mistakes was
-actually a win for usability. The reality is that commands were added to
-Unix one by one, without any master plan, by people who were immersed in
-its jargon. The result is as inconsistent as the roolz uv Inglish
-speling, but we're stuck with it now.</p>
-</blockquote>
+      <p>If the command to find out who we are is <code>whoami</code>, the command to find
+        out where we are ought to be called <code>whereami</code>, so why is it <code>pwd</code>
+        instead? The usual answer is that in the early 1970s, when Unix was
+        first being developed, every keystroke counted: the devices of the day
+        were slow, and backspacing on a teletype was so painful that cutting the
+        number of keystrokes in order to cut the number of typing mistakes was
+        actually a win for usability. The reality is that commands were added to
+        Unix one by one, without any master plan, by people who were immersed in
+        its jargon. The result is as inconsistent as the roolz uv Inglish
+        speling, but we're stuck with it now.</p>
 
-<p>To understand what a "home directory" is,
-let's have a look at how the file system as a whole is organized.
-At the top is the <a href="#gloss:root-directory">root directory</a>
-that holds everything else.
-We refer to it using a slash character <code>/</code> on its own;
-this is the leading slash in <code>/users/vlad</code>.</p>
+    </blockquote>
 
-<p>Inside that directory are several other directories:
-<code>bin</code> (which is where some built-in programs are stored),
-<code>data</code> (for miscellaneous data files),
-<code>users</code> (where users' personal directories are located),
-<code>tmp</code> (for temporary files that don't need to be stored long-term),
-and so on:</p>
+    <p>To understand what a "home directory" is,
+      let's have a look at how the file system as a whole is organized.
+      At the top is the <a href="#gloss:root-directory">root directory</a>
+      that holds everything else.
+      We refer to it using a slash character <code>/</code> on its own;
+      this is the leading slash in <code>/users/vlad</code>.</p>
 
-<p><img src="bash/novice/img/filesystem.svg" alt="The Filesystem" /></p>
+    <p>Inside that directory are several other directories:
+      <code>bin</code> (which is where some built-in programs are stored),
+      <code>data</code> (for miscellaneous data files),
+      <code>users</code> (where users' personal directories are located),
+      <code>tmp</code> (for temporary files that don't need to be stored long-term),
+      and so on:</p>
 
-<p>We know that our current working directory <code>/users/vlad</code> is stored inside <code>/users</code>
-because <code>/users</code> is the first part of its name.
-Similarly,
-we know that <code>/users</code> is stored inside the root directory <code>/</code>
-because its name begins with <code>/</code>.</p>
+    <p><img src="bash/novice/img/filesystem.svg" alt="The Filesystem" /></p>
 
-<p>Underneath <code>/users</code>,
-we find one directory for each user with an account on this machine.
-The Mummy's files are stored in <code>/users/imhotep</code>,
-Wolfman's in <code>/users/larry</code>,
-and ours in <code>/users/vlad</code>,
-which is why <code>vlad</code> is the last part of the directory's name.</p>
+    <p>We know that our current working directory <code>/users/vlad</code> is stored inside <code>/users</code>
+      because <code>/users</code> is the first part of its name.
+      Similarly,
+      we know that <code>/users</code> is stored inside the root directory <code>/</code>
+      because its name begins with <code>/</code>.</p>
 
-<p><img src="bash/novice/img/home-directories.svg" alt="Home Directories" /></p>
+    <p>Underneath <code>/users</code>,
+      we find one directory for each user with an account on this machine.
+      The Mummy's files are stored in <code>/users/imhotep</code>,
+      Wolfman's in <code>/users/larry</code>,
+      and ours in <code>/users/vlad</code>,
+      which is why <code>vlad</code> is the last part of the directory's name.</p>
 
-<blockquote>
-  <p>Notice that there are two meanings for the <code>/</code> character.
-When it appears at the front of a file or directory name,
-it refers to the root directory. When it appears <em>inside</em> a name,
-it's just a separator.</p>
-</blockquote>
+    <p><img src="bash/novice/img/home-directories.svg" alt="Home Directories" /></p>
 
-<p>Let's see what's in Vlad's home directory by running <code>ls</code>,
-which stands for "listing":</p>
+    <p>Notice that there are two meanings for the <code>/</code> character.
+      When it appears at the front of a file or directory name,
+      it refers to the root directory. When it appears <em>inside</em> a name,
+      it's just a separator.</p>
 
-<pre>$ ls
-bin          data      mail       music
+    <p>Let's see what's in Vlad's home directory by running <code>ls</code>,
+      which stands for "listing":</p>
+
+<pre>$ <span class="in">ls</span>
+<span class="out">bin          data      mail       music
 notes.txt    papers    pizza.cfg  solar
-solar.pdf    swc
+solar.pdf    swc</span>
 $</pre>
 
-<p><img src="bash/novice/img/vlad-homedir.svg" alt="Vlad's Home Directory" /></p>
+    <p><img src="bash/novice/img/vlad-homedir.svg" alt="Vlad's Home Directory" /></p>
 
-<p><code>ls</code> prints the names of the files and directories in the current directory in alphabetical order,
-arranged neatly into columns.
-We can make its output more comprehensible by using the <a href="#gloss:command-line-flag">flag</a> <code>-F</code>,
-which tells <code>ls</code> to add a trailing <code>/</code> to the names of directories:</p>
+    <p><code>ls</code> prints the names of the files and directories in the current directory in alphabetical order,
+      arranged neatly into columns.
+      We can make its output more comprehensible by using the <a href="#gloss:command-line-flag">flag</a> <code>-F</code>,
+      which tells <code>ls</code> to add a trailing <code>/</code> to the names of directories:</p>
 
-<pre>$ ls -F
-bin/         data/     mail/      music/
+<pre>$ <span class="in">ls -F</span>
+<span class="out">bin/         data/     mail/      music/
 notes.txt    papers/   pizza.cfg  solar/
-solar.pdf    swc/
+solar.pdf    swc/</span>
 $</pre>
 
-<p>Here,
-we can see that <code>/users/vlad</code> contains seven <a href="#gloss:sub-directory">sub-directories</a>.
-The names that don't have trailing slashes,
-like <code>notes.txt</code>, <code>pizza.cfg</code>, and <code>solar.pdf</code>,
-are plain old files.
-And note that there is a space between <code>ls</code> and <code>-F</code>:
-without it,
-the shell thinks we're trying to run a command called <code>ls-F</code>,
-which doesn't exist.</p>
+    <p>Here,
+      we can see that <code>/users/vlad</code> contains seven <a href="#gloss:sub-directory">sub-directories</a>.
+      The names that don't have trailing slashes,
+      like <code>notes.txt</code>, <code>pizza.cfg</code>, and <code>solar.pdf</code>,
+      are plain old files.
+      And note that there is a space between <code>ls</code> and <code>-F</code>:
+      without it,
+      the shell thinks we're trying to run a command called <code>ls-F</code>,
+      which doesn't exist.</p>
 
-<blockquote>
-  <h3>What's In A Name?</h3>
+    <blockquote>
+      <h3>What's In A Name?</h3>
 
-  <p>You may have noticed that all of Vlad's files' names are "something dot
-something". This is just a convention: we can call a file <code>mythesis</code> or
-almost anything else we want. However, most people use two-part names
-most of the time to help them (and their programs) tell different kinds
-of files apart. The second part of such a name is called the
-<a href="#gloss:filename-extension">filename extension</a>, and indicates
-what type of data the file holds: <code>.txt</code> signals a plain text file, <code>.pdf</code>
-indicates a PDF document, <code>.cfg</code> is a configuration file full of parameters
-for some program or other, and so on.</p>
+      <p>You may have noticed that all of Vlad's files' names are "something dot
+        something". This is just a convention: we can call a file <code>mythesis</code> or
+        almost anything else we want. However, most people use two-part names
+        most of the time to help them (and their programs) tell different kinds
+        of files apart. The second part of such a name is called the
+        <a href="#gloss:filename-extension">filename extension</a>, and indicates
+        what type of data the file holds: <code>.txt</code> signals a plain text file, <code>.pdf</code>
+        indicates a PDF document, <code>.cfg</code> is a configuration file full of parameters
+        for some program or other, and so on.</p>
 
-  <p>It's important to remember that this is just a convention. Files contain
-bytes: it's up to us and our programs to interpret those bytes according
-to the rules for PDF documents, images, and so on. For example, naming a
-PNG image of a whale as <code>whale.mp3</code> doesn't somehow magically turn it
-into a recording of whalesong.</p>
-</blockquote>
+      <p>It's important to remember that this is just a convention. Files contain
+        bytes: it's up to us and our programs to interpret those bytes according
+        to the rules for PDF documents, images, and so on. For example, naming a
+        PNG image of a whale as <code>whale.mp3</code> doesn't somehow magically turn it
+        into a recording of whalesong.</p>
 
-<p>Now let's take a look at what's in Vlad's <code>data</code> directory by running the command <code>ls -F data</code>.
-The second parameter&mdash;the one <em>without</em> a leading dash&mdash;tells <code>ls</code> that
-we want a listing of something other than our current working directory:</p>
+    </blockquote>
 
-<pre>$ ls -F data
-amino-acids.txt   elements/     morse.txt
-pdb/              planets.txt   sunspot.txt
+    <p>Now let's take a look at what's in Vlad's <code>data</code> directory by running the command <code>ls -F data</code>.
+      The second parameter&mdash;the one <em>without</em> a leading dash&mdash;tells <code>ls</code> that
+      we want a listing of something other than our current working directory:</p>
+
+<pre>$ <span class="in">ls -F data</span>
+<span class="out">amino-acids.txt   elements/     morse.txt
+pdb/              planets.txt   sunspot.txt</span>
 $</pre>
 
-<p>The output shows us that there are four text files and two sub-sub-directories.
-Organizing things hierarchically in this way helps us keep track of our work:
-it's possible to put hundreds of files in our home directory,
-just as it's possible to pile hundreds of printed papers on our desk,
-but it's a self-defeating strategy.</p>
+    <p>The output shows us that there are four text files and two sub-sub-directories.
+      Organizing things hierarchically in this way helps us keep track of our work:
+      it's possible to put hundreds of files in our home directory,
+      just as it's possible to pile hundreds of printed papers on our desk,
+      but it's a self-defeating strategy.</p>
 
-<p>Notice, by the way that we spelled the directory name <code>data</code>.
-It doesn't have a trailing slash:
-that's added to directory names by <code>ls</code> when we use the <code>-F</code> flag to help us tell things apart.
-And it doesn't begin with a slash because it's a <a href="#gloss:relative-path">relative path</a>,
-i.e., it tells <code>ls</code> how to find something from where we are,
-rather than from the root of the file system.</p>
+    <p>Notice, by the way that we spelled the directory name <code>data</code>.
+      It doesn't have a trailing slash:
+      that's added to directory names by <code>ls</code> when we use the <code>-F</code> flag to help us tell things apart.
+      And it doesn't begin with a slash because it's a <a href="#gloss:relative-path">relative path</a>,
+      i.e., it tells <code>ls</code> how to find something from where we are,
+      rather than from the root of the file system.</p>
 
-<p>If we run <code>ls -F /data</code> (<em>with</em> a leading slash) we get a different answer,
-because <code>/data</code> is an <a href="#gloss:absolute-path">absolute path</a>:</p>
+    <p>If we run <code>ls -F /data</code> (<em>with</em> a leading slash) we get a different answer,
+      because <code>/data</code> is an <a href="#gloss:absolute-path">absolute path</a>:</p>
 
-<pre>$ ls -F /data
-access.log    backup/    hardware.cfg
-network.cfg
+<pre>$ <span class="in">ls -F /data</span>
+<span class="out">access.log    backup/    hardware.cfg
+network.cfg</span>
 $</pre>
 
-<p>The leading <code>/</code> tells the computer to follow the path from the root of the filesystem,
-so it always refers to exactly one directory,
-no matter where we are when we run the command.</p>
+    <p>The leading <code>/</code> tells the computer to follow the path from the root of the filesystem,
+      so it always refers to exactly one directory,
+      no matter where we are when we run the command.</p>
 
-<p>What if we want to change our current working directory?
-Before we do this,
-<code>pwd</code> shows us that we're in <code>/users/vlad</code>,
-and <code>ls</code> without any parameters shows us that directory's contents:</p>
+    <p>What if we want to change our current working directory?
+      Before we do this,
+      <code>pwd</code> shows us that we're in <code>/users/vlad</code>,
+      and <code>ls</code> without any parameters shows us that directory's contents:</p>
 
-<pre>$ pwd
-/users/vlad
-$ ls
-bin/         data/     mail/      music/
+<pre>$ <span class="in">pwd</span>
+<span class="out">/users/vlad</span>
+$ <span class="in">ls</span>
+<span class="out">bin/         data/     mail/      music/
 notes.txt    papers/   pizza.cfg  solar/
-solar.pdf    swc/
+solar.pdf    swc/</span>
 $</pre>
 
-<p>We can use <code>cd</code> followed by a directory name to change our working directory.
-<code>cd</code> stands for "change directory",
-which is a bit misleading:
-the command doesn't change the directory,
-it changes the shell's idea of what directory we are in.</p>
+    <p>We can use <code>cd</code> followed by a directory name to change our working directory.
+      <code>cd</code> stands for "change directory",
+      which is a bit misleading:
+      the command doesn't change the directory,
+      it changes the shell's idea of what directory we are in.</p>
 
-<pre>$ cd data
+<pre><span class="in">$ cd data</span>
 $</pre>
 
-<p><code>cd</code> doesn't print anything,
-but if we run <code>pwd</code> after it, we can see that we are now in <code>/users/vlad/data</code>.
-If we run <code>ls</code> without parameters now,
-it lists the contents of <code>/users/vlad/data</code>,
-because that's where we now are:</p>
+    <p><code>cd</code> doesn't print anything,
+      but if we run <code>pwd</code> after it, we can see that we are now in <code>/users/vlad/data</code>.
+      If we run <code>ls</code> without parameters now,
+      it lists the contents of <code>/users/vlad/data</code>,
+      because that's where we now are:</p>
 
-<pre>$ pwd
-/users/vlad/data
-$ ls
-amino-acids.txt   elements/     morse.txt
-pdb/              planets.txt   sunspot.txt
+<pre><span class="in">$ pwd</span>
+<span class="out">/users/vlad/data</span>
+$ <span class="in">ls</span>
+<span class="out">amino-acids.txt   elements/     morse.txt
+pdb/              planets.txt   sunspot.txt</span>
 $</pre>
 
-<p>We now know how to go down the directory tree:
-how do we go up?
-We could use an absolute path:</p>
+    <p>We now know how to go down the directory tree:
+      how do we go up?
+      We could use an absolute path:</p>
 
 <pre>$ cd /users/vlad
 $</pre>
 
-<p>but it's almost always simpler to use <code>cd ..</code> to go up one level:</p>
+    <p>but it's almost always simpler to use <code>cd ..</code> to go up one level:</p>
 
-<pre>$ pwd
-/users/vlad/data
-$ cd ..</pre>
-
-<p><code>..</code> is a special directory name meaning
-"the directory containing this one",
-or more succinctly,
-the <a href="#gloss:parent-directory">parent</a> of the current directory.
-Sure enough,
-if we run <code>pwd</code> after running <code>cd ..</code>, we're back in <code>/users/vlad</code>:</p>
-
-<pre>$ pwd
-/users/vlad
+<pre><span class="in">$ pwd</span>
+<span class="out">/users/vlad/data</span>
+$ <span class="in">cd ..</span>
 $</pre>
 
-<p>The special directory <code>..</code> doesn't usually show up when we run <code>ls</code>.
-If we want to display it, we can give <code>ls</code> the <code>-a</code> flag:</p>
+    <p><code>..</code> is a special directory name meaning
+      "the directory containing this one",
+      or more succinctly,
+      the <a href="#gloss:parent-directory">parent</a> of the current directory.
+      Sure enough,
+      if we run <code>pwd</code> after running <code>cd ..</code>, we're back in <code>/users/vlad</code>:</p>
 
-<pre>$ ls -F -a
-./           ../       bin/       data/
+<pre><span class="in">$ pwd</span>
+<span class="out">/users/vlad</span>
+$</pre>
+
+    <p>The special directory <code>..</code> doesn't usually show up when we run <code>ls</code>.
+      If we want to display it, we can give <code>ls</code> the <code>-a</code> flag:</p>
+
+<pre>$ <span class="in">ls -F -a</span>
+<span class="out">./           ../       bin/       data/
 mail/        music/    notes.txt  papers/
-pizza.cfg    solar/    solar.pdf    swc/</pre>
+pizza.cfg    solar/    solar.pdf    swc/</span>
+$</pre>
 
-<p><code>-a</code> stands for "show all";
-it forces <code>ls</code> to show us file and directory names that begin with <code>.</code>,
-such as <code>..</code> (which, if we're in <code>/users/vlad</code>, refers to the <code>/users</code> directory).
-As you can see,
-it also displays another special directory that's just called <code>.</code>,
-which means "the current working directory".
-It may seem redundant to have a name for it,
-but we'll see some uses for it soon.</p>
+    <p><code>-a</code> stands for "show all";
+      it forces <code>ls</code> to show us file and directory names that begin with <code>.</code>,
+      such as <code>..</code> (which, if we're in <code>/users/vlad</code>, refers to the <code>/users</code> directory).
+      As you can see,
+      it also displays another special directory that's just called <code>.</code>,
+      which means "the current working directory".
+      It may seem redundant to have a name for it,
+      but we'll see some uses for it soon.</p>
 
-<blockquote>
-  <h3>Orthogonality</h3>
+    <blockquote>
+      <h3>Orthogonality</h3>
 
-  <p>The special names <code>.</code> and <code>..</code> don't belong to <code>ls</code>;
-they are interpreted the same way by every program.
-For example,
-if we are in <code>/users/vlad/data</code>,
-the command <code>ls ..</code> will give us a listing of <code>/users/vlad</code>.
-When the meanings of the parts are the same no matter how they're combined,
-programmers say they are <a href="#gloss:orthogonal">orthogonal</a>:
-Orthogonal systems tend to be easier for people to learn
-because there are fewer special cases and exceptions to keep track of.</p>
-</blockquote>
+      <p>The special names <code>.</code> and <code>..</code> don't belong to <code>ls</code>;
+        they are interpreted the same way by every program.
+        For example,
+        if we are in <code>/users/vlad/data</code>,
+        the command <code>ls ..</code> will give us a listing of <code>/users/vlad</code>.
+        When the meanings of the parts are the same no matter how they're combined,
+        programmers say they are <a href="#gloss:orthogonal">orthogonal</a>:
+        Orthogonal systems tend to be easier for people to learn
+        because there are fewer special cases and exceptions to keep track of.</p>
 
-<h3>Nelle's Pipeline: Organizing Files</h3>
+    </blockquote>
 
-<p>Knowing just this much about files and directories,
-Nelle is ready to organize the files that the protein assay machine will create.
-First,
-she creates a directory called <code>north-pacific-gyre</code>
-(to remind herself where the data came from).
-Inside that,
-she creates a directory called <code>2012-07-03</code>,
-which is the date she started processing the samples.
-She used to use names like <code>conference-paper</code> and <code>revised-results</code>,
-but she found them hard to understand after a couple of years.
-(The final straw was when she found herself creating
-a directory called <code>revised-revised-results-3</code>.)</p>
+    <h3>Nelle's Pipeline: Organizing Files</h3>
 
-<blockquote>
-  <p>Nelle names her directories "year-month-day",
-with leading zeroes for months and days,
-because the shell displays file and directory names in alphabetical order.
-If she used month names,
-December would come before July;
-if she didn't use leading zeroes,
-November ('11') would come before July ('7').</p>
-</blockquote>
+    <p>Knowing just this much about files and directories,
+      Nelle is ready to organize the files that the protein assay machine will create.
+      First,
+      she creates a directory called <code>north-pacific-gyre</code>
+      (to remind herself where the data came from).
+      Inside that,
+      she creates a directory called <code>2012-07-03</code>,
+      which is the date she started processing the samples.
+      She used to use names like <code>conference-paper</code> and <code>revised-results</code>,
+      but she found them hard to understand after a couple of years.
+      (The final straw was when she found herself creating
+      a directory called <code>revised-revised-results-3</code>.)</p>
 
-<p>Each of her physical samples is labelled according to her lab's convention
-with a unique ten-character ID,
-such as "NENE01729A".
-This is what she used in her collection log
-to record the location, time, depth, and other characteristics of the sample,
-so she decides to use it as part of each data file's name.
-Since the assay machine's output is plain text,
-she will call her files <code>NENE01729A.txt</code>, <code>NENE01812A.txt</code>, and so on.
-All 1520 files will go into the same directory.</p>
+    <blockquote>
+      <p>Nelle names her directories "year-month-day",
+        with leading zeroes for months and days,
+        because the shell displays file and directory names in alphabetical order.
+        If she used month names,
+        December would come before July;
+        if she didn't use leading zeroes,
+        November ('11') would come before July ('7').</p>
+    </blockquote>
 
-<p>If she is in her home directory,
-Nelle can see what files she has using the command:</p>
+    <p>Each of her physical samples is labelled according to her lab's convention
+      with a unique ten-character ID,
+      such as "NENE01729A".
+      This is what she used in her collection log
+      to record the location, time, depth, and other characteristics of the sample,
+      so she decides to use it as part of each data file's name.
+      Since the assay machine's output is plain text,
+      she will call her files <code>NENE01729A.txt</code>, <code>NENE01812A.txt</code>, and so on.
+      All 1520 files will go into the same directory.</p>
 
-<pre>$ ls north-pacific-gyre/2012-07-03/</pre>
+    <p>If she is in her home directory,
+      Nelle can see what files she has using the command:</p>
 
-<p>This is a lot to type,
-but she can let the shell do most of the work.
-If she types:</p>
+<pre>$ <span class="in">ls north-pacific-gyre/2012-07-03/</span></pre>
 
-<pre>$ ls no</pre>
+    <p>This is a lot to type,
+      but she can let the shell do most of the work.
+      If she types:</p>
 
-<p>and then presses tab,
-the shell automatically completes the directory name for her:</p>
+<pre>$ <span class="in">ls no</span></pre>
 
-<pre>$ ls north-pacific-gyre/</pre>
+    <p>and then presses tab,
+      the shell automatically completes the directory name for her:</p>
 
-<p>If she presses tab again,
-Bash will add <code>2012-07-03/</code> to the command,
-since it's the only possible completion.
-Pressing tab again does nothing,
-since there are 1520 possibilities;
-pressing tab twice brings up a list of all the files,
-and so on.
-This is called <a href="#gloss:tab-completion">tab completion</a>,
-and we will see it in many other tools as we go on.</p>
+<pre>$ <span class="in">ls north-pacific-gyre/</span></pre>
 
-<div class="keypoints">
-  <h3>Key Points</h3>
-  <ul>
-    <li>The file system is responsible for managing information on disk.</li>
-    <li>Information is stored in files, which are stored in directories (folders).</li>
-    <li>Directories can also store other directories, which forms a directory tree.</li>
-    <li><code>/</code> on its own is the root directory of the whole filesystem.</li>
-    <li>A relative path specifies a location starting from the current location.</li>
-    <li>An absolute path specifies a location from the root of the filesystem.</li>
-    <li>Directory names in a path are separated with '/' on Unix, but '' on Windows.</li>
-    <li>'..' means "the directory above the current one";
-'.' on its own means "the current directory".</li>
-    <li>Most files' names are <code>something.extension</code>.
-The extension isn't required,
-and doesn't guarantee anything,
-but is normally used to indicate the type of data in the file.</li>
-    <li><code>cd <em>path</em></code> changes the current working directory.</li>
-    <li><code>ls <em>path</em></code> prints a listing of a specific file or directory; <code>ls</code> on its own lists the current working directory.</li>
-    <li><code>pwd</code> prints the user's current working directory (current default location in the filesystem).</li>
-    <li><code>whoami</code> shows the user's current identity.</li>
-    <li>Most commands take options (flags) which begin with a '-'.</li>
-  </ul>
-</div>
+    <p>If she presses tab again,
+      Bash will add <code>2012-07-03/</code> to the command,
+      since it's the only possible completion.
+      Pressing tab again does nothing,
+      since there are 1520 possibilities;
+      pressing tab twice brings up a list of all the files,
+      and so on.
+      This is called <a href="#gloss:tab-completion">tab completion</a>,
+      and we will see it in many other tools as we go on.</p>
 
-<div class="challenges">
-  <h3>Challenges</h3>
+    <div class="keypoints">
+      <h3>Key Points</h3>
+      <ul>
+        <li>The file system is responsible for managing information on disk.</li>
+        <li>Information is stored in files, which are stored in directories (folders).</li>
+        <li>Directories can also store other directories, which forms a directory tree.</li>
+        <li><code>/</code> on its own is the root directory of the whole filesystem.</li>
+        <li>A relative path specifies a location starting from the current location.</li>
+        <li>An absolute path specifies a location from the root of the filesystem.</li>
+        <li>Directory names in a path are separated with '/' on Unix, but '' on Windows.</li>
+        <li>'..' means "the directory above the current one";
+          '.' on its own means "the current directory".</li>
+        <li>Most files' names are <code>something.extension</code>.
+          The extension isn't required,
+          and doesn't guarantee anything,
+          but is normally used to indicate the type of data in the file.</li>
+        <li><code>cd <em>path</em></code> changes the current working directory.</li>
+        <li><code>ls <em>path</em></code> prints a listing of a specific file or directory; <code>ls</code> on its own lists the current working directory.</li>
+        <li><code>pwd</code> prints the user's current working directory (current default location in the filesystem).</li>
+        <li><code>whoami</code> shows the user's current identity.</li>
+        <li>Most commands take options (flags) which begin with a '-'.</li>
+      </ul>
+    </div>
 
-  <p><img src="bash/novice/img/filesystem-challenge.svg" alt="Filesystem for Challenge Questions" /></p>
+    <div class="challenges">
+      <h3>Challenges</h3>
 
-  <ol>
-    <li>If <code>pwd</code> displays <code>/users/thing</code>, what will <code>ls ../backup</code> display?
+      <p><img src="bash/novice/img/filesystem-challenge.svg" alt="Filesystem for Challenge Questions" /></p>
+
       <ol>
-        <li><code>../backup: No such file or directory</code></li>
-        <li><code>2012-12-01 2013-01-08 2013-01-27</code></li>
-        <li><code>2012-12-01/ 2013-01-08/ 2013-01-27/</code></li>
-        <li><code>original pnas_final pnas_sub</code></li>
-      </ol>
-    </li>
-    <li>
-      <p>If <code>pwd</code> displays <code>/users/backup</code>, what command will display</p>
+        <li>If <code>pwd</code> displays <code>/users/thing</code>, what will <code>ls ../backup</code> display?
+          <ol>
+            <li><code>../backup: No such file or directory</code></li>
+            <li><code>2012-12-01 2013-01-08 2013-01-27</code></li>
+            <li><code>2012-12-01/ 2013-01-08/ 2013-01-27/</code></li>
+            <li><code>original pnas_final pnas_sub</code></li>
+          </ol>
+        </li>
+        <li>
+          If <code>pwd</code> displays <code>/users/backup</code>, what command will display:
 
 <pre>pnas-sub/ pnas-final/ original/</pre>
 
-      <ol>
-        <li><code>ls pwd</code></li>
-        <li><code>ls -r -F</code></li>
-        <li><code>ls -r -F /users/backup</code></li>
-        <li>Either #2 or #3 above, but not #1.</li>
+          <ol>
+            <li><code>ls pwd</code></li>
+            <li><code>ls -r -F</code></li>
+            <li><code>ls -r -F /users/backup</code></li>
+            <li>Either #2 or #3 above, but not #1.</li>
+          </ol>
+        </li>
+        <li>What does the command <code>cd</code> without a directory name do?
+          <ol>
+            <li>It has no effect.</li>
+            <li>It changes the working directory to <code>/</code>.</li>
+            <li>It changes the working directory to the user's home directory.</li>
+            <li>It is an error.</li>
+          </ol>
+        </li>
       </ol>
-    </li>
-    <li>What does the command <code>cd</code> without a directory name do?
-      <ol>
-        <li>It has no effect.</li>
-        <li>It changes the working directory to <code>/</code>.</li>
-        <li>It changes the working directory to the user's home directory.</li>
-        <li>It is an error.</li>
-      </ol>
-    </li>
-  </ol>
-</div>
+    </div>
 
-          <h2>Creating Things</h2>
+    <h2>Creating Things</h2>
 
-          <div class="objectives">
-  <h3>Objectives</h3>
-  <ul>
-    <li>Create a directory hierarchy that matches a given diagram.</li>
-    <li>Create files in that hierarchy using an editor or by copying and renaming existing files.</li>
-    <li>Display the contents of a directory using the command line.</li>
-    <li>Delete specified files and/or directories.</li>
-  </ul>
-</div>
+    <div class="objectives">
+      <h3>Objectives</h3>
+      <ul>
+        <li>Create a directory hierarchy that matches a given diagram.</li>
+        <li>Create files in that hierarchy using an editor or by copying and renaming existing files.</li>
+        <li>Display the contents of a directory using the command line.</li>
+        <li>Delete specified files and/or directories.</li>
+      </ul>
+    </div>
 
-<p>We now know how to explore files and directories,
-but how do we create them in the first place?
-Let's go back to Vlad's home directory,
-<code>/users/vlad</code>,
-and use <code>ls -F</code> to see what it contains:</p>
+    <p>We now know how to explore files and directories,
+      but how do we create them in the first place?
+      Let's go back to Vlad's home directory,
+      <code>/users/vlad</code>,
+      and use <code>ls -F</code> to see what it contains:</p>
 
-<pre>$ pwd
-/users/vlad
-$ ls -F
-bin/         data/     mail/      music/
+<pre>$ <span class="in">pwd</span>
+<span class="out">/users/vlad</span>
+$ <span class="in">ls -F</span>
+<span class="out">bin/         data/     mail/      music/
 notes.txt    papers/   pizza.cfg  solar/
-solar.pdf    swc/</pre>
-
-<p>Let's create a new directory called <code>thesis</code> using the command <code>mkdir thesis</code>
-(which has no output):</p>
-
-<pre>$ mkdir thesis</pre>
-
-<p>As you might (or might not) guess from its name,
-<code>mkdir</code> means "make directory".
-Since <code>thesis</code> is a relative path
-(i.e., doesn't have a leading slash),
-the new directory is made below the current working directory:</p>
-
-<pre>$ ls -F
-bin/         data/     mail/      music/
-notes.txt    papers/   pizza.cfg  solar/
-solar.pdf    swc/      thesis/</pre>
-
-<p>However, there's nothing in it yet:</p>
-
-<pre>$ ls -F thesis</pre>
-
-<p>Let's change our working directory to <code>thesis</code> using <code>cd</code>,
-then run a text editor called Nano to create a file called <code>draft.txt</code>:</p>
-
-<pre>$ cd thesis
-$ nano draft.txt</pre>
-
-<blockquote>
-  <h3>Which Editor?</h3>
-
-  <p>When we say, "<code>nano</code> is a text editor," we really do mean "text": it can
-only work with plain character data, not tables, images, or any other
-human-friendly media. We use it in examples because almost anyone can
-drive it anywhere without training, but please use something more
-powerful for real work. On Unix systems (such as Linux and Mac OS X),
-many programmers use <a href="http://www.gnu.org/software/emacs/">Emacs</a> or
-<a href="http://www.vim.org/">Vim</a> (both of which are completely unintuitive,
-even by Unix standards), or a graphical editor such as
-<a href="http://projects.gnome.org/gedit/">Gedit</a>. On Windows, you may wish to
-use <a href="http://notepad-plus-plus.org/">Notepad++</a>.</p>
-
-  <p>No matter what editor you use, you will need to know where it searches
-for and saves files. If you start it from the shell, it will (probably)
-use your current working directory as its default location. If you use
-your computer's start menu, it may want to save files in your desktop or
-documents directory instead. You can change this by navigating to
-another directory the first time you "Save As..."</p>
-</blockquote>
-
-<p>Let's type in a few lines of text,
-then use Control-O to write our data to disk:</p>
-
-<p><img src="bash/novice/img/nano-screenshot.png" alt="Nano in Action" /></p>
-
-<p>Once our file is saved,
-we can use Control-X to quit the editor and return to the shell.
-<code>nano</code> doesn't leave any output on the screen after it exits,
-but <code>ls</code> now shows that we have created a file called <code>draft.txt</code>:</p>
-
-<pre>$ ls
-draft.txt</pre>
-
-<p>We can run <code>ls</code> with the <code>-s</code> flag (for "size")
-to show us how large <code>draft.txt</code> is:</p>
-
-<pre>$ ls -s
-   1  draft.txt</pre>
-
-<p>Unfortunately,
-Unix reports sizes in <a href="#gloss:disk-block">disk blocks</a> by default,
-which might be the least helpful default possible.
-If we add the <code>-h</code> flag,
-<code>ls</code> switches to more human-friendly units:</p>
-
-<pre>$ ls -s -h
- 512  draft.txt</pre>
-
-<p>Here, 512 is the number of bytes in the file.
-This is more than we actually typed in because the smallest unit of storage on the disk
-is typically a block of 512 bytes.</p>
-
-<p>Let's tidy up by running <code>rm draft.txt</code>:</p>
-
-<pre>$ rm draft.txt</pre>
-
-<p>This command removes files ("rm" is short for "remove").
-If we run <code>ls</code> again,
-its output is empty once more,
-which tells us that our file is gone:</p>
-
-<pre>$ ls</pre>
-
-<blockquote>
-  <h3>Deleting Is Forever</h3>
-
-  <p>Unix doesn't have a trash bin: when we delete files, they are unhooked
-from the file system so that their storage space on disk can be
-recycled. Tools for finding and recovering deleted files do exist, but
-there's no guarantee they'll work in any particular situation, since the
-computer may recycle the file's disk space right away.</p>
-</blockquote>
-
-<p>Let's re-create that file
-and then move up one directory to <code>/users/vlad</code> using <code>cd ..</code>:</p>
-
-<pre>$ pwd
-/users/vlad/thesis
-$ nano draft.txt
-$ ls
-draft.txt
-$ cd ..</pre>
-
-<p>If we try to remove the entire <code>thesis</code> directory using <code>rm thesis</code>,
-we get an error message:</p>
-
-<pre>$ rm thesis
-rm: cannot remove 'thesis': Is a directory</pre>
-
-<p>This happens because <code>rm</code> only works on files, not directories.
-The right command is <code>rmdir</code>,
-which is short for "remove directory".
-It doesn't work yet either, though,
-because the directory we're trying to remove isn't empty:</p>
-
-<pre>$ rmdir thesis
-rmdir: failed to remove 'thesis': Directory not empty</pre>
-
-<p>This little safety feature can save you a lot of grief,
-particularly if you are a bad typist.
-To really get rid of <code>thesis</code> we must first delete the file <code>draft.txt</code>:</p>
-
-<pre>$ rm thesis/draft.txt</pre>
-
-<p>The directory is now empty, so <code>rmdir</code> can delete it:</p>
-
-<pre>$ rmdir thesis</pre>
-
-<blockquote>
-  <h3>With Great Power Comes Great Responsibility</h3>
-
-  <p>Removing the files in a directory just so that we can remove the
-directory quickly becomes tedious. Instead, we can use <code>rm</code> with the
-<code>-r</code> flag (which stands for "recursive"):</p>
-
-<pre>$ rm -r thesis
+solar.pdf    swc/</span>
 $</pre>
 
-  <p>This removes everything in the directory, then the directory itself. If
-the directory contains sub-directories, <code>rm -r</code> does the same thing to
-them, and so on. It's very handy, but can do a lot of damage if used
-without care.</p>
-</blockquote>
+    <p>Let's create a new directory called <code>thesis</code> using the command <code>mkdir thesis</code>
+      (which has no output):</p>
 
-<p>Let's create that directory and file one more time.
-(Note that this time we're running <code>nano</code> with the path <code>thesis/draft.txt</code>,
-rather than going into the <code>thesis</code> directory and running <code>nano</code> on <code>draft.txt</code> there.)</p>
+<pre>$ <span class="in">mkdir thesis</span>
+$</pre>
 
-<pre>$ pwd
-/users/vlad/thesis
-$ mkdir thesis
-$ nano thesis/draft.txt
-$ ls thesis
-draft.txt</pre>
+    <p>As you might (or might not) guess from its name,
+      <code>mkdir</code> means "make directory".
+      Since <code>thesis</code> is a relative path
+      (i.e., doesn't have a leading slash),
+      the new directory is made below the current working directory:</p>
 
-<p><code>draft.txt</code> isn't a particularly informative name,
-so let's change the file's name using <code>mv</code>,
-which is short for "move":</p>
+<pre>$ <span class="in">ls -F</span>
+<span class="out">bin/         data/     mail/      music/
+notes.txt    papers/   pizza.cfg  solar/
+solar.pdf    swc/      thesis/</span>
+$</pre>
 
-<pre>$ mv thesis/draft.txt thesis/quotes.txt</pre>
+    <p>However, there's nothing in it yet:</p>
 
-<p>The first parameter tells <code>mv</code> what we're "moving",
-while the second is where it's to go.
-In this case,
-we're moving <code>thesis/draft.txt</code> to <code>thesis/quotes.txt</code>,
-which has the same effect as renaming the file.
-Sure enough,
-<code>ls</code> shows us that <code>thesis</code> now contains one file called <code>quotes.txt</code>:</p>
+<pre>$ <span class="in">ls -F thesis</span>
+$</pre>
 
-<pre>$ ls thesis
-quotes.txt</pre>
+    <p>Let's change our working directory to <code>thesis</code> using <code>cd</code>,
+      then run a text editor called Nano to create a file called <code>draft.txt</code>:</p>
 
-<p>Just for the sake of inconsistency,
-<code>mv</code> also works on directories&mdash;there is no separate <code>mvdir</code> command.</p>
+<pre>$ <span class="in">cd thesis</span>
+$ <span class="in">nano draft.txt</span></pre>
 
-<p>Let's move <code>quotes.txt</code> into the current working directory.
-We use <code>mv</code> once again,
-but this time we'll just use the name of a directory as the second parameter
-to tell <code>mv</code> that we want to keep the filename,
-but put the file somewhere new.
-(This is why the command is called "move".)
-In this case,
-the directory name we use is the special directory name <code>.</code> that we mentioned earlier.</p>
+    <blockquote>
+      <h3>Which Editor?</h3>
 
-<pre>$ mv thesis/quotes.txt .</pre>
+      <p>When we say, "<code>nano</code> is a text editor," we really do mean "text": it can
+        only work with plain character data, not tables, images, or any other
+        human-friendly media. We use it in examples because almost anyone can
+        drive it anywhere without training, but please use something more
+        powerful for real work. On Unix systems (such as Linux and Mac OS X),
+        many programmers use <a href="http://www.gnu.org/software/emacs/">Emacs</a> or
+        <a href="http://www.vim.org/">Vim</a> (both of which are completely unintuitive,
+        even by Unix standards), or a graphical editor such as
+        <a href="http://projects.gnome.org/gedit/">Gedit</a>. On Windows, you may wish to
+        use <a href="http://notepad-plus-plus.org/">Notepad++</a>.</p>
 
-<p>The effect is to move the file from the directory it was in to the current working directory.
-<code>ls</code> now shows us that <code>thesis</code> is empty:</p>
+      <p>No matter what editor you use, you will need to know where it searches
+        for and saves files. If you start it from the shell, it will (probably)
+        use your current working directory as its default location. If you use
+        your computer's start menu, it may want to save files in your desktop or
+        documents directory instead. You can change this by navigating to
+        another directory the first time you "Save As..."</p>
 
-<pre>$ ls thesis</pre>
+    </blockquote>
 
-<p>Further,
-<code>ls</code> with a filename or directory name as an parameter only lists that file or directory.
-We can use this to see that <code>quotes.txt</code> is still in our current directory:</p>
+    <p>Let's type in a few lines of text,
+      then use Control-O to write our data to disk:</p>
 
-<pre>$ ls quotes.txt
-quotes.txt</pre>
+    <p><img src="bash/novice/img/nano-screenshot.png" alt="Nano in Action" /></p>
 
-<p>The <code>cp</code> command works very much like <code>mv</code>,
-except it copies a file instead of moving it.
-We can check that it did the right thing using <code>ls</code>
-with two paths as parameters&mdash;like most Unix commands,
-<code>ls</code> can be given thousands of paths at once:</p>
+    <p>Once our file is saved,
+      we can use Control-X to quit the editor and return to the shell.
+      <code>nano</code> doesn't leave any output on the screen after it exits,
+      but <code>ls</code> now shows that we have created a file called <code>draft.txt</code>:</p>
 
-<pre>$ cp quotes.txt thesis/quotations.txt
-$ ls quotes.txt thesis/quotations.txt
-quotes.txt   thesis/quotations.txt</pre>
+<pre>$ <span class="in">ls</span>
+<span class="out">draft.txt</span>
+$</pre>
 
-<p>To prove that we made a copy,
-let's delete the <code>quotes.txt</code> file in the current directory
-and then run that same <code>ls</code> again.
-This time it tells us that it can't find <code>quotes.txt</code> in the current directory,
-but it does find the copy in <code>thesis</code> that we didn't delete:</p>
+    <p>We can run <code>ls</code> with the <code>-s</code> flag (for "size")
+      to show us how large <code>draft.txt</code> is:</p>
 
-<pre>$ ls quotes.txt thesis/quotations.txt
-ls: cannot access quotes.txt: No such file or directory
-thesis/quotations.txt</pre>
+<pre>$ <span class="in">ls -s</span>
+<span class="out">   1  draft.txt</span>
+$</pre>
 
-<blockquote>
-  <h3>Another Useful Abbreviation</h3>
+    <p>Unfortunately,
+      Unix reports sizes in <a href="#gloss:disk-block">disk blocks</a> by default,
+      which might be the least helpful default possible.
+      If we add the <code>-h</code> flag,
+      <code>ls</code> switches to more human-friendly units:</p>
 
-  <p>The shell interprets the character <code>~</code> (tilde) at the start of a path to
-mean "the current user's home directory". For example, if Vlad's home
-directory is <code>/home/vlad</code>, then <code>~/data</code> is equivalent to
-<code>/home/vlad/data</code>. This only works if it is the first character in the
-path: <code>here/there/~/elsewhere</code> is <em>not</em> <code>/home/vlad/elsewhere</code>.</p>
-</blockquote>
+<pre>$ <span class="in">ls -s -h</span>
+<span class="out"> 512  draft.txt</span>
+$</pre>
 
-<div class="keypoints">
-  <h3>Key Points</h3>
-  <ul>
-    <li>Unix documentation uses '^A' to mean "control-A".</li>
-    <li>The shell does not have a trash bin: once something is deleted, it's really gone.</li>
-    <li><code>mkdir path</code> creates a new directory.</li>
-    <li><code>cp old new</code> copies a file.</li>
-    <li><code>mv old new</code> moves (renames) a file or directory.</li>
-    <li><code>nano</code> is a very simple text editor&mdash;please use something else for real work.</li>
-    <li><code>touch path</code> creates an empty file if it doesn't already exist.</li>
-    <li><code>rm path</code> removes (deletes) a file.</li>
-    <li><code>rmdir path</code> removes (deletes) an empty directory.</li>
-  </ul>
-</div>
+    <p>Here, 512 is the number of bytes in the file.
+      This is more than we actually typed in because the smallest unit of storage on the disk
+      is typically a block of 512 bytes.</p>
 
-<div class="challenges">
-  <h3>Challenges</h3>
+    <p>Let's tidy up by running <code>rm draft.txt</code>:</p>
 
-  <ol>
-    <li>
-      <p>What is the output of the closing <code>ls</code> command in the sequence shown below?</p>
+<pre>$ <span class="in">rm draft.txt</span>
+$</pre>
 
-<pre>$ pwd
-/home/thing/data
-$ ls
-proteins.dat
-$ mkdir recombine
-$ mv proteins.dat recombine
-$ cp recombine/proteins.dat ../proteins-saved.dat
-$ ls</pre>
-    </li>
-    <li>
-      <p>Suppose that:</p>
+    <p>This command removes files ("rm" is short for "remove").
+      If we run <code>ls</code> again,
+      its output is empty once more,
+      which tells us that our file is gone:</p>
 
-<pre>$ ls -F
-analyzed/  fructose.dat    raw/   sucrose.dat</pre>
+<pre>$ <span class="in">ls</span>
+$</pre>
 
-      <p>What command(s) could you run so that the commands below will produce the output shown?</p>
+    <blockquote>
+      <h3>Deleting Is Forever</h3>
 
-<pre>$ ls
-analyzed   raw
-$ ls analyzed
-fructose.dat    sucrose.dat</pre>
-    </li>
-    <li>
-      <p>What does <code>cp</code> do when given several filenames and a directory name, as in:</p>
+      <p>Unix doesn't have a trash bin: when we delete files, they are unhooked
+        from the file system so that their storage space on disk can be
+        recycled. Tools for finding and recovering deleted files do exist, but
+        there's no guarantee they'll work in any particular situation, since the
+        computer may recycle the file's disk space right away.</p>
 
-<pre>$ mkdir backup
-$ cp thesis/citations.txt thesis/quotations.txt backup</pre>
+    </blockquote>
 
-      <p>What does <code>cp</code> do when given three or more filenames, as in:</p>
+    <p>Let's re-create that file
+      and then move up one directory to <code>/users/vlad</code> using <code>cd ..</code>:</p>
 
-<pre>$ ls -F
-intro.txt    methods.txt    survey.txt
-$ cp intro.txt methods.txt survey.txt</pre>
+<pre>$ <span class="in">pwd</span>
+<span class="out">/users/vlad/thesis</span>
+$ <span class="in">nano draft.txt</span>
+$ <span class="in">ls</span>
+<span class="out">draft.txt</span>
+$ <span class="in">cd ..</span>
+$</pre>
 
-      <p>Why do you think <code>cp</code>'s behavior is different from <code>mv</code>'s?</p>
-    </li>
-    <li>
-      <p>The command <code>ls -R</code> lists the contents of directories recursively,
-i.e., lists their sub-directories, sub-sub-directories, and so on
-in alphabetical order at each level.
-The command <code>ls -t</code> lists things by time of last change,
-with most recently changed files or directories first.
-In what order does <code>ls -R -t</code> display things?</p>
-    </li>
-  </ol>
-</div>
+    <p>If we try to remove the entire <code>thesis</code> directory using <code>rm thesis</code>,
+      we get an error message:</p>
 
-          <h2>Loops</h2>
+<pre><span class="in">$ rm thesis</span>
+<span class="err">rm: cannot remove 'thesis': Is a directory</span>
+$</pre>
 
-          <div class="objectives">
-  <h3>Objectives</h3>
-  <ul>
-    <li>Write a loop that applies one or more commands separately to each file in a set of files.</li>
-    <li>Trace the values taken on by a loop variable during execution of the loop.</li>
-    <li>Explain the difference between a variable's name and its value.</li>
-    <li>Explain why spaces and some punctuation characters shouldn't be used in files' names.</li>
-    <li>Demonstrate how to see what commands have recently been executed.</li>
-    <li>Re-run recently executed commands without retyping them.</li>
-  </ul>
-</div>
+    <p>This happens because <code>rm</code> only works on files, not directories.
+      The right command is <code>rmdir</code>,
+      which is short for "remove directory".
+      It doesn't work yet either, though,
+      because the directory we're trying to remove isn't empty:</p>
 
-<p>Wildcards and tab completion are two ways to reduce typing (and typing mistakes).
-Another is to tell the shell to do something over and over again.
-Suppose we have several hundred genome data files named <code>basilisk.dat</code>, <code>unicorn.dat</code>, and so on.
-When new files arrive,
-we'd like to rename the existing ones to <code>original-basilisk.dat</code> and <code>original-unicorn.dat</code>.
-We can't use:</p>
+<pre>$ <span class="in">rmdir thesis</span>
+<span class="err">rmdir: failed to remove 'thesis': Directory not empty</span>
+$</pre>
 
-<pre>mv *.dat original-*.dat</pre>
+    <p>This little safety feature can save you a lot of grief,
+      particularly if you are a bad typist.
+      To really get rid of <code>thesis</code> we must first delete the file <code>draft.txt</code>:</p>
 
-<p>because that would expand (in the two-file case) to:</p>
+<pre>$ <span class="in">rm thesis/draft.txt</span>
+$</pre>
 
-<pre>mv basilisk.dat unicorn.dat</pre>
+    <p>The directory is now empty, so <code>rmdir</code> can delete it:</p>
 
-<p>This wouldn't back up our files:
-it would replace the content of <code>unicorn.dat</code> with whatever's in <code>basilisk.dat</code>.</p>
+<pre>$ <span class="in">rmdir thesis</span>
+$</pre>
 
-<p>Instead, we can use a <a href="#gloss:for-loop">loop</a>
-to do some operation once for each thing in a list.
-Here's a simple example that displays the first three lines of each file in turn:</p>
+    <blockquote>
+      <h3>With Great Power Comes Great Responsibility</h3>
 
-<pre>$ for filename in basilisk.dat unicorn.dat
-&gt; do
-&gt;    head -3 $filename
-&gt; done
-COMMON NAME: basilisk
+      <p>Removing the files in a directory just so that we can remove the
+        directory quickly becomes tedious. Instead, we can use <code>rm</code> with the
+        <code>-r</code> flag (which stands for "recursive"):</p>
+
+<pre>$ <span class="in">rm -r thesis</span>
+$</pre>
+
+      <p>This removes everything in the directory, then the directory itself. If
+        the directory contains sub-directories, <code>rm -r</code> does the same thing to
+        them, and so on. It's very handy, but can do a lot of damage if used
+        without care.</p>
+
+    </blockquote>
+
+    <p>Let's create that directory and file one more time.
+      (Note that this time we're running <code>nano</code> with the path <code>thesis/draft.txt</code>,
+      rather than going into the <code>thesis</code> directory and running <code>nano</code> on <code>draft.txt</code> there.)</p>
+
+<pre>$ <span class="in">pwd</span>
+<span class="out">/users/vlad/thesis</span>
+$ <span class="in">mkdir thesis</span>
+$ <span class="in">nano thesis/draft.txt</span>
+$ <span class="in">ls thesis</span>
+<span class="out">draft.txt</span>
+$</pre>
+
+    <p><code>draft.txt</code> isn't a particularly informative name,
+      so let's change the file's name using <code>mv</code>,
+      which is short for "move":</p>
+
+<pre>$ <span class="in">mv thesis/draft.txt thesis/quotes.txt</span></pre>
+
+    <p>The first parameter tells <code>mv</code> what we're "moving",
+      while the second is where it's to go.
+      In this case,
+      we're moving <code>thesis/draft.txt</code> to <code>thesis/quotes.txt</code>,
+      which has the same effect as renaming the file.
+      Sure enough,
+      <code>ls</code> shows us that <code>thesis</code> now contains one file called <code>quotes.txt</code>:</p>
+
+<pre>$ <span class="in">ls thesis</span>
+<span class="out">quotes.txt</span>
+$</pre>
+
+    <p>Just for the sake of inconsistency,
+      <code>mv</code> also works on directories&mdash;there is no separate <code>mvdir</code> command.</p>
+
+    <p>Let's move <code>quotes.txt</code> into the current working directory.
+      We use <code>mv</code> once again,
+      but this time we'll just use the name of a directory as the second parameter
+      to tell <code>mv</code> that we want to keep the filename,
+      but put the file somewhere new.
+      (This is why the command is called "move".)
+      In this case,
+      the directory name we use is the special directory name <code>.</code> that we mentioned earlier.</p>
+
+<pre>$ <span class="in">mv thesis/quotes.txt .</span>
+$</pre>
+
+    <p>The effect is to move the file from the directory it was in to the current working directory.
+      <code>ls</code> now shows us that <code>thesis</code> is empty:</p>
+
+<pre>$ <span class="in">ls thesis</span>
+$</pre>
+
+    <p>Further,
+      <code>ls</code> with a filename or directory name as an parameter only lists that file or directory.
+      We can use this to see that <code>quotes.txt</code> is still in our current directory:</p>
+
+<pre>$ <span class="in">ls quotes.txt</span>
+<span class="out">quotes.txt</span>
+$</pre>
+
+    <p>The <code>cp</code> command works very much like <code>mv</code>,
+      except it copies a file instead of moving it.
+      We can check that it did the right thing using <code>ls</code>
+      with two paths as parameters&mdash;like most Unix commands,
+      <code>ls</code> can be given thousands of paths at once:</p>
+
+<pre>$ <span class="in">cp quotes.txt thesis/quotations.txt</span>
+$ <span class="in">ls quotes.txt thesis/quotations.txt</span>
+<span class="out">quotes.txt   thesis/quotations.txt</span>
+$</pre>
+
+    <p>To prove that we made a copy,
+      let's delete the <code>quotes.txt</code> file in the current directory
+      and then run that same <code>ls</code> again.
+      This time it tells us that it can't find <code>quotes.txt</code> in the current directory,
+      but it does find the copy in <code>thesis</code> that we didn't delete:</p>
+
+<pre>$ <span class="in">ls quotes.txt thesis/quotations.txt</span>
+<span class="err">ls: cannot access quotes.txt: No such file or directory</span>
+<span class="out">thesis/quotations.txt</span>
+$</pre>
+
+    <blockquote>
+      <h3>Another Useful Abbreviation</h3>
+
+      <p>The shell interprets the character <code>~</code> (tilde) at the start of a path to
+        mean "the current user's home directory". For example, if Vlad's home
+        directory is <code>/home/vlad</code>, then <code>~/data</code> is equivalent to
+        <code>/home/vlad/data</code>. This only works if it is the first character in the
+        path: <code>here/there/~/elsewhere</code> is <em>not</em> <code>/home/vlad/elsewhere</code>.</p>
+    </blockquote>
+
+    <div class="keypoints">
+      <h3>Key Points</h3>
+      <ul>
+        <li>Unix documentation uses '^A' to mean "control-A".</li>
+        <li>The shell does not have a trash bin: once something is deleted, it's really gone.</li>
+        <li><code>mkdir path</code> creates a new directory.</li>
+        <li><code>cp old new</code> copies a file.</li>
+        <li><code>mv old new</code> moves (renames) a file or directory.</li>
+        <li><code>nano</code> is a very simple text editor&mdash;please use something else for real work.</li>
+        <li><code>touch path</code> creates an empty file if it doesn't already exist.</li>
+        <li><code>rm path</code> removes (deletes) a file.</li>
+        <li><code>rmdir path</code> removes (deletes) an empty directory.</li>
+      </ul>
+    </div>
+
+    <div class="challenges">
+      <h3>Challenges</h3>
+
+      <ol>
+        <li>
+          What is the output of the closing <code>ls</code> command in the sequence shown below?
+
+<pre>$ <span class="in">pwd</span>
+<span class="out">/home/thing/data</span>
+$ <span class="in">ls</span>
+<span class="out">proteins.dat</span>
+$ <span class="in">mkdir recombine</span>
+$ <span class="in">mv proteins.dat recombine</span>
+$ <span class="in">cp recombine/proteins.dat ../proteins-saved.dat</span>
+$ <span class="in">ls</span></pre>
+        </li>
+        <li>
+          Suppose that:
+
+<pre>$ <span class="in">ls -F</span>
+<span class="out">analyzed/  fructose.dat    raw/   sucrose.dat</span></pre>
+
+          What command(s) could you run so that the commands below will produce the output shown?
+
+<pre>$ <span class="in">ls</span>
+<span class="out">analyzed   raw</span>
+$ <span class="in">ls analyzed</span>
+<span class="out">fructose.dat    sucrose.dat</span></pre>
+        </li>
+        <li>
+          What does <code>cp</code> do when given several filenames and a directory name, as in:
+
+<pre>$ <span class="in">mkdir backup</span>
+$ <span class="in">cp thesis/citations.txt thesis/quotations.txt backup</span></pre>
+
+          What does <code>cp</code> do when given three or more filenames, as in:
+
+<pre>$ <span class="in">ls -F</span>
+<span class="out">intro.txt    methods.txt    survey.txt</span>
+$ <span class="in">cp intro.txt methods.txt survey.txt</span></pre>
+
+          Why do you think <code>cp</code>'s behavior is different from <code>mv</code>'s?
+        </li>
+        <li>
+          The command <code>ls -R</code> lists the contents of directories recursively,
+          i.e., lists their sub-directories, sub-sub-directories, and so on
+          in alphabetical order at each level.
+          The command <code>ls -t</code> lists things by time of last change,
+          with most recently changed files or directories first.
+          In what order does <code>ls -R -t</code> display things?
+        </li>
+      </ol>
+    </div>
+
+    <h2>Pipes and Filters</h2>
+
+    <div class="objectives">
+      <h3>Objectives</h3>
+      <ul>
+        <li>Redirect a command's output to a file.</li>
+        <li>Process a file instead of keyboard input using redirection.</li>
+        <li>Construct command pipelines with two or more stages.</li>
+        <li>Explain what usually happens if a program or pipeline isn't given any input to process.</li>
+        <li>Explain Unix's "small pieces, loosely joined" philosophy.</li>
+      </ul>
+    </div>
+
+    <p>Now that we know a few basic commands,
+      we can finally look at the shell's most powerful feature:
+      the ease with which it lets us combine existing programs in new ways.
+      We'll start with a directory called <code>molecules</code>
+      that contains six files describing some simple organic molecules.
+      The <code>.pdb</code> extension indicates that these files are in Protein Data Bank format,
+      a simple text format that specifies the type and position of each atom in the molecule.</p>
+
+<pre>$ <span class="in">ls molecules</span>
+<span class="out">cubane.pdb    ethane.pdb    methane.pdb
+octane.pdb    pentane.pdb   propane.pdb</span>
+$</pre>
+
+    <p>Let's go into that directory with <code>cd</code> and run the command <code>wc *.pdb</code>.
+      <code>wc</code> is the "word count" command:
+      it counts the number of lines, words, and characters in files.
+      The <code>*</code> in <code>*.pdb</code> matches zero or more characters,
+      so the shell turns <code>*.pdb</code> into a complete list of <code>.pdb</code> files:</p>
+
+<pre>$ <span class="in">cd molecules</span>
+$ <span class="in">wc *.pdb</span>
+<span class="out">  20  156 1158 cubane.pdb
+  12   84  622 ethane.pdb
+   9   57  422 methane.pdb
+  30  246 1828 octane.pdb
+  21  165 1226 pentane.pdb
+  15  111  825 propane.pdb
+ 107  819 6081 total</span>
+$</pre>
+
+    <blockquote>
+      <h3>Wildcards</h3>
+
+      <p><code>*</code> is a <a href="#gloss:wildcard">wildcard</a>. It matches zero or more
+        characters, so <code>*.pdb</code> matches <code>ethane.pdb</code>, <code>propane.pdb</code>, and so on.
+        On the other hand, <code>p*.pdb</code> only matches <code>pentane.pdb</code> and
+        <code>propane.pdb</code>, because the 'p' at the front only matches itself.</p>
+
+      <p><code>?</code> is also a wildcard, but it only matches a single character. This
+        means that <code>p?.pdb</code> matches <code>pi.pdb</code> or <code>p5.pdb</code>, but not <code>propane.pdb</code>.
+        We can use any number of wildcards at a time: for example, <code>p*.p?*</code>
+        matches anything that starts with a 'p' and ends with '.', 'p', and at
+        least one more character (since the '?' has to match one character, and
+        the final '*' can match any number of characters). Thus, <code>p*.p?*</code> would
+        match <code>preferred.practice</code>, and even <code>p.pi</code> (since the first '*' can
+        match no characters at all), but not <code>quality.practice</code> (doesn't start
+        with 'p') or <code>preferred.p</code> (there isn't at least one character after the
+        '.p').</p>
+
+      <p>When the shell sees a wildcard, it expands it to create a list of
+        matching filenames <em>before</em> running the command that was asked for.
+        This means that commands like <code>wc</code> and <code>ls</code> never see the wildcard
+        characters, just what those wildcards matched. This is another example
+        of orthogonal design.</p>
+    </blockquote>
+
+    <p>If we run <code>wc -l</code> instead of just <code>wc</code>,
+      the output shows only the number of lines per file:</p>
+
+<pre>$ <span class="in">wc -l *.pdb</span>
+<span class="out">  20  cubane.pdb
+  12  ethane.pdb
+   9  methane.pdb
+  30  octane.pdb
+  21  pentane.pdb
+  15  propane.pdb
+ 107  total</span>
+$</pre>
+
+    <p>We can also use <code>-w</code> to get only the number of words,
+      or <code>-c</code> to get only the number of characters.</p>
+
+    <p>Which of these files is shortest?
+      It's an easy question to answer when there are only six files,
+      but what if there were 6000?
+      Our first step toward a solution is to run the command:</p>
+
+<pre><span class="in">$ wc -l *.pdb &gt; lengths</span>
+$</pre>
+
+    <p>The <code>&gt;</code> tells the shell to <a href="#gloss:redirect">redirect</a> the command's output
+      to a file instead of printing it to the screen.
+      The shell will create the file if it doesn't exist,
+      or overwrite the contents of that file if it does.
+      (This is why there is no screen output:
+      everything that <code>wc</code> would have printed has gone into the file <code>lengths</code> instead.)
+      <code>ls lengths</code> confirms that the file exists:</p>
+
+<pre>$ <span class="in">ls lengths</span>
+<span class="out">lengths</span>
+$</pre>
+
+    <p>We can now send the content of <code>lengths</code> to the screen using <code>cat lengths</code>.
+      <code>cat</code> stands for "concatenate":
+      it prints the contents of files one after another.
+      There's only one file in this case,
+      so <code>cat</code> just shows us what it contains:</p>
+
+<pre>$ <span class="in">cat lengths</span>
+<span class="out">  20  cubane.pdb
+  12  ethane.pdb
+   9  methane.pdb
+  30  octane.pdb
+  21  pentane.pdb
+  15  propane.pdb
+ 107  total</span>
+$</pre>
+
+    <p>Now let's use the <code>sort</code> command to sort its contents.
+      This does <em>not</em> change the file;
+      instead, it sends the sorted result to the screen:</p>
+
+<pre><span class="in">$ sort lengths</span>
+<span class="out">  9  methane.pdb
+ 12  ethane.pdb
+ 15  propane.pdb
+ 20  cubane.pdb
+ 21  pentane.pdb
+ 30  octane.pdb
+107  total</span>
+$</pre>
+
+    <p>We can put the sorted list of lines in another temporary file called <code>sorted-lengths</code>
+      by putting <code>&gt; sorted-lengths</code> after the command,
+      just as we used <code>&gt; lengths</code> to put the output of <code>wc</code> into <code>lengths</code>.
+      Once we've done that,
+      we can run another command called <code>head</code> to get the first few lines in <code>sorted-lengths</code>:</p>
+
+<pre>$ <span class="in">sort lengths &gt; sorted-lengths</span>
+$ <span class="in">head -1 sorted-lengths</span>
+<span class="out">  9  methane.pdb</span>
+$</pre>
+
+    <p>Using the parameter <code>-1</code> with <code>head</code> tells it that
+      we only want the first line of the file;
+      <code>-20</code> would get the first 20,
+      and so on.
+      Since <code>sorted-lengths</code> contains the lengths of our files ordered from least to greatest,
+      the output of <code>head</code> must be the file with the fewest lines.</p>
+
+    <p>If you think this is confusing,
+      you're in good company:
+      even once you understand what <code>wc</code>, <code>sort</code>, and <code>head</code> do,
+      all those intermediate files make it hard to follow what's going on.
+      We can make it easier to understand by running <code>sort</code> and <code>head</code> together:</p>
+
+<pre>$ <span class="in">sort lengths | head -1</span>
+<span class="out">  9  methane.pdb</span>
+$</pre>
+
+    <p>The vertical bar between the two commands is called a <a href="#gloss:pipe">pipe</a>.
+      It tells the shell that we want to use
+      the output of the command on the left
+      as the input to the command on the right.
+      The computer might create a temporary file if it needs to,
+      or copy data from one program to the other in memory,
+      or something else entirely;
+      we don't have to know or care.</p>
+
+    <p>We can use another pipe to send the output of <code>wc</code> directly to <code>sort</code>,
+      which then sends its output to <code>head</code>:</p>
+
+<pre>$ <span class="in">wc -l *.pdb | sort | head -1</span>
+<span class="out">  9  methane.pdb</span>
+$</pre>
+
+    <p>This is exactly like a mathematician nesting functions like <em>sin(&pi;x)<sup>2</sup></em>
+      and saying "the square of the sine of <em>x</em> times &pi;".
+      In our case,
+      the calculation is "head of sort of word count of <code>*.pdb</code>".</p>
+
+    <p>Here's what actually happens behind the scenes when we create a pipe.
+      When a computer runs a program&mdash;any program&mdash;it creates a <a href="#gloss:process">process</a>
+      in memory to hold the program's software and its current state.
+      Every process has an input channel called <a href="#gloss:standard-input">standard input</a>.
+      (By this point, you may be surprised that the name is so memorable, but don't worry:
+      most Unix programmers call it "stdin".
+      Every process also has a default output channel called <a href="#gloss:standard-output">standard output</a>
+      (or "stdout").</p>
+
+    <p>The shell is just another program,
+      and runs in a process like any other.
+      Under normal circumstances,
+      whatever we type on the keyboard is sent to the shell on its standard input,
+      and whatever it produces on standard output is displayed on our screen.
+      When we tell the shell to run a program,
+      it creates a new process
+      and temporarily sends whatever we type on our keyboard to that process's standard input,
+      and whatever the process sends to standard output to the screen.</p>
+
+    <p>Here's what happens when we run <code>wc -l *.pdb &gt; lengths</code>.
+      The shell starts by telling the computer to create a new process to run the <code>wc</code> program.
+      Since we've provided some filenames as parameters,
+      <code>wc</code> reads from them instead of from standard input.
+      And since we've used <code>&gt;</code> to redirect output to a file,
+      the shell connects the process's standard output to that file.</p>
+
+    <p>If we run <code>wc -l *.pdb | sort</code> instead,
+      the shell creates two processes
+      (one for each process in the pipe)
+      so that <code>wc</code> and <code>sort</code> run simultaneously.
+      The standard output of <code>wc</code> is fed directly to the standard input of <code>sort</code>;
+      since there's no redirection with <code>&gt;</code>,
+      <code>sort</code>'s output goes to the screen.
+      And if we run <code>wc -l *.pdb | sort | head -1</code>,
+      we get three processes with data flowing from the files,
+      through <code>wc</code> to <code>sort</code>,
+      and from <code>sort</code> through <code>head</code> to the screen.</p>
+
+    <p>This simple idea is why Unix has been so successful.
+      Instead of creating enormous programs that try to do many different things,
+      Unix programmers focus on creating lots of simple tools that each do one job well,
+      and that work well with each other.
+      This programming model is called <a href="#gloss:pipe-and-filter">pipes and filters</a>.
+      We've already seen pipes;
+      a <a href="#gloss:filter">filter</a> is a program that transforms a stream of input into a stream of output.
+      Almost all of the standard Unix tools can work this way:
+      unless told to do otherwise,
+      they read from standard input,
+      do something with what they've read,
+      and write to standard output.</p>
+
+    <p>The key is that any program that reads lines of text from standard input
+      and writes lines of text to standard output
+      can be combined with every other program that behaves this way as well.
+      You can <em>and should</em> write your programs this way
+      so that you and other people can put those programs into pipes to multiply their power.</p>
+
+    <blockquote>
+      <h3>Redirecting Input</h3>
+
+      <p>As well as using <code>&gt;</code> to redirect a program's output, we can use <code>&lt;</code> to
+        redirect its input, i.e., to read from a file instead of from standard
+        input. For example, instead of writing <code>wc ammonia.pdb</code>, we could write
+        <code>wc &lt; ammonia.pdb</code>. In the first case, <code>wc</code> gets a command line
+        parameter telling it what file to open. In the second, <code>wc</code> doesn't have
+        any command line parameters, so it reads from standard input, but we
+        have told the shell to send the contents of <code>ammonia.pdb</code> to <code>wc</code>'s
+        standard input.</p>
+
+    </blockquote>
+
+    <h3>Nelle's Pipeline: Checking Files</h3>
+
+    <p>Nelle has run her samples through the assay machines
+      and created 1520 files in the <code>north-pacific-gyre/2012-07-03</code> directory described earlier.
+      As a quick sanity check, she types:</p>
+
+<pre>$ <span class="in">cd north-pacific-gyre/2012-07-03</span>
+$ <span class="out">wc -l *.txt</span>
+</pre>
+
+    <p>The output is 1520 lines that look like this:</p>
+
+<pre> <span class="out">300 NENE01729A.txt
+ 300 NENE01729B.txt
+ 300 NENE01736A.txt
+ 300 NENE01751A.txt
+ 300 NENE01751B.txt
+ 300 NENE01812A.txt
+ ... ...</span>
+</pre>
+
+    <p>Now she types this:</p>
+
+<pre>$ <span class="in">wc -l *.txt | sort | head -5</span>
+<span class="out"> 240 NENE02018B.txt
+ 300 NENE01729A.txt
+ 300 NENE01729B.txt
+ 300 NENE01736A.txt
+ 300 NENE01751A.txt</span>
+</pre>
+
+    <p>Whoops: one of the files is 60 lines shorter than the others.
+      When she goes back and checks it,
+      she sees that she did that assay at 8:00 on a Monday morning&mdash;someone
+      was probably in using the machine on the weekend,
+      and she forgot to reset it.
+      Before re-running that sample,
+      she checks to see if any files have too much data:</p>
+
+<pre>$ <span class="in">wc -l *.txt | sort | tail -5</span>
+<span class="out"> 300 NENE02040A.txt
+ 300 NENE02040B.txt
+ 300 NENE02040Z.txt
+ 300 NENE02043A.txt
+ 300 NENE02043B.txt</span>
+</pre>
+
+    <p>Those numbers look good&mdash;but what's that 'Z' doing there in the third-to-last line?
+      All of her samples should be marked 'A' or 'B';
+      by convention,
+      her lab uses 'Z' to indicate samples with missing information.
+      To find others like it, she does this:</p>
+
+<pre>$ <span class="in">ls *Z.txt</span>
+<span class="out">NENE01971Z.txt    NENE02040Z.txt</span>
+$</pre>
+
+    <p>Sure enough,
+      when she checks the log on her laptop,
+      there's no depth recorded for either of those samples.
+      Since it's too late to get the information any other way,
+      she must exclude those two files from her analysis.
+      She could just delete them using <code>rm</code>,
+      but there are actually some analyses she might do later where depth doesn't matter,
+      so instead, she'll just be careful later on to select files using the wildcard expression <code>*[AB].txt</code>.
+      As always,
+      the '*' matches any number of characters;
+      the expression <code>[AB]</code> matches either an 'A' or a 'B',
+      so this matches all the valid data files she has.</p>
+
+    <div class="keypoints">
+      <h3>Key Points</h3>
+      <ul>
+        <li><code>command &gt; file</code> redirects a command's output to a file.</li>
+        <li><code>first | second</code> is a pipeline: the output of the first command is used as the input to the second.</li>
+        <li>The best way to use the shell is to use pipes to combine simple single-purpose programs (filters).</li>
+        <li><code>cat</code> displays the contents of its inputs.</li>
+        <li><code>head</code> displays the first few lines of its input.</li>
+        <li><code>sort</code> sorts its inputs.</li>
+        <li><code>tail</code> displays the last few lines of its input.</li>
+        <li><code>wc</code> counts lines, words, and characters in its inputs.</li>
+      </ul>
+    </div>
+
+    <div class="challenges">
+      <h3>Challenges</h3>
+
+      <ol>
+        <li>
+          If we run <code>sort</code> on each of the files shown on the left in the table
+          below, <em>without</em> the <code>-n</code> flag, the output is as shown on the right:
+
+<table>
+  <tr>
+    <td valign="top"><pre>
+1
+10
+2
+19
+22
+6
+    </pre></td>
+    <td valign="top"><pre>
+1
+10
+19
+2
+22
+6
+    </pre></td>
+  </tr>
+  <tr>
+    <td valign="top"><pre>
+1
+10
+2
+19
+22
+6
+    </pre></td>
+    <td valign="top"><pre>
+1
+2
+6
+10
+19
+22
+    </pre></td>
+  </tr>
+</table>
+
+          Explain why we get different answers for the two files.
+        </li>
+
+        <li>
+          What is the difference between:
+
+<pre>wc -l &lt; mydata.dat</pre>
+
+          and:
+
+<pre>wc -l mydata.dat</pre>
+        </li>
+        <li>
+          The command <code>uniq</code> removes adjacent duplicated lines from its input.
+          For example, if a file <code>salmon.txt</code> contains:
+
+<pre>coho
+coho
+steelhead
+coho
+steelhead
+steelhead</pre>
+
+          then <code>uniq salmon.txt</code> produces:
+
+<pre>coho
+steelhead
+coho
+steelhead
+</pre>
+
+          Why do you think <code>uniq</code> only removes <em>adjacent</em> duplicated lines?
+          (Hint: think about very large data sets.) What other command could
+          you combine with it in a pipe to remove all duplicated lines?
+        </li>
+        <li>
+          A file called <code>animals.txt</code> contains the following data:
+
+<pre>2012-11-05,deer
+2012-11-05,rabbit
+2012-11-05,raccoon
+2012-11-06,rabbit
+2012-11-06,deer
+2012-11-06,fox
+2012-11-07,rabbit
+2012-11-07,bear
+</pre>
+
+          Fill in the table showing what lines of text pass through each pipe in the pipeline below.
+<table>
+  <tr>
+    <td><code>cat animals.txt</code></td>
+    <td align="center"><code>|</code></td>
+    <td><code>head -5</code></td>
+    <td align="center"><code>|</code></td>
+    <td><code>tail -3</code></td>
+    <td align="center"><code>|</code></td>
+    <td><code>sort -r</code></td>
+    <td align="center"><code>&gt;</code></td>
+    <td><code>final.txt</code></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td width="15%"><hr /></td>
+    <td></td>
+    <td width="15%"><hr /></td>
+    <td></td>
+    <td width="15%"><hr /></td>
+    <td></td>
+    <td width="15%"><hr /></td>
+    <td></td>
+  </tr>
+</table>
+        </li>
+        <li>
+          The command:
+
+<pre>$ cut -d , -f 2 animals.txt</pre>
+
+          produces the following output:
+
+<pre>deer
+rabbit
+raccoon
+rabbit
+deer
+fox
+rabbit
+bear
+</pre>
+
+          What other command(s) could be added to this in a pipeline
+          to find out what animals have been seen
+          (without any duplicates in the animals' names)?
+        </li>
+      </ol>
+    </div>
+
+    <h2>Loops</h2>
+
+    <div class="objectives">
+      <h3>Objectives</h3>
+      <ul>
+        <li>Write a loop that applies one or more commands separately to each file in a set of files.</li>
+        <li>Trace the values taken on by a loop variable during execution of the loop.</li>
+        <li>Explain the difference between a variable's name and its value.</li>
+        <li>Explain why spaces and some punctuation characters shouldn't be used in files' names.</li>
+        <li>Demonstrate how to see what commands have recently been executed.</li>
+        <li>Re-run recently executed commands without retyping them.</li>
+      </ul>
+    </div>
+
+    <p>Wildcards and tab completion are two ways to reduce typing (and typing mistakes).
+      Another is to tell the shell to do something over and over again.
+      Suppose we have several hundred genome data files named <code>basilisk.dat</code>, <code>unicorn.dat</code>, and so on.
+      When new files arrive,
+      we'd like to rename the existing ones to <code>original-basilisk.dat</code> and <code>original-unicorn.dat</code>.
+      We can't use:</p>
+
+<pre class="in">mv *.dat original-*.dat</pre>
+
+    <p>because that would expand (in the two-file case) to:</p>
+
+<pre class="in">mv basilisk.dat unicorn.dat</pre>
+
+    <p>This wouldn't back up our files:
+      it would replace the content of <code>unicorn.dat</code> with whatever's in <code>basilisk.dat</code>.</p>
+
+    <p>Instead, we can use a <a href="#gloss:for-loop">loop</a>
+      to do some operation once for each thing in a list.
+      Here's a simple example that displays the first three lines of each file in turn:</p>
+
+<pre>$ <span class="in">for filename in basilisk.dat unicorn.dat</span>
+&gt; <span class="in">do</span>
+&gt; <span class="in">   head -3 $filename</span>
+&gt; <span class="in">done</span>
+<span class="out">COMMON NAME: basilisk
 CLASSIFICATION: basiliscus vulgaris
 UPDATED: 1745-05-02
 COMMON NAME: unicorn
 CLASSIFICATION: equus monoceros
-UPDATED: 1738-11-24</pre>
+UPDATED: 1738-11-24</span>
+$</pre>
 
-<p>When the shell sees the keyword <code>for</code>,
-it knows it is supposed to repeat a command (or group of commands) once for each thing in a list.
-In this case, the list is the two filenames.
-Each time through the loop,
-the name of the thing currently being operated on is assigned to
-the <a href="#gloss:variable">variable</a> called <code>filename</code>.
-Inside the loop,
-we get the variable's value by putting <code>$</code> in front of it:
-<code>$filename</code> is <code>basilisk.dat</code> the first time through the loop,
-<code>unicorn.dat</code> the second,
-and so on.
-Finally,
-the command that's actually being run is our old friend <code>head</code>,
-so this loop prints out the first three lines of each data file in turn.</p>
+    <p>When the shell sees the keyword <code>for</code>,
+      it knows it is supposed to repeat a command (or group of commands) once for each thing in a list.
+      In this case, the list is the two filenames.
+      Each time through the loop,
+      the name of the thing currently being operated on is assigned to
+      the <a href="#gloss:variable">variable</a> called <code>filename</code>.
+      Inside the loop,
+      we get the variable's value by putting <code>$</code> in front of it:
+      <code>$filename</code> is <code>basilisk.dat</code> the first time through the loop,
+      <code>unicorn.dat</code> the second,
+      and so on.
+      Finally,
+      the command that's actually being run is our old friend <code>head</code>,
+      so this loop prints out the first three lines of each data file in turn.</p>
 
-<blockquote>
-  <h3>Follow the Prompt</h3>
+    <blockquote>
+      <h3>Follow the Prompt</h3>
 
-  <p>The shell prompt changes from <code>$</code> to <code>&gt;</code> and back again as we were
-typing in our loop. The second prompt, <code>&gt;</code>, is different to remind
-us that we haven't finished typing a complete command yet.</p>
-</blockquote>
+      <p>The shell prompt changes from <code>$</code> to <code>&gt;</code> and back again as we were
+        typing in our loop. The second prompt, <code>&gt;</code>, is different to remind
+        us that we haven't finished typing a complete command yet.</p>
 
-<p>We have called the variable in this loop <code>filename</code>
-in order to make its purpose clearer to human readers.
-The shell itself doesn't care what the variable is called;
-if we wrote this loop as:</p>
+    </blockquote>
 
-<pre>for x in basilisk.dat unicorn.dat
+    <p>We have called the variable in this loop <code>filename</code>
+      in order to make its purpose clearer to human readers.
+      The shell itself doesn't care what the variable is called;
+      if we wrote this loop as:</p>
+
+<pre class="in">for x in basilisk.dat unicorn.dat
 do
     head -3 $x
 done</pre>
 
-<p>or:</p>
+    <p>or:</p>
 
-<pre>for temperature in basilisk.dat unicorn.dat
+<pre class="in">for temperature in basilisk.dat unicorn.dat
 do
     head -3 $temperature
 done</pre>
 
-<p>it would work exactly the same way.
-<em>Don't do this.</em>
-Programs are only useful if people can understand them,
-so using meaningless names (like <code>x</code>) or misleading names (like <code>temperature</code>)
-increases the likelihood of the program being wrong.</p>
+    <p>it would work exactly the same way.
+      <em>Don't do this.</em>
+      Programs are only useful if people can understand them,
+      so using meaningless names (like <code>x</code>) or misleading names (like <code>temperature</code>)
+      increases the likelihood of the program being wrong.</p>
 
-<p>Here's a slightly more complicated loop:</p>
+    <p>Here's a slightly more complicated loop:</p>
 
-<pre>for filename in *.dat
+<pre class="in">for filename in *.dat
 do
     echo $filename
     head -100 $filename | tail -20
 done</pre>
 
-<p>The shell starts by expanding <code>*.dat</code> to create the list of files it will process.
-The <a href="#gloss:loop-body">loop body</a>
-then executes two commands for each of those files.
-The first, <code>echo</code>, just prints its command-line parameters to standard output.
-For example:</p>
+    <p>The shell starts by expanding <code>*.dat</code> to create the list of files it will process.
+      The <a href="#gloss:loop-body">loop body</a>
+      then executes two commands for each of those files.
+      The first, <code>echo</code>, just prints its command-line parameters to standard output.
+      For example:</p>
 
-<pre>echo hello there</pre>
+<pre>$ <span class="in">echo hello there</span>
+<span class="out">hello there</span>
+$</pre>
 
-<p>prints:</p>
+    <p>In this case,
+      since the shell expands <code>$filename</code> to be the name of a file,
+      <code>echo $filename</code> just prints the name of the file.
+      Note that we can't write this as:</p>
 
-<pre>hello there</pre>
-
-<p>In this case,
-since the shell expands <code>$filename</code> to be the name of a file,
-<code>echo $filename</code> just prints the name of the file.
-Note that we can't write this as:</p>
-
-<pre>for filename in *.dat
+<pre class="in">for filename in *.dat
 do
     $filename
     head -100 $filename | tail -20
 done</pre>
 
-<p>because then the first time through the loop,
-when <code>$filename</code> expanded to <code>basilisk.dat</code>, the shell would try to run <code>basilisk.dat</code> as a program.
-Finally,
-the <code>head</code> and <code>tail</code> combination selects lines 81-100 from whatever file is being processed.</p>
+    <p>because then the first time through the loop,
+      when <code>$filename</code> expanded to <code>basilisk.dat</code>,
+      the shell would try to run <code>basilisk.dat</code> as a program.
+      Finally,
+      the <code>head</code> and <code>tail</code> combination selects lines 81-100 from whatever file is being processed.</p>
 
-<blockquote>
-  <h3>Spaces in Names</h3>
+    <blockquote>
+      <h3>Spaces in Names</h3>
 
-  <p>Filename expansion in loops is another reason you should not use spaces in filenames.
-Suppose our data files are named:</p>
+      <p>Filename expansion in loops is another reason you should not use spaces in filenames.
+        Suppose our data files are named:</p>
 
 <pre>basilisk.dat
 red dragon.dat
 unicorn.dat</pre>
 
-  <p>If we try to process them using:</p>
+      <p>If we try to process them using:</p>
 
-<pre>for filename in *.dat
+<pre class="in">for filename in *.dat
 do
     head -100 $filename | tail -20
 done</pre>
 
-  <p>then the shell will expand <code>*.dat</code> to create:</p>
+      <p>then the shell will expand <code>*.dat</code> to create:</p>
 
 <pre>basilisk.dat red dragon.dat unicorn.dat</pre>
 
-  <p>With older versions of Bash,
-or most other shells,
-<code>filename</code> will then be assigned the following values in turn:</p>
+      <p>With older versions of Bash,
+        or most other shells,
+        <code>filename</code> will then be assigned the following values in turn:</p>
 
 <pre>basilisk.dat
 red
 dragon.dat
 unicorn.dat</pre>
 
-  <p>That's a problem: <code>head</code> can't read files called <code>red</code> and <code>dragon.dat</code>
-because they don't exist,
-and won't be asked to read the file <code>red dragon.dat</code>.</p>
+      <p>That's a problem: <code>head</code> can't read files called <code>red</code> and <code>dragon.dat</code>
+        because they don't exist,
+        and won't be asked to read the file <code>red dragon.dat</code>.</p>
 
-  <p>We can make our script a little bit more robust
-by <a href="#gloss:shell-quoting">quoting</a> our use of the variable:</p>
+      <p>We can make our script a little bit more robust
+        by <a href="#gloss:shell-quoting">quoting</a> our use of the variable:</p>
 
-<pre>for filename in *.dat
+<pre class="in">for filename in *.dat
 do
     head -100 "$filename" | tail -20
 done</pre>
 
-  <p>but it's simpler just to avoid using spaces (or other special characters) in filenames.</p>
-</blockquote>
+      <p>but it's simpler just to avoid using spaces (or other special characters) in filenames.</p>
 
-<p>Going back to our original file renaming problem,
-we can solve it using this loop:</p>
+    </blockquote>
 
-<pre>for filename in *.dat
+    <p>Going back to our original file renaming problem,
+      we can solve it using this loop:</p>
+
+<pre class="in">for filename in *.dat
 do
     mv $filename original-$filename
 done</pre>
 
-<p>This loop runs the <code>mv</code> command once for each filename.
-The first time,
-when <code>$filename</code> expands to <code>basilisk.dat</code>,
-the shell executes:</p>
+    <p>This loop runs the <code>mv</code> command once for each filename.
+      The first time,
+      when <code>$filename</code> expands to <code>basilisk.dat</code>,
+      the shell executes:</p>
 
 <pre>mv basilisk.dat original-basilisk.dat</pre>
 
-<p>The second time, the command is:</p>
+    <p>The second time, the command is:</p>
 
 <pre>mv unicorn.dat original-unicorn.dat</pre>
 
-<blockquote>
-  <h3>Measure Twice, Run Once</h3>
+    <blockquote>
+      <h3>Measure Twice, Run Once</h3>
 
-  <p>A loop is a way to do many things at once&mdash;or to make many mistakes at
-once if it does the wrong thing. One way to check what a loop <em>would</em> do
-is to echo the commands it would run instead of actually running them.
-For example, we could write our file renaming loop like this:</p>
+      <p>A loop is a way to do many things at once&mdash;or to make many mistakes at
+        once if it does the wrong thing. One way to check what a loop <em>would</em> do
+        is to echo the commands it would run instead of actually running them.
+        For example, we could write our file renaming loop like this:</p>
 
-<pre>for filename in *.dat
+<pre class="in">for filename in *.dat
 do
     echo mv $filename original-$filename
 done</pre>
 
-  <p>Instead of running <code>mv</code>, this loop runs <code>echo</code>, which prints out:</p>
+      <p>Instead of running <code>mv</code>, this loop runs <code>echo</code>, which prints out:</p>
 
-<pre>mv basilisk.dat original-basilisk.dat
+<pre class="out">mv basilisk.dat original-basilisk.dat
 mv unicorn.dat original-unicorn.dat</pre>
 
-  <p><em>without</em> actually running those commands. We can then use up-arrow to
-redisplay the loop, back-arrow to get to the word <code>echo</code>, delete it, and
-then press "enter" to run the loop with the actual <code>mv</code> commands. This
-isn't foolproof, but it's a handy way to see what's going to happen when
-you're still learning how loops work.</p>
-</blockquote>
+      <p><em>without</em> actually running those commands. We can then use up-arrow to
+        redisplay the loop, back-arrow to get to the word <code>echo</code>, delete it, and
+        then press "enter" to run the loop with the actual <code>mv</code> commands. This
+        isn't foolproof, but it's a handy way to see what's going to happen when
+        you're still learning how loops work.</p>
 
-<h3>Nelle's Pipeline: Processing Files</h3>
+    </blockquote>
 
-<p>Nelle is now ready to process her data files.
-Since she's still learning how to use the shell,
-she decides to build up the required commands in stages.
-Her first step is to make sure that she can select the right files&mdash;remember,
-these are ones whose names end in 'A' or 'B', rather than 'Z':</p>
+    <h3>Nelle's Pipeline: Processing Files</h3>
 
-<pre>$ cd north-pacific-gyre/2012-07-03
-$ for datafile in *[AB].txt
-do
-    echo $datafile
-done
-NENE01729A.txt
+    <p>Nelle is now ready to process her data files.
+      Since she's still learning how to use the shell,
+      she decides to build up the required commands in stages.
+      Her first step is to make sure that she can select the right files&mdash;remember,
+      these are ones whose names end in 'A' or 'B', rather than 'Z':</p>
+
+<pre>$ <span class="in">cd north-pacific-gyre/2012-07-03</span>
+$ <span class="in">for datafile in *[AB].txt</span>
+&gt; <span class="in">do</span>
+&gt; <span class="in">    echo $datafile</span>
+&gt; <span class="in">done</span>
+<span class="out">NENE01729A.txt
 NENE01729B.txt
 NENE01736A.txt
 ...
 NENE02043A.txt
-NENE02043B.txt</pre>
+NENE02043B.txt</span>
+$</pre>
 
-<p>Her next step is to decide
-what to call the files that the <code>goostat</code> analysis program will create.
-Prefixing each input file's name with "stats" seems simple,
-so she modifies her loop to do that:</p>
+    <p>Her next step is to decide
+      what to call the files that the <code>goostat</code> analysis program will create.
+      Prefixing each input file's name with "stats" seems simple,
+      so she modifies her loop to do that:</p>
 
-<pre>$ for datafile in *[AB].txt
-do
-    echo $datafile stats-$datafile
-done
-NENE01729A.txt stats-NENE01729A.txt
+<pre>$ <span class="in">for datafile in *[AB].txt</span>
+&gt; <span class="in">do</span>
+&gt; <span class="in">    echo $datafile stats-$datafile</span>
+&gt; <span class="in">done</span>
+<span class="out">NENE01729A.txt stats-NENE01729A.txt
 NENE01729B.txt stats-NENE01729B.txt
 NENE01736A.txt stats-NENE01736A.txt
 ...
 NENE02043A.txt stats-NENE02043A.txt
-NENE02043B.txt stats-NENE02043B.txt
+NENE02043B.txt stats-NENE02043B.txt</span>
 $</pre>
 
-<p>She hasn't actually run <code>goostats</code> yet,
-but now she's sure she can select the right files and generate the right output filenames.</p>
+    <p>She hasn't actually run <code>goostats</code> yet,
+      but now she's sure she can select the right files and generate the right output filenames.</p>
 
-<p>Typing in commands over and over again is becoming tedious,
-though,
-and Nelle is worried about making mistakes,
-so instead of re-entering her loop,
-she presses the up arrow.
-In response,
-the shell redisplays the whole loop on one line
-(using semi-colons to separate the pieces):</p>
+    <p>Typing in commands over and over again is becoming tedious,
+      though,
+      and Nelle is worried about making mistakes,
+      so instead of re-entering her loop,
+      she presses the up arrow.
+      In response,
+      the shell redisplays the whole loop on one line
+      (using semi-colons to separate the pieces):</p>
 
-<pre>$ for datafile in *[AB].txt; do echo $datafile stats-$datafile; done</pre>
+<pre>$ <span class="in">for datafile in *[AB].txt; do echo $datafile stats-$datafile; done</span></pre>
 
-<p>Using the left arrow key,
-Nelle backs up and changes the command <code>echo</code> to <code>goostats</code>:</p>
+    <p>Using the left arrow key,
+      Nelle backs up and changes the command <code>echo</code> to <code>goostats</code>:</p>
 
-<pre>$ for datafile in *[AB].txt; do goostats $datafile stats-$datafile; done</pre>
+<pre>$ <span class="in">for datafile in *[AB].txt; do goostats $datafile stats-$datafile; done</span></pre>
 
-<p>When she presses enter,
-the shell runs the modified command.
-However, nothing appears to happen&mdash;there is no output.
-After a moment, Nelle realizes that since her script doesn't print anything to the screen any longer,
-she has no idea whether it is running, much less how quickly.
-She kills the job by typing Control-C,
-uses up-arrow to repeat the command,
-and edits it to read:</p>
+    <p>When she presses enter,
+      the shell runs the modified command.
+      However, nothing appears to happen&mdash;there is no output.
+      After a moment, Nelle realizes that since her script doesn't print anything to the screen any longer,
+      she has no idea whether it is running, much less how quickly.
+      She kills the job by typing Control-C,
+      uses up-arrow to repeat the command,
+      and edits it to read:</p>
 
-<pre>$ for datafile in *[AB].txt; do echo $datafile; goostats $datafile stats-$datafile; done</pre>
+<pre>$ <span class="in">for datafile in *[AB].txt; do echo $datafile; goostats $datafile stats-$datafile; done</span></pre>
 
-<p>When she runs her program now,
-it produces one line of output every five seconds or so:</p>
+    <p>When she runs her program now,
+      it produces one line of output every five seconds or so:</p>
 
-<pre>NENE01729A.txt
+<pre class="out">NENE01729A.txt
 NENE01729B.txt
 NENE01736A.txt
 ...</pre>
 
-<p>1518 times 5 seconds,
-divided by 60,
-tells her that her script will take about two hours to run.
-As a final check,
-she opens another terminal window,
-goes into <code>north-pacific-gyre/2012-07-03</code>,
-and uses <code>cat stats-NENE01729B.txt</code>
-to examine one of the output files.
-It looks good,
-so she decides to get some coffee and catch up on her reading.</p>
+    <p>1518 times 5 seconds,
+      divided by 60,
+      tells her that her script will take about two hours to run.
+      As a final check,
+      she opens another terminal window,
+      goes into <code>north-pacific-gyre/2012-07-03</code>,
+      and uses <code>cat stats-NENE01729B.txt</code>
+      to examine one of the output files.
+      It looks good,
+      so she decides to get some coffee and catch up on her reading.</p>
 
-<blockquote>
-  <h3>Those Who Know History Can Choose to Repeat It</h3>
+    <blockquote>
+      <h3>Those Who Know History Can Choose to Repeat It</h3>
 
-  <p>Another way to repeat previous work is to use the <code>history</code> command to
-get a list of the last few hundred commands that have been executed, and
-then to use <code>!123</code> (where "123" is replaced by the command number) to
-repeat one of those commands. For example, if Nelle types this:</p>
+      <p>Another way to repeat previous work is to use the <code>history</code> command to
+        get a list of the last few hundred commands that have been executed, and
+        then to use <code>!123</code> (where "123" is replaced by the command number) to
+        repeat one of those commands. For example, if Nelle types this:</p>
 
-<pre>$ history | tail -5
-  456  ls -l NENE0*.txt
+<pre>$ <span class="in">history | tail -5</span>
+<span class="out">  456  ls -l NENE0*.txt
   457  rm stats-NENE01729B.txt.txt
   458  goostats NENE01729B.txt stats-NENE01729B.txt
   459  ls -l NENE0*.txt
-  460  history</pre>
+  460  history</span>
+$</pre>
 
-  <p>then she can re-run <code>goostats</code> on <code>NENE01729B.txt</code> simply by typing
-<code>!458</code>.</p>
-</blockquote>
+      <p>then she can re-run <code>goostats</code> on <code>NENE01729B.txt</code> simply by typing:</p>
 
-<div class="keypoints">
-  <h3>Key Points</h3>
-  <ul>
-    <li>Use a <code>for</code> loop to repeat commands once for every thing in a list.</li>
-    <li>Every <code>for</code> loop needs a variable to refer to the current "thing".</li>
-    <li>Use <code>$name</code> to expand a variable (i.e., get its value).</li>
-    <li>Do not use spaces, quotes, or wildcard characters such as '*' or '?' in filenames, as it complicates variable expansion.</li>
-    <li>Give files consistent names that are easy to match with wildcard patterns to make it easy to select them for looping.</li>
-    <li>Use the up-arrow key to scroll up through previous commands to edit and repeat them.</li>
-    <li>Use <code>history</code> to display recent commands, and <code>!number</code> to repeat a command by number.</li>
-  </ul>
-</div>
+<pre>$ <span class="in">!458</span></pre>
 
-<div class="challenges">
-  <h3>Challenges</h3>
+     </blockquote>
 
-  <ol>
-    <li>
-      <p>Suppose that <code>ls</code> initially displays:</p>
+    <div class="keypoints">
+      <h3>Key Points</h3>
+      <ul>
+        <li>Use a <code>for</code> loop to repeat commands once for every thing in a list.</li>
+        <li>Every <code>for</code> loop needs a variable to refer to the current "thing".</li>
+        <li>Use <code>$name</code> to expand a variable (i.e., get its value).</li>
+        <li>Do not use spaces, quotes, or wildcard characters such as '*' or '?' in filenames, as it complicates variable expansion.</li>
+        <li>Give files consistent names that are easy to match with wildcard patterns to make it easy to select them for looping.</li>
+        <li>Use the up-arrow key to scroll up through previous commands to edit and repeat them.</li>
+        <li>Use <code>history</code> to display recent commands, and <code>!number</code> to repeat a command by number.</li>
+      </ul>
+    </div>
+
+    <div class="challenges">
+      <h3>Challenges</h3>
+
+      <ol>
+        <li>
+          Suppose that <code>ls</code> initially displays:
 
 <pre>fructose.dat    glucose.dat   sucrose.dat</pre>
 
-      <p>What is the output of:</p>
+          What is the output of:
 
 <pre>for datafile in *.dat
 do
     ls *.dat
 done</pre>
-    </li>
-    <li>
-      <p>In the same directory, what is the effect of this loop?</p>
+        </li>
+        <li>
+          In the same directory, what is the effect of this loop?
 
 <pre>for sugar in *.dat
 do
@@ -1278,25 +1793,26 @@ do
     cat $sugar &gt; xylose.dat
 done</pre>
 
-      <ol>
-        <li>Prints <code>fructose.dat</code>, <code>glucose.dat</code>, and <code>sucrose.dat</code>, and
-copies <code>sucrose.dat</code> to create <code>xylose.dat</code>.</li>
-        <li>Prints <code>fructose.dat</code>, <code>glucose.dat</code>, and <code>sucrose.dat</code>, and
-concatenates all three files to create <code>xylose.dat</code>.</li>
-        <li>Prints <code>fructose.dat</code>, <code>glucose.dat</code>, <code>sucrose.dat</code>, and
-<code>xylose.dat</code>, and copies <code>sucrose.dat</code> to create <code>xylose.dat</code>.</li>
-        <li>None of the above.</li>
-      </ol>
-    </li>
-    <li>
-      <p>The <code>expr</code> does simple arithmetic using command-line parameters:</p>
+          <ol>
+            <li>Prints <code>fructose.dat</code>, <code>glucose.dat</code>, and <code>sucrose.dat</code>, and
+              copies <code>sucrose.dat</code> to create <code>xylose.dat</code>.</li>
+            <li>Prints <code>fructose.dat</code>, <code>glucose.dat</code>, and <code>sucrose.dat</code>, and
+              concatenates all three files to create <code>xylose.dat</code>.</li>
+            <li>Prints <code>fructose.dat</code>, <code>glucose.dat</code>, <code>sucrose.dat</code>, and
+              <code>xylose.dat</code>, and copies <code>sucrose.dat</code> to create <code>xylose.dat</code>.</li>
+            <li>None of the above.</li>
+          </ol>
+        </li>
+        <li>
+          The <code>expr</code> does simple arithmetic using command-line parameters:
 
-<pre>$ expr 3 + 5
-8
-$ expr 30 / 5 - 2
-4</pre>
+<pre>$ <span class="in">expr 3 + 5</span>
+<span class="out">8</span>
+$ <span class="in">expr 30 / 5 - 2</span>
+<span class="out">4</span>
+$</pre>
 
-      <p>Given this, what is the output of:</p>
+          Given this, what is the output of:
 
 <pre>for left in 2 3
 do
@@ -1305,229 +1821,239 @@ do
         expr $left + $right
     done
 done</pre>
-    </li>
-    <li>
-      <p>Describe in words what the following loop does.</p>
+        </li>
+        <li>
+          Describe in words what the following loop does.
 
 <pre>for how in frog11 prcb redig
 do
     $how -limit 0.01 NENE01729B.txt
 done</pre>
-    </li>
-  </ol>
-</div>
-          <h2>Shell Scripts</h2>
+        </li>
+      </ol>
+    </div>
 
-          <div class="objectives">
-  <h3>Objectives</h3>
-  <ul>
-    <li>Write a shell script that runs a command or series of commands for a fixed set of files.</li>
-    <li>Run a shell script from the command line.</li>
-    <li>Write a shell script that operates on a set of files defined by the user on the command line.</li>
-    <li>Create pipelines that include user-written shell scripts.</li>
-  </ul>
-</div>
+    <h2>Shell Scripts</h2>
 
-<p>We are finally ready to see what makes the shell such a powerful programming environment.
-We are going to take the commands we repeat frequently and save them in files
-so that we can re-run all those operations again later by typing a single command.
-For historical reasons,
-a bunch of commands saved in a file is usually called a <a href="#gloss:shell-script">shell script</a>,
-but make no mistake:
-these are actually small programs.</p>
+    <div class="objectives">
+      <h3>Objectives</h3>
+      <ul>
+        <li>Write a shell script that runs a command or series of commands for a fixed set of files.</li>
+        <li>Run a shell script from the command line.</li>
+        <li>Write a shell script that operates on a set of files defined by the user on the command line.</li>
+        <li>Create pipelines that include user-written shell scripts.</li>
+      </ul>
+    </div>
 
-<p>Let's start by putting the following line in the file <code>middle.sh</code>:</p>
+    <p>We are finally ready to see what makes the shell such a powerful programming environment.
+      We are going to take the commands we repeat frequently and save them in files
+      so that we can re-run all those operations again later by typing a single command.
+      For historical reasons,
+      a bunch of commands saved in a file is usually called a <a href="#gloss:shell-script">shell script</a>,
+      but make no mistake:
+      these are actually small programs.</p>
 
-<pre>head -20 cholesterol.pdb | tail -5</pre>
+    <p>Let's start by putting the following line in the file <code>middle.sh</code>:</p>
 
-<p>This is a variation on the pipe we constructed earlier:
-it selects lines 16-20 of the file <code>cholesterol.pdb</code>.
-Remember, we are <em>not</em> running it as a command just yet:
-we are putting the commands in a file.</p>
+<pre><span class="in">head -20 cholesterol.pdb | tail -5</span></pre>
 
-<p>Once we have saved the file,
-we can ask the shell to execute the commands it contains.
-Our shell is called <code>bash</code>, so we run the following command:</p>
+    <p>This is a variation on the pipe we constructed earlier:
+      it selects lines 16-20 of the file <code>cholesterol.pdb</code>.
+      Remember, we are <em>not</em> running it as a command just yet:
+      we are putting the commands in a file.</p>
 
-<pre>$ bash middle.sh
-ATOM     14  C           1      -1.463  -0.666   1.001  1.00  0.00
+    <p>Once we have saved the file,
+      we can ask the shell to execute the commands it contains.
+      Our shell is called <code>bash</code>, so we run the following command:</p>
+
+<pre><span class="in">$ bash middle.sh</span>
+<span class="out">ATOM     14  C           1      -1.463  -0.666   1.001  1.00  0.00
 ATOM     15  C           1       0.762  -0.929   0.295  1.00  0.00
 ATOM     16  C           1       0.771  -0.937   1.840  1.00  0.00
 ATOM     17  C           1      -0.664  -0.610   2.293  1.00  0.00
-ATOM     18  C           1      -4.705   2.108  -0.396  1.00  0.00</pre>
+ATOM     18  C           1      -4.705   2.108  -0.396  1.00  0.00</span>
+$</pre>
 
-<p>Sure enough,
-our script's output is exactly what we would get if we ran that pipeline directly.</p>
+    <p>Sure enough,
+      our script's output is exactly what we would get if we ran that pipeline directly.</p>
 
-<blockquote>
-  <h3>Text vs. Whatever</h3>
+    <blockquote>
+      <h3>Text vs. Whatever</h3>
 
-  <p>We usually call programs like Microsoft Word or LibreOffice Writer "text
-editors", but we need to be a bit more careful when it comes to
-programming. By default, Microsoft Word uses <code>.docx</code> files to store not
-only text, but also formatting information about fonts, headings, and so
-on. This extra information isn't stored as characters, and doesn't mean
-anything to tools like <code>head</code>: they expect input files to contain
-nothing but the letters, digits, and punctuation on a standard computer
-keyboard. When editing programs, therefore, you must either use a plain
-text editor, or be careful to save files as plain text.</p>
-</blockquote>
+      <p>We usually call programs like Microsoft Word or LibreOffice Writer "text
+        editors", but we need to be a bit more careful when it comes to
+        programming. By default, Microsoft Word uses <code>.docx</code> files to store not
+        only text, but also formatting information about fonts, headings, and so
+        on. This extra information isn't stored as characters, and doesn't mean
+        anything to tools like <code>head</code>: they expect input files to contain
+        nothing but the letters, digits, and punctuation on a standard computer
+        keyboard. When editing programs, therefore, you must either use a plain
+        text editor, or be careful to save files as plain text.</p>
 
-<p>What if we want to select lines from an arbitrary file?
-We could edit <code>middle.sh</code> each time to change the filename,
-but that would probably take longer than just retyping the command.
-Instead,
-let's edit <code>middle.sh</code> and replace <code>cholesterol.pdb</code> with a special variable called <code>$1</code>:</p>
+    </blockquote>
 
-<pre>$ cat middle.sh
-head -20 $1 | tail -5</pre>
+    <p>What if we want to select lines from an arbitrary file?
+      We could edit <code>middle.sh</code> each time to change the filename,
+      but that would probably take longer than just retyping the command.
+      Instead,
+      let's edit <code>middle.sh</code> and replace <code>cholesterol.pdb</code> with a special variable called <code>$1</code>:</p>
 
-<p>Inside a shell script,
-<code>$1</code> means "the first filename (or other parameter) on the command line".
-We can now run our script like this:</p>
+<pre><span class="in">$ cat middle.sh</span>
+<span class="out">head -20 $1 | tail -5</span>
+$</pre>
 
-<pre>$ bash middle.sh cholesterol.pdb
-ATOM     14  C           1      -1.463  -0.666   1.001  1.00  0.00
+    <p>Inside a shell script,
+      <code>$1</code> means "the first filename (or other parameter) on the command line".
+      We can now run our script like this:</p>
+
+<pre><span class="in">$ bash middle.sh cholesterol.pdb</span>
+<span class="out">ATOM     14  C           1      -1.463  -0.666   1.001  1.00  0.00
 ATOM     15  C           1       0.762  -0.929   0.295  1.00  0.00
 ATOM     16  C           1       0.771  -0.937   1.840  1.00  0.00
 ATOM     17  C           1      -0.664  -0.610   2.293  1.00  0.00
-ATOM     18  C           1      -4.705   2.108  -0.396  1.00  0.00</pre>
+ATOM     18  C           1      -4.705   2.108  -0.396  1.00  0.00</span>
+$</pre>
 
-<p>or on a different file like this:</p>
+    <p>or on a different file like this:</p>
 
-<pre>$ bash middle.sh vitamin-a.pdb
-ATOM     14  C           1       1.788  -0.987  -0.861
+<pre><span class="in">$ bash middle.sh vitamin-a.pdb</span>
+<span class="out">ATOM     14  C           1       1.788  -0.987  -0.861
 ATOM     15  C           1       2.994  -0.265  -0.829
 ATOM     16  C           1       4.237  -0.901  -1.024
 ATOM     17  C           1       5.406  -0.117  -1.087
-ATOM     18  C           1      -0.696  -2.628  -0.641</pre>
+ATOM     18  C           1      -0.696  -2.628  -0.641</span>
+$</pre>
 
-<p>We still need to edit <code>middle.sh</code> each time we want to adjust the range of lines,
-though.
-Let's fix that by using the special variables <code>$2</code> and <code>$3</code>:</p>
+    <p>We still need to edit <code>middle.sh</code> each time we want to adjust the range of lines,
+      though.
+      Let's fix that by using the special variables <code>$2</code> and <code>$3</code>:</p>
 
-<pre>$ cat middle.sh
-head $2 $1 | tail $3
-$ bash middle.sh vitamin-a.pdb -20 -5
-ATOM     14  C           1       1.788  -0.987  -0.861
+<pre><span class="in">$ cat middle.sh</span>
+<span class="out">head $2 $1 | tail $3</span>
+<span class="in">$ bash middle.sh vitamin-a.pdb -20 -5</span>
+<span class="out">ATOM     14  C           1       1.788  -0.987  -0.861
 ATOM     15  C           1       2.994  -0.265  -0.829
 ATOM     16  C           1       4.237  -0.901  -1.024
 ATOM     17  C           1       5.406  -0.117  -1.087
-ATOM     18  C           1      -0.696  -2.628  -0.641</pre>
+ATOM     18  C           1      -0.696  -2.628  -0.641</span>
+$</pre>
 
-<p>What if we want to process many files in a single pipeline?
-For example, if we want to sort our PDB files by length, we would type:</p>
+    <p>What if we want to process many files in a single pipeline?
+      For example, if we want to sort our PDB files by length, we would type:</p>
 
-<pre>$ wc -l *.pdb | sort -n</pre>
+<pre class="in">wc -l *.pdb | sort -n</pre>
 
-<p>because <code>wc -l</code> lists the number of lines in the files
-and <code>sort -n</code> sorts things numerically.
-We could put this in a file,
-but then it would only ever sort a list of PDB files in the current directory.
-If we want to be able to get a sorted list of other kinds of files,
-we need a way to get all those names into the script.
-We can't use <code>$1</code>, <code>$2</code>, and so on
-because we don't know how many files there are.
-Instead, we use the special variable <code>$*</code>,
-which means,
-"All of the command-line parameters to the shell script."
-Here's an example:</p>
+    <p>because <code>wc -l</code> lists the number of lines in the files
+      and <code>sort -n</code> sorts things numerically.
+      We could put this in a file,
+      but then it would only ever sort a list of PDB files in the current directory.
+      If we want to be able to get a sorted list of other kinds of files,
+      we need a way to get all those names into the script.
+      We can't use <code>$1</code>, <code>$2</code>, and so on
+      because we don't know how many files there are.
+      Instead, we use the special variable <code>$*</code>,
+      which means,
+      "All of the command-line parameters to the shell script."
+      Here's an example:</p>
 
-<pre>$ cat sorted.sh
-wc -l $* | sort -n
-$ bash sorted.sh *.dat backup/*.dat
-      29 chloratin.dat
+<pre>$ <span class="in">cat sorted.sh</span>
+<span class="out">wc -l $* | sort -n</span>
+$ <span class="out">bash sorted.sh *.dat backup/*.dat</span>
+<span class="out">      29 chloratin.dat
       89 backup/chloratin.dat
       91 sphagnoi.dat
      156 sphag2.dat
      172 backup/sphag-merged.dat
-     182 girmanis.dat</pre>
+     182 girmanis.dat</span>
+$</pre>
 
-<blockquote>
-  <h3>Why Isn't It Doing Anything?</h3>
+      <blockquote>
+        <h3>Why Isn't It Doing Anything?</h3>
 
-  <p>What happens if a script is supposed to process a bunch of files, but we
-don't give it any filenames? For example, what if we type:</p>
+        <p>What happens if a script is supposed to process a bunch of files, but we
+          don't give it any filenames? For example, what if we type:</p>
 
-<pre>$ bash sorted.sh</pre>
+<pre>bash sorted.sh</pre>
 
-  <p>but don't say <code>*.dat</code> (or anything else)? In this case, <code>$*</code> expands to
-nothing at all, so the pipeline inside the script is effectively:</p>
+        <p>but don't say <code>*.dat</code> (or anything else)? In this case, <code>$*</code> expands to
+          nothing at all, so the pipeline inside the script is effectively:</p>
 
 <pre>wc -l | sort -n</pre>
 
-  <p>Since it doesn't have any filenames, <code>wc</code> assumes it is supposed to
-process standard input, so it just sits there and waits for us to give
-it some data interactively. From the outside, though, all we see is it
-sitting there: the script doesn't appear to do anything.</p>
-</blockquote>
+        <p>Since it doesn't have any filenames, <code>wc</code> assumes it is supposed to
+          process standard input, so it just sits there and waits for us to give
+          it some data interactively. From the outside, though, all we see is it
+          sitting there: the script doesn't appear to do anything.</p>
 
-<p>We have two more things to do before we're finished with our simple shell scripts.
-If you look at a script like:</p>
+      </blockquote>
+
+    <p>We have two more things to do before we're finished with our simple shell scripts.
+      If you look at a script like:</p>
 
 <pre>wc -l $* | sort -n</pre>
 
-<p>you can probably puzzle out what it does.
-On the other hand,
-if you look at this script:</p>
+    <p>you can probably puzzle out what it does.
+      On the other hand,
+      if you look at this script:</p>
 
 <pre># List files sorted by number of lines.
 wc -l $* | sort -n</pre>
 
-<p>you don't have to puzzle it out&mdash;the comment at the top tells you what it does.
-A line or two of documentation like this make it much easier for other people
-(including your future self)
-to re-use your work.
-The only caveat is that each time you modify the script,
-you should check that the comment is still accurate:
-an explanation that sends the reader in the wrong direction is worse than none at all.</p>
+    <p>you don't have to puzzle it out&mdash;the comment at the top tells you what it does.
+      A line or two of documentation like this make it much easier for other people
+      (including your future self)
+      to re-use your work.
+      The only caveat is that each time you modify the script,
+      you should check that the comment is still accurate:
+      an explanation that sends the reader in the wrong direction is worse than none at all.</p>
 
-<p>Second,
-suppose we have just run a series of commands that did something useful&mdash;for example,
-that created a graph we'd like to use in a paper.
-We'd like to be able to re-create the graph later if we need to,
-so we want to save the commands in a file.
-Instead of typing them in again
-(and potentially getting them wrong)
-we can do this:</p>
+    <p>Second,
+      suppose we have just run a series of commands that did something useful&mdash;for example,
+      that created a graph we'd like to use in a paper.
+      We'd like to be able to re-create the graph later if we need to,
+      so we want to save the commands in a file.
+      Instead of typing them in again
+      (and potentially getting them wrong)
+      we can do this:</p>
 
-<pre>$ history | tail -4 &gt; redo-figure-3.sh</pre>
+<pre>$ <span class="in">history | tail -4 &gt; redo-figure-3.sh</span></pre>
 
-<p>The file <code>redo-figure-3.sh</code> now contains:</p>
+    <p>The file <code>redo-figure-3.sh</code> now contains:</p>
 
 <pre> 297 goostats -r NENE01729B.txt stats-NENE01729B.txt
  298 goodiff stats-NENE01729B.txt /data/validated/01729.txt &gt; 01729-differences.txt
  299 cut -d ',' -f 2-3 01729-differences.txt &gt; 01729-time-series.txt
  300 ygraph --format scatter --color bw --borders none 01729-time-series.txt figure-3.png</pre>
 
-<p>After a moment's work in an editor to remove the serial numbers on the commands,
-we have a completely accurate record of how we created that figure.</p>
+    <p>After a moment's work in an editor to remove the serial numbers on the commands,
+      we have a completely accurate record of how we created that figure.</p>
 
-<blockquote>
-  <h3>Unnumbering</h3>
+    <blockquote>
+      <h3>Unnumbering</h3>
 
-  <p>Nelle could also use <code>colrm</code> (short for "column removal") to remove the
-serial numbers on her previous commands.</p>
-</blockquote>
+      <p>Nelle could also use <code>colrm</code> (short for "column removal") to remove the
+        serial numbers on her previous commands.</p>
 
-<p>In practice, most people develop shell scripts by running commands at the shell prompt a few times
-to make sure they're doing the right thing,
-then saving them in a file for re-use.
-This style of work allows people to recycle
-what they discover about their data and their workflow
-with just a few extra keystrokes.</p>
+    </blockquote>
 
-<h3>Nelle's Pipeline: Creating a Script</h3>
+    <p>In practice, most people develop shell scripts by running commands at the shell prompt a few times
+      to make sure they're doing the right thing,
+      then saving them in a file for re-use.
+      This style of work allows people to recycle
+      what they discover about their data and their workflow
+      with just a few extra keystrokes.</p>
 
-<p>An off-hand comment from her supervisor has made Nelle realize that
-she should have provided a couple of extra parameters to <code>goostats</code> when she processed her files.
-This might have been a disaster if she had done all the analysis by hand,
-but thanks to for loops,
-it will only take a couple of hours to re-do.</p>
+    <h3>Nelle's Pipeline: Creating a Script</h3>
 
-<p>But experience has taught her that if something needs to be done twice,
-it will probably need to be done a third or fourth time as well.
-She runs the editor and writes the following:</p>
+    <p>An off-hand comment from her supervisor has made Nelle realize that
+      she should have provided a couple of extra parameters to <code>goostats</code> when she processed her files.
+      This might have been a disaster if she had done all the analysis by hand,
+      but thanks to for loops,
+      it will only take a couple of hours to re-do.</p>
+
+    <p>But experience has taught her that if something needs to be done twice,
+      it will probably need to be done a third or fourth time as well.
+      She runs the editor and writes the following:</p>
 
 <pre># Calculate reduced stats for data files at J = 100 c/bp.
 for datafile in $*
@@ -1536,22 +2062,22 @@ do
     goostats -J 100 -r $datafile stats-$datafile
 done</pre>
 
-<p>(The parameters <code>-J 100</code> and <code>-r</code> are the ones her supervisor said she should have used.)
-She saves this in a file called <code>do-stats.sh</code>
-so that she can now re-do the first stage of her analysis by typing:</p>
+    <p>(The parameters <code>-J 100</code> and <code>-r</code> are the ones her supervisor said she should have used.)
+      She saves this in a file called <code>do-stats.sh</code>
+      so that she can now re-do the first stage of her analysis by typing:</p>
 
-<pre>$ bash do-stats.sh *[AB].txt</pre>
+<pre>$ <span class="in">bash do-stats.sh *[AB].txt</span></pre>
 
-<p>She can also do this:</p>
+    <p>She can also do this:</p>
 
-<pre>$ bash do-stats.sh *[AB].txt | wc -l</pre>
+<pre>$ <span class="in">bash do-stats.sh *[AB].txt | wc -l</span></pre>
 
-<p>so that the output is just the number of files processed
-rather than the names of the files that were processed.</p>
+    <p>so that the output is just the number of files processed
+      rather than the names of the files that were processed.</p>
 
-<p>One thing to note about Nelle's script is that
-it lets the person running it decide what files to process.
-She could have written it as:</p>
+    <p>One thing to note about Nelle's script is that
+      it lets the person running it decide what files to process.
+      She could have written it as:</p>
 
 <pre># Calculate reduced stats for  A and Site B data files at J = 100 c/bp.
 for datafile in *[AB].txt
@@ -1560,34 +2086,34 @@ do
     goostats -J 100 -r $datafile stats-$datafile
 done</pre>
 
-<p>The advantage is that this always selects the right files:
-she doesn't have to remember to exclude the 'Z' files.
-The disadvantage is that it <em>always</em> selects just those files&mdash;she can't run it on all files
-(including the 'Z' files),
-or on the 'G' or 'H' files her colleagues in Antarctica are producing,
-without editing the script.
-If she wanted to be more adventurous,
-she could modify her script to check for command-line parameters,
-and use <code>*[AB].txt</code> if none were provided.
-Of course, this introduces another tradeoff between flexibility and complexity.</p>
+    <p>The advantage is that this always selects the right files:
+      she doesn't have to remember to exclude the 'Z' files.
+      The disadvantage is that it <em>always</em> selects just those files&mdash;she can't run it on all files
+      (including the 'Z' files),
+      or on the 'G' or 'H' files her colleagues in Antarctica are producing,
+      without editing the script.
+      If she wanted to be more adventurous,
+      she could modify her script to check for command-line parameters,
+      and use <code>*[AB].txt</code> if none were provided.
+      Of course, this introduces another tradeoff between flexibility and complexity.</p>
 
-<div class="keypoints">
-  <h3>Key Points</h3>
-  <ul>
-    <li>Save commands in files (usually called shell scripts) for re-use.</li>
-    <li>Use <code>bash filename</code> to run saved commands.</li>
-    <li><code>$*</code> refers to all of a shell script's command-line parameters.</li>
-    <li><code>$1</code>, <code>$2</code>, etc., refer to specified command-line parameters.</li>
-    <li>Letting users decide what files to process is more flexible and more consistent with built-in Unix commands.</li>
-  </ul>
-</div>
+    <div class="keypoints">
+      <h3>Key Points</h3>
+      <ul>
+        <li>Save commands in files (usually called shell scripts) for re-use.</li>
+        <li>Use <code>bash filename</code> to run saved commands.</li>
+        <li><code>$*</code> refers to all of a shell script's command-line parameters.</li>
+        <li><code>$1</code>, <code>$2</code>, etc., refer to specified command-line parameters.</li>
+        <li>Letting users decide what files to process is more flexible and more consistent with built-in Unix commands.</li>
+      </ul>
+    </div>
 
-<div class="challenges">
-  <h3>Challenges</h3>
+    <div class="challenges">
+      <h3>Challenges</h3>
 
-  <ol>
-    <li>
-      <p>Leah has several hundred data files, each of which is formatted like this:</p>
+      <ol>
+        <li>
+          Leah has several hundred data files, each of which is formatted like this:
 
 <pre>2013-11-05,deer,5
 2013-11-05,rabbit,22
@@ -1598,53 +2124,49 @@ Of course, this introduces another tradeoff between flexibility and complexity.<
 2013-11-07,rabbit,18
 2013-11-07,bear,1</pre>
 
-      <p>Write a shell script called <code>species.sh</code> that takes any number of
-filenames as command-line parameters, and uses <code>cut</code>, <code>sort</code>, and
-<code>uniq</code> to print a list of the unique species appearing in each of
-those files separately.</p>
-    </li>
-    <li>
-      <p>Write a shell script called <code>longest.sh</code> that takes the name of a
-directory and a filename extension as its parameters, and prints out
-the name of the most recently modified file in that directory with
-that extension. For example:</p>
+          Write a shell script called <code>species.sh</code> that takes any number of
+          filenames as command-line parameters, and uses <code>cut</code>, <code>sort</code>, and
+          <code>uniq</code> to print a list of the unique species appearing in each of
+          those files separately.
+        </li>
+        <li>
+          Write a shell script called <code>longest.sh</code> that takes the name of a
+          directory and a filename extension as its parameters, and prints out
+          the name of the most recently modified file in that directory with
+          that extension. For example:
 
-<pre>$ bash largest.sh /tmp/data pdb</pre>
+<pre>bash largest.sh /tmp/data pdb</pre>
 
-      <p>would print the name of the PDB file in <code>/tmp/data</code> that has been
-changed most recently.</p>
-    </li>
-    <li>
-      <p>If you run the command:</p>
+          would print the name of the PDB file in <code>/tmp/data</code> that has been
+          changed most recently.
+        </li>
+        <li>
+          If you run the command:
 
 <pre>history | tail -5 &gt; recent.sh</pre>
 
-      <p>the last command in the file is the <code>history</code> command itself, i.e.,
-the shell has added <code>history</code> to the command log before actually
-running it. In fact, the shell <em>always</em> adds commands to the log
-before running them. Why do you think it does this?</p>
-    </li>
-    <li>
-      <p>Joel's <code>data</code> directory contains three files: <code>fructose.dat</code>,
-<code>glucose.dat</code>, and <code>sucrose.dat</code>. Explain what a script called
-<code>example.sh</code> would when run as <code>bash example.sh *.dat</code>
-if it contained the following lines:</p>
-    </li>
-  </ol>
+          the last command in the file is the <code>history</code> command itself, i.e.,
+          the shell has added <code>history</code> to the command log before actually
+          running it. In fact, the shell <em>always</em> adds commands to the log
+          before running them. Why do you think it does this?
+        </li>
+        <li>
+          Joel's <code>data</code> directory contains three files: <code>fructose.dat</code>,
+          <code>glucose.dat</code>, and <code>sucrose.dat</code>. Explain what a script called
+          <code>example.sh</code> would when run as <code>bash example.sh *.dat</code>
+          if it contained the following lines:
 
-  <table>
+<table>
   <tr>
     <td valign="top">1.</td>
     <td valign="top">
-<pre>
-echo *.*</pre>
+<pre>echo *.*</pre>
     </td>
   </tr>
   <tr>
     <td valign="top">2.</td>
     <td valign="top">
-<pre>
-for filename in $1 $2 $3
+<pre>for filename in $1 $2 $3
 do
     cat $filename
 done</pre>
@@ -1653,36 +2175,38 @@ done</pre>
   <tr>
     <td valign="top">3.</td>
     <td valign="top">
-<pre>
-echo $*.dat</pre>
+<pre>echo $*.dat</pre>
     </td>
   </tr>
 </table>
-</div>
 
-          <h2>Finding Things</h2>
+        </li>
+      </ol>
+    </div>
 
-          <div class="objectives">
-  <h3>Objectives</h3>
-  <ul>
-    <li>Use <code>grep</code> to select lines from text files that match simple patterns.</li>
-    <li>Use <code>find</code> to find files whose names match simple patterns.</li>
-    <li>Use the output of one command as the command-line parameters to another command.</li>
-    <li>Explain what is meant by "text" and "binary" files, and why many common tools don't handle the latter well.</li>
-  </ul>
-</div>
+    <h2>Finding Things</h2>
 
-<p>You can guess someone's age by how they talk about search:
-young people use "Google" as a verb,
-while crusty old Unix programmers use "grep".
-The word is a contraction of "global/regular expression/print",
-a common sequence of operations in early Unix text editors.
-It is also the name of a very useful command-line program.</p>
+    <div class="objectives">
+      <h3>Objectives</h3>
+      <ul>
+	<li>Use <code>grep</code> to select lines from text files that match simple patterns.</li>
+	<li>Use <code>find</code> to find files whose names match simple patterns.</li>
+	<li>Use the output of one command as the command-line parameters to another command.</li>
+	<li>Explain what is meant by "text" and "binary" files, and why many common tools don't handle the latter well.</li>
+      </ul>
+    </div>
 
-<p><code>grep</code> finds and prints lines in files that match a pattern.
-For our examples,
-we will use a file that contains three haikus taken from a
-<a href="http://www.salonmagazine.com/21st/chal/1998/01/26chal.html">1998 competition in Salon magazine</a>:</p>
+    <p>You can guess someone's age by how they talk about search:
+      young people use "Google" as a verb,
+      while crusty old Unix programmers use "grep".
+      The word is a contraction of "global/regular expression/print",
+      a common sequence of operations in early Unix text editors.
+      It is also the name of a very useful command-line program.</p>
+
+    <p><code>grep</code> finds and prints lines in files that match a pattern.
+      For our examples,
+      we will use a file that contains three haikus taken from a
+      <a href="http://www.salonmagazine.com/21st/chal/1998/01/26chal.html">1998 competition in Salon magazine</a>:</p>
 
 <pre>The Tao that is seen
 Is not the true Tao, until
@@ -1696,68 +2220,73 @@ Yesterday it worked
 Today it is not working
 Software is like that.</pre>
 
-<p>Let's find lines that contain the word "not":</p>
+    <p>Let's find lines that contain the word "not":</p>
 
-<pre>$ grep not haiku.txt
-Is not the true Tao, until
+<pre>$ <span class="in">grep not haiku.txt</span>
+<span class="out">Is not the true Tao, until
 "My Thesis" not found
-Today it is not working</pre>
+Today it is not working</span>
+$</pre>
 
-<p>Here, <code>not</code> is the pattern we're searching for.
-It's pretty simple:
-every alphanumeric character matches against itself.
-After the pattern comes the name or names of the files we're searching in.
-The output is the three lines in the file that contain the letters "not".</p>
+    <p>Here, <code>not</code> is the pattern we're searching for.
+      It's pretty simple:
+      every alphanumeric character matches against itself.
+      After the pattern comes the name or names of the files we're searching in.
+      The output is the three lines in the file that contain the letters "not".</p>
 
-<p>Let's try a different pattern: "day".</p>
+    <p>Let's try a different pattern: "day".</p>
 
-<pre>$ grep day haiku.txt
-Yesterday it worked
-Today it is not working</pre>
+<pre>$ <span class="in">grep day haiku.txt</span>
+<span class="out">Yesterday it worked
+Today it is not working</span>
+$</pre>
 
-<p>This time,
-the output is lines containing the words "Yesterday" and "Today",
-which both have the letters "day".
-If we give <code>grep</code> the <code>-w</code> flag,
-it restricts matches to word boundaries,
-so that only lines with the word "day" will be printed:</p>
+    <p>This time,
+      the output is lines containing the words "Yesterday" and "Today",
+      which both have the letters "day".
+      If we give <code>grep</code> the <code>-w</code> flag,
+      it restricts matches to word boundaries,
+      so that only lines with the word "day" will be printed:</p>
 
-<pre>$ grep -w day haiku.txt</pre>
+<pre>$ <span class="in">grep -w day haiku.txt</span>
+$</pre>
 
-<p>In this case, there aren't any, so <code>grep</code>'s output is empty.</p>
+    <p>In this case, there aren't any, so <code>grep</code>'s output is empty.</p>
 
-<p>Another useful option is <code>-n</code>, which numbers the lines that match:</p>
+    <p>Another useful option is <code>-n</code>, which numbers the lines that match:</p>
 
-<pre>$ grep -n it haiku.txt
-5:With searching comes loss
+<pre>$ <span class="in">grep -n it haiku.txt</span>
+<span class="out">5:With searching comes loss
 9:Yesterday it worked
-10:Today it is not working</pre>
+10:Today it is not working</span>
+$</pre>
 
-<p>Here, we can see that lines 5, 9, and 10 contain the letters "it".</p>
+    <p>Here, we can see that lines 5, 9, and 10 contain the letters "it".</p>
 
-<p>We can combine flags as we do with other Unix commands.
-For example,
-since <code>-i</code> makes matching case-insensitive and <code>-v</code> inverts the match,
-using them both only prints lines that <em>don't</em> match the pattern
-in any mix of upper and lower case:</p>
+    <p>We can combine flags as we do with other Unix commands.
+      For example,
+      since <code>-i</code> makes matching case-insensitive and <code>-v</code> inverts the match,
+      using them both only prints lines that <em>don't</em> match the pattern
+      in any mix of upper and lower case:</p>
 
-<pre>$ grep -i -v the haiku.txt
-You bring fresh toner.
+<pre>$ <span class="in">grep -i -v the haiku.txt</span>
+<span class="out">You bring fresh toner.
 
 With searching comes loss
 
 Yesterday it worked
 Today it is not working
-Software is like that.</pre>
+Software is like that.</span>
+$</pre>
 
-<p><code>grep</code> has lots of other options.
-To find out what they are, we can type <code>man grep</code>.
-<code>man</code> is the Unix "manual" command:
-it prints a description of a command and its options,
-and (if you're lucky) provides a few examples of how to use it:</p>
+    <p><code>grep</code> has lots of other options.
+      To find out what they are, we can type <code>man grep</code>.
+      <code>man</code> is the Unix "manual" command:
+      it prints a description of a command and its options,
+      and (if you're lucky) provides a few examples of how to use it:</p>
 
-<pre>$ man grep
-GREP(1)                                                                                              GREP(1)
+<pre>$ <span class="in">man grep</span>
+<span class="out">GREP(1)                                                                                              GREP(1)
 
 NAME
        grep, egrep, fgrep - print lines matching a pattern
@@ -1789,236 +2318,250 @@ OPTIONS
        -F, --fixed-strings
               Interpret PATTERN as a list of fixed strings, separated by newlines, any of  which  is  to  be
               matched.  (-F is specified by POSIX.)
-    ...        ...        ...</pre>
+    ...        ...        ...</span>
+$</pre>
 
-<blockquote>
-  <h3>Wildcards</h3>
+    <blockquote>
+      <h3>Wildcards</h3>
 
-<p><code>grep</code>'s real power doesn't come from its options, though; it comes from
-the fact that patterns can include wildcards. (The technical name for
-these is <a href="#gloss:regular-expression">regular expressions</a>, which
-is what the "re" in "grep" stands for.) Regular expressions are complex
-enough that we devoted an entire section of the website to them; if you
-want to do complex searches, please check it out. As a taster, we can
-find lines that have an 'o' in the second position like this:</p>
+      <p><code>grep</code>'s real power doesn't come from its options, though; it comes from
+	the fact that patterns can include wildcards. (The technical name for
+	these is <a href="#gloss:regular-expression">regular expressions</a>, which
+	is what the "re" in "grep" stands for.) Regular expressions are complex
+	enough that we devoted an entire section of the website to them; if you
+	want to do complex searches, please check it out. As a taster, we can
+	find lines that have an 'o' in the second position like this:</p>
 
-<pre>$ grep -E '^.o' haiku.txt
-You bring fresh toner.
+<pre>$ <span class="in">grep -E '^.o' haiku.txt</span>
+<span class="out">You bring fresh toner.
 Today it is not working
-Software is like that.</pre>
+Software is like that.</span>
+$</pre>
 
-  <p>We use the <code>-E</code> flag and put the pattern in quotes to prevent the shell
-from trying to interpret it. (If the pattern contained a '*', for
-example, the shell would try to expand it before running <code>grep</code>.) The
-'\^' in the pattern anchors the match to the start of the line. The '.'
-matches a single character (just like '?' in the shell), while the 'o'
-matches an actual 'o'.</p>
-</blockquote>
+      <p>We use the <code>-E</code> flag and put the pattern in quotes to prevent the shell
+	from trying to interpret it. (If the pattern contained a '*', for
+	example, the shell would try to expand it before running <code>grep</code>.) The
+	'\^' in the pattern anchors the match to the start of the line. The '.'
+	matches a single character (just like '?' in the shell), while the 'o'
+	matches an actual 'o'.</p>
 
-<p>While <code>grep</code> finds lines in files,
-the <code>find</code> command finds files themselves.
-Again,
-it has a lot of options;
-to show how the simplest ones work, we'll use the directory tree shown below.</p>
+    </blockquote>
 
-<p><img src="bash/novice/img/find-file-tree.svg" alt="File Tree for Find Example" /></p>
+    <p>While <code>grep</code> finds lines in files,
+      the <code>find</code> command finds files themselves.
+      Again,
+      it has a lot of options;
+      to show how the simplest ones work, we'll use the directory tree shown below.</p>
 
-<p>Vlad's home directory contains one file called <code>notes.txt</code> and four subdirectories:
-<code>thesis</code> (which is sadly empty),
-<code>data</code> (which contains two files <code>first.txt</code> and <code>second.txt</code>),
-a <code>tools</code> directory that contains the programs <code>format</code> and <code>stats</code>,
-and an empty subdirectory called <code>old</code>.</p>
+    <p><img src="bash/novice/img/find-file-tree.svg" alt="File Tree for Find Example" /></p>
 
-<p>For our first command,
-let's run <code>find . -type d</code>.
-<code>.</code> (i.e., the current working directory) is where we want our search to start;
-<code>-type d</code> means "things that are directories".
-Sure enough,
-<code>find</code>'s output is the names of the five directories in our little tree
-(including <code>.</code>):</p>
+    <p>Vlad's home directory contains one file called <code>notes.txt</code> and four subdirectories:
+      <code>thesis</code> (which is sadly empty),
+      <code>data</code> (which contains two files <code>first.txt</code> and <code>second.txt</code>),
+      a <code>tools</code> directory that contains the programs <code>format</code> and <code>stats</code>,
+      and an empty subdirectory called <code>old</code>.</p>
 
-<pre>$ find . -type d
-./
+    <p>For our first command,
+      let's run <code>find . -type d</code>.
+      <code>.</code> (i.e., the current working directory) is where we want our search to start;
+      <code>-type d</code> means "things that are directories".
+      Sure enough,
+      <code>find</code>'s output is the names of the five directories in our little tree
+      (including <code>.</code>):</p>
+
+<pre>$ <span class="in">find . -type d</span>
+<span class="out">./
 ./data
 ./thesis
 ./tools
-./tools/old</pre>
+./tools/old</span>
+$</pre>
 
-<p>If we change <code>-type d</code> to <code>-type f</code>,
-we get a listing of all the files instead:</p>
+    <p>If we change <code>-type d</code> to <code>-type f</code>,
+      we get a listing of all the files instead:</p>
 
-<pre>$ find . -type f
-./data/first.txt
+<pre>$ <span class="in">find . -type f</span>
+<span class="out">./data/first.txt
 ./data/second.txt
 ./notes.txt
 ./tools/format
-./tools/stats</pre>
-
-<p><code>find</code> automatically goes into subdirectories,
-their subdirectories,
-and so on to find everything that matches the pattern we've given it.
-If we don't want it to,
-we can use <code>-maxdepth</code> to restrict the depth of search:</p>
-
-<pre>$ find . -maxdepth 1 -type f
-./notes.txt</pre>
-
-<p>The opposite of <code>-maxdepth</code> is <code>-mindepth</code>,
-which tells <code>find</code> to only report things that are at or below a certain depth.
-<code>-mindepth 2</code> therefore finds all the files that are two or more levels below us:</p>
-
-<pre>$ find . -mindepth 2 -type f
-./data/first.txt
-./data/second.txt
-./tools/format
-./tools/stats</pre>
-
-<p>Another option is <code>-empty</code>,
-which restricts matches to empty files and directories:</p>
-
-<pre>$ find . -empty
-./thesis
-./tools/old</pre>
-
-<p>Now let's try matching by name:</p>
-
-<pre>$ find . -name *.txt
-./notes.txt</pre>
-
-<p>We expected it to find all the text files,
-but it only prints out <code>./notes.txt</code>.
-The problem is that the shell expands wildcard characters like <code>*</code> <em>before</em> commands run.
-Since <code>*.txt</code> in the current directory expands to <code>notes.txt</code>,
-the command we actually ran was:</p>
-
-<pre>$ find . -name notes.txt</pre>
-
-<p><code>find</code> did what we asked; we just asked for the wrong thing.</p>
-
-<p>To get what we want,
-let's do what we did with <code>grep</code>:
-put <code>*.txt</code> in single quotes to prevent the shell from expanding the <code>*</code> wildcard.
-This way,
-<code>find</code> actually gets the pattern <code>*.txt</code>, not the expanded filename <code>notes.txt</code>:</p>
-
-<pre>$ find . -name '*.txt'
-./data/first.txt
-./data/second.txt
-./notes.txt</pre>
-
-<p>As we said earlier,
-the command line's power lies in combining tools.
-We've seen how to do that with pipes;
-let's look at another technique.
-As we just saw,
-<code>find . -name '*.txt'</code> gives us a list of all text files in or below the current directory.
-How can we combine that with <code>wc -l</code> to count the lines in all those files?</p>
-
-<p>The simplest way is to put the <code>find</code> command inside <code>$()</code>:</p>
-
-<pre>$ wc -l $(find . -name '*.txt')
-  70  ./data/first.txt
- 420  ./data/second.txt
-  30  ./notes.txt
- 520  total
+./tools/stats</span>
 $</pre>
 
-<p>When the shell executes this command,
-the first thing it does is run whatever is inside the <code>$()</code>.
-It then replaces the <code>$()</code> expression with that command's output.
-Since the output of <code>find</code> is the three filenames <code>./data/first.txt</code>, <code>./data/second.txt</code>, and <code>./notes.txt</code>,
-the shell constructs the command:</p>
+    <p><code>find</code> automatically goes into subdirectories,
+      their subdirectories,
+      and so on to find everything that matches the pattern we've given it.
+      If we don't want it to,
+      we can use <code>-maxdepth</code> to restrict the depth of search:</p>
 
-<pre>$ wc -l ./data/first.txt ./data/second.txt ./notes.txt</pre>
+<pre>$ <span class="in">find . -maxdepth 1 -type f</span>
+<span class="out">./notes.txt</span>
+$</pre>
 
-<p>which is what we wanted.
-This expansion is exactly what the shell does when it expands wildcards like <code>*</code> and <code>?</code>,
-but lets us use any command we want as our own "wildcard".</p>
+    <p>The opposite of <code>-maxdepth</code> is <code>-mindepth</code>,
+      which tells <code>find</code> to only report things that are at or below a certain depth.
+      <code>-mindepth 2</code> therefore finds all the files that are two or more levels below us:</p>
 
-<p>It's very common to use <code>find</code> and <code>grep</code> together.
-The first finds files that match a pattern;
-the second looks for lines inside those files that match another pattern.
-Here, for example, we can find PDB files that contain iron atoms
-by looking for the string "FE" in all the <code>.pdb</code> files below the current directory:</p>
+<pre>$ <span class="in">find . -mindepth 2 -type f</span>
+<span class="out">./data/first.txt
+./data/second.txt
+./tools/format
+./tools/stats</span>
+$</pre>
 
-<pre>$ grep FE $(find . -name '*.pdb')
-./human/heme.pdb:ATOM  25  FE  1  -0.924  0.535  -0.518</pre>
+    <p>Another option is <code>-empty</code>,
+      which restricts matches to empty files and directories:</p>
 
-<blockquote>
-  <h3>Binary Files</h3>
+<pre>$ <span class="in">find . -empty</span>
+<span class="out">./thesis
+./tools/old</span>
+$</pre>
 
-  <p>We have focused exclusively on finding things in text files. What if
-your data is stored as images, in databases, or in some other format?
-One option would be to extend tools like <code>grep</code> to handle those formats.
-This hasn't happened, and probably won't, because there are too many
-formats to support.</p>
+    <p>Now let's try matching by name:</p>
 
-  <p>The second option is to convert the data to text, or extract the
-text-ish bits from the data. This is probably the most common approach,
-since it only requires people to build one tool per data format (to
-extract information). On the one hand, it makes simple things easy to
-do. On the negative side, complex things are usually impossible. For
-example, it's easy enough to write a program that will extract X and Y
-dimensions from image files for <code>grep</code> to play with, but how would you
-write something to find values in a spreadsheet whose cells contained
-formulas?</p>
+<pre>$ <span class="in">find . -name *.txt</span>
+<span class="out">./notes.txt</span>
+$</pre>
 
-  <p>The third choice is to recognize that the shell and text processing have
-their limits, and to use a programming language such as Python instead.
-When the time comes to do this, don't be too hard on the shell: many
-modern programming languages, Python included, have borrowed a lot of
-ideas from it, and imitation is also the sincerest form of praise.</p>
-</blockquote>
+    <p>We expected it to find all the text files,
+      but it only prints out <code>./notes.txt</code>.
+      The problem is that the shell expands wildcard characters like <code>*</code> <em>before</em> commands run.
+      Since <code>*.txt</code> in the current directory expands to <code>notes.txt</code>,
+      the command we actually ran was:</p>
 
-<div class="keypoints">
-  <h3>Key Points</h3>
-  <ul>
-    <li>Everything is stored as bytes, but the bytes in binary files do not represent characters.</li>
-    <li>Use nested loops to run commands for every combination of two lists of things.</li>
-    <li>Use <code>\</code> to break one logical line into several physical lines.</li>
-    <li>Use parentheses <code>()</code> to keep things combined.</li>
-    <li>Use <code>$(command)</code> to insert a command's output in place.</li>
-    <li><code>find</code> finds files with specific properties that match patterns.</li>
-    <li><code>grep</code> selects lines in files that match patterns.</li>
-    <li><code>man command</code> displays the manual page for a given command.</li>
-  </ul>
-</div>
+<pre class="in">find . -name notes.txt</pre>
 
-<div class="challenges">
-  <h3>Challenges</h3>
+    <p><code>find</code> did what we asked; we just asked for the wrong thing.</p>
 
-  <ol>
-    <li>
-      <p>Write a short explanatory comment for the following shell script:</p>
+    <p>To get what we want,
+      let's do what we did with <code>grep</code>:
+      put <code>*.txt</code> in single quotes to prevent the shell from expanding the <code>*</code> wildcard.
+      This way,
+      <code>find</code> actually gets the pattern <code>*.txt</code>, not the expanded filename <code>notes.txt</code>:</p>
 
-<pre>find . -name '*.dat' -print | wc -l | sort -n</pre>
-    </li>
-    <li>
-      <p>The <code>-v</code> flag to <code>grep</code> inverts pattern matching, so that only lines
-which do <em>not</em> match the pattern are printed. Given that, which of
-the following commands will find all files in <code>/data</code> whose names
-end in <code>ose.dat</code> (e.g., <code>sucrose.dat</code> or <code>maltose.dat</code>), but do
-<em>not</em> contain the word <code>temp</code>?</p>
+<pre>$ <span class="in">find . -name '*.txt'</span>
+<span class="out">./data/first.txt
+./data/second.txt
+./notes.txt</span>
+$</pre>
+
+    <p>As we said earlier,
+      the command line's power lies in combining tools.
+      We've seen how to do that with pipes;
+      let's look at another technique.
+      As we just saw,
+      <code>find . -name '*.txt'</code> gives us a list of all text files in or below the current directory.
+      How can we combine that with <code>wc -l</code> to count the lines in all those files?</p>
+
+    <p>The simplest way is to put the <code>find</code> command inside <code>$()</code>:</p>
+
+<pre>$ <span class="in">wc -l $(find . -name '*.txt')</span>
+<span class="out">  70  ./data/first.txt
+ 420  ./data/second.txt
+  30  ./notes.txt
+ 520  total</span>
+$</pre>
+
+    <p>When the shell executes this command,
+      the first thing it does is run whatever is inside the <code>$()</code>.
+      It then replaces the <code>$()</code> expression with that command's output.
+      Since the output of <code>find</code> is the three filenames <code>./data/first.txt</code>,
+      <code>./data/second.txt</code>,
+      and <code>./notes.txt</code>,
+      the shell constructs the command:</p>
+
+<pre>wc -l ./data/first.txt ./data/second.txt ./notes.txt</pre>
+
+    <p>which is what we wanted.
+      This expansion is exactly what the shell does when it expands wildcards like <code>*</code> and <code>?</code>,
+      but lets us use any command we want as our own "wildcard".</p>
+
+    <p>It's very common to use <code>find</code> and <code>grep</code> together.
+      The first finds files that match a pattern;
+      the second looks for lines inside those files that match another pattern.
+      Here, for example, we can find PDB files that contain iron atoms
+      by looking for the string "FE" in all the <code>.pdb</code> files below the current directory:</p>
+
+<pre>$ <span class="in">grep FE $(find . -name '*.pdb')</span>
+<span class="out">./human/heme.pdb:ATOM  25  FE  1  -0.924  0.535  -0.518</span>
+$</pre>
+
+    <blockquote>
+      <h3>Binary Files</h3>
+
+      <p>We have focused exclusively on finding things in text files. What if
+	your data is stored as images, in databases, or in some other format?
+	One option would be to extend tools like <code>grep</code> to handle those formats.
+	This hasn't happened, and probably won't, because there are too many
+	formats to support.</p>
+
+      <p>The second option is to convert the data to text, or extract the
+	text-ish bits from the data. This is probably the most common approach,
+	since it only requires people to build one tool per data format (to
+	extract information). On the one hand, it makes simple things easy to
+	do. On the negative side, complex things are usually impossible. For
+	example, it's easy enough to write a program that will extract X and Y
+	dimensions from image files for <code>grep</code> to play with, but how would you
+	write something to find values in a spreadsheet whose cells contained
+	formulas?</p>
+
+      <p>The third choice is to recognize that the shell and text processing have
+	their limits, and to use a programming language such as Python instead.
+	When the time comes to do this, don't be too hard on the shell: many
+	modern programming languages, Python included, have borrowed a lot of
+	ideas from it, and imitation is also the sincerest form of praise.</p>
+
+    </blockquote>
+
+    <div class="keypoints">
+      <h3>Key Points</h3>
+      <ul>
+	<li>Everything is stored as bytes, but the bytes in binary files do not represent characters.</li>
+	<li>Use nested loops to run commands for every combination of two lists of things.</li>
+	<li>Use <code>\</code> to break one logical line into several physical lines.</li>
+	<li>Use parentheses <code>()</code> to keep things combined.</li>
+	<li>Use <code>$(command)</code> to insert a command's output in place.</li>
+	<li><code>find</code> finds files with specific properties that match patterns.</li>
+	<li><code>grep</code> selects lines in files that match patterns.</li>
+	<li><code>man command</code> displays the manual page for a given command.</li>
+      </ul>
+    </div>
+
+    <div class="challenges">
+      <h3>Challenges</h3>
 
       <ol>
-        <li>
-          <p><code>find /data -name '*.dat' -print | grep ose | grep -v temp</code></p>
-        </li>
-        <li>
-          <p><code>find /data -name ose.dat -print | grep -v temp</code></p>
-        </li>
-        <li>
-          <p><code>grep -v temp $(find /data -name '*ose.dat' -print)</code></p>
-        </li>
-        <li>
-          <p>None of the above.</p>
-        </li>
-      </ol>
-    </li>
-  </ol>
-</div>
+	<li>
+	  Write a short explanatory comment for the following shell script:
 
-          <h1>Version Control with Git</h1>
+<pre>find . -name '*.dat' -print | wc -l | sort -n</pre>
+
+	</li>
+	<li>
+	  The <code>-v</code> flag to <code>grep</code> inverts pattern matching, so that only lines
+	  which do <em>not</em> match the pattern are printed. Given that, which of
+	  the following commands will find all files in <code>/data</code> whose names
+	  end in <code>ose.dat</code> (e.g., <code>sucrose.dat</code> or <code>maltose.dat</code>), but do
+	  <em>not</em> contain the word <code>temp</code>?
+	  <ol>
+            <li>
+              <p><code>find /data -name '*.dat' -print | grep ose | grep -v temp</code></p>
+            </li>
+            <li>
+              <p><code>find /data -name ose.dat -print | grep -v temp</code></p>
+            </li>
+            <li>
+              <p><code>grep -v temp $(find /data -name '*ose.dat' -print)</code></p>
+            </li>
+            <li>
+              <p>None of the above.</p>
+            </li>
+	  </ol>
+	</li>
+      </ol>
+    </div>
+
+    <h1>Version Control with Git</h1>
 
           <p>Wolfman and Dracula have been hired by Universal Missions
 (a space services spinoff from Euphoric State University)
@@ -2116,7 +2659,7 @@ it appears that nothing has changed:</p>
 we can see that Git has created a hidden directory called <code>.git</code>:</p>
 
 <pre>$ ls -a
-.	..	.git</pre>
+.       ..      .git</pre>
 
 <p>Git stores information about the project in this special sub-directory.
 If we ever delete it,
@@ -2151,7 +2694,7 @@ $ git status
 # Untracked files:
 #   (use "git add &lt;file&gt;..." to include in what will be committed)
 #
-#	mars.txt
+#       mars.txt
 nothing added to commit but untracked files present (use "git add" to track)</pre>
 
 <p>The "untracked files" message means that there's a file in the directory
@@ -2170,7 +2713,7 @@ We can tell Git that it should do so like this:</p>
 # Changes to be committed:
 #   (use "git rm --cached &lt;file&gt;..." to unstage)
 #
-#	new file:   mars.txt
+#       new file:   mars.txt
 #</pre>
 
 <p>Git now knows that it's supposed to keep track of this file,
@@ -2229,7 +2772,7 @@ it tells us the file has been modified:</p>
 #   (use "git add &lt;file&gt;..." to update what will be committed)
 #   (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
 #
-#	modified:   mars.txt
+#       modified:   mars.txt
 #
 no changes added to commit (use "git add" and/or "git commit -a")</pre>
 
@@ -2276,7 +2819,7 @@ the <code>+</code> on the lines below show that we are adding lines.</li>
 #   (use "git add &lt;file&gt;..." to update what will be committed)
 #   (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
 #
-#	modified:   mars.txt
+#       modified:   mars.txt
 #
 no changes added to commit (use "git add" and/or "git commit -a")</pre>
 
@@ -2471,7 +3014,7 @@ but those changes haven't been staged:</p>
 #   (use "git add &lt;file&gt;..." to update what will be committed)
 #   (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
 #
-#	modified:   mars.txt
+#       modified:   mars.txt
 #
 no changes added to commit (use "git add" and/or "git commit -a")</pre>
 
@@ -2837,7 +3380,7 @@ $ git status
 #
 # Changes to be committed:
 #
-#	modified:   mars.txt
+#       modified:   mars.txt
 #
 $ git commit -m "Merging changes from GitHub"
 [master 2abf2b1] Merging changes from GitHub</pre>
@@ -9789,8 +10332,5 @@ so that <code>*.txt</code> matches all files whose names end in <code>.txt</code
   </li>
 </ul>
 
-	</div>
-      </div>
-      </div>
-</body>
+  </body>
 </html>

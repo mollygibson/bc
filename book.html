@@ -15,7 +15,7 @@
 
 <div align="center">
 <img src="img/software-carpentry-banner.png" alt="Software Carpentry logo" />
-<h1>Software Carpentry:<br/>A Guide for the Perplexed</h1>
+<h1>Software Carpentry: A Guide for the Perplexed</h1>
 <h2>Greg Wilson</h2>
 </div>
 
@@ -2017,6 +2017,7 @@ end in <code>ose.dat</code> (e.g., <code>sucrose.dat</code> or <code>maltose.dat
     </li>
   </ol>
 </div>
+
           <h1>Version Control with Git</h1>
 
           <p>Wolfman and Dracula have been hired by Universal Missions
@@ -8438,6 +8439,672 @@ or reading everything into memory and filtering in Python?</p>
   </li>
 </ol>
 </div>
+
+<h1>Reference Guides</h1>
+
+<h2>The Unix Shell</h2>
+
+<h3>Basic Commands</h3>
+<ul>
+  <li><code>cat</code> displays the contents of its inputs.</li>
+  <li><code>cd path</code> changes the current working directory.</li>
+  <li><code>cp old new</code> copies a file.</li>
+  <li><code>find</code> finds files with specific properties that match patterns.</li>
+  <li><code>grep</code> selects lines in files that match patterns.</li>
+  <li><code>head</code> displays the first few lines of its input.</li>
+  <li><code>ls path</code> prints a listing of a specific file or directory; <code>ls</code> on its own lists the current working directory.</li>
+  <li><code>man command</code> displays the manual page for a given command.</li>
+  <li><code>mkdir path</code> creates a new directory.</li>
+  <li><code>mv old new</code> moves (renames) a file or directory.</li>
+  <li><code>pwd</code> prints the user's current working directory.</li>
+  <li><code>rm path</code> removes (deletes) a file.</li>
+  <li><code>rmdir path</code> removes (deletes) an empty directory.</li>
+  <li><code>sort</code> sorts its inputs.</li>
+  <li><code>tail</code> displays the last few lines of its input.</li>
+  <li><code>touch path</code> creates an empty file if it doesn't already exist.</li>
+  <li><code>wc</code> counts lines, words, and characters in its inputs.</li>
+  <li><code>whoami</code> shows the user's current identity.</li>
+</ul>
+
+<h3>Paths</h3>
+<ul>
+  <li><code>/path/from/root</code> is an absolute path.</li>
+  <li><code>/</code> on its own refers to the root of the filesystem.</li>
+  <li><code>path/without/leading/slash</code> is a relative path.</li>
+  <li><code>.</code> refers to the current directory, <code>..</code> to its parent.</li>
+  <li><code>*</code> matches zero or more characters in a filename, so <code>*.txt</code> matches all files ending in <code>.txt</code>.</li>
+  <li><code>?</code> matches any single character in a filename, so <code>?.txt</code> matches <code>a.txt</code> but not <code>any.txt</code>.</li>
+</ul>
+
+<h3>Combining Commands</h3>
+<ul>
+  <li><code>command &gt; file</code> redirects a command's output to a file.</li>
+  <li><code>first | second</code> connects the output of the first command to the input of the second.</li>
+  <li>
+    <p>Use a <code>for</code> loop to repeat commands once for every thing in a list:</p>
+
+    <pre>for variable in name_1 name_2 name_3
+do
+    ...commands refering to $variable...
+done</pre>
+  </li>
+  <li>Use <code>$name</code> to expand a variable (i.e., get its value).</li>
+  <li>Use <code>history</code> to display recent commands, and <code>!number</code> to repeat a command by number.</li>
+  <li>Use <code>bash filename</code> to run commands saved in <code>filename</code>.</li>
+  <li><code>$*</code> refers to all of a shell script's command-line parameters.</li>
+  <li><code>$1</code>, <code>$2</code>, etc., refer to specified command-line parameters.</li>
+  <li>Use <code>$(command)</code> to insert a command's output in place.</li>
+</ul>
+
+<h2>Git</h2>
+
+<p>Set global configuration (only needs to be done once per machine):</p>
+
+<pre>git config --global user.name "Your Name"
+git config --global user.email "you@some.domain"
+git config --global color.ui "auto"
+git config --global core.editor "your_editor"</pre>
+
+<p>Initialize the current working directory as a repository:</p>
+
+<pre>git init</pre>
+
+<p>Display the status of the repository:</p>
+
+<pre>git status</pre>
+
+<p>Add specific files to the staging area:</p>
+
+<pre>git add filename_1 filename_2</pre>
+
+<p>Add all modified files in the current directory and its sub-directories to the staging area:</p>
+
+<pre>git add -A .</pre>
+
+<p>Commit changes in the staging area to the repository's history:
+(Without <code>-m</code> and a message, this command runs a text editor.)</p>
+
+<pre>git commit -m "Some message"</pre>
+
+<p>View the history of the repository:</p>
+
+<pre>git log</pre>
+
+<p>Display differences between the current state of the repository and the last saved state:</p>
+
+<pre>git diff</pre>
+
+<p>Display differences between the current state of a particular file and the last saved state:</p>
+
+<pre>git diff path/to/file</pre>
+
+<p>Display differences between the last saved state and what's in the staging area:</p>
+
+<pre>git diff --staged</pre>
+
+<p>Compare files to the previously saved state:</p>
+
+<pre>git diff HEAD~1 path/to/file</pre>
+
+<p>Compare files to an earlier saved state:</p>
+
+<pre>git diff HEAD~27 path/to/file</pre>
+
+<p>Compare files to a specific earlier state:</p>
+
+<pre>git diff 123456 path/to/file</pre>
+
+<p>Erase changes since the last save:</p>
+
+<pre>git reset --hard HEAD</pre>
+
+<p>Restore file to its state in a previous revision:</p>
+
+<pre>git checkout 123456 path/to/file</pre>
+
+<p>Add a remote to a repository:</p>
+
+<pre>git remote add nickname remote_specification</pre>
+
+<p>Display a repository's remotes:</p>
+
+<pre>git remote -v</pre>
+
+<p>Push changes from a local repository to a remote (assuming <code>master</code> already exists in the remote):</p>
+
+<pre>git push nickname master</pre>
+
+<p>Push changes from a local repository to a remote (if <code>master</code> doesn't yet exist in the remote):</p>
+
+<pre>git push -u nickname master</pre>
+
+<p>Pull changes from a remote repoisitory:</p>
+
+<pre>git pull nickname master</pre>
+
+<p>Note: <code>master</code> may be replaced with another branch name by more advanced users.</p>
+
+<p>Clone a remote repository:</p>
+
+<pre>git clone remote_specification</pre>
+
+<p>Markers used to show conflict in a file during a merge:</p>
+
+<pre>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+lines from local file
+=======
+lines from remote file
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1234567890abcdef1234567890abcdef12345678</pre>
+
+<h2>Python</h2>
+
+<h3>Basic Operations</h3>
+
+<ul>
+  <li>Use <code>variable = value</code> to assign a value to a variable.</li>
+  <li>Use <code>print first, second, third</code> to display values.</li>
+  <li>Python counts from 0, not from 1.</li>
+  <li><code>#</code> starts a comment.</li>
+  <li>Statements in a block must be indented (usually by four spaces).</li>
+  <li><code>help(thing)</code> displays help.</li>
+  <li><code>len(thing)</code> produces the length of a collection.</li>
+  <li><code>[value1, value2, value3, ...]</code> creates a list.</li>
+  <li><code>list_name[i]</code> selects the i'th value from a list.</li>
+</ul>
+
+<h3>Control Flow</h3>
+
+<ul>
+  <li>
+    <p>Create a <code>for</code> loop to process elements in a collection one at a time:</p>
+
+    <pre>for variable in collection:
+    ...body...</pre>
+  </li>
+  <li>
+    <p>Create a conditional using <code>if</code>, <code>elif</code>, and <code>else</code>:</p>
+
+    <pre>if condition_1:
+    ...body...
+elif condition_2:
+    ...body...
+else:
+    ...body...</pre>
+  </li>
+  <li>Use <code>==</code> to test for equality.</li>
+  <li><code>X and Y</code> is only true if both X and Y are true.</li>
+  <li><code>X or Y</code> is true if either X or Y, or both, are true.</li>
+  <li>Use <code>assert condition, message</code> to check that something is true when the program is running.</li>
+</ul>
+
+<h3>Functions</h3>
+
+<ul>
+  <li><code>def name(...params...)</code> defines a new function.</li>
+  <li><code>def name(param=default)</code> specifies a default value for a parameter.</li>
+  <li>Call a function using <code>name(...values...)</code>.</li>
+</ul>
+
+<h3>Libraries</h3>
+
+<ul>
+  <li>Import a library into a program using <code>import libraryname</code>.</li>
+  <li>The <code>sys</code> library contains:
+    <ul>
+      <li><code>sys.argv</code>: the command-line arguments a program was run with.</li>
+      <li><code>sys.stdin</code>, <code>sys.stdout</code>: standard input and output.</li>
+    </ul>
+  </li>
+  <li><code>glob.glob(pattern)</code> returns a list of files whose names match a pattern.</li>
+</ul>
+
+<h3>Arrays</h3>
+
+<ul>
+  <li><code>import numpy</code> to load the NumPy library.</li>
+  <li><code>array.shape</code> gives the shape of an array.</li>
+  <li><code>array[x, y]</code> selects a single element from an array.</li>
+  <li><code>low:high</code> specifies a slice including elements from <code>low</code> to <code>high-1</code>.</li>
+  <li><code>array.mean()</code>, <code>array.max()</code>, and <code>array.min()</code> calculate simple statistics.</li>
+  <li><code>array.mean(axis=0)</code> calculates statistics across the specified axis.</li>
+</ul>
+
+<h2>SQL</h2>
+
+          <h2 id="basic-queries">Basic Queries</h2>
+
+<p>Select one or more columns from a table:</p>
+
+<pre>SELECT column_name_1, column_name_2 FROM table_name;</pre>
+
+<p>Select all columns from a table:</p>
+
+<pre>SELECT * FROM table_name;</pre>
+
+<p>Get only unique results in a query:</p>
+
+<pre>SELECT DISTINCT column_name FROM table_name;</pre>
+
+<p>Perform calculations in a query:</p>
+
+<pre>SELECT column_name_1, ROUND(column_name_2 / 1000.0) FROM table_name;</pre>
+
+<p>Sort results in ascending order:</p>
+
+<pre>SELECT * FROM table_name ORDER BY column_name_1;</pre>
+
+<p>Sort results in ascending and descending order:</p>
+
+<pre>SELECT * FROM table_name ORDER BY column_name_1 ASC, column_name_2 DESC;</pre>
+
+<h2 id="filtering">Filtering</h2>
+
+<p>Select only data meeting a condition:</p>
+
+<pre>SELECT * FROM table_name WHERE column_name &gt; 0;</pre>
+
+<p>Select only data meeting a combination of conditions:</p>
+
+<pre>SELECT * FROM table_name WHERE (column_name_1 &gt;= 1000) AND (column_name_2 = 'A' OR column_name_2 = 'B');</pre>
+
+<h2 id="missing-data">Missing Data</h2>
+
+<p>Use <code>NULL</code> to represent missing data.</p>
+
+<p><code>NULL</code> is not 0, false, or any other specific value.
+Operations involving <code>NULL</code> produce <code>NULL</code>, so <code>1+NULL</code>, <code>2&gt;NULL</code>, and <code>3=NULL</code> are all <code>NULL</code>.</p>
+
+<p>Test whether a value is null:</p>
+
+<pre>SELECT * FROM table_name WHERE column_name IS NULL;</pre>
+
+<p>Test whether a value is not null:</p>
+
+<pre>SELECT * FROM table_name WHERE column_name IS NOT NULL;</pre>
+
+<h2 id="grouping-and-aggregation">Grouping and Aggregation</h2>
+
+<p>Combine values using aggregation functions:</p>
+
+<pre>SELECT SUM(column_name_1) FROM table_name;</pre>
+
+<p>Combine data into groups and calculate combined values in groups:</p>
+
+<pre>SELECT column_name_1, SUM(column_name_2), COUNT(*) FROM table_name GROUP BY column_name_1;</pre>
+
+<h2 id="joins">Joins</h2>
+
+<p>Join data from two tables:</p>
+
+<pre>SELECT * FROM table_name_1 JOIN table_name_2 ON table_name_1.column_name = table_name_2.column_name;</pre>
+
+<h2 id="writing-queries">Writing Queries</h2>
+
+<p>SQL commands must be combined in the following order:
+<code>SELECT</code>, <code>FROM</code>, <code>JOIN</code>, <code>ON</code>, <code>WHERE</code>, <code>GROUP BY</code>, <code>ORDER BY</code>.</p>
+
+<h2 id="creating-tables">Creating Tables</h2>
+
+<p>Create tables by specifying column names and types.
+Include primary and foreign key relationships and other constraints.</p>
+
+<pre>CREATE TABLE survey(
+    taken   INTEGER NOT NULL,
+    person  TEXT,
+    quant   REAL NOT NULL,
+    PRIMARY KEY(taken, quant),
+    FOREIGN KEY(person) REFERENCES person(ident)
+);</pre>
+
+<h2 id="programming">Programming</h2>
+
+<p>Execute queries in a general-purpose programming language by:</p>
+
+<ul>
+  <li>loading the appropriate library</li>
+  <li>creating a connection</li>
+  <li>creating a cursor</li>
+  <li>repeatedly:
+    <ul>
+      <li>execute a query</li>
+      <li>fetch some or all results</li>
+    </ul>
+  </li>
+  <li>disposing of the cursor</li>
+  <li>closing the connection</li>
+</ul>
+
+<p>Python example:</p>
+
+<pre>import sqlite3
+connection = sqlite3.connect("database_name")
+cursor = connection.cursor()
+cursor.execute("...query...")
+for r in cursor.fetchall():
+    ...process result r...
+cursor.close()
+connection.close()</pre>
+
+<h1>Instructor's Guide</h1>
+
+<h2>The Unix Shell</h2>
+
+          <p>Many people have questioned whether we should still teach the shell.
+After all,
+anyone who wants to rename several thousand data files
+can easily do so interactively in the Python interpreter,
+and anyone who's doing serious data analysis
+is probably going to do most of their work inside the IPython Notebook or R Studio.
+So why teach the shell?</p>
+
+<p>The first answer is,
+"Because so much else depends on it."
+Installing software,
+configuring your default editor,
+and controlling remote machines frequently assume a basic familiarity with the shell,
+and with related ideas like standard input and output.
+Many tools also use its terminology
+(for example, the <code>%ls</code> and <code>%cd</code> magic commands in IPython).</p>
+
+<p>The second answer is,
+"Because it's an easy way to introduce some fundamental ideas about how to use computers."
+As we teach people how to use the Unix shell,
+we teach them that they should get the computer to repeat things
+(via tab completion,
+<code>!</code> followed by a command number,
+and <code>for</code> loops)
+rather than repeating things themselves.
+We also teach them to take things they've discovered they do frequently
+and save them for later re-use
+(via shell scripts),
+to give things sensible names,
+and to write a little bit of documentation
+(like comment at the top of shell scripts)
+to make their future selves' lives better.</p>
+
+<p>Finally,
+and perhaps most importantly,
+teaching people the shell lets us teach them
+to think about programming in terms of function composition.
+In the case of the shell,
+this takes the form of pipelines rather than nested function calls,
+but the core idea of "small pieces, loosely joined" is the same.</p>
+
+<p>All of this material can be covered in three hours
+as long as learners using Windows do not run into roadblocks such as:</p>
+
+<ul>
+  <li>not being able to figure out where their home directory is
+(particularly if they're using Cygwin);</li>
+  <li>not being able to run a plain text editor;
+and</li>
+  <li>the shell refusing to run scripts that include DOS line endings.</li>
+</ul>
+
+<h3>Teaching Notes</h3>
+
+<ul>
+  <li>
+    <p>Have learners open a shell
+and then do <code>whoami</code>,
+<code>pwd</code>,
+and <code>ls</code>.
+Then have them create a directory called <code>bootcamp</code>
+and <code>cd</code> into it,
+so that everything else they do during the lesson
+is unlikely to harm whatever files they already have.</p>
+  </li>
+  <li>
+    <p>Get them to run an editor
+and save a file in their <code>bootcamp</code> directory
+as early as possible.
+Doing this is usually the biggest stumbling block during the entire lesson:
+many will try to run the same editor as the instructor
+(which may leave them trapped in the awful nether hell that is Vim),
+or will not know how to navigate to the right directory
+to save their file,
+or will run a word processor rather than a plain text editor.
+The quickest way past these problems is to have more knowledgeable learners
+help those who need it.</p>
+  </li>
+  <li>
+    <p>Tab completion sounds like a small thing: it isn't.
+Re-running old commands using <code>!123</code> or <code>!wc</code>
+isn't a small thing either,
+and neither are wildcard expansion and <code>for</code> loops.
+Each one is an opportunity to repeat one of the big ideas of Software Carpentry:
+if the computer <em>can</em> repeat it,
+some programmer somewhere will almost certainly have built 
+some way for the computer <em>to</em> repeat it.</p>
+  </li>
+  <li>
+    <p>Building up a pipeline with four or five stages,
+then putting it in a shell script for re-use
+and calling that script inside a <code>for</code> loop,
+is a great opportunity to show how
+"seven plus or minus two"
+connects to programming.
+Once we have figured out how to do something moderately complicated,
+we make it re-usable and give it a name
+so that it only takes up one slot in working memory
+rather than several.
+It is also a good opportunity to talk about exploratory programming:
+rather than designing a program up front,
+we can do a few useful things
+and then retroactively decide which are worth encapsulating
+for future re-use.</p>
+  </li>
+  <li>
+    <p>We have to leave out many important things because of time constraints,
+including file permissions, job control, and SSH.
+If learners already understand the basic material,
+this can be covered instead using the online lessons as guidelines.</p>
+  </li>
+  <li>
+    <p>Installing Bash and a reasonable set of Unix commands on Windows
+always involves some fiddling and frustration.
+Please see the latest set of installation guidelines for advice,
+and try it out yourself <em>before</em> teaching a class.</p>
+  </li>
+</ul>
+
+<h2>Git</h2>
+
+          <p>Version control might be the most important topic we teach,
+but Git is definitely the most complicated tool.
+However,
+GitHub presently dominates the open software forge landscape,
+so we have to help novices learn just enough Git
+to feel they can and should learn more on their own.</p>
+
+<p>This is why we don't teach branching:
+while it is a power tool in the hands of a knowledgeable user,
+it is an extra cognitive burden for someone who is new to the idea of version control.
+This is also why we don't get into hashes and commit objects with novices,
+but try instead to convince them that version control is:</p>
+
+<ol>
+  <li>a better backup system;</li>
+  <li>a better Dropbox; and</li>
+  <li>a better way to collaborate than mailing files back and forth.</li>
+</ol>
+
+<p>We close with material on licensing because:</p>
+
+<ol>
+  <li>questions about who owns what, or can use what,
+arise naturally once we start talking about
+using public services like GitHub to store files;
+and</li>
+  <li>the discussion gives learners a chance to catch their breath
+after what is often a frustrating couple of hours.</li>
+</ol>
+
+<h3>Teaching Notes</h3>
+
+<ul>
+  <li>
+    <p>Make sure the network is working <em>before</em> starting this lesson.</p>
+  </li>
+  <li>
+    <p>Give learners a five-minute overview of what version control does for them
+before diving into the watch-and-do practicals.
+Most of them will have tried to co-author papers by emailing files back and forth,
+or will have biked into the office
+only to realize that the USB key with last night's work
+is still on the kitchen table.
+Instructors can also make jokes about directories with names like
+"final version",
+"final version revised",
+"final version with reviewer three's corrections",
+"really final version",
+and,
+"come on this really has to be the last version"
+to motivate version control as a better way to collaborate
+and as a better way to back work up.</p>
+  </li>
+  <li>
+    <p>Version control is typically taught after the shell,
+so collect learners' names during that session
+and create a repository for them to share
+with their names as both their IDs and their passwords.</p>
+  </li>
+  <li>
+    <p>If your learners are advanced enough to be comfortable SSH,
+tell them they can use keys to authenticate on GitHub instead of passwords,
+but don't try to set this up during class:
+it takes too long,
+and is a distraction from the core ideas of the lesson.</p>
+  </li>
+  <li>
+    <p>Be very clear what files learners are to edit
+and what user IDs they are to use
+when giving instructions.
+It is common for them to edit the instructor's biography,
+or to use the instructor's user ID and password when committing.
+Be equally clear <em>when</em> they are to edit things:
+it's also common for someone to edit the file the instructor is editing
+and commit changes while the instructor is explaining what's going on,
+so that a conflict occurs when the instructor comes to commit the file.</p>
+  </li>
+  <li>
+    <p>If some learners are using Windows,
+there will inevitably be issues merging files with different line endings.</p>
+  </li>
+</ul>
+
+<h2>Python</h2>
+
+          <p>This lesson is written as an introduction to Python,
+but its real purpose is to introduce the single most important idea in programming:
+how to solve problems by building functions,
+each of which can fit in a programmer's working memory.
+In order to teach that,
+we must teach people a little about
+the mechanics of manipulating data with lists and file I/O
+so that their functions can do things they actually care about.
+Our teaching order tries to show practical uses of every idea as soon as it is introduced;
+instructors should resist the temptation to explain
+the "other 90%" of the language
+as well.</p>
+
+<p>The secondary goal of this lesson is to give them a usable mental model of how programs run
+(what computer science educators call a <a href="../../gloss.html#notional-machine">notional machine</a>
+so that they can debug things when they go wrong.
+In particular,
+they must understand how function call stacks work.</p>
+
+<p>The final example asks them to build a command-line tool
+that works with the Unix pipe-and-filter model.
+We do this because it is a useful skill
+and because it helps learners see that the software they use isn't magical.
+Tools like <code>grep</code> might be more sophisticated than
+the programs our learners can write at this point in their careers,
+but it's crucial they realize this is a difference of scale rather than kind.</p>
+
+<h3>Teaching Notes</h3>
+
+<ul>
+  <li>
+    <p>Watching the instructor grow programs step by step
+is as helpful to learners as anything to do with Python.
+Resist the urge to update a single cell repeatedly
+(which is what you'd probably do in real life).
+Instead,
+clone the previous cell and write the update in the new copy
+so that learners have a complete record of how the program grew.
+Once you've done this,
+you can say,
+"Now why don't we just breaks things into small functions right from the start?"</p>
+  </li>
+  <li>
+    <p>The discussion of command-line scripts
+assumes that students understand standard I/O and building filters,
+which are covered in the lesson on the shell.</p>
+  </li>
+</ul>
+
+<h2>SQL</h2>
+
+          <p>Relational databases are not as widely used in science as in business,
+but they are still a common way to store large data sets with complex structure.
+Even when the data itself isn't in a database,
+the metadata could be:
+for example,
+meteorological data might be stored in files on disk,
+but data about when and where observations were made,
+data ranges,
+and so on could be in a database
+to make it easier for scientists to find what they want to.</p>
+
+<h3>Teaching Notes</h3>
+
+<ul>
+  <li>
+    <p>The first few sections (up to "Missing Data") usually go very quickly.
+The pace usually slows down a bit when null values are discussed
+mostly because learners have a lot of details to keep straight by this point.
+Things <em>really</em> slow down during the discussion of joins,
+but this is the key idea in the whole lesson:
+important ideas like primary keys and referential integrity
+only make sense once learners have seen how they're used in joins.
+It's worth going over things a couple of times if necessary (with lots of examples).</p>
+  </li>
+  <li>
+    <p>The sections on creating and modifying data,
+and programming with databases,
+can be dropped if time is short.
+Of the two,
+people seem to care most about how to add data (which only takes a few minutes to demonstrate).</p>
+  </li>
+  <li>
+    <p>Overall,
+this material takes three hours to present assuming that a short exercise is done with each topic.</p>
+  </li>
+  <li>
+    <p>Simple calculations are actually easier to do in a spreadsheet;
+the advantages of using a database become clear as soon as filtering and joins are needed.
+Instructors may therefore want to show a spreadsheet with the information from the four database tables
+consolidated into a single sheet,
+and demonstrate what's needed in both systems to answer questions like,
+"What was the average radiation reading in 1931?"</p>
+  </li>
+  <li>Some learners may have heard that NoSQL databases
+(i.e., ones that don't use the relational model)
+are the next big thing,
+and ask why we're not teaching those.
+The answers are:
+    <ol>
+      <li>Relational databases are far more widely used than NoSQL databases.</li>
+      <li>We have far more experience with relational databases than with any other kind,
+so we have a better idea of what to teach and how to teach it.</li>
+      <li>NoSQL databases are as different from each other as they are from relational databases.
+Until a leader emerges, it isn't clear <em>which</em> NoSQL database we should teach.</li>
+    </ol>
+  </li>
+  <li>Run <code>sqlite3 survey.db &lt; gen-survey-database.sql</code>
+to re-create survey database before loading notebooks.</li>
+</ul>
 
           <h1>Recommended Reading</h1>
           <h2>Papers</h2>

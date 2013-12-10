@@ -92,7 +92,7 @@
       These technologies didn't become widespread until the 1980s,
       but their roots go back to Doug Engelbart's work in the 1960s,
       which you can see in what has been called
-      "<a href="http://video.google.com/videoplay?docid=-8734787622017763097#">The Mother of All Demos</a>".</p>
+      <a href="http://video.google.com/videoplay?docid=-8734787622017763097#">The Mother of All Demos</a>.</p>
 
     <p>Going back even further,
       the only way to interact with early computers was to rewire them.
@@ -5943,13 +5943,13 @@ AssertionError: Calculated upper Y coordinate invalid</span></pre>
       that their understanding matches what the code is doing.</p>
 
     <p>Most good programmers follow two rules when adding assertions to their code.
-      The first is, "<a href="../../rules.html#fail-early-fail-often">fail early, fail often</a>".
+      The first is, <a href="#rule:fail-early-fail-often">fail early, fail often</a>.
       The greater the distance between when and where an error occurs and when it's
       noticed,
       the harder the error will be to debug,
       so good code catches mistakes as early as possible.</p>
 
-    <p>The second rule is, "<a href="../../rules.html#turn-bugs-into-assertions-or-tests">turn bugs into assertions or tests</a>".
+    <p>The second rule is, <a href="#rule:turn-bugs-into-assertions-or-tests">turn bugs into assertions or tests</a>.
       If you made a mistake in a piece of code,
       the odds are good that you have made other mistakes nearby,
       or will make the same mistake (or a related one)
@@ -6145,7 +6145,7 @@ AssertionError:</span></pre>
       respectively,
       regardless of the input values.
       This violates another important rule of programming:
-      "<a href="../../rules.html#always-initialize-from-data">always initialize from data</a>".
+      <a href="#rule:always-initialize-from-data">always initialize from data</a>.
       We'll leave it as an exercise to fix <code>range_overlap</code>.</p>
 
     <h3>Debugging</h3>
@@ -6163,7 +6163,7 @@ AssertionError:</span></pre>
     <h4>Know What It's Supposed to Do</h4>
 
     <p>The first step in debugging something is to
-      <a href="../../rules.html#know-what-its-supposed-to-do">know what it's supposed to do</a>.
+      <a href="#rule:know-what-its-supposed-to-do">know what it's supposed to do</a>.
       "My program doesn't work" isn't good enough:
       in order to diagnose and fix problems,
       we need to be able to tell correct output from incorrect.
@@ -6243,7 +6243,7 @@ AssertionError:</span></pre>
 
     <p>We can only debug something when it fails,
       so the second step is always to find a test case that
-      <a href="../../rules.html#make-it-fail-every-time">makes it fail every time</a>.
+      <a href="#rule:make-it-fail-every-time">makes it fail every time</a>.
       The "every time" part is important because
       few things are more frustrating than debugging an intermittent problem:
       if we have to call a function a dozen times to get a single failure,
@@ -6271,7 +6271,7 @@ AssertionError:</span></pre>
       we're also more likely to be distracted by other things as we wait for our
       program to fail,
       which means the time we <em>are</em> spending on the problem is less focused.
-      It's therefore critical to <a href="../../rules.html#make-it-fail-fast">make it fail fast</a>.</p>
+      It's therefore critical to <a href="#rule:make-it-fail-fast">make it fail fast</a>.</p>
 
     <p>As well as making the program fail fast in time,
       we want to make it fail fast in space,
@@ -6303,7 +6303,7 @@ AssertionError:</span></pre>
       if you got it wrong the first time,
       you'll probably get it wrong the second and third as well.)
       Good programmers therefore
-      <a href="../../rules.html#change-one-thing-at-a-time">change one thing at a time, for a reason</a>
+      <a href="#rule:change-one-thing-at-a-time">change one thing at a time, for a reason</a>
       They are either trying to gather more information
       ("is the bug still there if we change the order of the loops?")
       or test a fix
@@ -6328,7 +6328,7 @@ AssertionError:</span></pre>
       or running ones whose results won't be interesting.
       Similarly,
       debugging works best when we
-      <a href="../../rules.html#keep-track-of-what-youve-done">keep track of what we've done</a>
+      <a href="#rule:keep-track-of-what-youve-done">keep track of what we've done</a>
       and how well it worked.
       If we find ourselves asking,
       "Did left followed by right with an odd number of lines cause the crash?
@@ -6347,7 +6347,7 @@ AssertionError:</span></pre>
 
     <p>And speaking of help:
       if we can't find a bug in 10 minutes,
-      we should <a href="../../rules.html#be-humble">be humble</a> and ask for help.
+      we should <a href="#rule:be-humble">be humble</a> and ask for help.
       Just explaining the problem aloud is often useful,
       since hearing what we're thinking helps us spot inconsistencies and hidden
       assumptions.</p>
@@ -6371,7 +6371,7 @@ AssertionError:</span></pre>
 
     <p>And that is what makes us most productive in the long run.
       As the saying goes,
-      "<a href="../../rules.html#week-hard-work-hour-thought">A week of hard work can sometimes save you an hour of thought</a>."
+      <a href="#rule:week-hard-work-hour-thought">A week of hard work can sometimes save you an hour of thought</a>.
       If we train ourselves to avoid making some kinds of mistakes,
       to break our code into modular, testable chunks,
       and to turn every assumption (or mistake) into an assertion,
@@ -6623,7 +6623,7 @@ $ <span class="in">ipython readings-02.py small-01.csv</span>
       we can see that our program is calculating the mean correctly for each line,
       whereas we were really taking it on faith before.
       This is yet another rule of programming:
-      "<a href="../../rules.html#test-simple-first">test the simple things first</a>".</p>
+      <a href="#rule:>test-simple-first">test the simple things first</a>.</p>
 
     <p>We want our program to process each file separately,
       so we need a looop that executes once for each filename.
@@ -9731,154 +9731,158 @@ connection.close()</pre>
 
     <h1>Glossary</h1>
 
-    <p><strong>absolute path</strong>: <a name="gloss:absolute-path"></a>
+    <p id="gloss:absolute-path"><strong>absolute path</strong>:
       A <a href="#gloss:path">path</a> that refers to a particular location in a file system.
       Absolute paths are usually written with respect to the file system's
       <a href="#gloss:root-directory">root directory</a>,
       and begin with either "/" (on Unix) or "" (on Microsoft Windows).
       See also: <a href="#gloss:relative-path">relative path</a>.</p>
 
-    <p><strong>additive color model</strong>: <a name="gloss:additive-color-model"></a>
+    <p id="gloss:additive-color-model"><strong>additive color model</strong>:
       A way to represent colors as the sum of contributions from primary colors
       such as <a href="#gloss:rgb">red, green, and blue</a>.</p>
 
-    <p><strong>aggregation function</strong>: <a name="gloss:aggregation-function"></a>
+    <p id="gloss:aggregation-function"><strong>aggregation function</strong>:
       A function such as <code>sum</code> or <code>max</code> that combines many values to produce a single result.</p>
 
-    <p><strong>alias</strong> (a library): <a name="gloss:alias-library"></a>
+    <p id="gloss:alias-library"><strong>alias</strong> (a library):
       To give a library a nickname while importing it.</p>
 
-    <p><strong>assertion</strong>: <a name="gloss:assertion"></a>
+    <p id="gloss:assertion"><strong>assertion</strong>:
       An expression which is supposed to be true at a particular point in a program.
       Programmers typically put assertions in their code to check for errors;
       if the assertion fails (i.e., if the expression evaluates as false),
       the program halts and produces an error message.
-      See also: <a href="#gloss:invariant">invariant</a>, <a href="#gloss:precondition">precondition</a>, <a href="#gloss:postcondition">postcondition</a>.</p>
+      See also:
+      <a href="#gloss:invariant">invariant</a>,
+      <a href="#gloss:precondition">precondition</a>,
+      <a href="#gloss:postcondition">postcondition</a>.</p>
 
-    <p><strong>assignment</strong>: <a name="gloss:assignment"></a>
+    <p id="gloss:assignment"><strong>assignment</strong>:
       To give a value a name by associating a variable with it.</p>
 
-    <p><strong>atomic value</strong>: <a name="gloss:atomic-value"></a>
+    <p id="gloss:atomic-value"><strong>atomic value</strong>:
       A value that cannot be decomposed into smaller pieces.
       For example,
       the number 12 is usually considered atomic
       (unless we are teaching addition to school children,
       in which case we might decompose it into tens and ones).</p>
 
-    <p><strong>call stack</strong>: <a name="gloss:call-stack"></a>
+    <p id="gloss:call-stack"><strong>call stack</strong>:
       A data structure inside a running program that keeps track of active function calls.
       Each call's variables are stored in a <a href="#gloss:stack-frame">stack frame</a>;
       a new stack frame is put on top of the stack for each call,
       and discarded when the call is finished.</p>
 
-    <p><strong>cascading delete</strong>: <a name="gloss:cascading-delete"></a>
+    <p id="gloss:cascading-delete"><strong>cascading delete</strong>:
       The practice of automatically deleting things in a database
       that depend on a record
       when that record is deleted.
       See also: <a href="#gloss:referential-integrity">referential integrity</a>.</p>
 
-    <p><strong>case insensitive</strong>: <a name="gloss:case-insensitive"></a>
+    <p id="gloss:case-insensitive"><strong>case insensitive</strong>:
       Treating text as if upper and lower case characters were the same.
       See also: <a href="#gloss:case-sensitive">case sensitive</a>.</p>
 
-    <p><strong>change set</strong>: <a name="gloss:change-set"></a>
+    <p id="gloss:change-set"><strong>change set</strong>:
       A group of changes to one or more files
-      that are <a href="#gloss:commit">committed</a> to a <a href="#gloss:version-control">version control</a> <a href="#gloss:repository">repository</a>
+      that are <a href="#gloss:commit">committed</a> to a
+      <a href="#gloss:version-control">version control</a> <a href="#gloss:repository">repository</a>
       in a single operation.</p>
 
-    <p><strong>clone</strong> (a repository): <a name="gloss:repository-clone"></a>
+    <p id="gloss:repository-clone"><strong>clone</strong> (a repository):
       To make a copy of a <a href="#gloss:repository">version control repository</a>.</p>
 
-    <p><strong>comma-separated values</strong> (CSV): <a name="gloss:csv"></a>
+    <p id="gloss:csv"><strong>comma-separated values</strong> (CSV):
       A common textual representation for tables
       in which the values in each row are separated by commas.</p>
 
-    <p><strong>command-line interface</strong> (CLI): <a name="gloss:cli"></a>
+    <p id="gloss:cli"><strong>command-line interface</strong> (CLI):
       An interface based on typing commands,
       usually at a <a href="#gloss:repl">REPL</a>.
       See also: <a href="#gloss:gui">graphical user interface</a>.</p>
 
-    <p><strong>comment</strong>: <a name="gloss:comment"></a>
+    <p id="gloss:comment"><strong>comment</strong>:
       A remark in a program that is intended to help human readers understand what is going on,
       but is ignored by the computer.
       Comments in Python, R, and the Unix shell start with a <code>#</code> character and run to the end of the line;
       comments in SQL start with <code>--</code>,
       and other languages have other conventions.</p>
 
-    <p><strong>conditional statement</strong>: <a name="gloss:conditional-statement"></a>
+    <p id="gloss:conditional-statement"><strong>conditional statement</strong>:
       A statement in a program that might or might not be executed
       depending on whether a test is true or false.</p>
 
-    <p><strong>conflict</strong>: <a name="gloss:conflict"></a>
+    <p id="gloss:conflict"><strong>conflict</strong>:
       A change made by one user of a <a href="#gloss:version-control">version control system</a>
       that is incompatible with changes made by other users.
       Helping users <a href="#gloss:resolve">resolve</a> conflicts
       is one of version control's major tasks.</p>
 
-    <p><strong>cross product</strong>: <a name="gloss:cross-product"></a>
+    <p id="gloss:cross-product"><strong>cross product</strong>:
       A pairing of all elements of one set with all elements of another.</p>
 
-    <p><strong>current working directory</strong>: <a name="gloss:current-working-directory"></a>
+    <p id="gloss:current-working-directory"><strong>current working directory</strong>:
       The directory that <a href="#gloss:relative-path">relative paths</a> are calculated from;
       equivalently,
       the place where files referenced by name only are searched for.
       Every <a href="#gloss:process">process</a> has a current working directory.
       The current working directory is usually referred to using the shorthand notation <code>.</code> (pronounced "dot").</p>
 
-    <p><strong>cursor</strong>: <a name="gloss:cursor"></a>
+    <p id="gloss:cursor"><strong>cursor</strong>:
       A pointer into a database that keeps track of outstanding operations.</p>
 
-    <p><strong>data type</strong>: <a name="gloss:data-type"></a>
+    <p id="gloss:data-type"><strong>data type</strong>:
       A kind of data value,
       such as <a href="#gloss:integer">integer</a> or <a href="#gloss:string">character string</a>.</p>
 
-    <p><strong>database manager</strong>: <a name="gloss:database-manager"></a>
+    <p id="gloss:database-manager"><strong>database manager</strong>:
       A program that manages a <a href="#gloss:relational-database">relational database</a>.</p>
 
-    <p><strong>default parameter value</strong>: <a name="gloss:default-parameter-value"></a>
+    <p id="gloss:default-parameter-value"><strong>default parameter value</strong>:
       A value to use for a parameter if nothing is specified explicitly.</p>
 
-    <p><strong>defensive programming</strong>: <a name="gloss:defensive-programming"></a>
+    <p id="gloss:defensive-programming"><strong>defensive programming</strong>:
       The practice of writing programs that check their own operation to catch errors as early as possible.</p>
 
-    <p><strong>delimiter</strong>: <a name="gloss:delimiter"></a>
+    <p id="gloss:delimiter"><strong>delimiter</strong>:
       A character or characters used to separate individual values,
       such as the commas between columns in a <a href="#gloss:csv">CSV</a> file.</p>
 
-    <p><strong>disk block</strong>: <a name="gloss:disk-block"></a>
+    <p id="gloss:disk-block"><strong>disk block</strong>:
       The smallest unit of storage that can be allocated on a computer disk.
       Disk blocks are typically 512 bytes in size.</p>
 
-    <p><strong>docstring</strong>: <a name="gloss:docstring"></a>
+    <p id="gloss:docstring"><strong>docstring</strong>:
       Short for "documentation string",
       this refers to textual documentation embedded in Python programs.
       Unlike comments,
       docstrings are preserved in the running program
       and can be examined in interactive sessions.</p>
 
-    <p><strong>documentation</strong>: <a name="gloss:documentation"></a>
+    <p id="gloss:documentation"><strong>documentation</strong>:
       Human-language text written to explain what software does,
       how it works,
       or how to use it.</p>
 
-    <p><strong>dotted notation</strong>: <a name="gloss:dotted-notation"></a>
+    <p id="gloss:dotted-notation"><strong>dotted notation</strong>:
       A two-part notation used in many programming languages
       in which <code>thing.component</code> refers to the <code>component</code> belonging to <code>thing</code>.</p>
 
-    <p><strong>empty string</strong>: <a name="gloss:empty-string"></a>
+    <p id="gloss:empty-string"><strong>empty string</strong>:
       A character string containing no characters,
       often thought of as the "zero" of text.</p>
 
-    <p><strong>encapsulation</strong>: <a name="gloss:encapsulation"></a>
+    <p id="gloss:encapsulation"><strong>encapsulation</strong>:
       The practice of hiding something's implementation details
       so that the rest of a program can worry about <em>what</em> it does
       rather than <em>how</em> it does it.</p>
 
-    <p><strong>field</strong> (of a database): <a name="gloss:field-database"></a>
+    <p id="gloss:field-database"><strong>field</strong> (of a database):
       A set of data values of a particular type,
       one for each <a href="#gloss:record-database">record</a> in a <a href="#gloss:table-database">table</a>.</p>
 
-    <p><strong>filename extension</strong>: <a name="gloss:filename-extension"></a>
+    <p id="gloss:filename-extension"><strong>filename extension</strong>:
       The portion of a file's name that comes after the final "." character.
       By convention this identifies the file's type:
       <code>.txt</code> means "text file",
@@ -9889,20 +9893,20 @@ connection.close()</pre>
       Since many applications use filename extensions to identify the <a href="#gloss:mime-type">MIME type</a> of the file,
       misnaming files may cause those applications to fail.</p>
 
-    <p><strong>filesystem</strong>: <a name="gloss:filesystem"></a>
+    <p id="gloss:filesystem"><strong>filesystem</strong>:
       A set of files, directories, and I/O devices (such as keyboards and screens).
       A filesystem may be spread across many physical devices,
       or many filesystems may be stored on a single physical device;
       the <a href="#gloss:operating-system">operating system</a> manages access.</p>
 
-    <p><strong>filter</strong>: <a name="gloss:filter"></a>
+    <p id="gloss:filter"><strong>filter</strong>:
       A program that transforms a stream of data.
       Many Unix command-line tools are written as filters:
       they read data from <a href="#gloss:standard-input">standard input</a>,
       process it,
       and write the result to <a href="#gloss:standard-output">standard output</a>.</p>
 
-    <p><strong>flag</strong>: <a name="gloss:command-line-flag"></a>
+    <p id="gloss:command-line-flag"><strong>flag</strong>:
       A terse way to specify an option or setting to a command-line program.
       By convention Unix applications use a dash followed by a single letter,
       such as <code>-v</code>,
@@ -9912,142 +9916,142 @@ connection.close()</pre>
       such as <code>/V</code>.
       Depending on the application, a flag may be followed by a single argument, as in <code>-o /tmp/output.txt</code>.</p>
 
-    <p><strong>floating point number</strong> (float): <a name="gloss:float"></a>
+    <p id="gloss:float"><strong>floating point number</strong> (float):
       A number containing a fractional part and an exponent.
       See also: <a href="#gloss:integer">integer</a>.</p>
 
-    <p><strong>for loop</strong>: <a name="gloss:for-loop"></a>
+    <p id="gloss:for-loop"><strong>for loop</strong>:
       A loop that is executed once for each value in some kind of set, list, or range.
       See also: <a href="#gloss:while-loop">while loop</a>.</p>
 
-    <p><strong>foreign key</strong>: <a name="gloss:foreign-key"></a>
+    <p id="gloss:foreign-key"><strong>foreign key</strong>:
       One or more values in a <a href="#gloss:table-database">database table</a>
       that identify a <a href="#gloss:record-database">records</a> in another table.</p>
 
-    <p><strong>function composition</strong>: <a name="gloss:function-composition"></a>
+    <p id="gloss:function-composition"><strong>function composition</strong>:
       The immediate application of one function to the result of another,
       such as <code>f(g(x))</code>.</p>
 
-    <p><strong>graphical user interface</strong> (GUI): <a name="gloss:gui"></a>
+    <p id="gloss:gui"><strong>graphical user interface</strong> (GUI):
       A graphical user interface,
       usually controlled by using a mouse.
       See also: <a href="#gloss:cli">command-line interface</a>.</p>
 
-    <p><strong>home directory</strong>: <a name="gloss:home-directory"></a>
+    <p id="gloss:home-directory"><strong>home directory</strong>:
       The default directory associated with an account on a computer system.
       By convention, all of a user's files are stored in or below her home directory.</p>
 
-    <p><strong>immutable</strong>: <a name="gloss:immutable"></a>
+    <p id="gloss:immutable"><strong>immutable</strong>:
       Unchangeable.
       The value of immutable data cannot be altered after it has been created.
       See also: <a href="#gloss:mutable">mutable</a>.</p>
 
-    <p><strong>import</strong>: <a name="gloss:import"></a>
+    <p id="gloss:import"><strong>import</strong>:
       To load a library into a program.</p>
 
-    <p><strong>in-place operator</strong>: <a name="gloss:in-place-operator"></a>
+    <p id="gloss:in-place-operator"><strong>in-place operator</strong>:
       An operator such as <code>+=</code> that provides a shorthand notation for
       the common case in which the variable being assigned to
       is also an operand on the right hand side of the assignment.
       For example,
       the statement <code>x += 3</code> means the same thing as <code>x = x + 3</code>.</p>
 
-    <p><strong>index</strong>: <a name="gloss:index"></a>
+    <p id="gloss:index"><strong>index</strong>:
       A subscript that specifies the location of a single value in a collection,
       such as a single pixel in an image.</p>
 
-    <p><strong>infective license</strong>: <a name="gloss:infective-license"></a>
+    <p id="gloss:infective-license"><strong>infective license</strong>:
       A license such as the <a href="http://opensource.org/licenses/GPL-3.0">GPL</a>
       that compels people who incorporate material into their own work
       to place similar sharing requirements on it.</p>
 
-    <p><strong>inner loop</strong>: <a name="gloss:inner-loop"></a>
+    <p id="gloss:inner-loop"><strong>inner loop</strong>:
       A loop that is inside another loop.
       See also: <a href="#gloss:outer-loop">outer loop</a>.</p>
 
-    <p><strong>integer</strong>: <a name="gloss:integer"></a>
+    <p id="gloss:integer"><strong>integer</strong>:
       A whole number, such as -12343.
       See also: <a href="#gloss:float">floating-point number</a>.</p>
 
-    <p><strong>invariant</strong>: <a name="gloss:invariant"></a>
+    <p id="gloss:invariant"><strong>invariant</strong>:
       An expression whose value doesn't change during the execution of a program,
       typically used in an <a href="#gloss:assertion">assertion</a>.
       See also: <a href="#gloss:precondition">precondition</a>, <a href="#gloss:postcondition">postcondition</a>.</p>
 
-    <p><strong>loop body</strong>: <a name="gloss:loop-body"></a>
+    <p id="gloss:loop-body"><strong>loop body</strong>:
       The statements that are executed inside a loop.</p>
 
-    <p><strong>loop variable</strong>: <a name="gloss:loop-variable"></a>
+    <p id="gloss:loop-variable"><strong>loop variable</strong>:
       The variable that keeps track of the progress of the loop.</p>
 
-    <p><strong>member</strong>: <a name="gloss:member"></a>
+    <p id="gloss:member"><strong>member</strong>:
       A variable contained within an <a href="#gloss:object">object</a>.</p>
 
-    <p><strong>merge</strong> (a repository): <a name="gloss:repository-merge"></a>
+    <p id="gloss:repository-merge"><strong>merge</strong> (a repository):
       To reconcile two sets of change to a [repository].</p>
 
-    <p><strong>method</strong>: <a name="gloss:method"></a>
+    <p id="gloss:method"><strong>method</strong>:
       A function which is tied to a particular <a href="#gloss:object">object</a>.
       Each of an object's methods typically implements one of the things it can do,
       or one of the questions it can answer.</p>
 
-    <p><strong>mutable</strong>: <a name="gloss:mutable"></a>
+    <p id="gloss:mutable"><strong>mutable</strong>:
       Changeable.
       The value of mutable data can be updated in place.
       See also: <a href="#gloss:immutable">immutable</a>.</p>
 
-    <p><strong>notional machine</strong>: <a name="gloss:notional-machine"></a>
+    <p id="gloss:notional-machine"><strong>notional machine</strong>:
       An abstraction of a computer used to think about what it can and will do.</p>
 
-    <p><strong>object</strong>: <a name="gloss:object"></a>
+    <p id="gloss:object"><strong>object</strong>:
       A particular "chunk" of data associated with specific operations called <a href="#gloss:method">methods</a>.</p>
 
-    <p><strong>orthogonal</strong>: <a name="gloss:orthogonal"></a>
+    <p id="gloss:orthogonal"><strong>orthogonal</strong>:
       To have meanings or behaviors that are independent of each other.
       If a set of concepts or tools are orthogonal,
       they can be combined in any way.</p>
 
-    <p><strong>outer loop</strong>: <a name="gloss:outer-loop"></a>
+    <p id="gloss:outer-loop"><strong>outer loop</strong>:
       A loop that contains another loop.
       See also: <a href="#gloss:inner-loop">inner loop</a>.</p>
 
-    <p><strong>parameter</strong>: <a name="gloss:parameter"></a>
+    <p id="gloss:parameter"><strong>parameter</strong>:
       A value passed into a function,
       or a variable named in the functin's declaration
       that is used to hold such a value.</p>
 
-    <p><strong>parent directory</strong>: <a name="gloss:parent-directory"></a>
+    <p id="gloss:parent-directory"><strong>parent directory</strong>:
       The directory that "contains" the one in question.
       Every directory in a file system except the <a href="#gloss:root-directory">root directory</a> has a parent.
       A directory's parent is usually referred to using the shorthand notation <code>..</code> (pronounced "dot dot").</p>
 
-    <p><strong>pipe</strong>: <a name="gloss:pipe"></a>
+    <p id="gloss:pipe"><strong>pipe</strong>:
       A connection from the output of one program to the input of another.
       When two or more programs are connected in this way, they are called a "pipeline".</p>
 
-    <p><strong>pipe and filter</strong>: <a name="gloss:pipe-and-filter"></a>
+    <p id="gloss:pipe-and-filter"><strong>pipe and filter</strong>:
       A model of programming in which <a href="#gloss:filter">filters</a> that process <a href="#gloss:stream">streams</a> of data
       are connected end-to-end.
       The pipe and filter model is used extensively in the Unix <a href="#gloss:shell">shell</a>.</p>
 
-    <p><strong>postcondition</strong>: <a name="gloss:postcondition"></a>
+    <p id="gloss:postcondition"><strong>postcondition</strong>:
       A condition that a function (or other block of code) guarantees is true
       once it has finished running.
       Postconditions are often represented using <a href="#gloss:assertion">assertions</a>.</p>
 
-    <p><strong>precondition</strong>: <a name="gloss:precondition"></a>
+    <p id="gloss:precondition"><strong>precondition</strong>:
       A condition that must be true in order for a function (or other block of code) to run correctly.</p>
 
-    <p><strong>prepared statement</strong>: <a name="gloss:prepared-statement"></a>
+    <p id="gloss:prepared-statement"><strong>prepared statement</strong>:
       A template for an <a href="#gloss:sql">SQL</a> query in which some values can be filled in.</p>
 
-    <p><strong>primary key</strong>: <a name="gloss:primary-key"></a>
+    <p id="gloss:primary-key"><strong>primary key</strong>:
       One or more <a href="#gloss:field-database">fields</a> in a <a href="#gloss:table-database">database table</a>
       whose values are guaranteed to be unique for each <a href="#gloss:record-database">record</a>,
       i.e.,
       whose values uniquely identify the entry.</p>
 
-    <p><strong>process</strong>: <a name="gloss:process"></a>
+    <p id="gloss:process"><strong>process</strong>:
       A running instance of a program,
       containing code,
       variable values,
@@ -10057,128 +10061,128 @@ connection.close()</pre>
       it typically runs each process for a few milliseconds at a time
       to give the impression that they are executing simultaneously.</p>
 
-    <p><strong>prompt</strong>: <a name="gloss:prompt"></a>
+    <p id="gloss:prompt"><strong>prompt</strong>:
       A character or characters display by a <a href="#gloss:repl">REPL</a> to show that
       it is waiting for its next command.</p>
 
-    <p><strong>query</strong>: <a name="gloss:query"></a>
+    <p id="gloss:query"><strong>query</strong>:
       A database operation that reads values but does not modify anything.
       Queries are expressed in a special-purpose language called <a href="#gloss:sql">SQL</a>.</p>
 
-    <p><strong>quoting</strong> (in the shell): <a name="gloss:shell-quoting"></a>
+    <p id="gloss:shell-quoting"><strong>quoting</strong> (in the shell):
       Using quotation marks of various kinds to prevent the shell from interpreting special characters.
       For example,
       to pass the string <code>*.txt</code> to a program,
       it is usually necessary to write it as <code>'*.txt'</code> (with single quotes)
       so that the shell will not try to expand the <code>*</code> wildcard.</p>
 
-    <p><strong>read-eval-print loop</strong> (REPL): <a name="gloss:repl"></a>
+    <p id="gloss:repl"><strong>read-eval-print loop</strong> (REPL):
       a <a href="#gloss:cli">command-line interface</a> that reads a command from the user,
       executes it,
       prints the result,
       and waits for another command.</p>
 
-    <p><strong>record</strong> (in a database): <a name="gloss:record-database"></a>
+    <p id="gloss:record-database"><strong>record</strong> (in a database):
       A set of related values making up a single entry in a <a href="#gloss:table-database">database table</a>,
       typically shown as a row.
       See also: <a href="#gloss:field-database">field</a>.</p>
 
-    <p><strong>redirect</strong>: <a name="gloss:redirect"></a>
+    <p id="gloss:redirect"><strong>redirect</strong>:
       To send a command's output to a file rather than to the screen or another command,
       or equivalently to read a command's input from a file.</p>
 
-    <p><strong>referential integrity</strong>: <a name="gloss:referential-integrity"></a>
+    <p id="gloss:referential-integrity"><strong>referential integrity</strong>:
       The internal consistency of values in a database.
       If an entry in one table contains a <a href="#gloss:foreign-key">foreign key</a>,
       but the corresponding <a href="#gloss:record-database">records</a> don't exist,
       referential integrity has been violated.</p>
 
-    <p><strong>regression</strong>: <a name="gloss:regression"></a>
+    <p id="gloss:regression"><strong>regression</strong>:
       To re-introduce a bug that was once fixed.</p>
 
-    <p><strong>regular expressions</strong> (RE): <a name="gloss:regular-expression"></a>
+    <p id="gloss:regular-expression"><strong>regular expressions</strong> (RE):
       A pattern that specifies a set of character strings.
       REs are most often used to find sequences of characters in strings.</p>
 
-    <p><strong>relational database</strong>: <a name="gloss:relational-database"></a>
+    <p id="gloss:relational-database"><strong>relational database</strong>:
       A collection of data organized into <a href="#gloss:table-database">tables</a>.</p>
 
-    <p><strong>relative path</strong>: <a name="gloss:relative-path"></a>
+    <p id="gloss:relative-path"><strong>relative path</strong>:
       A <a href="#gloss:path">path</a> that specifies the location of a file or directory
       with respect to the <a href="#gloss:current-working-directory">current working directory</a>.
       Any path that does not begin with a separator character ("/" or "") is a relative path.
       See also: <a href="#gloss:absolute-path">absolute path</a>.</p>
 
-    <p><strong>remote repository</strong>: <a name="gloss:repository-remote"></a>
+    <p id="gloss:repository-remote"><strong>remote repository</strong>:
       A version control <a href="#gloss:repository">repository</a> other than the current one
       that the current one is somehow connected to or mirroring.</p>
 
-    <p><strong>repository</strong>: <a name="gloss:repository"></a>
+    <p id="gloss:repository"><strong>repository</strong>:
       A central storage area where a <a href="#gloss:version-control">version control</a> system
       stores old <a href="#gloss:revision">revisions</a> of files
       and information about who changed what, when.</p>
 
-    <p><strong>resolve</strong>: <a name="gloss:resolve"></a>
+    <p id="gloss:resolve"><strong>resolve</strong>:
       To eliminate the <a href="#gloss:conflict">conflicts</a> between two or more incompatible changes to a file or set of files
       being managed by a <a href="#gloss:version-control">version control</a> system.</p>
 
-    <p><strong>return statement</strong>: <a name="gloss:return-statement"></a>
+    <p id="gloss:return-statement"><strong>return statement</strong>:
       A statement that causes a function to stop executing and return a value to its caller immediately.</p>
 
-    <p><strong>revision</strong>: <a name="gloss:revision"></a>
+    <p id="gloss:revision"><strong>revision</strong>:
       A recorded state of a <a href="#gloss:version-control">version control</a> <a href="#gloss:repository">repository</a>.</p>
 
-    <p><strong>RGB</strong> (red-green-blue): <a name="gloss:rgb"></a>
+    <p id="gloss:rgb"><strong>RGB</strong> (red-green-blue):
       An <a href="#gloss:additive-color-model">additive model</a>
       that represents colors as combinations of red, green, and blue.
       Each color's value is typically in the range 0..255
       (i.e., a one-byte integer).</p>
 
-    <p><strong>root directory</strong>: <a name="gloss:root-directory"></a>
+    <p id="gloss:root-directory"><strong>root directory</strong>:
       The top-most directory in a <a href="#gloss:filesystem">filesystem</a>.
       Its name is "/" on Unix (including Linux and Mac OS X) and "" on Microsoft Windows.</p>
 
-    <p><strong>sentinel value</strong>: <a name="gloss:sentinel-value"></a>
+    <p id="gloss:sentinel-value"><strong>sentinel value</strong>:
       A value in a collection that has a special meaning,
       such as 999 to mean "age unknown".</p>
 
-    <p><strong>sequence</strong>: <a name="gloss:sequence"></a>
+    <p id="gloss:sequence"><strong>sequence</strong>:
       An ordered collection of values
       whose elements can be specified with a single integer index,
       such as a vector.</p>
 
-    <p><strong>shape</strong> (of an array): <a name="gloss:shape"></a>
+    <p id="gloss:shape"><strong>shape</strong> (of an array):
       An array's dimensions, represented as a vector.
       For example, a 5&times;3 array's shape is <code>(5,3)</code>.</p>
 
-    <p><strong>shell</strong>: <a name="gloss:shell"></a>
+    <p id="gloss:shell"><strong>shell</strong>:
       A <a href="#gloss:cli">command-line interface</a>
       such as Bash (the Bourne-Again Shell)
       or the Microsoft Windows DOS shell
       that allows a user to interact with the <a href="#gloss:operating-system">operating system</a>.</p>
 
-    <p><strong>shell script</strong>: <a name="gloss:shell-script"></a>
+    <p id="gloss:shell-script"><strong>shell script</strong>:
       A set of <a href="#gloss:shell">shell</a> commands stored in a file for re-use.
       A shell script is a program executed by the shell;
       the name "script" is used for historical reasons.</p>
 
-    <p><strong>silent failure</strong>: <a name="gloss:silent-failure"></a>
+    <p id="gloss:silent-failure"><strong>silent failure</strong>:
       Failing without producing any warning messages.
       Silent failures are hard to detect and debug.</p>
 
-    <p><strong>slice</strong>: <a name="gloss:slice"></a>
+    <p id="gloss:slice"><strong>slice</strong>:
       A regular subsequence of a larger sequence,
       such as the first five elements or every second element.</p>
 
-    <p><strong>SQL</strong> (Structured Query Language): <a name="gloss:sql"></a>
+    <p id="gloss:sql"><strong>SQL</strong> (Structured Query Language):
       A special-purpose language for describing operations on <a href="#gloss:relational-database">relational databases</a>.</p>
 
-    <p><strong>SQL injection attack</strong>: <a name="gloss:sql-injection-attack"></a>
+    <p id="gloss:sql-injection-attack"><strong>SQL injection attack</strong>:
       An attack on a program in which the user's input contains malicious SQL statements.
       If this text is copied directly into an SQL statement,
       it will be executed in the database.</p>
 
-    <p><strong>stack frame</strong>: <a name="gloss:stack-frame"></a>
+    <p id="gloss:stack-frame"><strong>stack frame</strong>:
       A data structure that provides storage for a function's local variables.
       Each time a function is called,
       a new stack frame is created
@@ -10186,103 +10190,63 @@ connection.close()</pre>
       When the function returns,
       the stack frame is discarded.</p>
 
-    <p><strong>standard input</strong> (stdin): <a name="gloss:standard-input"></a>
+    <p id="gloss:standard-input"><strong>standard input</strong> (stdin):
       A process's default input stream.
       In interactive command-line applications,
       it is typically connected to the keyboard;;
       in a <a href="#gloss:pipe">pipe</a>,
       it receives data from the <a href="#gloss:standard-output">standard output</a> of the preceding process.</p>
 
-    <p><strong>standard output</strong> (stdout): <a name="gloss:standard-output"></a>
+    <p id="gloss:standard-output"><strong>standard output</strong> (stdout):
       A process's default output stream.
       In interactive command-line applications,
       data sent to standard output is displayed on the screen;
       in a <a href="#gloss:pipe">pipe</a>,
       it is passed to the <a href="#gloss:standard-input">standard input</a> of the next process.</p>
 
-    <p><strong>stride</strong>: <a name="gloss:stride"></a>
+    <p id="gloss:stride"><strong>stride</strong>:
       The offset between successive elements of a <a href="#gloss:slice">slice</a>.</p>
 
-    <p><strong>string</strong>: <a name="gloss:string"></a>
+    <p id="gloss:string"><strong>string</strong>:
       Short for "character string",
       a <a href="#gloss:sequence">sequence</a> of zero or more characters.</p>
 
-    <p><strong>sub-directory</strong>: <a name="gloss:sub-directory"></a>
+    <p id="gloss:sub-directory"><strong>sub-directory</strong>:
       A directory contained within another directory.</p>
 
-    <p><strong>tab completion</strong>: <a name="gloss:tab-completion"></a>
+    <p id="gloss:tab-completion"><strong>tab completion</strong>:
       A feature provided by many interactive systems in which
       pressing the Tab key triggers automatic completion of the current word or command.</p>
 
-    <p><strong>table</strong> (in a database): <a name="gloss:table-database"></a>
+    <p id="gloss:table-database"><strong>table</strong> (in a database):
       A set of data in a <a href="#gloss:relational-database">relational database</a>
       organized into a set of <a href="#gloss:record-database">records</a>,
       each having the same named <a href="#gloss:field-database">fields</a>.</p>
 
-    <p><strong>test oracle</strong>: <a name="gloss:test-oracle"></a>
+    <p id="gloss:test-oracle"><strong>test oracle</strong>:
       A program, device, data set, or human being
       against which the results of a test can be compared.</p>
 
-    <p><strong>test-driven development</strong> (TDD): <a name="gloss:test-driven-development"></a>
+    <p id="gloss:test-driven-development"><strong>test-driven development</strong> (TDD):
       The practice of writing unit tests <em>before</em> writing the code they test.</p>
 
-    <p><strong>tuple</strong>: <a name="gloss:tuple"></a>
+    <p id="gloss:tuple"><strong>tuple</strong>:
       An <a href="#gloss:immutable">immutable</a> <a href="#gloss:sequence">sequence</a> of values.</p>
 
-    <p><strong>variable</strong>: <a name="gloss:variable"></a>
+    <p id="gloss:variable"><strong>variable</strong>:
       A name in a program that is associated with a value or a collection of values.</p>
 
-    <p><strong>version control</strong>: <a name="gloss:version-control"></a>
+    <p id="gloss:version-control"><strong>version control</strong>:
       A tool for managing changes to a set of files.
       Each set of changes creates a new <a href="#gloss:revision">revision</a> of the files;
       the version control system allows users to recover old revisions reliably,
       and helps manage conflicting changes made by different users.</p>
 
-    <p><strong>wildcard</strong>: <a name="gloss:wildcard"></a>
+    <p id="gloss:wildcard"><strong>wildcard</strong>:
       A character used in pattern matching.
       In the Unix shell,
       the wildcard "*" matches zero or more characters,
       so that <code>*.txt</code> matches all files whose names end in <code>.txt</code>.</p>
-
-    <h1>The Rules</h1>
-    <ul>
-      <li>
-	A week of hard work can sometimes save you an hour of thought. <a name="week-hard-work-hour-thought"></a>
-      </li>
-      <li>
-	Fail early, fail often. <a name="fail-early-fail-often"></a>
-      </li>
-      <li>
-	Turn bugs into assertions or tests. <a name="turn-bugs-into-assertions-or-tests"></a>
-      </li>
-      <li>
-	Red, green, refactor. <a name="red-green-refactor"></a>
-      </li>
-      <li>
-	Always initialize from data. <a name="always-initialize-from-data"></a>
-      </li>
-      <li>
-	Test the simple things first. <a name="test-simple-first"></a>
-      </li>
-      <li>
-	Know what it's supposed to do. <a name="know-what-its-supposed-to-do"></a>
-      </li>
-      <li>
-	Make it fail every time. <a name="make-it-fail-every-time"></a>
-      </li>
-      <li>
-	Make it fail fast. <a name="make-it-fail-fast"></a>
-      </li>
-      <li>
-	Change on thing at a time, for a reason. <a name="change-one-thing-at-a-time"></a>
-      </li>
-      <li>
-	Keep track of what you've done. <a name="keep-track-of-what-youve-done"></a>
-      </li>
-      <li>
-	Be humble. <a name="be-humble"></a>
-      </li>
-    </ul>
 
     <h1>Appendix A: A Bit More Shell</h1>
 
@@ -10924,7 +10888,7 @@ moon&gt; <span class="in">pwd</span>
 <span class="out">/home/vlad</span>
 moon&gt; <span class="in">ls -F</span>
 <span class="out">bin/     cheese.txt   dark_side/   rocks.cfg</span>
-moon&gt; <span class="in">exit</span></span>
+moon&gt; <span class="in">exit</span>
 $ <span class="in">pwd</span>
 <span class="out">/users/vlad</span>
 $</pre>
@@ -11006,6 +10970,433 @@ $</pre>
       the remote shell has run <code>ls results</code> for us
       and sent the output back to our local shell for display.
     </p>
+
+    <h1>Appendix B: A Bit More on Defensive Programming</h1>
+
+    <h2>Exceptions</h2>
+
+    <p>Assertions help us catch errors in our code,
+      but things can go wrong for other reasons,
+      like missing or badly-formatted files.
+      Most modern programming languages allow programmers to use
+      <a href="../../gloss.html#exception">exceptions</a> to separate
+      what the program should do if everything goes right
+      from what it should do if something goes wrong.
+      Doing this makes both cases easier to read and understand.</p>
+
+    <p>For example,
+      here's a small piece of code that tries to read parameters and a grid from two
+      separate files,
+      and reports an error if either goes wrong:</p>
+    
+<pre><span class="in">try:
+    params = read_params(param_file)
+    grid = read_grid(grid_file)
+except:
+    log.error('Failed to read input file(s)')
+    sys.exit(ERROR)</span></pre>
+
+    <p>We join the normal case and the error-handling code using the keywords <code>try</code> and
+      <code>except</code>.
+      These work together like <code>if</code> and <code>else</code>:
+      the statements under the <code>try</code> are what should happen if everything works,
+      while the statements under <code>except</code> are what the program should do if something
+      goes wrong.</p>
+
+    <p>We have actually seen exceptions before without knowing it,
+      since by default,
+      when an exception occurs,
+      Python prints it out and halts our program.
+      For example,
+      trying to open a nonexistent file triggers a type of exception called an
+      <code>IOError</code>,
+      while trying to access a list element that doesn't exist
+      causes an <code>IndexError</code>:</p>
+
+<pre><span class="in">open('nonexistent-file.txt', 'r')</span>
+<span class="err">---------------------------------------------------------------------------
+IOError                                   Traceback (most recent call last)
+
+&lt;ipython-input-13-58cbde3dd63c&gt; in &lt;module&gt;()
+----&gt; 1 open('nonexistent-file.txt', 'r')
+
+IOError: [Errno 2] No such file or directory: 'nonexistent-file.txt'</span>
+
+<span class="in">values = [0, 1, 2]
+print values[999]</span>
+
+<span class="err">---------------------------------------------------------------------------
+IndexError                                Traceback (most recent call last)
+
+&lt;ipython-input-14-7fed13afc650&gt; in &lt;module&gt;()
+      1 values = [0, 1, 2]
+----&gt; 2 print values[999]
+
+IndexError: list index out of range</span></pre>
+
+    <p>We can use <code>try</code> and <code>except</code> to deal with these errors ourselves
+      if we don't want the program simply to fall over:</p>
+
+<pre><span class="in">try:
+    reader = open('nonexistent-file.txt', 'r')
+except IOError:
+    print 'Whoops!'</span>
+<span class="err">Whoops!</span></pre>
+
+    <p>When Python executes this code,
+      it runs the statement inside the <code>try</code>.
+      If that works, it skips over the <code>except</code> block without running it.
+      If an exception occurs inside the <code>try</code> block,
+      though,
+      Python compares the type of the exception to the type specified by the <code>except</code>.
+      If they match, it executes the code in the <code>except</code> block.</p>
+
+    <p><code>IOError</code> is the particular kind of exception Python raises
+      when there is a problem related to input and output,
+      such as files not existing
+      or the program not having the permissions it needs to read them.
+      We can put as many lines of code in a <code>try</code> block as we want,
+      just as we can put many statements under an <code>if</code>.
+      We can also handle several different kinds of errors afterward.
+      For example,
+      here's some code to calculate the entropy at each point in a grid:</p>
+
+<pre><span class="in">python
+try:
+    params = read_params(param_file)
+    grid = read_grid(grid_file)
+    entropy = lee_entropy(params, grid)
+    write_entropy(entropy_file, entropy)
+except IOError:
+    report_error_and_exit('IO error')
+except ArithmeticError:
+    report_error_and_exit('Arithmetic error')</span></pre>
+
+    <p>Python tries to run the four functions inside the <code>try</code> as normal.
+      If an error occurs in any of them,
+      Python immediately jumps down
+      and tries to find an <code>except</code> of the corresponding type:
+      if the exception is an <code>IOError</code>,
+      Python jumps into the first error handler,
+      while if it's an <code>ArithmeticError</code>,
+      Python jumps into the second handler instead.
+      It will only execute one of these,
+      just as it will only execute one branch
+      of a series of <code>if</code>/<code>elif</code>/<code>else</code> statements.</p>
+
+    <p>This layout has made the code easier to read,
+      but we've lost something important:
+      the message printed out by the <code>IOError</code> branch doesn't tell us
+      which file caused the problem.
+      We can do better if we capture and hang on to the object that Python creates
+      to record information about the error:</p>
+
+<pre><span class="in">python
+try:
+    params = read_params(param_file)
+    grid = read_grid(grid_file)
+    entropy = lee_entropy(params, grid)
+    write_entropy(entropy_file, entropy)
+except IOError as err:
+    report_error_and_exit('Cannot read/write' + err.filename)
+except ArithmeticError as err:
+    report_error_and_exit(err.message)</span></pre>
+
+    <p>If something goes wrong in the <code>try</code>,
+      Python creates an exception object,
+      fills it with information,
+      and assigns it to the variable <code>err</code>.
+      (There's nothing special about this variable name&mdash;we can use anything we
+      want.)
+      Exactly what information is recorded depends on what kind of error occurred;
+      Python's documentation describes the properties of each type of error in detail,
+      but we can always just print the exception object.
+      In the case of an I/O error,
+      we print out the name of the file that caused the problem.
+      And in the case of an arithmetic error,
+      printing out the message embedded in the exception object is what Python would
+      have done anyway.</p>
+
+    <p>So much for how exceptions work:
+      how should they be used?
+      Some programmers use <code>try</code> and <code>except</code> to give their programs default
+      behaviors.
+      For example,
+      if this code can't read the grid file that the user has asked for,
+      it creates a default grid instead:</p>
+
+<pre><span class="in">python
+try:
+    grid = read_grid(grid_file)
+except IOError:
+    grid = default_grid()</span></pre>
+
+    <p>Other programmers would explicitly test for the grid file,
+      and use <code>if</code> and <code>else</code> for control flow:</p>
+
+<pre><span class="in">python
+if file_exists(grid_file):
+    grid = read_grid(grid_file)
+else:
+    grid = default_grid()</span></pre>
+
+    <p>It's mostly a matter of taste,
+      but we prefer the second style.
+      As a rule,
+      exceptions should only be used to handle exceptional cases.
+      If the program knows how to fall back to a default grid,
+      that's not an unexpected event.
+      Using <code>if</code> and <code>else</code>
+      instead of <code>try</code> and <code>except</code>
+      sends different signals to anyone reading our code,
+      even if they do the same thing.</p>
+
+    <p>Novices often ask another question about exception handling style as well,
+      but before we address it,
+      there's something in our example that you might not have noticed.
+      Exceptions can actually be thrown a long way:
+      they don't have to be handled immediately.
+      Take another look at this code:</p>
+
+<pre><span class="in">python
+try:
+    params = read_params(param_file)
+    grid = read_grid(grid_file)
+    entropy = lee_entropy(params, grid)
+    write_entropy(entropy_file, entropy)
+except IOError as err:
+    report_error_and_exit('Cannot read/write' + err.filename)
+except ArithmeticError as err:
+    report_error_and_exit(err.message)</span></pre>
+
+    <p>The four lines in the <code>try</code> block are all function calls.
+      They might catch and handle exceptions themselves,
+      but if an exception occurs in one of them that <em>isn't</em> handled internally,
+      Python looks in the calling code for a matching <code>except</code>.
+      If it doesn't find one there,
+      it looks in that function's caller,
+      and so on.
+      If we get all the way back to the main program without finding an exception
+      handler,
+      Python's default behavior is to print an error message like the ones we've been
+      seeing all along.</p>
+
+    <p>This rule is the origin of the saying
+      <a href="#rule:throw-low-catch-high">throw low, catch high</a>.
+      There are many places in our program where an error might occur.
+      There are only a few, though, where errors can sensibly be handled.
+      For example,
+      a linear algebra library doesn't know whether it's being called directly from
+      the Python interpreter,
+      or whether it's being used as a component in a larger program.
+      In the latter case,
+      the library doesn't know if the program that's calling it is being run from the
+      command line or from a GUI.
+      The library therefore shouldn't try to handle or report errors itself,
+      because it has no way of knowing what the right way to do this is.
+      It should instead just raise an exception,
+      and let its caller figure out how best to handle it.</p>
+
+    <p>Finally,
+      we can raise exceptions ourselves if we want to.
+      In fact,
+      we <em>should</em> do this,
+      since it's the standard way in Python to signal that something has gone wrong.
+      Here,
+      for example,
+      is a function that reads a grid and checks its consistency:</p>
+    
+<pre>def read_grid(grid_file):
+
+    data = read_raw_data(grid_file)
+    if not grid_consistent(data):
+        raise Exception('Inconsistent grid: ' + grid_file)
+    result = normalize_grid(data)
+
+    return result</pre>
+
+    <p>The <code>raise</code> statement creates a new exception with a meaningful error message.
+      Since <code>read_grid</code> itself doesn't contain a <code>try</code>/<code>except</code> block,
+      this exception will always be thrown up and out of the function,
+      to be caught and handled by whoever is calling <code>read_grid</code>.
+      We can define new types of exceptions if we want to.
+      And we should,
+      so that errors in our code can be distinguished from errors in other people's
+      code.
+      However,
+      this involves classes and objects,
+      which is outside the scope of these lessons.</p>
+
+    <h2>Unit Testing</h2>
+
+    <p>Most people don't enjoy writing tests,
+      so if we want them to actually do it,
+      it must be easy to:</p>
+
+    <ul>
+      <li>add or change tests,</li>
+      <li>understand the tests that have already been written,</li>
+      <li>run those tests, and</li>
+      <li>understand those tests' results.</li>
+    </ul>
+
+    <p>Test results must also be reliable.
+      If a testing tool says that code is working when it's not,
+      or reports problems when there actually aren't any,
+      people will lose faith in it and stop using it.</p>
+
+    <p>The simplest kind of test is a <a href="#gloss:unit_test">unit test</a>
+      that checks the behavior of one component of a program.
+      As an example,
+      suppose we're testing a function called <code>rectangle_area</code>
+      that returns the area of an <code>(x0, y0, x1, y1)</code> rectangle.
+      We'll start by testing our code directly using <code>assert</code>.
+      Here,
+      we call the function three times with different arguments,
+      checking that the right value is returned each time.</p>
+
+<pre><span class="in">from rectangle import rectangle_area
+
+assert rectangle_area([0, 0, 1, 1]) == 1.0
+assert rectangle_area([1, 1, 4, 4]) == 9.0
+assert rectangle_area([0, 1, 4, 7]) == 24.0</span>
+
+<span class="err">---------------------------------------------------------------------------
+AssertionError                            Traceback (most recent call last)
+
+&lt;ipython-input-16-ebf7f5f1c120&gt; in &lt;module&gt;()
+      3 assert rectangle_area([0, 0, 1, 1]) == 1.0
+      4 assert rectangle_area([1, 1, 4, 4]) == 9.0
+----&gt; 5 assert rectangle_area([0, 1, 4, 7]) == 24.0
+
+AssertionError:</span></pre>
+
+    <p>This result is used,
+      in the sense that we know something's wrong,
+      but look closely at what happens if we run the tests in a different order:</p>
+
+<pre><span class="in">assert rectangle_area([0, 1, 4, 7]) == 24.0
+assert rectangle_area([1, 1, 4, 4]) == 9.0
+assert rectangle_area([0, 0, 1, 1]) == 1.0</span>
+
+<span class="err">---------------------------------------------------------------------------
+AssertionError                            Traceback (most recent call last)
+
+&lt;ipython-input-17-548f3f32c981&gt; in &lt;module&gt;()
+----&gt; 1 assert rectangle_area([0, 1, 4, 7]) == 24.0
+      2 assert rectangle_area([1, 1, 4, 4]) == 9.0
+      3 assert rectangle_area([0, 0, 1, 1]) == 1.0
+
+AssertionError:</span></pre>
+
+    <p>Python halts at the first failed assertion,
+      so the second and third tests aren't run at all.
+      It would be more helpful if we could get data from all of our tests every time
+      they're run,
+      since the more information we have,
+      the faster we're likely to be able to track down bugs.
+      It would also be helpful to have some kind of summary report:
+      if our <a href="#gloss:test_suite">test suite</a> includes thirty or forty tests
+      (as it well might for a complex function or library that's widely used),
+      we'd like to know how many passed or failed.</p>
+
+    <p>Here's a different approach.
+      First, let's put each test in a function with a meaningful name:</p>
+
+<pre><span class="in">def test_unit_square():
+    assert rectangle_area([0, 0, 1, 1]) == 1.0
+
+def test_large_square():
+    assert rectangle_area([1, 1, 4, 4]) == 9.0
+
+def test_actual_rectangle():
+    assert rectangle_area([0, 1, 4, 7]) == 24.0</span></pre>
+
+    <p>Next,
+      import a library called <code>ears</code>
+      and ask it to run our tests for us:</p>
+
+<pre><span class="in">import ears
+ears.run()</span>
+
+<span class="out">..f
+2 pass, 1 fail, 0 error
+----------------------------------------
+fail: test_actual_rectangle
+Traceback (most recent call last):
+  File "ears.py", line 45, in run
+    test()
+  File "&lt;ipython-input-18-643689ad0a0f&gt;", line 8, in test_actual_rectangle
+    assert rectangle_area([0, 1, 4, 7]) == 24.0
+AssertionError</span></pre>
+
+    <p><code>ears.run</code> looks in the calling program
+      for functions whose names start with the letters <code>'test_'</code>
+      and runs each one.
+      If the function complete without an assertion being triggered,
+      we count the test as a <a href="#gloss:test_success">success</a>.
+      If an assertion fails,
+      we count the test as a <a href="#gloss:test_failure">failure</a>,
+      but if any other exception occurs,
+      we count it as an <a href="#gloss:test_error">error</a>
+      because the odds are that the test itself is broken.</p>
+
+    <p><code>ears</code> is an <a href="#gloss:xUnit">xUnit testing library</a>.
+      The name &quot;xUnit&quot; comes from the fact that
+      many of them are imitations of a Java testing library called JUnit.
+      The <a href="http://en.wikipedia.org/wiki/List_of_unit_testing_frameworks">Wikipedia
+	page</a> on the
+      subject
+      lists dozens of similar frameworks in almost as many languages,
+      all of which have a similar structure:
+      each test is a single function that follows some naming convention
+      (e.g., starts with <code>'test_'</code>),
+      and the framework runs them in some order
+      and reports how many passed, failed, or were broken.</p>
+
+    <h1>Appendix Z: The Rules</h1>
+
+    <ul>
+      <li id="week-hard-work-hour-thought">
+	A week of hard work can sometimes save you an hour of thought.
+      </li>
+      <li id="fail-early-fail-often">
+	Fail early, fail often.
+      </li>
+      <li id="turn-bugs-into-assertions-or-tests">
+	Turn bugs into assertions or tests.
+      </li>
+      <li id="red-green-refactor">
+	Red, green, refactor.
+      </li>
+      <li id="always-initialize-from-data">
+	Always initialize from data.
+      </li>
+      <li id="test-simple-first">
+	Test the simple things first.
+      </li>
+      <li id="know-what-its-supposed-to-do">
+	Know what it's supposed to do.
+      </li>
+      <li id="make-it-fail-every-time">
+	Make it fail every time.
+      </li>
+      <li id="make-it-fail-fast">
+	Make it fail fast.
+      </li>
+      <li id="change-one-thing-at-a-time">
+	Change on thing at a time, for a reason.
+      </li>
+      <li id="keep-track-of-what-youve-done">
+	Keep track of what you've done.
+      </li>
+      <li id="be-humble">
+	Be humble.
+      </li>
+      <li id="throw-low-catch-high">
+	Throw low, catch high.
+      </li>
+    </ul>
 
   </body>
 </html>

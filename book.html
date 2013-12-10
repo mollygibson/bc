@@ -9753,7 +9753,7 @@ connection.close()</pre>
     <p>The reason for this is that machines don't understand; they obey.
       If you look at this image, you can't help but see the word "data":</p>
 
-    <p><img src="principles/data.png" alt="The Word 'Data'" /></p>
+    <p><img src="thinking/img/data.png" alt="The Word 'Data'" /></p>
 
     <p>A machine doesn't;
       it doesn't even see four blobs of blue pixels on a gray background,
@@ -9800,7 +9800,7 @@ connection.close()</pre>
 
     <p>For example, an HTML document consists of elements with attributes that contain other elements or blocks of raw text:</p>
 
-    <p><img src="principles/modelview.png" alt="Models vs. Views" /></p>
+    <p><img src="thinking/img/modelview.png" alt="Models vs. Views" /></p>
 
     <p>That model can be rendered in a browser,
       turned into speech for someone who is visually impaired,
@@ -9827,7 +9827,7 @@ connection.close()</pre>
       is a lot easier for human beings to understand than a blob of iCal-formatted text,
       but the second is much easier for the computer:</p>
 
-    <p><img src="principles/structured.png" alt="Structured vs. Unstructured Data" /></p>
+    <p><img src="thinking/img/structured.png" alt="Structured vs. Unstructured Data" /></p>
 
     <p>We said earlier that we only want to care about how something is implemented
       when things go wrong or when we need to improve its performance.
@@ -10610,15 +10610,12 @@ connection.close()</pre>
     </p>
 
     <p>
-      Now let's look at files (and directories as well, of course).
+      Now let's look at files and directories.
       Along with each file's content,
       the operating system stores the numeric IDs of the user and group that own it.
-      These values are <em>not</em> stored in the file itself:
-      instead,
-      they live "beside" it on disk:
+      These values are <em>not</em> stored in the file itself,
+      but separately in space on the disk reserved for the operating system's use.
     </p>
-
-    <p>FIXME: diagram</p>
 
     <p>
       The user-and-group model means that
@@ -10635,7 +10632,12 @@ connection.close()</pre>
       We can visualize all of this as a 3&times;3 table:
     </p>
 
-    <p>FIXME: diagram</p>
+    <table>
+      <tr><td></td><td>user</td><td>group</td><td>all</td></tr>
+      <tr><td>read</td><td>yes</td><td>yes</td><td>no</td></tr>
+      <tr><td>write</td><td>yes</td><td>no</td><td>no</td></tr>
+      <tr><td>execute</td><td>no</td><td>no</td><td>no</td></tr>
+    </table>
 
     <p>
       Together, these permissions mean that:
@@ -10726,12 +10728,7 @@ $
       Let's have a closer look at one of those permission strings:
       <code>-rwxr-xr-x</code>.
       The first character tells us what type of thing this is.
-      '-' means it's a regular file, while 'd' means it's a directory:
-    </p>
-
-    <p>FIXME: diagram</p>
-
-    <p>
+      '-' means it's a regular file, while 'd' means it's a directory.
       The next three characters tell us what permissions the file's owner has.
       Here, the owner can read, write, and execute the file.
       The middle triplet shows us the group's permissions.
@@ -10846,7 +10843,7 @@ $</pre>
       Vlad's home directory has three subdirectories called <code>venus</code>, <code>mars</code>, and <code>pluto</code>:
     </p>
 
-    <p>FIXME: diagram</p>
+    <p><img src="appendix/bash/img/x-for-directories.svg" alt="Eecute Permission for Directories" /></p>
 
     <p>
       Each of these has a subdirectory in turn called <code>notes</code>,

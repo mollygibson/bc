@@ -94,7 +94,7 @@ links :
 
 ## clean    : clean up
 clean :
-	rm -rf $(OUT) $(NOTEBOOK_MD) $$(find . -name '*~' -print) $$(find . -name '*.pyc' -print)
+	@rm -rf $(OUT) $(NOTEBOOK_MD) $$(find . -name '*~' -print) $$(find . -name '*.pyc' -print)
 
 ## show     : show variables
 show :

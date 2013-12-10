@@ -65,7 +65,7 @@
       it helps them combine existing programs in new ways
       and automate repetitive tasks
       so that they don't have to type the same things over and over again.</p>
-    
+
     <h2>Introducing the Shell</h2>
 
     <div class="objectives">
@@ -2184,10 +2184,10 @@ done</pre>
     <div class="objectives">
       <h3>Objectives</h3>
       <ul>
-	<li>Use <code>grep</code> to select lines from text files that match simple patterns.</li>
-	<li>Use <code>find</code> to find files whose names match simple patterns.</li>
-	<li>Use the output of one command as the command-line parameters to another command.</li>
-	<li>Explain what is meant by "text" and "binary" files, and why many common tools don't handle the latter well.</li>
+        <li>Use <code>grep</code> to select lines from text files that match simple patterns.</li>
+        <li>Use <code>find</code> to find files whose names match simple patterns.</li>
+        <li>Use the output of one command as the command-line parameters to another command.</li>
+        <li>Explain what is meant by "text" and "binary" files, and why many common tools don't handle the latter well.</li>
       </ul>
     </div>
 
@@ -2320,12 +2320,12 @@ $</pre>
       <h3>Wildcards</h3>
 
       <p><code>grep</code>'s real power doesn't come from its options, though; it comes from
-	the fact that patterns can include wildcards. (The technical name for
-	these is <a href="#gloss:regular-expression">regular expressions</a>, which
-	is what the "re" in "grep" stands for.) Regular expressions are complex
-	enough that we devoted an entire section of the website to them; if you
-	want to do complex searches, please check it out. As a taster, we can
-	find lines that have an 'o' in the second position like this:</p>
+        the fact that patterns can include wildcards. (The technical name for
+        these is <a href="#gloss:regular-expression">regular expressions</a>, which
+        is what the "re" in "grep" stands for.) Regular expressions are complex
+        enough that we devoted an entire section of the website to them; if you
+        want to do complex searches, please check it out. As a taster, we can
+        find lines that have an 'o' in the second position like this:</p>
 
 <pre>$ <span class="in">grep -E '^.o' haiku.txt</span>
 <span class="out">You bring fresh toner.
@@ -2334,11 +2334,11 @@ Software is like that.</span>
 $</pre>
 
       <p>We use the <code>-E</code> flag and put the pattern in quotes to prevent the shell
-	from trying to interpret it. (If the pattern contained a '*', for
-	example, the shell would try to expand it before running <code>grep</code>.) The
-	'\^' in the pattern anchors the match to the start of the line. The '.'
-	matches a single character (just like '?' in the shell), while the 'o'
-	matches an actual 'o'.</p>
+        from trying to interpret it. (If the pattern contained a '*', for
+        example, the shell would try to expand it before running <code>grep</code>.) The
+        '\^' in the pattern anchors the match to the start of the line. The '.'
+        matches a single character (just like '?' in the shell), while the 'o'
+        matches an actual 'o'.</p>
 
     </blockquote>
 
@@ -2485,40 +2485,40 @@ $</pre>
       <h3>Binary Files</h3>
 
       <p>We have focused exclusively on finding things in text files. What if
-	your data is stored as images, in databases, or in some other format?
-	One option would be to extend tools like <code>grep</code> to handle those formats.
-	This hasn't happened, and probably won't, because there are too many
-	formats to support.</p>
+        your data is stored as images, in databases, or in some other format?
+        One option would be to extend tools like <code>grep</code> to handle those formats.
+        This hasn't happened, and probably won't, because there are too many
+        formats to support.</p>
 
       <p>The second option is to convert the data to text, or extract the
-	text-ish bits from the data. This is probably the most common approach,
-	since it only requires people to build one tool per data format (to
-	extract information). On the one hand, it makes simple things easy to
-	do. On the negative side, complex things are usually impossible. For
-	example, it's easy enough to write a program that will extract X and Y
-	dimensions from image files for <code>grep</code> to play with, but how would you
-	write something to find values in a spreadsheet whose cells contained
-	formulas?</p>
+        text-ish bits from the data. This is probably the most common approach,
+        since it only requires people to build one tool per data format (to
+        extract information). On the one hand, it makes simple things easy to
+        do. On the negative side, complex things are usually impossible. For
+        example, it's easy enough to write a program that will extract X and Y
+        dimensions from image files for <code>grep</code> to play with, but how would you
+        write something to find values in a spreadsheet whose cells contained
+        formulas?</p>
 
       <p>The third choice is to recognize that the shell and text processing have
-	their limits, and to use a programming language such as Python instead.
-	When the time comes to do this, don't be too hard on the shell: many
-	modern programming languages, Python included, have borrowed a lot of
-	ideas from it, and imitation is also the sincerest form of praise.</p>
+        their limits, and to use a programming language such as Python instead.
+        When the time comes to do this, don't be too hard on the shell: many
+        modern programming languages, Python included, have borrowed a lot of
+        ideas from it, and imitation is also the sincerest form of praise.</p>
 
     </blockquote>
 
     <div class="keypoints">
       <h3>Key Points</h3>
       <ul>
-	<li>Everything is stored as bytes, but the bytes in binary files do not represent characters.</li>
-	<li>Use nested loops to run commands for every combination of two lists of things.</li>
-	<li>Use <code>\</code> to break one logical line into several physical lines.</li>
-	<li>Use parentheses <code>()</code> to keep things combined.</li>
-	<li>Use <code>$(command)</code> to insert a command's output in place.</li>
-	<li><code>find</code> finds files with specific properties that match patterns.</li>
-	<li><code>grep</code> selects lines in files that match patterns.</li>
-	<li><code>man command</code> displays the manual page for a given command.</li>
+        <li>Everything is stored as bytes, but the bytes in binary files do not represent characters.</li>
+        <li>Use nested loops to run commands for every combination of two lists of things.</li>
+        <li>Use <code>\</code> to break one logical line into several physical lines.</li>
+        <li>Use parentheses <code>()</code> to keep things combined.</li>
+        <li>Use <code>$(command)</code> to insert a command's output in place.</li>
+        <li><code>find</code> finds files with specific properties that match patterns.</li>
+        <li><code>grep</code> selects lines in files that match patterns.</li>
+        <li><code>man command</code> displays the manual page for a given command.</li>
       </ul>
     </div>
 
@@ -2526,19 +2526,19 @@ $</pre>
       <h3>Challenges</h3>
 
       <ol>
-	<li>
-	  Write a short explanatory comment for the following shell script:
+        <li>
+          Write a short explanatory comment for the following shell script:
 
 <pre>find . -name '*.dat' -print | wc -l | sort -n</pre>
 
-	</li>
-	<li>
-	  The <code>-v</code> flag to <code>grep</code> inverts pattern matching, so that only lines
-	  which do <em>not</em> match the pattern are printed. Given that, which of
-	  the following commands will find all files in <code>/data</code> whose names
-	  end in <code>ose.dat</code> (e.g., <code>sucrose.dat</code> or <code>maltose.dat</code>), but do
-	  <em>not</em> contain the word <code>temp</code>?
-	  <ol>
+        </li>
+        <li>
+          The <code>-v</code> flag to <code>grep</code> inverts pattern matching, so that only lines
+          which do <em>not</em> match the pattern are printed. Given that, which of
+          the following commands will find all files in <code>/data</code> whose names
+          end in <code>ose.dat</code> (e.g., <code>sucrose.dat</code> or <code>maltose.dat</code>), but do
+          <em>not</em> contain the word <code>temp</code>?
+          <ol>
             <li>
               <p><code>find /data -name '*.dat' -print | grep ose | grep -v temp</code></p>
             </li>
@@ -2551,8 +2551,8 @@ $</pre>
             <li>
               <p>None of the above.</p>
             </li>
-	  </ol>
-	</li>
+          </ol>
+        </li>
       </ol>
     </div>
 
@@ -2574,15 +2574,15 @@ $</pre>
 
     <ul>
       <li>Nothing that is committed to version control is ever lost.
-	This means it can be used like the "undo" feature in an editor,
-	and since all old versions of files are saved
-	it's always possible to go back in time to see exactly who wrote what on a particular day,
-	or what version of a program was used to generate a particular set of results.</li>
+        This means it can be used like the "undo" feature in an editor,
+        and since all old versions of files are saved
+        it's always possible to go back in time to see exactly who wrote what on a particular day,
+        or what version of a program was used to generate a particular set of results.</li>
       <li>It keeps a record of who made what changes when,
-	so that if people have questions later on,
-	they know who to ask.</li>
+        so that if people have questions later on,
+        they know who to ask.</li>
       <li>It's hard (but not impossible) to accidentally overlook or overwrite someone's changes,
-	because the version control system highlights them automatically.</li>
+        because the version control system highlights them automatically.</li>
     </ul>
 
     <p>This lesson shows how to use
@@ -2810,14 +2810,14 @@ $</pre>
 
     <ol>
       <li>The first line tells us that Git is using the Unix <code>diff</code> command
-	to compare the old and new versions of the file.</li>
+        to compare the old and new versions of the file.</li>
       <li>The second line tells exactly which <a href="#gloss:revision">revisions</a> of the file
-	Git is comparing;
-	<code>df0654a</code> and <code>315bf3a</code> are unique computer-generated labels for those revisions.</li>
+        Git is comparing;
+        <code>df0654a</code> and <code>315bf3a</code> are unique computer-generated labels for those revisions.</li>
       <li>The remaining lines show us the actual differences
-	and the lines on which they occur.
-	The numbers between the <code>@@</code> markers indicate which lines we're changing;
-	the <code>+</code> on the lines below show that we are adding lines.</li>
+        and the lines on which they occur.
+        The numbers between the <code>@@</code> markers indicate which lines we're changing;
+        the <code>+</code> on the lines below show that we are adding lines.</li>
     </ol>
 
     <p>Let's commit our change:</p>
@@ -3179,9 +3179,9 @@ $</pre>
       <h3>The '-u' Flag</h3>
 
       <p>You may see a <code>-u</code> option used with <code>git push</code>.
-	This tells Git what <a href="#gloss:branch">branch</a> to use
-	in the repository you're pushing to.
-	We discuss branches and branching in our intermediate-level lessons.</p>
+        This tells Git what <a href="#gloss:branch">branch</a> to use
+        in the repository you're pushing to.
+        We discuss branches and branching in our intermediate-level lessons.</p>
 
     </blockquote>
 
@@ -3497,25 +3497,25 @@ $</pre>
 
     <ul>
       <li>A scientist collects some data and stores it on a machine
-	that is occasionally backed up by her department.</li>
+        that is occasionally backed up by her department.</li>
       <li>She then writes or modifies a few small programs
-	(which also reside on her machine)
-	to analyze that data.</li>
+        (which also reside on her machine)
+        to analyze that data.</li>
       <li>Once she has some results,
-	she writes them up and submits her paper.
-	She might include her data&mdash;a growing number of journals require this&mdash;but
-	she probably doesn't include her code.</li>
+        she writes them up and submits her paper.
+        She might include her data&mdash;a growing number of journals require this&mdash;but
+        she probably doesn't include her code.</li>
       <li>Time passes.</li>
       <li>The journal sends her reviews written anonymously by a handful of other people in her field.
-	She revises her paper to satisfy them,
-	during which time she might also modify the scripts she wrote earlier,
-	and resubmits.</li>
+        She revises her paper to satisfy them,
+        during which time she might also modify the scripts she wrote earlier,
+        and resubmits.</li>
       <li>More time passes.</li>
       <li>The paper is eventually published.
-	It might include a link to an online copy of her data,
-	but the paper itself will be behind a paywall:
-	only people who have personal or institutional access
-	will be able to read it.</li>
+        It might include a link to an online copy of her data,
+        but the paper itself will be behind a paywall:
+        only people who have personal or institutional access
+        will be able to read it.</li>
     </ul>
 
     <p>For a growing number of scientists,
@@ -3524,27 +3524,27 @@ $</pre>
 
     <ul>
       <li>The data that the scientist collects is stored in an open access repository
-	like <a href="http://figshare.com/">figshare</a> or <a href="http://datadryad.org/">Dryad</a>
-	as soon as it's collected,
-	and given its own DOI.</li>
+        like <a href="http://figshare.com/">figshare</a> or <a href="http://datadryad.org/">Dryad</a>
+        as soon as it's collected,
+        and given its own DOI.</li>
       <li>The scientist creates a new repository on GitHub to hold her work.</li>
       <li>As she does her analysis,
-	she pushes changes to her scripts
-	(and possibly some output files)
-	to that repository.
-	She also uses the repository for her paper;
-	that repository is then the hub for collaboration with her colleagues.</li>
+        she pushes changes to her scripts
+        (and possibly some output files)
+        to that repository.
+        She also uses the repository for her paper;
+        that repository is then the hub for collaboration with her colleagues.</li>
       <li>When she's happy with the state of her paper,
-	she posts a version to <a href="http://arxiv.org/">arXiv</a>
-	or some other preprint server
-	to invite feedback from peers.</li>
+        she posts a version to <a href="http://arxiv.org/">arXiv</a>
+        or some other preprint server
+        to invite feedback from peers.</li>
       <li>Based on that feedback,
-	she may post several revisions
-	before finally submitting her paper to a journal.</li>
+        she may post several revisions
+        before finally submitting her paper to a journal.</li>
       <li>The published paper includes links to her preprint
-	and to her code and data repositories,
-	which  makes it much easier for other scientists
-	to use her work as starting point for their own research.</li>
+        and to her code and data repositories,
+        which  makes it much easier for other scientists
+        to use her work as starting point for their own research.</li>
     </ul>
 
     <p>This open model accelerates discovery:
@@ -3581,8 +3581,8 @@ $</pre>
 
     <ol>
       <li>every project have a file in its home directory
-	called something like <code>LICENSE</code> or <code>LICENSE.txt</code>
-	that clearly states what the license is, and</li>
+        called something like <code>LICENSE</code> or <code>LICENSE.txt</code>
+        that clearly states what the license is, and</li>
       <li>people use existing licenses rather than writing new ones.</li>
     </ol>
 
@@ -3625,32 +3625,32 @@ $</pre>
 
     <table border="1">
       <tr>
-	<td></td>
-	<td colspan="7" align="center">Licenses that can be used for derivative work or adaptation</td>
+        <td></td>
+        <td colspan="7" align="center">Licenses that can be used for derivative work or adaptation</td>
       </tr>
       <tr>
-	<td>Original work</td> <td>by</td> <td>by-nc</td> <td>by-nc-nd</td> <td>by-nc-sa</td> <td>by-nd</td> <td>by-sa</td> <td>pd</td>
+        <td>Original work</td> <td>by</td> <td>by-nc</td> <td>by-nc-nd</td> <td>by-nc-sa</td> <td>by-nd</td> <td>by-sa</td> <td>pd</td>
       </tr>
       <tr>
-	<td>by</td>       <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td> </td>
+        <td>by</td>       <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td> </td>
       </tr>
       <tr>
-	<td>by-nc</td>    <td> </td> <td>X</td> <td>X</td> <td>X</td> <td> </td> <td> </td> <td> </td>
+        <td>by-nc</td>    <td> </td> <td>X</td> <td>X</td> <td>X</td> <td> </td> <td> </td> <td> </td>
       </tr>
       <tr>
-	<td>by-nc-nd</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td>
+        <td>by-nc-nd</td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td>
       </tr>
       <tr>
-	<td>by-nc-sa</td> <td> </td> <td> </td> <td> </td> <td>X</td> <td> </td> <td> </td> <td> </td>
+        <td>by-nc-sa</td> <td> </td> <td> </td> <td> </td> <td>X</td> <td> </td> <td> </td> <td> </td>
       </tr>
       <tr>
-	<td>by-nd</td>    <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td>
+        <td>by-nd</td>    <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td>
       </tr>
       <tr>
-	<td>by-sa</td>    <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>X</td> <td> </td>
+        <td>by-sa</td>    <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td>X</td> <td> </td>
       </tr>
       <tr>
-	<td>pd</td>       <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td>
+        <td>pd</td>       <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td>
       </tr>
     </table>
 
@@ -3765,13 +3765,13 @@ Greg Wilson: "Software Carpentry: Lessons Learned". arXiv:1307.5448, July 2013.
     <div class="objectives">
       <h3>Objectives</h3>
       <ul>
-	<li>Explain what a library is, and what libraries are used for.</li>
-	<li>Load a Python library and use the things it contains.</li>
-	<li>Read tabular data from a file into a program.</li>
-	<li>Assign values to variables.</li>
-	<li>Select individual values and subsections from data.</li>
-	<li>Perform operations on arrays of data.</li>
-	<li>Display simple graphs.</li>
+        <li>Explain what a library is, and what libraries are used for.</li>
+        <li>Load a Python library and use the things it contains.</li>
+        <li>Read tabular data from a file into a program.</li>
+        <li>Assign values to variables.</li>
+        <li>Select individual values and subsections from data.</li>
+        <li>Perform operations on arrays of data.</li>
+        <li>Display simple graphs.</li>
       </ul>
     </div>
 
@@ -4188,20 +4188,20 @@ plt.show()</span></pre>
     <div class="keypoints">
       <h3>Key Points</h3>
       <ul>
-	<li>Import a library into a program using <code>import libraryname</code>.</li>
-	<li>Use the <code>numpy</code> library to work with arrays in Python.</li>
-	<li>Use <code>variable = value</code> to assign a value to a variable.</li>
-	<li>Variables are created on demand whenever a value is assigned to them.</li>
-	<li>Use <code>print something</code> to display the value of <code>something</code>.</li>
-	<li>The expression <code>array.shape</code> gives the shape of an array.</li>
-	<li>Use <code>array[x, y]</code> to select a single element from an array.</li>
-	<li>Array indices start at 0, not 1.</li>
-	<li>Use <code>low:high</code> to specify a slice that includes the indices from <code>low</code> to <code>high-1</code>.</li>
-	<li>All the indexing and slicing that works on arrays also works on strings.</li>
-	<li>Use <code># some kind of explanation</code> to add comments to programs.</li>
-	<li>Use <code>array.mean()</code>, <code>array.max()</code>, and <code>array.min()</code> to calculate simple statistics.</li>
-	<li>Use <code>array.mean(axis=0)</code> or <code>array.mean(axis=1)</code> to calculate statistics across the specified axis.</li>
-	<li>Use the <code>pyplot</code> library from <code>matplotlib</code> for creating simple visualizations.</li>
+        <li>Import a library into a program using <code>import libraryname</code>.</li>
+        <li>Use the <code>numpy</code> library to work with arrays in Python.</li>
+        <li>Use <code>variable = value</code> to assign a value to a variable.</li>
+        <li>Variables are created on demand whenever a value is assigned to them.</li>
+        <li>Use <code>print something</code> to display the value of <code>something</code>.</li>
+        <li>The expression <code>array.shape</code> gives the shape of an array.</li>
+        <li>Use <code>array[x, y]</code> to select a single element from an array.</li>
+        <li>Array indices start at 0, not 1.</li>
+        <li>Use <code>low:high</code> to specify a slice that includes the indices from <code>low</code> to <code>high-1</code>.</li>
+        <li>All the indexing and slicing that works on arrays also works on strings.</li>
+        <li>Use <code># some kind of explanation</code> to add comments to programs.</li>
+        <li>Use <code>array.mean()</code>, <code>array.max()</code>, and <code>array.min()</code> to calculate simple statistics.</li>
+        <li>Use <code>array.mean(axis=0)</code> or <code>array.mean(axis=1)</code> to calculate statistics across the specified axis.</li>
+        <li>Use the <code>pyplot</code> library from <code>matplotlib</code> for creating simple visualizations.</li>
       </ul>
     </div>
 
@@ -4209,24 +4209,24 @@ plt.show()</span></pre>
       <h3>Challenges</h3>
 
       <ol>
-	<li>
-	  Draw diagrams showing what variables refer to what values after each statement in the following program:
+        <li>
+          Draw diagrams showing what variables refer to what values after each statement in the following program:
 <pre>mass = 47.5
 age = 122
 mass = mass * 2.0
 age = age - 20</pre>
-	</li>
-	<li>
-	  What does the following program print out?
+        </li>
+        <li>
+          What does the following program print out?
 <pre>
 first, second = 'Grace', 'Hopper'
 third, fourth = second, first
 print third, fourth</pre>
-	</li>
+        </li>
       </ol>
 
       <p>A subsection of an array is called a <a href="#gloss:slice">slice</a>.
-	We can take slices of character strings as well:</p>
+        We can take slices of character strings as well:</p>
 
 <pre><span class="in">element = 'oxygen'
 print 'first three characters:', element[0:3]
@@ -4235,35 +4235,35 @@ print 'last three characters:', element[3:6]</span>
 last three characters: gen</span></pre>
 
       <ol>
-	<li>
-	  What is the value of <code>element[:4]</code>?
-	  What about <code>element[4:]</code>?
-	  Or <code>element[:]</code>?
-	</li>
-	<li>
-	  What is <code>element[-1]</code>?
-	  What is <code>element[-2]</code>?
-	  Given those answers,
-	  explain what <code>element[1:-1]</code> does.
-	</li>
-	<li>
-	  The expression <code>element[3:3]</code> produces an <a href="../../gloss.html#empty-string">empty string</a>,
-	  i.e., a string that contains no characters.
-	  If <code>data</code> holds our array of patient data,
-	  what does <code>data[3:3, 4:4]</code> produce?
-	  What about <code>data[3:3, :]</code>?
-	</li>
-	<li>
-	  Why do all of our plots stop just short of the upper end of our graph?
-	  Why are the vertical lines in our plot of the minimum inflammation per day
-	  not vertical?
-	</li>
-	<li>
-	  Create a plot showing the standard deviation of the inflammation data for
-	  each day across all patients.
-	</li>
-	<li>Modify the program to display the three plots on top of one another instead
-	  of side by side.</li>
+        <li>
+          What is the value of <code>element[:4]</code>?
+          What about <code>element[4:]</code>?
+          Or <code>element[:]</code>?
+        </li>
+        <li>
+          What is <code>element[-1]</code>?
+          What is <code>element[-2]</code>?
+          Given those answers,
+          explain what <code>element[1:-1]</code> does.
+        </li>
+        <li>
+          The expression <code>element[3:3]</code> produces an <a href="../../gloss.html#empty-string">empty string</a>,
+          i.e., a string that contains no characters.
+          If <code>data</code> holds our array of patient data,
+          what does <code>data[3:3, 4:4]</code> produce?
+          What about <code>data[3:3, :]</code>?
+        </li>
+        <li>
+          Why do all of our plots stop just short of the upper end of our graph?
+          Why are the vertical lines in our plot of the minimum inflammation per day
+          not vertical?
+        </li>
+        <li>
+          Create a plot showing the standard deviation of the inflammation data for
+          each day across all patients.
+        </li>
+        <li>Modify the program to display the three plots on top of one another instead
+          of side by side.</li>
       </ol>
     </div>
 
@@ -4281,11 +4281,11 @@ last three characters: gen</span></pre>
     <div class="objectives">
       <h3>Objectives</h3>
       <ul>
-	<li>Define a function that takes parameters.</li>
-	<li>Return a value from a function.</li>
-	<li>Explain what a call stack is, and trace changes to the call stack as functions are called.</li>
-	<li>Set default values for function parameters.</li>
-	<li>Explain why we should divide programs into small, single-purpose functions.</li>
+        <li>Define a function that takes parameters.</li>
+        <li>Return a value from a function.</li>
+        <li>Explain what a call stack is, and trace changes to the call stack as functions are called.</li>
+        <li>Set default values for function parameters.</li>
+        <li>Explain why we should divide programs into small, single-purpose functions.</li>
       </ul>
     </div>
 
@@ -4788,72 +4788,72 @@ but the most important part is the first couple of lines:</p>
     <div class="keypoints">
       <h3>Key Points</h3>
       <ul>
-	<li>Define a function using <code>def name(...params...)</code>.</li>
-	<li>The body of a function must be indented.</li>
-	<li>Call a function using <code>name(...values...)</code>.</li>
-	<li>Numbers are stored as integers or floating-point numbers.</li>
-	<li>Integer division produces the whole part of the answer (not the fractional part).</li>
-	<li>Each time a function is called, a new stack frame is created on the <a href="#gloss:call-stack">call stack</a> to hold its parameters and local variables.</li>
-	<li>Python looks for variables in the current stack frame before looking for
-	  them at the top level.</li>
-	<li>Use <code>help(thing)</code> to view help for something.</li>
-	<li>Put docstrings in functions to provide help for that function.</li>
-	<li>Specify default values for parameters when defining a function using <code>name=value</code> in the parameter list.</li>
+        <li>Define a function using <code>def name(...params...)</code>.</li>
+        <li>The body of a function must be indented.</li>
+        <li>Call a function using <code>name(...values...)</code>.</li>
+        <li>Numbers are stored as integers or floating-point numbers.</li>
+        <li>Integer division produces the whole part of the answer (not the fractional part).</li>
+        <li>Each time a function is called, a new stack frame is created on the <a href="#gloss:call-stack">call stack</a> to hold its parameters and local variables.</li>
+        <li>Python looks for variables in the current stack frame before looking for
+          them at the top level.</li>
+        <li>Use <code>help(thing)</code> to view help for something.</li>
+        <li>Put docstrings in functions to provide help for that function.</li>
+        <li>Specify default values for parameters when defining a function using <code>name=value</code> in the parameter list.</li>
       </ul>
     </div>
 
     <div class="challenges">
       <h3>Challenges</h3>
       <ol>
-	<li>
-	  "Adding" two strings produces their concatention:
-	  <code>'a' + 'b'</code> is <code>'ab'</code>.
-	  Write a function called <code>fence</code> that takes two parameters called <code>original</code>
-	  and <code>wrapper</code>
-	  and returns a new string that has the wrapper character at the beginning and
-	  end of the original:
+        <li>
+          "Adding" two strings produces their concatention:
+          <code>'a' + 'b'</code> is <code>'ab'</code>.
+          Write a function called <code>fence</code> that takes two parameters called <code>original</code>
+          and <code>wrapper</code>
+          and returns a new string that has the wrapper character at the beginning and
+          end of the original:
 <pre><span class="in">print fence('name', '*')</span>
 <span class="out">*name*</span></pre>
-	</li>
-	<li>
-	  If the variable <code>s</code> refers to a string,
-	  then <code>s[0]</code> is the string's first character
-	  and <code>s[-1]</code> is its last.
-	  Write a function called <code>outer</code>
-	  that returns a string made up of just the first and last characters of its
-	  input:
+        </li>
+        <li>
+          If the variable <code>s</code> refers to a string,
+          then <code>s[0]</code> is the string's first character
+          and <code>s[-1]</code> is its last.
+          Write a function called <code>outer</code>
+          that returns a string made up of just the first and last characters of its
+          input:
 <pre><span class="in">print outer('helium')</span>
 <span class="out">hm</span></pre>
-	</li>
-	<li>We previously wrote functions called <code>fence</code> and <code>outer</code>.
-	  Draw a diagram showing how the call stack changes when we run the following:
+        </li>
+        <li>We previously wrote functions called <code>fence</code> and <code>outer</code>.
+          Draw a diagram showing how the call stack changes when we run the following:
 <pre><span class="in">print outer(fence('carbon', '+'))</span></pre>
-	</li>
-	<li>
-	  Write a function called <code>analyze</code> that takes a filename as a parameter
-	  and displays the three graphs produced in the <a href="01-numpy.ipynb">previous section</a>,
-	  i.e., <code>analyze('inflammation-01.csv')</code> should produce the graphs already shown,
-	  while <code>analyze('inflammation-02.csv')</code> should produce corresponding graphs
-	  for the second data set.
-	</li>
-	<li>
-	  Write a function <code>rescale</code> that takes an array as input
-	  and returns a corresponding array of values scaled to lie in the range 0.0
-	  to 1.0.
-	  (If <em>L</em> and <em>H</em> are the lowest and highest values in the original array,
-	  then the replacement for a value <em>v</em> should be <em>(v-L)/(H-L)</em>.)
-	  Be sure to give the function a docstring.
-	</li>
-	<li>
-	  Run the commands <code>help(numpy.arange)</code> and <code>help(numpy.linspace)</code>
-	  to see how to use these functions to generate regularly-spaced values,
-	  then use those values to test your <code>rescale</code> function.
-	</li>
-	<li>Rewrite the <code>normalize</code> function so that it scales data to lie between 0.0
-	  and 1.0 by default,
-	  but will allow the caller to specify lower and upper bounds if they want.
-	  Compare your implementation to your neighbor's:
-	  do the two functions always behave the same way?</li>
+        </li>
+        <li>
+          Write a function called <code>analyze</code> that takes a filename as a parameter
+          and displays the three graphs produced in the <a href="01-numpy.ipynb">previous section</a>,
+          i.e., <code>analyze('inflammation-01.csv')</code> should produce the graphs already shown,
+          while <code>analyze('inflammation-02.csv')</code> should produce corresponding graphs
+          for the second data set.
+        </li>
+        <li>
+          Write a function <code>rescale</code> that takes an array as input
+          and returns a corresponding array of values scaled to lie in the range 0.0
+          to 1.0.
+          (If <em>L</em> and <em>H</em> are the lowest and highest values in the original array,
+          then the replacement for a value <em>v</em> should be <em>(v-L)/(H-L)</em>.)
+          Be sure to give the function a docstring.
+        </li>
+        <li>
+          Run the commands <code>help(numpy.arange)</code> and <code>help(numpy.linspace)</code>
+          to see how to use these functions to generate regularly-spaced values,
+          then use those values to test your <code>rescale</code> function.
+        </li>
+        <li>Rewrite the <code>normalize</code> function so that it scales data to lie between 0.0
+          and 1.0 by default,
+          but will allow the caller to specify lower and upper bounds if they want.
+          Compare your implementation to your neighbor's:
+          do the two functions always behave the same way?</li>
       </ol>
     </div>
 
@@ -4904,14 +4904,14 @@ analyze('inflammation-01.csv')</span></pre>
     <div class="objectives">
       <h3>Objectives</h3>
       <ul>
-	<li>Explain what a for loop does.</li>
-	<li>Correctly write for loops to repeat simple calculations.</li>
-	<li>Trace changes to a loop variable as the loop runs.</li>
-	<li>Trace changes to other variables as they are updated by a for loop.</li>
-	<li>Explain what a list is.</li>
-	<li>Create and index lists of simple values.</li>
-	<li>Use a library function to get a list of filenames that match a simple wildcard pattern.</li>
-	<li>Use a for loop to process multiple files.</li>
+        <li>Explain what a for loop does.</li>
+        <li>Correctly write for loops to repeat simple calculations.</li>
+        <li>Trace changes to a loop variable as the loop runs.</li>
+        <li>Trace changes to other variables as they are updated by a for loop.</li>
+        <li>Explain what a list is.</li>
+        <li>Create and index lists of simple values.</li>
+        <li>Use a library function to get a list of filenames that match a simple wildcard pattern.</li>
+        <li>Use a for loop to process multiple files.</li>
       </ul>
     </div>
 
@@ -4936,17 +4936,17 @@ d</span></pre>
 
     <ol>
       <li>
-	<p>It doesn't scale:
-	  if we want to print the characters in a string that's hundreds of letters
-	  long,
-	  we'd be better off just typing them in.</p>
+        <p>It doesn't scale:
+          if we want to print the characters in a string that's hundreds of letters
+          long,
+          we'd be better off just typing them in.</p>
       </li>
       <li>
-	<p>It's fragile:
-	  if we give it a longer string,
-	  it only prints part of the data,
-	  and if we give it a shorter one,
-	  it produces an error because we're asking for characters that don't exist.</p>
+        <p>It's fragile:
+          if we give it a longer string,
+          it only prints part of the data,
+          and if we give it a shorter one,
+          it produces an error because we're asking for characters that don't exist.</p>
       </li>
     </ol>
 
@@ -5140,55 +5140,55 @@ for f in filenames:
     <div class="keypoints">
       <h3>Key Points</h3>
       <ul>
-	<li>Use <code>for variable in collection</code> to process the elements of a collection one at a time.</li>
-	<li>The body of a for loop must be indented.</li>
-	<li>Use <code>len(thing)</code> to determine the length of something that contains other values.</li>
-	<li><code>[value1, value2, value3, ...]</code> creates a list.</li>
-	<li>Lists are indexed and sliced in the same way as strings and arrays.</li>
-	<li>Lists are mutable (i.e., their values can be changed in place).</li>
-	<li>Strings are immutable (i.e., the characters in them cannot be changed).</li>
-	<li>Use <code>glob.glob(pattern)</code> to create a list of files whose names match a pattern.</li>
-	<li>Use <code>*</code> in a pattern to match zero or more characters, and <code>?</code> to match any single character.</li>
+        <li>Use <code>for variable in collection</code> to process the elements of a collection one at a time.</li>
+        <li>The body of a for loop must be indented.</li>
+        <li>Use <code>len(thing)</code> to determine the length of something that contains other values.</li>
+        <li><code>[value1, value2, value3, ...]</code> creates a list.</li>
+        <li>Lists are indexed and sliced in the same way as strings and arrays.</li>
+        <li>Lists are mutable (i.e., their values can be changed in place).</li>
+        <li>Strings are immutable (i.e., the characters in them cannot be changed).</li>
+        <li>Use <code>glob.glob(pattern)</code> to create a list of files whose names match a pattern.</li>
+        <li>Use <code>*</code> in a pattern to match zero or more characters, and <code>?</code> to match any single character.</li>
       </ul>
     </div>
 
     <div class="challenges">
       <h3>Challenges</h3>
       <ol>
-	<li>
-	  Python has a built-in function called <code>range</code> that creates a list of
-	  numbers:
-	  <code>range(3)</code> produces <code>[0, 1, 2]</code>, <code>range(2, 5)</code> produces <code>[2, 3, 4]</code>, and
-	  <code>range(2, 10, 3)</code> produces <code>[2, 5, 8]</code>.
-	  Using <code>range</code>,
-	  write a function that prints the <em>N</em> natural numbers:
+        <li>
+          Python has a built-in function called <code>range</code> that creates a list of
+          numbers:
+          <code>range(3)</code> produces <code>[0, 1, 2]</code>, <code>range(2, 5)</code> produces <code>[2, 3, 4]</code>, and
+          <code>range(2, 10, 3)</code> produces <code>[2, 5, 8]</code>.
+          Using <code>range</code>,
+          write a function that prints the <em>N</em> natural numbers:
 <pre><span class="in">print_N(3)</span>
 <span class="out">1
 2
 3</span></pre>
-	</li>
-	<li>
-	  Exponentiation is built into Python:
+        </li>
+        <li>
+          Exponentiation is built into Python:
 <pre><span class="in">print 2**4</span>
 <span class="out">16</span></pre>
           It also has a function called <code>pow</code> that calculates the same value.
           Write a function called <code>expo</code> that uses a loop to calculate the same result.
-	</li>
-	<li>
-	  Python's strings have methods, just like NumPy's arrays.
-	  One of these is called <code>reverse</code>:
+        </li>
+        <li>
+          Python's strings have methods, just like NumPy's arrays.
+          One of these is called <code>reverse</code>:
 <pre><span class="in">print 'Newton'.reverse()</span>
 <span class="out">notweN</span></pre>
           Write a function called <code>rev</code> that does the same thing:
 <pre><span class="in">print rev('Newton')</span>
 <span class="out">notweN</span></pre>
         </li>
-	<li>Write a function called <code>total</code> that calculates the sum of the values in a list.
-	  (Python has a built-in function called <code>sum</code> that does this for you.
-	  Please don't use it for this exercise.)</li>
-	<li>Write a function called <code>analyze_all</code> that takes a filename pattern as its
-	  sole argument
-	  and runs <code>analyze</code> for each file whose name matches the pattern.</li>
+        <li>Write a function called <code>total</code> that calculates the sum of the values in a list.
+          (Python has a built-in function called <code>sum</code> that does this for you.
+          Please don't use it for this exercise.)</li>
+        <li>Write a function called <code>analyze_all</code> that takes a filename pattern as its
+          sole argument
+          and runs <code>analyze</code> for each file whose name matches the pattern.</li>
       </ol>
     </div>
 
@@ -5207,13 +5207,13 @@ for f in filenames:
     <div class="objectives">
       <h3>Objectives</h3>
       <ul>
-	<li>Create a simple "image" made out of colored blocks.</li>
-	<li>Explain how the RGB model represents colors.</li>
-	<li>Explain the similarities and differences between tuples and lists.</li>
-	<li>Write conditional statements including <code>if</code>, <code>elif</code>, and <code>else</code> branches.</li>
-	<li>Correctly evaluate expressions containing <code>and</code> and <code>or</code>.</li>
-	<li>Correctly write and interpret code containing nested loops and conditionals.</li>
-	<li>Explain the advantages of putting frequently-modified code in a function.</li>
+        <li>Create a simple "image" made out of colored blocks.</li>
+        <li>Explain how the RGB model represents colors.</li>
+        <li>Explain the similarities and differences between tuples and lists.</li>
+        <li>Write conditional statements including <code>if</code>, <code>elif</code>, and <code>else</code> branches.</li>
+        <li>Correctly evaluate expressions containing <code>and</code> and <code>or</code>.</li>
+        <li>Correctly write and interpret code containing nested loops and conditionals.</li>
+        <li>Explain the advantages of putting frequently-modified code in a function.</li>
       </ul>
     </div>
 
@@ -5248,7 +5248,7 @@ grid lines on: True</span></pre>
       RGB is an <a href="#gloss:additive-color-model">additive color model</a>:
       every shade is some combination of red, green, and blue intensities.
       We can think of these three values as being the axes in a cube:</p>
-    
+
     <p><img src="files/color-cube.png" alt="RGB Color Cube" /></p>
 
     <p>An RGB color is an example of a multi-part value:
@@ -5343,7 +5343,7 @@ FIXME
     <p>The other thing we need in order to create a heat map of our own
       is a way to pick a color based on a data value.
       The tool Python gives us for doing this is called a <a href="#gloss:conditional-statement">conditional
-	statement</a>,
+        statement</a>,
       and looks like this:</p>
 
 <pre><span class="in">num = 37
@@ -5652,63 +5652,63 @@ h.show()</span></pre>
     <div class="keypoints">
       <h3>Key Points</h3>
       <ul>
-	<li>Use the <code>ImageGrid</code> class from the <code>ipythonblocks</code> library to create simple "images" made of colored blocks.</li>
-	<li>Specify colors use (red, green, blue) triples, each component of which is an integer in the range 0..255.</li>
-	<li>Use <code>if condition</code> to start a conditional statement, <code>elif condition</code> to provide additional tests, and <code>else</code> to provide a default.</li>
-	<li>The bodies of the branches of conditional statements must be indented.</li>
-	<li>Use <code>==</code> to test for equality.</li>
-	<li><code>X and Y</code> is only true if both X and Y are true.</li>
-	<li><code>X or Y</code> is true if either X or Y, or both, are true.</li>
-	<li>Zero, the empty string, and the empty list are considered false; all other numbers, strings, and lists are considered true.</li>
-	<li>Nest loops to operate on multi-dimensional data.</li>
-	<li>Put code whose parameters change frequently in a function, then call it with different parameter values to customize its behavior.</li>
+        <li>Use the <code>ImageGrid</code> class from the <code>ipythonblocks</code> library to create simple "images" made of colored blocks.</li>
+        <li>Specify colors use (red, green, blue) triples, each component of which is an integer in the range 0..255.</li>
+        <li>Use <code>if condition</code> to start a conditional statement, <code>elif condition</code> to provide additional tests, and <code>else</code> to provide a default.</li>
+        <li>The bodies of the branches of conditional statements must be indented.</li>
+        <li>Use <code>==</code> to test for equality.</li>
+        <li><code>X and Y</code> is only true if both X and Y are true.</li>
+        <li><code>X or Y</code> is true if either X or Y, or both, are true.</li>
+        <li>Zero, the empty string, and the empty list are considered false; all other numbers, strings, and lists are considered true.</li>
+        <li>Nest loops to operate on multi-dimensional data.</li>
+        <li>Put code whose parameters change frequently in a function, then call it with different parameter values to customize its behavior.</li>
       </ul>
     </div>
 
     <div class="challenges">
       <ol>
-	<li>
-	  Fill in the <code>____</code> in the code below to create a bar that changes color from
-	  dark blue to black.
+        <li>
+          Fill in the <code>____</code> in the code below to create a bar that changes color from
+          dark blue to black.
 <pre><span class="in">bar = ImageGrid(10, 1)
 for x in range(10):
     bar[x, 0] = (0, 0, ____)
 bar.show()</span></pre>
-	</li>
-	<li>
-	  Why do computers use red, green, and blue as their primary colors?
-	</li>
-	<li>
-	  <code>True</code> and <code>False</code> aren't the only values in Python that are true and false.
-	  In fact, <em>any</em> value can be used in an <code>if</code> or <code>elif</code>.
-	  After reading and running the code below,
-	  explain what the rule is for which values are considered true and which are
-	  considered false.
-	  (Note that if the body of a conditional is a single statement, we can write
-	  it on the same line as the <code>if</code>.)
+        </li>
+        <li>
+          Why do computers use red, green, and blue as their primary colors?
+        </li>
+        <li>
+          <code>True</code> and <code>False</code> aren't the only values in Python that are true and false.
+          In fact, <em>any</em> value can be used in an <code>if</code> or <code>elif</code>.
+          After reading and running the code below,
+          explain what the rule is for which values are considered true and which are
+          considered false.
+          (Note that if the body of a conditional is a single statement, we can write
+          it on the same line as the <code>if</code>.)
 <pre><span class="in">if '': print 'empty string is true'
 if 'word': print 'word is true'
 if []: print 'empty list is true'
 if [1, 2, 3]: print 'non-empty list is true'
 if 0: print 'zero is true'
 if 1: print 'one is true'</span></pre>
-	</li>
-	<li>
-	  Write a function called <code>near</code> that returns <code>True</code> if its first parameter is
-	  within 10% of its second
-	  and <code>False</code> otherwise.
-	  Compare your implementation with your partner's:
-	  do you return the same answer for all possible pairs of numbers?
-	</li>
-	<li>
-	  Will changing the nesting of the loops in the code above&mdash;i.e.,
-	  wrapping the Y-axis loop around the X-axis loop&mdash;change the final
-	  image?
-	  Why or why not?
-	</li>
-	<li>
-	  Python (and most other languages in the C family) provides <a href="#gloss:in-place-operator">in-place operators</a>
-	  that work like this:
+        </li>
+        <li>
+          Write a function called <code>near</code> that returns <code>True</code> if its first parameter is
+          within 10% of its second
+          and <code>False</code> otherwise.
+          Compare your implementation with your partner's:
+          do you return the same answer for all possible pairs of numbers?
+        </li>
+        <li>
+          Will changing the nesting of the loops in the code above&mdash;i.e.,
+          wrapping the Y-axis loop around the X-axis loop&mdash;change the final
+          image?
+          Why or why not?
+        </li>
+        <li>
+          Python (and most other languages in the C family) provides <a href="#gloss:in-place-operator">in-place operators</a>
+          that work like this:
 <pre><span class="in">x = 1  # original value
 x += 1 # add one to x, assigning result back to x
 x *= 3 # multiply x by 3
@@ -5717,18 +5717,18 @@ print x</span>
           Rewrite the code that sums the positive and negative numbers in a list
           using in-place operators.
           Do you think the result is more or less readable than the original?
-	</li>
-	<li>
-	  Why did we transpose our data outside our heat map function?
-	  Why not have the function perform the transpose?
-	</li>
-	<li>
-	  Why does the heat map function return the grid rather than displaying it
-	  immediately?
-	  Do you think this is a good or bad design choice?
-	</li>
-	<li>
-	  Explain what the overall effect of this code is:
+        </li>
+        <li>
+          Why did we transpose our data outside our heat map function?
+          Why not have the function perform the transpose?
+        </li>
+        <li>
+          Why does the heat map function return the grid rather than displaying it
+          immediately?
+          Do you think this is a good or bad design choice?
+        </li>
+        <li>
+          Explain what the overall effect of this code is:
 <pre><span class="in">temp = left
 left = right
 right = temp</span></pre>
@@ -5737,7 +5737,7 @@ right = temp</span></pre>
 left, right = right, left</span></pre>
           Do they always do the same thing?
           Which do you find easier to read?
-	</li>
+        </li>
       </ol>
     </div>
 
@@ -5770,12 +5770,12 @@ left, right = right, left</span></pre>
     <div class="objectives">
       <h3>Objectives</h3>
       <ul>
-	<li>Explain what an assertion is.</li>
-	<li>Add assertions to programs that correctly check the program's state.</li>
-	<li>Correctly add precondition and postcondition assertions to functions.</li>
-	<li>Explain what test-driven development is, and use it when creating new functions.</li>
-	<li>Explain why variables should be initialized using actual data values rather than arbitrary constants.</li>
-	<li>Debug code containing an error systematically.</li>
+        <li>Explain what an assertion is.</li>
+        <li>Add assertions to programs that correctly check the program's state.</li>
+        <li>Correctly add precondition and postcondition assertions to functions.</li>
+        <li>Explain what test-driven development is, and use it when creating new functions.</li>
+        <li>Explain why variables should be initialized using actual data values rather than arbitrary constants.</li>
+        <li>Debug code containing an error systematically.</li>
       </ul>
     </div>
 
@@ -5827,12 +5827,12 @@ AssertionError: Data should only contain positive values</span></pre>
 
     <ul>
       <li>A <a href="#gloss:precondition">precondition</a> is something that must be
-	true
-	at the start of a function in order for it to work correctly.</li>
+        true
+        at the start of a function in order for it to work correctly.</li>
       <li>A <a href="#gloss:postcondition">postcondition</a> is something that
-	the function guarantees is true when it finishes.</li>
+        the function guarantees is true when it finishes.</li>
       <li>An <a href="#gloss:invariant">invariant</a> is something that is always true
-	at a particular point inside a piece of code.</li>
+        at a particular point inside a piece of code.</li>
     </ul>
 
     <p>For example,
@@ -6002,12 +6002,12 @@ AssertionError: Calculated upper Y coordinate invalid</span></pre>
 
     <ol>
       <li>If people write tests after writing the thing to be tested,
-	they are subject to confirmation bias,
-	i.e.,
-	they subconsciously write tests to show that their code is correct,
-	rather than to find errors.</li>
+        they are subject to confirmation bias,
+        i.e.,
+        they subconsciously write tests to show that their code is correct,
+        rather than to find errors.</li>
       <li>Writing tests helps programmers figure out what the function is actually
-	supposed to do.</li>
+        supposed to do.</li>
     </ol>
 
     <p>Here are three test functions for <code>range_overlap</code>:</p>
@@ -6184,58 +6184,58 @@ AssertionError:</span></pre>
 
     <ol>
       <li>
-	<em>Test with simplified data.</em>
-	Before doing statistics on a real data set,
-	we should try calculating statistics for a single record,
-	for two identical records,
-	for two records whose values are one step apart,
-	or for some other case where we can calculate the right answer by hand.
+        <em>Test with simplified data.</em>
+        Before doing statistics on a real data set,
+        we should try calculating statistics for a single record,
+        for two identical records,
+        for two records whose values are one step apart,
+        or for some other case where we can calculate the right answer by hand.
       </li>
       <li>
-	<em>Test a simplified case.</em>
-	If our program is supposed to simulate
-	magnetic eddies in rapidly-rotating blobs of supercooled helium,
-	our first test should be a blob of helium that isn't rotating,
-	and isn't being subjected to any external electromagnetic fields.
-	Similarly,
-	if we're looking at the effects of climate change on speciation,
-	our first test should hold temperature, precipitation, and other factors
-	constant.
+        <em>Test a simplified case.</em>
+        If our program is supposed to simulate
+        magnetic eddies in rapidly-rotating blobs of supercooled helium,
+        our first test should be a blob of helium that isn't rotating,
+        and isn't being subjected to any external electromagnetic fields.
+        Similarly,
+        if we're looking at the effects of climate change on speciation,
+        our first test should hold temperature, precipitation, and other factors
+        constant.
       </li>
       <li>
-	<em>Compare to an oracle.</em>
-	A <a href="#gloss:test-oracle">test oracle</a> is
-	something&mdash;experimental data,
-	an older program whose results are trusted,
-	or even a human expert&mdash;against which we can compare the results of our
-	new program.
-	If we have a test oracle,
-	we should store its output for particular cases
-	so that we can compare it with our new results as often as we like
-	without re-running that program.
+        <em>Compare to an oracle.</em>
+        A <a href="#gloss:test-oracle">test oracle</a> is
+        something&mdash;experimental data,
+        an older program whose results are trusted,
+        or even a human expert&mdash;against which we can compare the results of our
+        new program.
+        If we have a test oracle,
+        we should store its output for particular cases
+        so that we can compare it with our new results as often as we like
+        without re-running that program.
       </li>
       <li>
-	<em>Check conservation laws.</em>
-	Mass, energy, and other quantitites are conserved in physical systems,
-	so they should be in programs as well.
-	Similarly,
-	if we are analyzing patient data,
-	the number of records should either stay the same or decrease
-	as we move from one analysis to the next
-	(since we might throw away outliers or records with missing values).
-	If "new" patients start appearing out of nowhere as we move through our
-	pipeline,
-	it's probably a sign that something is wrong.
+        <em>Check conservation laws.</em>
+        Mass, energy, and other quantitites are conserved in physical systems,
+        so they should be in programs as well.
+        Similarly,
+        if we are analyzing patient data,
+        the number of records should either stay the same or decrease
+        as we move from one analysis to the next
+        (since we might throw away outliers or records with missing values).
+        If "new" patients start appearing out of nowhere as we move through our
+        pipeline,
+        it's probably a sign that something is wrong.
       </li>
       <li>
-	<em>Visualize.</em>
-	Data analysts frequently use simple visualizations to check both
-	the science they're doing
-	and the correctness of their code
-	(just as we did in the <a href="01-numpy.html">opening lesson</a> of this tutorial).
-	This should only be used for debugging as a last resort,
-	though,
-	since it's very hard to compare two visualizations automatically.
+        <em>Visualize.</em>
+        Data analysts frequently use simple visualizations to check both
+        the science they're doing
+        and the correctness of their code
+        (just as we did in the <a href="01-numpy.html">opening lesson</a> of this tutorial).
+        This should only be used for debugging as a last resort,
+        though,
+        since it's very hard to compare two visualizations automatically.
       </li>
     </ol>
 
@@ -6264,7 +6264,7 @@ AssertionError:</span></pre>
       are almost never worthwhile.</p>
 
     <h4>Make It Fail Fast</h4>
-    
+
     <p>If it takes 20 minutes for the bug to surface,
       we can only do three experiments an hour.
       That doesn't must mean we'll get less data in more time:
@@ -6280,19 +6280,19 @@ AssertionError:</span></pre>
 
     <ol>
       <li>
-	The smaller the gap between cause and effect,
-	the easier the connection is to find.
-	Many programmers therefore use a divide and conquer strategy to find bugs,
-	i.e.,
-	if the output of a function is wrong,
-	they check whether things are OK in the middle,
-	then concentrate on either the first or second half,
-	and so on.
+        The smaller the gap between cause and effect,
+        the easier the connection is to find.
+        Many programmers therefore use a divide and conquer strategy to find bugs,
+        i.e.,
+        if the output of a function is wrong,
+        they check whether things are OK in the middle,
+        then concentrate on either the first or second half,
+        and so on.
       </li>
       <li>
-	N things can interact in N<sup>2</sup>/2 different ways,
-	so every line of code that <em>isn't</em> run as part of a test
-	means more than one thing we don't need to worry about.
+        N things can interact in N<sup>2</sup>/2 different ways,
+        so every line of code that <em>isn't</em> run as part of a test
+        means more than one thing we don't need to worry about.
       </li>
     </ol>
 
@@ -6381,36 +6381,36 @@ AssertionError:</span></pre>
     <div class="keypoints">
       <h3>Key Points</h3>
       <ul>
-	<li>Program defensively, i.e., assume that errors are going to arise, and write code to detect them when they do.</li>
-	<li>Put assertions in programs to check their state as they run, and to help
-	  readers understand how those programs are supposed to work.</li>
-	<li>Use preconditions to check that the inputs to a function are safe to use.</li>
-	<li>Use postconditions to check that the output from a function is safe to use.</li>
-	<li>Write tests before writing code in order to help determine exactly what that code is supposed to do.</li>
-	<li>Know what code is supposed to do <em>before</em> trying to debug it.</li>
-	<li>Make it fail every time.</li>
-	<li>Make it fail fast.</li>
-	<li>Change one thing at a time, and for a reason.</li>
-	<li>Keep track of what you've done.</li>
-	<li>Be humble.</li>
+        <li>Program defensively, i.e., assume that errors are going to arise, and write code to detect them when they do.</li>
+        <li>Put assertions in programs to check their state as they run, and to help
+          readers understand how those programs are supposed to work.</li>
+        <li>Use preconditions to check that the inputs to a function are safe to use.</li>
+        <li>Use postconditions to check that the output from a function is safe to use.</li>
+        <li>Write tests before writing code in order to help determine exactly what that code is supposed to do.</li>
+        <li>Know what code is supposed to do <em>before</em> trying to debug it.</li>
+        <li>Make it fail every time.</li>
+        <li>Make it fail fast.</li>
+        <li>Change one thing at a time, and for a reason.</li>
+        <li>Keep track of what you've done.</li>
+        <li>Be humble.</li>
       </ul>
     </div>
 
     <div class="challenges">
       <h3>Challenges</h3>
       <ol>
-	<li>
-	  Suppose you are writing a function called <code>average</code> that calculates the
-	  average of the numbers in a list.
-	  What pre-conditions and post-conditions would you write for it?
-	  Compare your answer to your neighbor's:
-	  can you think of a function that will past your tests but not hers or vice
-	  versa?
-	</li>
-	<li>
-	  Explain in words what the assertions in this code check,
-	  and for each one,
-	  give an example of input that will make that assertion fail.
+        <li>
+          Suppose you are writing a function called <code>average</code> that calculates the
+          average of the numbers in a list.
+          What pre-conditions and post-conditions would you write for it?
+          Compare your answer to your neighbor's:
+          can you think of a function that will past your tests but not hers or vice
+          versa?
+        </li>
+        <li>
+          Explain in words what the assertions in this code check,
+          and for each one,
+          give an example of input that will make that assertion fail.
 <pre><span class="in">def running(values):
 assert len(values) &gt; 0
 result = [values[0]]
@@ -6419,8 +6419,8 @@ for v in values[1:]:
     result.append(result[-1] + v)
 assert result[-1] &gt;= result[0]
 return result</span></pre>
-	</li>
-	<li>Fix <code>range_overlap</code>. Re-run <code>test_range_overlap</code> after each change you make.</li>
+        </li>
+        <li>Fix <code>range_overlap</code>. Re-run <code>test_range_overlap</code> after each change you make.</li>
       </ol>
     </div>
 
@@ -6457,11 +6457,11 @@ return result</span></pre>
 
     <ol>
       <li>If no filename is given on the command line, read data from <a href="#gloss:standard-input">standard
-	  input</a>.</li>
+          input</a>.</li>
       <li>If one or more filenames are given, read data from them and report statistics
-	for each file separately.</li>
+        for each file separately.</li>
       <li>Use the <code>--min</code>, <code>--mean</code>, or <code>--max</code> flag to determine what statistic to
-	print.</li>
+        print.</li>
     </ol>
 
     <p>To make this work,
@@ -6472,9 +6472,9 @@ return result</span></pre>
     <div class="objectives">
       <h3>Objectives</h3>
       <ul>
-	<li>Use the values of command-line arguments in a program.</li>
-	<li>Handle flags and files separately in a command-line program.</li>
-	<li>Read data from standard input in a program so that it can be used in a pipeline.</li>
+        <li>Use the values of command-line arguments in a program.</li>
+        <li>Handle flags and files separately in a command-line program.</li>
+        <li>Read data from standard input in a program so that it can be used in a pipeline.</li>
       </ul>
     </div>
 
@@ -6715,14 +6715,14 @@ main()</pre>
 
     <ol>
       <li>
-	<code>main</code> is too large to read comfortably.
+        <code>main</code> is too large to read comfortably.
       </li>
       <li>
-	If <code>action</code> isn't one of the three recognized flags,
-	the program loads each file but does nothing with it
-	(because none of the branches in the conditional match).
-	<a href="#gloss:silent-failure">Silent failures</a> like this
-	are always hard to debug.
+        If <code>action</code> isn't one of the three recognized flags,
+        the program loads each file but does nothing with it
+        (because none of the branches in the conditional match).
+        <a href="#gloss:silent-failure">Silent failures</a> like this
+        are always hard to debug.
       </li>
     </ol>
 
@@ -6862,62 +6862,62 @@ Tools for Interactive Computing in Python
     <div class="keypoints">
       <h3>Key Points</h3>
       <ul>
-	<li>The <code>sys</code> library connects a Python program to the system it is running on.</li>
-	<li>The list <code>sys.argv</code> contains the command-line arguments that a program was run with.</li>
-	<li>Avoid silent failures.</li>
-	<li>The "file" <code>sys.stdin</code> connects to a program's standard input.</li>
-	<li>The "file" <code>sys.stdout</code> connects to a program's standard output.</li>
+        <li>The <code>sys</code> library connects a Python program to the system it is running on.</li>
+        <li>The list <code>sys.argv</code> contains the command-line arguments that a program was run with.</li>
+        <li>Avoid silent failures.</li>
+        <li>The "file" <code>sys.stdin</code> connects to a program's standard input.</li>
+        <li>The "file" <code>sys.stdout</code> connects to a program's standard output.</li>
       </ul>
     </div>
 
     <div class="challenges">
       <h3>Challenges</h3>
       <ol>
-	<li>
-	  Write a command-line program that does addition and subtraction:
+        <li>
+          Write a command-line program that does addition and subtraction:
 <pre>$ <span class="in">python arith.py 1 + 2</span>
 <span class="out">3</span>
 $ <span class="in">python arith.py 3 - 4</span>
 <span class="out">-1</span></pre>
           What goes wrong if you try to add multiplication using '*' to the program?
-	</li>
-	<li>
-	  Using the <code>glob</code> module introduced <a href="earlier">03-loop.ipynb</a>,
-	  write a simple version of <code>ls</code> that shows files in the current directory
-	  with a particular suffix:
+        </li>
+        <li>
+          Using the <code>glob</code> module introduced <a href="earlier">03-loop.ipynb</a>,
+          write a simple version of <code>ls</code> that shows files in the current directory
+          with a particular suffix:
 <pre>$ <span class="in">python my_ls.py py</span>
 <span class="out">left.py
 right.py
 zero.py</span></pre>
-	</li>
-	<li>Write a program called <code>check.py</code> that takes the names of one or more
-	  inflammation data files as arguments
-	  and checks that all the files have the same number of rows and columns.
-	  What is the best way to test your program?</li>
-	<li>
-	  Rewrite this program so that it uses <code>-n</code>, <code>-m</code>, and <code>-x</code> instead of
-	  <code>--min</code>, <code>--mean</code>, and <code>--max</code> respectively.
-	  Is the code easier to read?
-	  Is the program easier to understand?
-	</li>
-	<li>
-	  Separately,
-	  modify the program so that if no parameters are given
-	  (i.e., no action is specified and no filenames are given),
-	  it prints a message explaining how it should be used.
-	</li>
-	<li>
-	  Separately,
-	  modify the program so that if no action is given
-	  it displays the means of the data.
-	</li>
-	<li>Write a program called <code>line-count.py</code> that works like the Unix <code>wc</code>
-	  command:
-	  <ul>
-	    <li>If no filenames are given, it reports the number of lines in standard input.</li>
-	    <li>If one or more filenames are given, it reports the number of lines in each, followed by the total number of lines.</li>
-	  </ul>
-	</li>
+        </li>
+        <li>Write a program called <code>check.py</code> that takes the names of one or more
+          inflammation data files as arguments
+          and checks that all the files have the same number of rows and columns.
+          What is the best way to test your program?</li>
+        <li>
+          Rewrite this program so that it uses <code>-n</code>, <code>-m</code>, and <code>-x</code> instead of
+          <code>--min</code>, <code>--mean</code>, and <code>--max</code> respectively.
+          Is the code easier to read?
+          Is the program easier to understand?
+        </li>
+        <li>
+          Separately,
+          modify the program so that if no parameters are given
+          (i.e., no action is specified and no filenames are given),
+          it prints a message explaining how it should be used.
+        </li>
+        <li>
+          Separately,
+          modify the program so that if no action is given
+          it displays the means of the data.
+        </li>
+        <li>Write a program called <code>line-count.py</code> that works like the Unix <code>wc</code>
+          command:
+          <ul>
+            <li>If no filenames are given, it reports the number of lines in standard input.</li>
+            <li>If one or more filenames are given, it reports the number of lines in each, followed by the total number of lines.</li>
+          </ul>
+        </li>
       </ol>
     </div>
 
@@ -6974,7 +6974,7 @@ zero.py</span></pre>
       which describe the data,
       and rows (also known as <a href="#gloss:record-database">records</a>) which
       contain the data.</p>
-    
+
     <p>When we are using a spreadsheet,
       we put formulas into cells to calculate new values based on old ones.
       When we are using a database,
@@ -6989,12 +6989,12 @@ zero.py</span></pre>
     <blockquote>
       <h3>Standards Are Wonderful...</h3>
       <p>Every database manager&mdash;Oracle,
-	IBM DB2, PostgreSQL, MySQL, Microsoft Access, and SQLite&mdash;stores
-	data in a different way,
-	so a database created with one cannot be used directly by another.
-	However,
-	every database manager can import and export data in a variety of formats,
-	so it <em>is</em> possible to move information from one to another.</p>
+        IBM DB2, PostgreSQL, MySQL, Microsoft Access, and SQLite&mdash;stores
+        data in a different way,
+        so a database created with one cannot be used directly by another.
+        However,
+        every database manager can import and export data in a variety of formats,
+        so it <em>is</em> possible to move information from one to another.</p>
     </blockquote>
 
     <p>Queries are written in a language called <a href="#gloss:sql">SQL</a>,
@@ -7150,16 +7150,16 @@ zero.py</span></pre>
     <div class="challenges">
       <h3>Challenges</h3>
       <ol>
-	<li>
-	  Write a query that selects only site names from the <code>Site</code> table.
-	</li>
-	<li>
-	  Many people format queries as:
+        <li>
+          Write a query that selects only site names from the <code>Site</code> table.
+        </li>
+        <li>
+          Many people format queries as:
 <pre>SELECT personal, family FROM person;</pre>
           or as:
 <pre>select Personal, Family from PERSON;</pre>
           What style do you find easiest to read, and why?
-	</li>
+        </li>
       </ol>
     </div>
 
@@ -7330,8 +7330,8 @@ zero.py</span></pre>
     <div class="challenges">
       <h3>Challenges</h3>
       <ol>
-	<li>Write a query that selects distinct dates from the <code>Site</code> table.</li>
-	<li>Write a query that displays scientists' full names, but orders them by surname.</li>
+        <li>Write a query that selects distinct dates from the <code>Site</code> table.</li>
+        <li>Write a query that displays scientists' full names, but orders them by surname.</li>
       </ol>
     </div>
 
@@ -7388,23 +7388,23 @@ zero.py</span></pre>
     <blockquote>
       <h3>Handling Dates</h3>
       <p>Most database managers have a special data type for dates.
-	In fact, many have two:
-	one for dates,
-	such as "May 31, 1971",
-	and one for durations,
-	such as "31 days".
-	SQLite doesn't:
-	instead,
-	it stores dates as either text
-	(in the ISO-8601 standard format "YYYY-MM-DD HH:MM:SS.SSSS"),
-	real numbers
-	(the number of days since November 24, 4714 BCE),
-	or integers
-	(the number of seconds since midnight, January 1, 1970).
-	If this sounds complicated,
-	it is,
-	but not nearly as complicated as figuring out
-	<a href="http://en.wikipedia.org/wiki/Swedish_calendar">historical dates in Sweden</a>.</p>
+        In fact, many have two:
+        one for dates,
+        such as "May 31, 1971",
+        and one for durations,
+        such as "31 days".
+        SQLite doesn't:
+        instead,
+        it stores dates as either text
+        (in the ISO-8601 standard format "YYYY-MM-DD HH:MM:SS.SSSS"),
+        real numbers
+        (the number of days since November 24, 4714 BCE),
+        or integers
+        (the number of seconds since midnight, January 1, 1970).
+        If this sounds complicated,
+        it is,
+        but not nearly as complicated as figuring out
+        <a href="http://en.wikipedia.org/wiki/Swedish_calendar">historical dates in Sweden</a>.</p>
     </blockquote>
 
     <p>If we want to find out what measurements were taken by either Lake or Roerich,
@@ -7492,63 +7492,63 @@ zero.py</span></pre>
       <h3>Growing Queries</h3>
 
       <p>What we have just done is how most people grow their SQL queries.
-	We started with something simple that did part of what we wanted,
-	then added more clauses one by one,
-	testing their effects as we went.
-	This is a good strategy&mdash;in fact,
-	for complex queries it's often the <em>only</em> strategy&mdash;but
-	it depends on quick turnaround,
-	and on us recognizing the right answer when we get it.</p>
+        We started with something simple that did part of what we wanted,
+        then added more clauses one by one,
+        testing their effects as we went.
+        This is a good strategy&mdash;in fact,
+        for complex queries it's often the <em>only</em> strategy&mdash;but
+        it depends on quick turnaround,
+        and on us recognizing the right answer when we get it.</p>
 
       <p>The best way to achieve quick turnaround is often
-	to put a subset of data in a temporary database
-	and run our queries against that,
-	or to fill a small database with synthesized records.
-	For example,
-	instead of trying our queries against an actual database of 20 million
-	Australians,
-	we could run it against a sample of ten thousand,
-	or write a small program to generate ten thousand random (but plausible)
-	records
-	and use that.</p>
+        to put a subset of data in a temporary database
+        and run our queries against that,
+        or to fill a small database with synthesized records.
+        For example,
+        instead of trying our queries against an actual database of 20 million
+        Australians,
+        we could run it against a sample of ten thousand,
+        or write a small program to generate ten thousand random (but plausible)
+        records
+        and use that.</p>
 
     </blockquote>
 
     <div class="challenges">
       <h3>Challenges</h3>
       <ol>
-	<li>
-	  Suppose we want to select all sites that lie within 30&deg; of the equator.
-	  Our first query is:
+        <li>
+          Suppose we want to select all sites that lie within 30&deg; of the equator.
+          Our first query is:
 <pre>select * from Site where (lat &gt; -30) or (lat &lt; 30);</pre>
           Explain why this is wrong,
           and rewrite the query so that it is correct.
-	</li>
-	<li>
-	  Normalized salinity readings are supposed to be between 0.0 and 1.0.
-	  Write a query that selects all records from <code>Survey</code>
-	  with salinity values outside this range.
-	</li>
-	<li>
-	  The SQL test <code><em>column-name</em> like <em>pattern</em></code>
-	  is true if the value in the named column
-	  matches the pattern given;
-	  the character '%' can be used any number of times in the pattern
-	  to mean "match zero or more characters".
-	  <table>
-	    <tr> <th>Expression</th> <th>Value</th> </tr>
-	    <tr> <td><code>'a' like 'a'</code></td> <td>True</td> </tr>
-	    <tr> <td><code>'a' like '%a'</code></td> <td>True</td> </tr>
-	    <tr> <td><code>'b' like '%a'</code></td> <td>False</td> </tr>
-	    <tr> <td><code>'alpha' like 'a%'</code></td> <td>True</td> </tr>
-	    <tr> <td><code>'alpha' like 'a%p%'</code></td> <td>True</td> </tr>
-	  </table>
-	  The expression <code><em>column-name</em> not like <em>pattern</em></code>
-	  inverts the test.
-	  Using <code>like</code>,
-	  write a query that finds all the records in `Visited`
-	  that <em>aren't</em> from sites labelled 'DR-something'.
-	</li>
+        </li>
+        <li>
+          Normalized salinity readings are supposed to be between 0.0 and 1.0.
+          Write a query that selects all records from <code>Survey</code>
+          with salinity values outside this range.
+        </li>
+        <li>
+          The SQL test <code><em>column-name</em> like <em>pattern</em></code>
+          is true if the value in the named column
+          matches the pattern given;
+          the character '%' can be used any number of times in the pattern
+          to mean "match zero or more characters".
+          <table>
+            <tr> <th>Expression</th> <th>Value</th> </tr>
+            <tr> <td><code>'a' like 'a'</code></td> <td>True</td> </tr>
+            <tr> <td><code>'a' like '%a'</code></td> <td>True</td> </tr>
+            <tr> <td><code>'b' like '%a'</code></td> <td>False</td> </tr>
+            <tr> <td><code>'alpha' like 'a%'</code></td> <td>True</td> </tr>
+            <tr> <td><code>'alpha' like 'a%p%'</code></td> <td>True</td> </tr>
+          </table>
+          The expression <code><em>column-name</em> not like <em>pattern</em></code>
+          inverts the test.
+          Using <code>like</code>,
+          write a query that finds all the records in `Visited`
+          that <em>aren't</em> from sites labelled 'DR-something'.
+        </li>
       </ol>
     </div>
 
@@ -7607,10 +7607,10 @@ zero.py</span></pre>
       <h3>What's in a Name?</h3>
 
       <p>It may seem strange to use <code>personal</code> and <code>family</code> as field names
-	instead of <code>first</code> and <code>last</code>,
-	but it's a necessary first step toward handling cultural differences.
-	For example,
-	consider the following rules:</p>
+        instead of <code>first</code> and <code>last</code>,
+        but it's a necessary first step toward handling cultural differences.
+        For example,
+        consider the following rules:</p>
 
 <table>
   <tr> <th>Full Name</th> <th>Alphabetized Under</th> <th>Reason</th> </tr>
@@ -7626,24 +7626,24 @@ zero.py</span></pre>
 </table>
 
       <p>Clearly,
-	even a two-part division into "personal" and "family"
-	isn't enough...</p>
+        even a two-part division into "personal" and "family"
+        isn't enough...</p>
 
 </blockquote>
 
     <div class="challenges">
       <h3>Challenges</h3>
       <ol>
-	<li>
-	  After further reading,
-	  we realize that Valentina Roerich
-	  was reporting salinity as percentages.
-	  Write a query that returns all of her salinity measurements
-	  from the <code>Survey</code> table
-	  with the values divided by 100.
-	</li>
-	<li>
-	  The <code>union</code> operator combines the results of two queries:
+        <li>
+          After further reading,
+          we realize that Valentina Roerich
+          was reporting salinity as percentages.
+          Write a query that returns all of her salinity measurements
+          from the <code>Survey</code> table
+          with the values divided by 100.
+        </li>
+        <li>
+          The <code>union</code> operator combines the results of two queries:
 <pre class="in">select * from Person where ident='dyer' union select * from Person where ident='roe';</pre>
 <table class="out">
 <tr><td>dyer</td><td>William</td><td>Dyer</td></tr>
@@ -7663,9 +7663,9 @@ zero.py</span></pre>
   <tr> <td>837</td> <td>0.21</td> </tr>
   <tr> <td>837</td> <td>0.225</td> </tr>
 </table>
-	</li>
-	<li>
-	  The site identifiers in the <code>Visited</code> table have two parts separated by a '-':
+        </li>
+        <li>
+          The site identifiers in the <code>Visited</code> table have two parts separated by a '-':
 <pre>select distinct site from Visited;</pre>
 <table class="out">
   <tr><td>DR-1</td></tr>
@@ -7673,15 +7673,15 @@ zero.py</span></pre>
   <tr><td>MSK-4</td></tr>
 </table>
           Some major site identifiers are two letters long and some are three.
-	  The "in string" function <code>instr(X, Y)</code>
-	  returns the 1-based index of the first occurrence of string Y in string X,
-	  or 0 if Y does not exist in X.
-	  The substring function <code>substr(X, I)</code>
-	  returns the substring of X starting at index I.
-	  Use these two functions to produce a list of unique major site identifiers.
-	  (For this data,
-	  the list should contain only "DR" and "MSK").
-	</li>
+          The "in string" function <code>instr(X, Y)</code>
+          returns the 1-based index of the first occurrence of string Y in string X,
+          or 0 if Y does not exist in X.
+          The substring function <code>substr(X, I)</code>
+          returns the substring of X starting at index I.
+          Use these two functions to produce a list of unique major site identifiers.
+          (For this data,
+          the list should contain only "DR" and "MSK").
+        </li>
       </ol>
     </div>
 
@@ -7823,28 +7823,28 @@ select * from Visited where dated!=NULL;</pre>
     <div class="challenges">
       <h3>Challenges</h3>
       <ol>
-	<li>
-	  Write a query that sorts the records in <code>Visited</code> by date,
-	  omitting entries for which the date is not known
-	  (i.e., is null).
-	</li>
-	<li>
-	  What do you expect the query:
+        <li>
+          Write a query that sorts the records in <code>Visited</code> by date,
+          omitting entries for which the date is not known
+          (i.e., is null).
+        </li>
+        <li>
+          What do you expect the query:
 <pre>select * from Visited where dated in ('1927-02-08', null);</pre>
           to produce?
           What does it actually produce?
-	</li>
-	<li>
-	  Some database designers prefer to use
-	  a <a href="#gloss:sentinel-value">sentinel value</a>
-	  to mark missing data rather than <code>null</code>.
-	  For example,
-	  they will use the date "0000-00-00" to mark a missing date,
-	  or -1.0 to mark a missing salinity or radiation reading
-	  (since actual readings cannot be negative).
-	  What does this simplify?
-	  What burdens or risks does it introduce?
-	</li>
+        </li>
+        <li>
+          Some database designers prefer to use
+          a <a href="#gloss:sentinel-value">sentinel value</a>
+          to mark missing data rather than <code>null</code>.
+          For example,
+          they will use the date "0000-00-00" to mark a missing date,
+          or -1.0 to mark a missing salinity or radiation reading
+          (since actual readings cannot be negative).
+          What does this simplify?
+          What burdens or risks does it introduce?
+        </li>
       </ol>
     </div>
 
@@ -8077,59 +8077,59 @@ order by person, quant;</pre>
 
     <ol>
       <li>
-	selected records from the <code>Survey</code> table
-	where the <code>person</code> field was not null;
+        selected records from the <code>Survey</code> table
+        where the <code>person</code> field was not null;
       </li>
       <li>
-	grouped those records into subsets
-	so that the <code>person</code> and <code>quant</code> values in each subset
-	were the same;
+        grouped those records into subsets
+        so that the <code>person</code> and <code>quant</code> values in each subset
+        were the same;
       </li>
       <li>
-	ordered those subsets first by <code>person</code>,
-	and then within each sub-group by <code>quant</code>;
-	and
+        ordered those subsets first by <code>person</code>,
+        and then within each sub-group by <code>quant</code>;
+        and
       </li>
       <li>
-	counted the number of records in each subset,
-	calculated the average <code>reading</code> in each,
-	and chose a <code>person</code> and <code>quant</code> value from each
-	(it doesn't matter which ones,
-	since they're all equal).
+        counted the number of records in each subset,
+        calculated the average <code>reading</code> in each,
+        and chose a <code>person</code> and <code>quant</code> value from each
+        (it doesn't matter which ones,
+        since they're all equal).
       </li>
     </ol>
 
     <div class="challenges">
       <h3>Challenges</h3>
       <ol>
-	<li>
-	  How many temperature readings did Frank Pabodie record,
-	  and what was their average value?
-	</li>
-	<li>
-	  The average of a set of values is the sum of the values
-	  divided by the number of values.
-	  Does this mean that the <code>avg</code> function returns 2.0 or 3.0
-	  when given the values 1.0, <code>null</code>, and 5.0?
-	</li>
-	<li>
-	  We want to calculate the difference between
-	  each individual radiation reading
-	  and the average of all the radiation readings.
-	  We write the query:
+        <li>
+          How many temperature readings did Frank Pabodie record,
+          and what was their average value?
+        </li>
+        <li>
+          The average of a set of values is the sum of the values
+          divided by the number of values.
+          Does this mean that the <code>avg</code> function returns 2.0 or 3.0
+          when given the values 1.0, <code>null</code>, and 5.0?
+        </li>
+        <li>
+          We want to calculate the difference between
+          each individual radiation reading
+          and the average of all the radiation readings.
+          We write the query:
 <pre>select reading-avg(reading) from Survey where quant='rad';</pre>
           What does this actually produce, and why?
-	</li>
-	<li>
-	  The function <code>group_concat(field, separator)</code>
-	  concatenates all the values in a field
-	  using the specified separator character
-	  (or ',' if the separator isn't specified).
-	  Use this to produce a one-line list of scientists' names,
-	  such as:
+        </li>
+        <li>
+          The function <code>group_concat(field, separator)</code>
+          concatenates all the values in a field
+          using the specified separator character
+          (or ',' if the separator isn't specified).
+          Use this to produce a one-line list of scientists' names,
+          such as:
 <pre>William Dyer, Frank Pabodie, Anderson Lake, Valentina Roerich, Frank Danforth</pre>
           Can you find a way to order the list by surname?
-	</li>
+        </li>
       </ol>
     </div>
 
@@ -8384,18 +8384,18 @@ and    Visited.dated is not null;</pre>
     <div class="challenges">
       <h3>Challenges</h3>
       <ol>
-	<li>
-	  Write a query that lists all radiation readings from the DR-1 site.
-	</li>
-	<li>
-	  Write a query that lists all sites visited by people named "Frank".
-	</li>
-	<li>
-	  Describe in your own words what the following query produces:
+        <li>
+          Write a query that lists all radiation readings from the DR-1 site.
+        </li>
+        <li>
+          Write a query that lists all sites visited by people named "Frank".
+        </li>
+        <li>
+          Describe in your own words what the following query produces:
 <pre>select Site.name from Site join Visited
 on Site.lat&lt;-49.0 and Site.name=Visited.site and
 Visited.dated&gt;='1932-00-00';</pre>
-	</li>
+        </li>
       </ol>
     </div>
 
@@ -8517,31 +8517,31 @@ insert into JustLatLong select lat, long from site;</pre>
       <h3>There's More Than One Way to Do It</h3>
 
       <p>Many applications use a hybrid storage model
-	instead of putting everything into a database:
-	the actual data (such as astronomical images) is stored in files,
-	while the database stores the files' names,
-	their modification dates,
-	the region of the sky they cover,
-	their spectral characteristics,
-	and so on.
-	This is also how most music player software is built:
-	the database inside the application keeps track of the MP3 files,
-	but the files themselves live on disk.</p>
+        instead of putting everything into a database:
+        the actual data (such as astronomical images) is stored in files,
+        while the database stores the files' names,
+        their modification dates,
+        the region of the sky they cover,
+        their spectral characteristics,
+        and so on.
+        This is also how most music player software is built:
+        the database inside the application keeps track of the MP3 files,
+        but the files themselves live on disk.</p>
 
     </blockquote>
 
     <div class="challenges">
       <h3>Challenges</h3>
       <ol>
-	<li>
-	  Write an SQL statement to replace all uses of <code>null</code>
-	  in <code>Survey.person</code>
-	  with the string <code>'unknown'</code>.
-	</li>
-	<li>
-	  One of our colleagues has sent us a <a href="#gloss:csv">CSV</a> file
-	  containing temperature readings by Robert Olmstead,
-	  which is formatted like this:
+        <li>
+          Write an SQL statement to replace all uses of <code>null</code>
+          in <code>Survey.person</code>
+          with the string <code>'unknown'</code>.
+        </li>
+        <li>
+          One of our colleagues has sent us a <a href="#gloss:csv">CSV</a> file
+          containing temperature readings by Robert Olmstead,
+          which is formatted like this:
 <pre>Taken,Temp
 619,-21.5
 622,-15.5</pre>
@@ -8549,22 +8549,22 @@ insert into JustLatLong select lat, long from site;</pre>
           and prints out the SQL <code>insert</code> statements needed
           to add these records to the survey database.
           Note: you will need to add an entry for Olmstead
-	  to the <code>Person</code> table.
-	  If you are testing your program repeatedly,
-	  you may want to investigate SQL's <code>insert or replace</code> command.
-	</li>
-	<li>
-	  SQLite has several administrative commands that aren't part of the SQL
-	  standard.
-	  One of them is <code>.dump</code>,
-	  which prints the SQL commands needed to re-create the database.
-	  Another is <code>.load</code>,
-	  which reads a file created by <code>.dump</code> and restores the database.
-	  A colleague of yours thinks that storing dump files (which are text) in
-	  version control
-	  is a good way to track and manage changes to the database.
-	  What are the pros and cons of this approach?
-	</li>
+          to the <code>Person</code> table.
+          If you are testing your program repeatedly,
+          you may want to investigate SQL's <code>insert or replace</code> command.
+        </li>
+        <li>
+          SQLite has several administrative commands that aren't part of the SQL
+          standard.
+          One of them is <code>.dump</code>,
+          which prints the SQL commands needed to re-create the database.
+          Another is <code>.load</code>,
+          which reads a file created by <code>.dump</code> and restores the database.
+          A colleague of yours thinks that storing dump files (which are text) in
+          version control
+          is a good way to track and manage changes to the database.
+          What are the pros and cons of this approach?
+        </li>
       </ol>
     </div>
 
@@ -8717,26 +8717,26 @@ print "full name for dyer:", get_name('survey.db', 'dyer')</span>
     <div class="challenges">
       <h3>Challenges</h3>
       <ol>
-	<li>
-	  Write a Python program that creates a new database
-	  in a file called <code>original.db</code>
-	  containing a single table called <code>Pressure</code>,
-	  with a single field called <code>reading</code>,
-	  and inserts 100,000 random numbers between 10.0 and 25.0.
-	  How long does it take this program to run?
-	  How long does it take to run a program
-	  that simply writes those random numbers to a file?
-	</li>
-	<li>
-	  Write a Python program that creates a new database
-	  called <code>backup.db</code>
-	  with the same structure as <code>original.db</code>
-	  and copies all the values greater than 20.0
-	  from <code>original.db</code> to <code>backup.db</code>.
-	  Which is faster:
-	  filtering values in the query,
-	  or reading everything into memory and filtering in Python?
-	</li>
+        <li>
+          Write a Python program that creates a new database
+          in a file called <code>original.db</code>
+          containing a single table called <code>Pressure</code>,
+          with a single field called <code>reading</code>,
+          and inserts 100,000 random numbers between 10.0 and 25.0.
+          How long does it take this program to run?
+          How long does it take to run a program
+          that simply writes those random numbers to a file?
+        </li>
+        <li>
+          Write a Python program that creates a new database
+          called <code>backup.db</code>
+          with the same structure as <code>original.db</code>
+          and copies all the values greater than 20.0
+          from <code>original.db</code> to <code>backup.db</code>.
+          Which is faster:
+          filtering values in the query,
+          or reading everything into memory and filtering in Python?
+        </li>
       </ol>
     </div>
 
@@ -8781,7 +8781,7 @@ print "full name for dyer:", get_name('survey.db', 'dyer')</span>
       <li><code>command &gt; file</code> redirects a command's output to a file.</li>
       <li><code>first | second</code> connects the output of the first command to the input of the second.</li>
       <li>
-	Use a <code>for</code> loop to repeat commands once for every thing in a list:
+        Use a <code>for</code> loop to repeat commands once for every thing in a list:
 <pre>for variable in name_1 name_2 name_3
 do
     ...commands refering to $variable...
@@ -8915,12 +8915,12 @@ lines from remote file
 
     <ul>
       <li>
-	<p>Create a <code>for</code> loop to process elements in a collection one at a time:</p>
+        <p>Create a <code>for</code> loop to process elements in a collection one at a time:</p>
 <pre>for variable in collection:
     ...body...</pre>
       </li>
       <li>
-	<p>Create a conditional using <code>if</code>, <code>elif</code>, and <code>else</code>:</p>
+        <p>Create a conditional using <code>if</code>, <code>elif</code>, and <code>else</code>:</p>
 <pre>if condition_1:
     ...body...
 elif condition_2:
@@ -8947,10 +8947,10 @@ else:
     <ul>
       <li>Import a library into a program using <code>import libraryname</code>.</li>
       <li>The <code>sys</code> library contains:
-	<ul>
-	  <li><code>sys.argv</code>: the command-line arguments a program was run with.</li>
-	  <li><code>sys.stdin</code>, <code>sys.stdout</code>: standard input and output.</li>
-	</ul>
+        <ul>
+          <li><code>sys.argv</code>: the command-line arguments a program was run with.</li>
+          <li><code>sys.stdin</code>, <code>sys.stdout</code>: standard input and output.</li>
+        </ul>
       </li>
       <li><code>glob.glob(pattern)</code> returns a list of files whose names match a pattern.</li>
     </ul>
@@ -9062,10 +9062,10 @@ Operations involving <code>NULL</code> produce <code>NULL</code>, so <code>1+NUL
       <li>creating a connection</li>
       <li>creating a cursor</li>
       <li>repeatedly:
-	<ul>
-	  <li>execute a query</li>
-	  <li>fetch some or all results</li>
-	</ul>
+        <ul>
+          <li>execute a query</li>
+          <li>fetch some or all results</li>
+        </ul>
       </li>
       <li>disposing of the cursor</li>
       <li>closing the connection</li>
@@ -9132,9 +9132,9 @@ connection.close()</pre>
 
     <ul>
       <li>not being able to figure out where their home directory is
-	(particularly if they're using Cygwin);</li>
+        (particularly if they're using Cygwin);</li>
       <li>not being able to run a plain text editor;
-	and</li>
+        and</li>
       <li>the shell refusing to run scripts that include DOS line endings.</li>
     </ul>
 
@@ -9142,66 +9142,66 @@ connection.close()</pre>
 
     <ul>
       <li>
-	Have learners open a shell
-	and then do <code>whoami</code>,
-	<code>pwd</code>,
-	and <code>ls</code>.
-	Then have them create a directory called <code>bootcamp</code>
-	and <code>cd</code> into it,
-	so that everything else they do during the lesson
-	is unlikely to harm whatever files they already have.
+        Have learners open a shell
+        and then do <code>whoami</code>,
+        <code>pwd</code>,
+        and <code>ls</code>.
+        Then have them create a directory called <code>bootcamp</code>
+        and <code>cd</code> into it,
+        so that everything else they do during the lesson
+        is unlikely to harm whatever files they already have.
       </li>
       <li>
-	Get them to run an editor
-	and save a file in their <code>bootcamp</code> directory
-	as early as possible.
-	Doing this is usually the biggest stumbling block during the entire lesson:
-	many will try to run the same editor as the instructor
-	(which may leave them trapped in the awful nether hell that is Vim),
-	or will not know how to navigate to the right directory
-	to save their file,
-	or will run a word processor rather than a plain text editor.
-	The quickest way past these problems is to have more knowledgeable learners
-	help those who need it.
+        Get them to run an editor
+        and save a file in their <code>bootcamp</code> directory
+        as early as possible.
+        Doing this is usually the biggest stumbling block during the entire lesson:
+        many will try to run the same editor as the instructor
+        (which may leave them trapped in the awful nether hell that is Vim),
+        or will not know how to navigate to the right directory
+        to save their file,
+        or will run a word processor rather than a plain text editor.
+        The quickest way past these problems is to have more knowledgeable learners
+        help those who need it.
       </li>
       <li>
-	Tab completion sounds like a small thing: it isn't.
-	Re-running old commands using <code>!123</code> or <code>!wc</code>
-	isn't a small thing either,
-	and neither are wildcard expansion and <code>for</code> loops.
-	Each one is an opportunity to repeat one of the big ideas of Software Carpentry:
-	if the computer <em>can</em> repeat it,
-	some programmer somewhere will almost certainly have built 
-	some way for the computer <em>to</em> repeat it.
+        Tab completion sounds like a small thing: it isn't.
+        Re-running old commands using <code>!123</code> or <code>!wc</code>
+        isn't a small thing either,
+        and neither are wildcard expansion and <code>for</code> loops.
+        Each one is an opportunity to repeat one of the big ideas of Software Carpentry:
+        if the computer <em>can</em> repeat it,
+        some programmer somewhere will almost certainly have built
+        some way for the computer <em>to</em> repeat it.
       </li>
       <li>
-	Building up a pipeline with four or five stages,
-	then putting it in a shell script for re-use
-	and calling that script inside a <code>for</code> loop,
-	is a great opportunity to show how
-	"seven plus or minus two"
-	connects to programming.
-	Once we have figured out how to do something moderately complicated,
-	we make it re-usable and give it a name
-	so that it only takes up one slot in working memory
-	rather than several.
-	It is also a good opportunity to talk about exploratory programming:
-	rather than designing a program up front,
-	we can do a few useful things
-	and then retroactively decide which are worth encapsulating
-	for future re-use.
+        Building up a pipeline with four or five stages,
+        then putting it in a shell script for re-use
+        and calling that script inside a <code>for</code> loop,
+        is a great opportunity to show how
+        "seven plus or minus two"
+        connects to programming.
+        Once we have figured out how to do something moderately complicated,
+        we make it re-usable and give it a name
+        so that it only takes up one slot in working memory
+        rather than several.
+        It is also a good opportunity to talk about exploratory programming:
+        rather than designing a program up front,
+        we can do a few useful things
+        and then retroactively decide which are worth encapsulating
+        for future re-use.
       </li>
       <li>
-	We have to leave out many important things because of time constraints,
-	including file permissions, job control, and SSH.
-	If learners already understand the basic material,
-	this can be covered instead using the online lessons as guidelines.
+        We have to leave out many important things because of time constraints,
+        including file permissions, job control, and SSH.
+        If learners already understand the basic material,
+        this can be covered instead using the online lessons as guidelines.
       </li>
       <li>
-	Installing Bash and a reasonable set of Unix commands on Windows
-	always involves some fiddling and frustration.
-	Please see the latest set of installation guidelines for advice,
-	and try it out yourself <em>before</em> teaching a class.
+        Installing Bash and a reasonable set of Unix commands on Windows
+        always involves some fiddling and frustration.
+        Please see the latest set of installation guidelines for advice,
+        and try it out yourself <em>before</em> teaching a class.
       </li>
     </ul>
 
@@ -9230,63 +9230,63 @@ connection.close()</pre>
 
     <ol>
       <li>questions about who owns what, or can use what,
-	arise naturally once we start talking about
-	using public services like GitHub to store files;
-	and</li>
+        arise naturally once we start talking about
+        using public services like GitHub to store files;
+        and</li>
       <li>the discussion gives learners a chance to catch their breath
-	after what is often a frustrating couple of hours.</li>
+        after what is often a frustrating couple of hours.</li>
     </ol>
 
     <h3>Teaching Notes</h3>
 
     <ul>
       <li>
-	Make sure the network is working <em>before</em> starting this lesson.
+        Make sure the network is working <em>before</em> starting this lesson.
       </li>
       <li>
-	Give learners a five-minute overview of what version control does for them
-	before diving into the watch-and-do practicals.
-	Most of them will have tried to co-author papers by emailing files back and forth,
-	or will have biked into the office
-	only to realize that the USB key with last night's work
-	is still on the kitchen table.
-	Instructors can also make jokes about directories with names like
-	"final version",
-	"final version revised",
-	"final version with reviewer three's corrections",
-	"really final version",
-	and,
-	"come on this really has to be the last version"
-	to motivate version control as a better way to collaborate
-	and as a better way to back work up.
+        Give learners a five-minute overview of what version control does for them
+        before diving into the watch-and-do practicals.
+        Most of them will have tried to co-author papers by emailing files back and forth,
+        or will have biked into the office
+        only to realize that the USB key with last night's work
+        is still on the kitchen table.
+        Instructors can also make jokes about directories with names like
+        "final version",
+        "final version revised",
+        "final version with reviewer three's corrections",
+        "really final version",
+        and,
+        "come on this really has to be the last version"
+        to motivate version control as a better way to collaborate
+        and as a better way to back work up.
       </li>
       <li>
-	Version control is typically taught after the shell,
-	so collect learners' names during that session
-	and create a repository for them to share
-	with their names as both their IDs and their passwords.
+        Version control is typically taught after the shell,
+        so collect learners' names during that session
+        and create a repository for them to share
+        with their names as both their IDs and their passwords.
       </li>
       <li>
-	If your learners are advanced enough to be comfortable SSH,
-	tell them they can use keys to authenticate on GitHub instead of passwords,
-	but don't try to set this up during class:
-	it takes too long,
-	and is a distraction from the core ideas of the lesson.
+        If your learners are advanced enough to be comfortable SSH,
+        tell them they can use keys to authenticate on GitHub instead of passwords,
+        but don't try to set this up during class:
+        it takes too long,
+        and is a distraction from the core ideas of the lesson.
       </li>
       <li>
-	Be very clear what files learners are to edit
-	and what user IDs they are to use
-	when giving instructions.
-	It is common for them to edit the instructor's biography,
-	or to use the instructor's user ID and password when committing.
-	Be equally clear <em>when</em> they are to edit things:
-	it's also common for someone to edit the file the instructor is editing
-	and commit changes while the instructor is explaining what's going on,
-	so that a conflict occurs when the instructor comes to commit the file.
+        Be very clear what files learners are to edit
+        and what user IDs they are to use
+        when giving instructions.
+        It is common for them to edit the instructor's biography,
+        or to use the instructor's user ID and password when committing.
+        Be equally clear <em>when</em> they are to edit things:
+        it's also common for someone to edit the file the instructor is editing
+        and commit changes while the instructor is explaining what's going on,
+        so that a conflict occurs when the instructor comes to commit the file.
       </li>
       <li>
-	If some learners are using Windows,
-	there will inevitably be issues merging files with different line endings.
+        If some learners are using Windows,
+        there will inevitably be issues merging files with different line endings.
       </li>
     </ul>
 
@@ -9323,21 +9323,21 @@ connection.close()</pre>
 
     <ul>
       <li>
-	Watching the instructor grow programs step by step
-	is as helpful to learners as anything to do with Python.
-	Resist the urge to update a single cell repeatedly
-	(which is what you'd probably do in real life).
-	Instead,
-	clone the previous cell and write the update in the new copy
-	so that learners have a complete record of how the program grew.
-	Once you've done this,
-	you can say,
-	"Now why don't we just breaks things into small functions right from the start?"
+        Watching the instructor grow programs step by step
+        is as helpful to learners as anything to do with Python.
+        Resist the urge to update a single cell repeatedly
+        (which is what you'd probably do in real life).
+        Instead,
+        clone the previous cell and write the update in the new copy
+        so that learners have a complete record of how the program grew.
+        Once you've done this,
+        you can say,
+        "Now why don't we just breaks things into small functions right from the start?"
       </li>
       <li>
-	The discussion of command-line scripts
-	assumes that students understand standard I/O and building filters,
-	which are covered in the lesson on the shell.
+        The discussion of command-line scripts
+        assumes that students understand standard I/O and building filters,
+        which are covered in the lesson on the shell.
       </li>
     </ul>
 
@@ -9358,49 +9358,49 @@ connection.close()</pre>
 
     <ul>
       <li>
-	The first few sections (up to "Missing Data") usually go very quickly.
-	The pace usually slows down a bit when null values are discussed
-	mostly because learners have a lot of details to keep straight by this point.
-	Things <em>really</em> slow down during the discussion of joins,
-	but this is the key idea in the whole lesson:
-	important ideas like primary keys and referential integrity
-	only make sense once learners have seen how they're used in joins.
-	It's worth going over things a couple of times if necessary (with lots of examples).
+        The first few sections (up to "Missing Data") usually go very quickly.
+        The pace usually slows down a bit when null values are discussed
+        mostly because learners have a lot of details to keep straight by this point.
+        Things <em>really</em> slow down during the discussion of joins,
+        but this is the key idea in the whole lesson:
+        important ideas like primary keys and referential integrity
+        only make sense once learners have seen how they're used in joins.
+        It's worth going over things a couple of times if necessary (with lots of examples).
       </li>
       <li>
-	The sections on creating and modifying data,
-	and programming with databases,
-	can be dropped if time is short.
-	Of the two,
-	people seem to care most about how to add data (which only takes a few minutes to demonstrate).
+        The sections on creating and modifying data,
+        and programming with databases,
+        can be dropped if time is short.
+        Of the two,
+        people seem to care most about how to add data (which only takes a few minutes to demonstrate).
       </li>
       <li>
-	Overall,
-	this material takes three hours to present assuming that a short exercise is done with each topic.
+        Overall,
+        this material takes three hours to present assuming that a short exercise is done with each topic.
       </li>
       <li>
-	Simple calculations are actually easier to do in a spreadsheet;
-	the advantages of using a database become clear as soon as filtering and joins are needed.
-	Instructors may therefore want to show a spreadsheet with the information from the four database tables
-	consolidated into a single sheet,
-	and demonstrate what's needed in both systems to answer questions like,
-	"What was the average radiation reading in 1931?"
+        Simple calculations are actually easier to do in a spreadsheet;
+        the advantages of using a database become clear as soon as filtering and joins are needed.
+        Instructors may therefore want to show a spreadsheet with the information from the four database tables
+        consolidated into a single sheet,
+        and demonstrate what's needed in both systems to answer questions like,
+        "What was the average radiation reading in 1931?"
       </li>
       <li>Some learners may have heard that NoSQL databases
-	(i.e., ones that don't use the relational model)
-	are the next big thing,
-	and ask why we're not teaching those.
-	The answers are:
-	<ol>
-	  <li>Relational databases are far more widely used than NoSQL databases.</li>
-	  <li>We have far more experience with relational databases than with any other kind,
-	    so we have a better idea of what to teach and how to teach it.</li>
-	  <li>NoSQL databases are as different from each other as they are from relational databases.
-	    Until a leader emerges, it isn't clear <em>which</em> NoSQL database we should teach.</li>
-	</ol>
+        (i.e., ones that don't use the relational model)
+        are the next big thing,
+        and ask why we're not teaching those.
+        The answers are:
+        <ol>
+          <li>Relational databases are far more widely used than NoSQL databases.</li>
+          <li>We have far more experience with relational databases than with any other kind,
+            so we have a better idea of what to teach and how to teach it.</li>
+          <li>NoSQL databases are as different from each other as they are from relational databases.
+            Until a leader emerges, it isn't clear <em>which</em> NoSQL database we should teach.</li>
+        </ol>
       </li>
       <li>Run <code>sqlite3 survey.db &lt; gen-survey-database.sql</code>
-	to re-create survey database before loading notebooks.</li>
+        to re-create survey database before loading notebooks.</li>
     </ul>
 
     <h1>Thinking Like a Programmer</h1>
@@ -9606,70 +9606,70 @@ connection.close()</pre>
 
     <ul>
       <li>
-	Paul F. Dubois:
-	"Maintaining Correctness in Scientific Programs".
-	<em>Computing in Science &amp; Engineering</em>,
-	May-June 2005.
-	<br />
-	This paper shows how several good programming practices fit together
-	to create defense in depth,
-	so that errors missed by one will be caught by another.
+        Paul F. Dubois:
+        "Maintaining Correctness in Scientific Programs".
+        <em>Computing in Science &amp; Engineering</em>,
+        May-June 2005.
+        <br />
+        This paper shows how several good programming practices fit together
+        to create defense in depth,
+        so that errors missed by one will be caught by another.
       </li>
       <li>
-	Joel T. Dudley and Atul J. Butte:
-	"A Quick Guide for Developing Effective Bioinformatics Programming Skills".
-	<em>PLOS Computational Biology</em>,
-	5(12),
-	December 2009.
-	<br />
-	Summarizes the skills that bioinformaticians (and others) need
-	to build usable code with reasonable effort.
+        Joel T. Dudley and Atul J. Butte:
+        "A Quick Guide for Developing Effective Bioinformatics Programming Skills".
+        <em>PLOS Computational Biology</em>,
+        5(12),
+        December 2009.
+        <br />
+        Summarizes the skills that bioinformaticians (and others) need
+        to build usable code with reasonable effort.
       </li>
       <li>
-	Jo Erskine Hannay, Hans Petter Langtangen, Carolyn MacLeod, Dietmar Pfahl, Janice Singer, and Greg Wilson:
-	"How Do Scientists Develop and Use Scientific Software?"
-	<em>Proc. 2009 ICSE Workshop on Software Engineering for Computational Science and Engineering</em>,
-	2009.
-	<br />
-	The largest study survey done of how scientists use computers in their research
-	and how much time they spend doing so.
+        Jo Erskine Hannay, Hans Petter Langtangen, Carolyn MacLeod, Dietmar Pfahl, Janice Singer, and Greg Wilson:
+        "How Do Scientists Develop and Use Scientific Software?"
+        <em>Proc. 2009 ICSE Workshop on Software Engineering for Computational Science and Engineering</em>,
+        2009.
+        <br />
+        The largest study survey done of how scientists use computers in their research
+        and how much time they spend doing so.
       </li>
       <li>
-	William Stafford Noble:
-	"A Quick Guide to Organizing Computational Biology Projects".
-	<em>PLoS Computational Biology</em>,
-	5(7),
-	2009.
-	<br />
-	How and why one scientist organizes his data and scripts.
+        William Stafford Noble:
+        "A Quick Guide to Organizing Computational Biology Projects".
+        <em>PLoS Computational Biology</em>,
+        5(7),
+        2009.
+        <br />
+        How and why one scientist organizes his data and scripts.
       </li>
       <li>
-	Ethan P. White, Elita Baldridge, Zachary T. Brym, Kenneth J. Locey, Daniel J. McGlinn, and Sarah R. Supp:
-	"Nine Simple Ways to Make It Easier to (Re)use Your Data."
-	<em>PeerJ PrePrints</em>,
-	1:e7v2,
-	2012.
-	<br />
-	Delivers exactly what the title promises:
-	a straightforward set of practices that will make it easier for other scientists to use your data.
+        Ethan P. White, Elita Baldridge, Zachary T. Brym, Kenneth J. Locey, Daniel J. McGlinn, and Sarah R. Supp:
+        "Nine Simple Ways to Make It Easier to (Re)use Your Data."
+        <em>PeerJ PrePrints</em>,
+        1:e7v2,
+        2012.
+        <br />
+        Delivers exactly what the title promises:
+        a straightforward set of practices that will make it easier for other scientists to use your data.
       </li>
       <li>
-	Greg Wilson, D. A. Aruliah, C. Titus Brown, Neil P. Chue Hong, Matt Davis, Richard T. Guy, Steven H. D. Haddock, Katy Huff, Ian M. Mitchell, Mark Plumbley, Ben Waugh, Ethan P. White, and Paul Wilson:
-	"Best Practices for Scientific Computing".
-	arXiv pre-print,
-	submitted November 29, 2012.
-	<br />
-	Describes a set of best practices for scientific software development
-	that have solid foundations in research and experience,
-	and that improve scientists' productivity and the reliability of their software.
+        Greg Wilson, D. A. Aruliah, C. Titus Brown, Neil P. Chue Hong, Matt Davis, Richard T. Guy, Steven H. D. Haddock, Katy Huff, Ian M. Mitchell, Mark Plumbley, Ben Waugh, Ethan P. White, and Paul Wilson:
+        "Best Practices for Scientific Computing".
+        arXiv pre-print,
+        submitted November 29, 2012.
+        <br />
+        Describes a set of best practices for scientific software development
+        that have solid foundations in research and experience,
+        and that improve scientists' productivity and the reliability of their software.
       </li>
       <li>
-	Greg Wilson: "Software Carpentry: Lessons Learned".
-	arXiv pre-print,
-	submitted July 20, 2013.
-	<br />
-	Describes what we've learned about how to teach programming to scientists
-	over the last 15 years.
+        Greg Wilson: "Software Carpentry: Lessons Learned".
+        arXiv pre-print,
+        submitted July 20, 2013.
+        <br />
+        Describes what we've learned about how to teach programming to scientists
+        over the last 15 years.
       </li>
     </ul>
 
@@ -9677,55 +9677,55 @@ connection.close()</pre>
 
     <ul>
       <li>
-	Chris Fehily:
-	<em>SQL: Visual QuickStart Guide</em> (3rd ed).
-	Peachpit Press,
-	0321553578,
-	2002.
-	<br />
-	Describes the 5% of SQL that covers 95% of real-world needs.
+        Chris Fehily:
+        <em>SQL: Visual QuickStart Guide</em> (3rd ed).
+        Peachpit Press,
+        0321553578,
+        2002.
+        <br />
+        Describes the 5% of SQL that covers 95% of real-world needs.
       </li>
       <li>
-	Karl Fogel:
-	<em>Producing Open Source Software: How to Run a Successful Free Software Project</em>.
-	O'Reilly Media,
-	0596007590,
-	2005.
-	<br />
-	An excellent guide to how open source projects actually work.
-	Every page offers practical advice on how to earn commit privileges on a project,
-	get it more attention,
-	or fork it in case of irreconcilable differences.
+        Karl Fogel:
+        <em>Producing Open Source Software: How to Run a Successful Free Software Project</em>.
+        O'Reilly Media,
+        0596007590,
+        2005.
+        <br />
+        An excellent guide to how open source projects actually work.
+        Every page offers practical advice on how to earn commit privileges on a project,
+        get it more attention,
+        or fork it in case of irreconcilable differences.
       </li>
       <li>
-	Steve Haddock and Casey Dunn:
-	<em>Practical Computing for Biologists</em>.
-	Sinauer,
-	0878933913,
-	2010.
-	<br />
-	The best general introduction to "the other 90%" of scientific computing on the market today.
+        Steve Haddock and Casey Dunn:
+        <em>Practical Computing for Biologists</em>.
+        Sinauer,
+        0878933913,
+        2010.
+        <br />
+        The best general introduction to "the other 90%" of scientific computing on the market today.
       </li>
       <li>
-	Andy Oram and Greg Wilson (eds):
-	<em>Making Software: What Really Works, and Why We Believe It</em>.
-	O'Reilly,
-	0596808321,
-	2010.
-	<br />
-	Leading software engineering researchers take a chapter each
-	to describe key empirical results and the evidence behind them.
-	Topics range from the impact of programming languages on programmers' productivity
-	to whether we can predict software faults using statistical techniques.
+        Andy Oram and Greg Wilson (eds):
+        <em>Making Software: What Really Works, and Why We Believe It</em>.
+        O'Reilly,
+        0596808321,
+        2010.
+        <br />
+        Leading software engineering researchers take a chapter each
+        to describe key empirical results and the evidence behind them.
+        Topics range from the impact of programming languages on programmers' productivity
+        to whether we can predict software faults using statistical techniques.
       </li>
       <li>
-	Deborah S. Ray and Eric J. Ray:
-	<em>Unix and Linux: Visual QuickStart Guide</em>.
-	Peachpit Press,
-	0321636783,
-	2009.
-	<br />
-	A gentle introduction to Unix, with many examples.
+        Deborah S. Ray and Eric J. Ray:
+        <em>Unix and Linux: Visual QuickStart Guide</em>.
+        Peachpit Press,
+        0321636783,
+        2009.
+        <br />
+        A gentle introduction to Unix, with many examples.
       </li>
     </ul>
 
@@ -10584,14 +10584,14 @@ $</pre>
     </p>
 
     <h2>Process Control</h2>
-  
+
     <p>
       Our next topic is how to control programs <em>once they're running</em>.
       This is called <a href="#gloss:job-control">job control</a>,
       and while it's less important today than it was back in the Dark Ages,
       it is coming back into its own as more people begin to leverage the power of computer networks.
     </p>
-  
+
     <p>
       When we talk about controlling programs,
       what we really mean is controlling <em>processes</em>.
@@ -10607,19 +10607,19 @@ $</pre>
 2152      1   2152   con  1000  13:19:07   /usr/bin/bash
 2276   2152   2276   con  1000  14:53:48   /usr/bin/ps</span>
 $</pre>
-  
+
     <p>
       Every process has a unique process id (PID).
       Remember, this is a property of the process, not of the program that process is executing:
       if you are running three instances of your browser at once, each will have its own process ID.
     </p>
-  
+
     <p>
       The second column in this listing, PPID, shows the ID of each process's parent.
       Every process on a computer is spawned by another, which is its parent
       (except, of course, for the bootstrap process that runs automatically when the computer starts up).
     </p>
-  
+
     <p>
       The third column (labelled PGID) is the ID of the <em>process group</em> this process belongs to.
       We won't discuss process groups in this lecture,
@@ -10629,13 +10629,13 @@ $</pre>
       It isn't as important these days, except that if a process is a system service, such as a network monitor,
       <code>ps</code> will display a question mark for its terminal, since it doesn't actually have one.
     </p>
-  
+
     <p>
       Column 5 is more interesting: it's the user ID of the user this process is being run by.
       This is the user ID the computer uses when checking permissions:
       the process is allowed to access exactly the same things as the user, no more, no less.
     </p>
-  
+
     <p>
       Finally, Column 6 shows when the process started running,
       and Column 7 shows what program the process is executing.
@@ -10643,20 +10643,20 @@ $</pre>
       or may show them in a different order,
       but the same information is generally available everywhere.
     </p>
-  
+
     <p>
       FIXME: explain how to kill a process
     </p>
-  
+
     <h2>Variables</h2>
-  
+
     <p>
       The shell is just a program, and like other programs, it has variables.
       Those variables control its execution,
       and by changing their values,
       you can change how the shell and other programs behave.
     </p>
-  
+
     <p>
       Let's start by running the command <code>set</code> and looking at some of the variables in a typical shell session:
     </p>
@@ -10683,7 +10683,7 @@ USERNAME=vlad
       but if you don't give it any arguments,
       it might as well show you things you <em>could</em> set.
     </p>
-  
+
     <p>
       Every variable has a name.
       By convention, variables that are always present are given upper-case names.
@@ -10699,7 +10699,7 @@ USERNAME=vlad
       If a program wants the individual elements of such a list,
       it's the program's responsibility to split the variable's string value into pieces.
     </p>
-  
+
     <p>
       Let's have a closer look at that <code>PATH</code> variable.
       Its value defines the shell's <a href="#gloss:search-path">search path</a>,
@@ -10710,14 +10710,14 @@ USERNAME=vlad
       we've provided a specific path, so it knows what to do.
       But which one should the shell do if we just type <code>analyze</code>?
     </p>
-  
+
     <p>
       The rule is simple:
       the shell checks each directory in the <code>PATH</code> variable in turn,
       looking for a program with the rqeuested name in that directory.
       As soon as it finds a match, it stops searching and runs the program.
     </p>
-  
+
     <p>
       To show how this works, here are the components of <code>PATH</code> broken out one per line:
     </p>
@@ -10731,7 +10731,7 @@ USERNAME=vlad
 /cygdrive/c/bin
 /cygdrive/c/Python27
 </pre>
-  
+
     <p>
       On our computer, there are actually three programs called <code>analyze</code> in three different directories:
       <code>/bin/analyze</code>, <code>/usr/local/bin/analyze</code>, and <code>/users/vlad/analyze</code>.
@@ -10739,7 +10739,7 @@ USERNAME=vlad
       Notice that it will <em>never</em> find the program <code>/users/vlad/analyze</code>,
       since the directory <code>/users/vlad</code> isn't in our path.
     </p>
-  
+
     <p>
       Let's show the value of the variable <code>HOME</code>:
     </p>
@@ -10747,7 +10747,7 @@ USERNAME=vlad
 <pre>$ <span class="in">echo HOME</span>
 <span class="out">HOME</span>
 $</pre>
-  
+
     <p>
       That just prints "HOME", which isn't what we wanted.
       Let's try this instead: <code>echo $HOME</code>:
@@ -10756,7 +10756,7 @@ $</pre>
 <pre>$ <span class="in">echo $HOME</span>
 <span class="out">/home/vlad</span>
 $</pre>
-  
+
     <p>
       The dollar sign tells the shell to replace the variable's name with its value.
       This works just like wildcards:
@@ -10764,7 +10764,7 @@ $</pre>
       Thanks to this expansion, what we actually run is <code>echo /home/vlad</code>,
       which displays the right thing.
     </p>
-  
+
     <p>
       Creating a variable is easy: just assign a value to a name using "=":
     </p>
@@ -10773,7 +10773,7 @@ $</pre>
 $ <span class="in">echo $SECRET_IDENTITY</span>
 <span class="out">Dracula</span>
 $</pre>
-  
+
     <p>
       To change the value, just assign a new one:
     </p>
@@ -10782,7 +10782,7 @@ $</pre>
 $ <span class="in">echo $SECRET_IDENTITY</span>
 <span class="out">Camilla</span>
 $</pre>
-  
+
     <p>
       If we want to set some variables' values automatically every time we run a shell,
       we can put the command to do this in a file called <code>.bashrc</code> in our home directory.
@@ -10810,7 +10810,7 @@ export BACKUP_DIR=$TEMP_DIR/backup
       so that if we change where we put temporary files,
       our backups will be relocated automatically.
     </p>
-  
+
     <p>
       While we're here,
       it's also common to use the <code>alias</code> command to create shortcuts for things we frequently type.
@@ -10825,9 +10825,9 @@ alias backup=/bin/zback -v --nostir -R 20000 $HOME $BACKUP_DIR
     <p>
       As you can see, aliases can save us a lot of typing, and hence a lot of typing mistakes.
     </p>
-  
+
     <h2>Working Remotely</h2>
-  
+
     <p>
       Let's take a closer look at what happens when we use a desktop or laptop computer.
       The first step is to log in
@@ -10837,7 +10837,7 @@ alias backup=/bin/zback -v --nostir -R 20000 $HOME $BACKUP_DIR
       and if they match,
       runs a shell for us.
     </p>
-  
+
     <p>
       As we type commands,
       the 1's and 0's that represent the characters we're typing are sent from the keyboard to the shell.
@@ -10864,7 +10864,7 @@ alias backup=/bin/zback -v --nostir -R 20000 $HOME $BACKUP_DIR
     </p>
 
     <p>FIXME: diagram</p>
-  
+
     <p>
       The tool we use to log in remotely is the <a href="#gloss:secure-shell">secure shell</a>, or SSH.
       In particular, the command <code>ssh username@computer</code>
@@ -10892,7 +10892,7 @@ moon&gt; <span class="in">exit</span>
 $ <span class="in">pwd</span>
 <span class="out">/users/vlad</span>
 $</pre>
-  
+
     <p>
       The secure shell is called "secure" to contrast it with an older program called <code>rsh</code>,
       which stood for "remote shell".
@@ -10910,7 +10910,7 @@ $</pre>
       A <a href="security.html">later chapter</a> will talk about how this works,
       and how secure it really is.
     </p>
-  
+
     <p>
       <code>ssh</code> has a companion program called <code>scp</code>,
       which stands for "secure copy".
@@ -10930,7 +10930,7 @@ $</pre>
 <span class="out">Password:</span><span class="in"> ********</span>
 <span class="out">results.dat              100%  9  1.0 MB/s 00:00</span>
 $</pre>
-  
+
     <p>
       Copying a whole directory is similar:
       we just use the <code>-r</code> option to signal that we want copying to be recursive.
@@ -10962,7 +10962,7 @@ $
 <span class="out">results-2011-09-18.dat  results-2011-10-28.dat
 results-2011-10-04.dat  results-2011-11-11.dat</span>
 $</pre>
-  
+
     <p>
       SSH has taken the arguments after our username and the name of the computer we want to run on
       and passed them to the shell on the remote computer.
@@ -10971,7 +10971,245 @@ $</pre>
       and sent the output back to our local shell for display.
     </p>
 
-    <h1>Appendix B: A Bit More on Defensive Programming</h1>
+    <h1>Appendix B: A Bit More About Python</h1>
+
+    <h2>Aliasing</h2>
+
+    <p>
+      At this point,
+      we need to take a small side trip to explore something which is very useful,
+      but which can also be the source of some hard-to-find bugs.
+      Consider the following snippet of Python:
+    </p>
+
+<pre><span class="in">outer = [ [10, 20, 30], [40, 50, 60] ]
+inner = outer[0]</span></pre>
+
+    <p>
+      After these two lines have been executed,
+      the program's memory looks like this:
+    </p>
+
+    <p>FIXME: diagram</p>
+
+    <p>
+      <code>outer</code> refers to a two-element list
+      containing references to a couple of three-element lists,
+      while <code>inner</code> refers to the first of those three-element lists.
+    </p>
+
+    <p>
+      Now let's change the last value of the list that <code>inner</code> refers to:
+    </p>
+
+<pre><span class="in">inner[2] = 99</span></pre>
+
+    <p>FIXME: diagram</p>
+
+    <p>
+      This changes memory as shown above,
+      which means that the values of both <code>inner</code> <em>and</em> <code>outer</code>
+      have changed:
+    </p>
+
+<pre><span class="in">print inner</span>
+<span class="out">[10, 20, 99]</span>
+<span class="in">print outer</span>
+<span class="out">[[10, 20, 99], [40, 50, 60]]</span></pre>
+
+    <p>
+      This is called <a href="glossary.html#alias">aliasing</a>.
+      It is not a bug:
+      the program is supposed to work this way.
+      It doesn't have to, though;
+      Python's creator could have decided that:
+    </p>
+
+<pre><span class="in">inner = outer[0]</span></pre>
+
+    <p>
+      would create a copy of <code>outer[0]</code>
+      and assign that to <code>inner</code>
+      rather than aliasing the first element of <code>outer</code>.
+      That would be easier to understand&mdash;there would be no chance that
+      assigning to one variable would cause another variable's value to change&mdash;but
+      it would also be less efficient.
+      If our sublists contain a million elements each,
+      and we're assigning them to temporary variables
+      simply to make our program more readable,
+      copying would cause unnecessary slow-down.
+    </p>
+
+    <p>
+      When a programming language copies data,
+      and when it creates aliases instead,
+      is one of the most important things a programmer must know about it.
+      If we query a database,
+      is the result a copy of the data as it was when we made the query,
+      or a reference to the master copy?
+      In the first case,
+      we can now change the data however we want without affecting other people,
+      but we won't see any updates they make.
+      In the second case,
+      we will automatically see updates to the data,
+      but that means our program has to cope with changes at unpredictable times
+      (and also has to re-fetch the data each time it needs it,
+      which will reduce performance).
+      Neither approach is right or wrong:
+      there are simply engineering tradeoffs that we have to be aware of.
+    </p>
+
+    <blockquote>
+      <h3>Copying When You Want To</h3>
+
+      <p>
+        Python has a library called (naturally enough) <code>copy</code>
+        that knows how to copy complex data structures.
+        We will take a look at it <a href="#a:copy_library">later</a>
+        once we have looked at how Python manages libraries in general.
+      </p>
+
+    </blockquote>
+
+    <p>
+      We said earlier that
+      values are copied into parameters whenever a function is called.
+      But variables don't actually store values:
+      they are actually just names that refer to values.
+      To see what this means for our programs,
+      here's a function that takes a string and a list as parameters,
+      and appends something to both:
+    </p>
+
+<pre><span class="in">def appender(a_string, a_list):
+    a_string = a_string + 'turing'
+    a_list.append('turing')</span></pre>
+
+    <p>
+      And here is some code to set up a pair of variables and call that function:
+    </p>
+
+<pre><span class="in">string_val = 'alan'
+list_val = ['alan']
+appender(string_val, list_val)
+print 'string', string_val
+print 'list', list_val</span>
+<span class="out">string alan
+list ['alan', 'turing']</span></pre>
+
+    <p>
+      Why did the list change when the string didn't?
+      To find out,
+      let's trace the function's execution.
+      Just before the call,
+      the global frame has two variables
+      that refer to a string and a list:
+    </p>
+
+    <p>FIXME: diagram</p>
+
+    <p>
+      The call creates a new stack frame with aliases for those values:
+    </p>
+
+    <p>FIXME: diagram</p>
+
+    <p>
+      The <code>a_string + 'turing'</code> creates a new string <code>'alanturing'</code>;
+      assigning this to the variable <code>a_string</code>
+      changes what that local variable refers to,
+      but doesn't change what the global variable <code>string_val</code> refers to:
+    </p>
+
+    <p>FIXME: diagram</p>
+
+    <p>
+      The statement <code>a_list.append('turing')</code>,
+      however,
+      actually modifies the list that <code>a_list</code> is pointing to:
+    </p>
+
+    <p>FIXME: diagram</p>
+
+    <p>
+      But this is the same thing that the variable <code>list_val</code> in the caller is pointing to.
+      When the function returns and the call frame is thrown away,
+      the new string <code>'alanturing'</code> is therefore lost,
+      because the only reference to it was in the function call's stack frame.
+      The change to the list,
+      on the other hand,
+      is kept,
+      because the function actually modified the list in place:
+    </p>
+
+    <p>FIXME: diagram</p>
+
+    <p>
+      Let's change one line in the function:
+    </p>
+
+<pre><span class="in">def appender(a_string, a_list):
+    a_string = a_string + 'turing'
+    a_list = a_list + ['turing']</span></pre>
+
+    <p>
+      and see what happens when we run the same experiment:
+    </p>
+
+<pre><span class="in">string_val = 'alan'
+list_val = ['alan']
+appender(string_val, list_val)
+print 'string', string_val
+print 'list', list_val</span>
+<span class="out">string alan
+list ['alan']</span></pre>
+
+    <p>
+      The answer is different because
+      concatenating (adding) two lists creates a new list,
+      rather than modifying either of the lists being concatenated.
+      As a result,
+      the local variable <code>a_list</code> is the only thing that refers to the list
+      <code>['alan', 'turing']</code>,
+      so that value is discarded when the function finishes
+      and <code>list_val</code>'s value is undisturbed.
+    </p>
+
+    <blockquote>
+      <h3>Memory Models</h3>
+
+      <p>
+        Python's treatment of lists
+        (and other mutable data that we'll see <a href="setdict.html">later</a>)
+        isn't the only way to handle things.
+        For example,
+        MATLAB functions
+        use a rule called <a href="glossary.html#copy-on-write">copy on write</a>.
+        Initially,
+        it creates aliases for arrays that are passed into functions.
+        The first time a function assigns to an array,
+        though,
+        MATLAB clones the array
+        and changes the clone rather than the original.
+        This saves it from copying data when it doesn't need to,
+        while guaranteeing that functions don't have side effects
+        (which makes them easier to think about).
+      </p>
+
+      <p>
+        Other languages have slightly different rules about scoping and aliasing.
+        Together,
+        those rules make up the language's
+        <a href="glossary.html#memory-model">memory model</a>.
+        Understanding that model is perhaps the most important step
+        in understanding how programs written in the language actually work,
+        and more importantly,
+        how to debug them when they don't.
+      </p>
+
+    </blockquote>
+
+    <h1>Appendix C: A Bit More on Defensive Programming</h1>
 
     <h2>Exceptions</h2>
 
@@ -10988,7 +11226,7 @@ $</pre>
       here's a small piece of code that tries to read parameters and a grid from two
       separate files,
       and reports an error if either goes wrong:</p>
-    
+
 <pre><span class="in">try:
     params = read_params(param_file)
     grid = read_grid(grid_file)
@@ -11205,7 +11443,7 @@ except ArithmeticError as err:
       Here,
       for example,
       is a function that reads a grid and checks its consistency:</p>
-    
+
 <pre>def read_grid(grid_file):
 
     data = read_raw_data(grid_file)
@@ -11345,7 +11583,7 @@ AssertionError</span></pre>
       The name &quot;xUnit&quot; comes from the fact that
       many of them are imitations of a Java testing library called JUnit.
       The <a href="http://en.wikipedia.org/wiki/List_of_unit_testing_frameworks">Wikipedia
-	page</a> on the
+        page</a> on the
       subject
       lists dozens of similar frameworks in almost as many languages,
       all of which have a similar structure:
@@ -11839,43 +12077,43 @@ for i in range(len(nines)):
 
     <ul>
       <li id="week-hard-work-hour-thought">
-	A week of hard work can sometimes save you an hour of thought.
+        A week of hard work can sometimes save you an hour of thought.
       </li>
       <li id="fail-early-fail-often">
-	Fail early, fail often.
+        Fail early, fail often.
       </li>
       <li id="turn-bugs-into-assertions-or-tests">
-	Turn bugs into assertions or tests.
+        Turn bugs into assertions or tests.
       </li>
       <li id="red-green-refactor">
-	Red, green, refactor.
+        Red, green, refactor.
       </li>
       <li id="always-initialize-from-data">
-	Always initialize from data.
+        Always initialize from data.
       </li>
       <li id="test-simple-first">
-	Test the simple things first.
+        Test the simple things first.
       </li>
       <li id="know-what-its-supposed-to-do">
-	Know what it's supposed to do.
+        Know what it's supposed to do.
       </li>
       <li id="make-it-fail-every-time">
-	Make it fail every time.
+        Make it fail every time.
       </li>
       <li id="make-it-fail-fast">
-	Make it fail fast.
+        Make it fail fast.
       </li>
       <li id="change-one-thing-at-a-time">
-	Change on thing at a time, for a reason.
+        Change on thing at a time, for a reason.
       </li>
       <li id="keep-track-of-what-youve-done">
-	Keep track of what you've done.
+        Keep track of what you've done.
       </li>
       <li id="be-humble">
-	Be humble.
+        Be humble.
       </li>
       <li id="throw-low-catch-high">
-	Throw low, catch high.
+        Throw low, catch high.
       </li>
     </ul>
 

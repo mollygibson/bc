@@ -25,7 +25,7 @@
 	<li><a href="#s:bib">Recommended Reading</a></li>
 	<li><a href="#s:gloss">Glossary</a></li>
 	<li><a href="#s:rules">The Rules</a></li>
-	<li><a href="#s:misc">Appendix: A Few Odds and Ends</a></li>
+	<li><a href="#s:misc">A Few Odds and Ends</a></li>
       </ul>
     </div>
 
@@ -486,7 +486,7 @@ $</pre>
 <span class="out">/users/vlad</span>
 $</pre>
 
-    <blockquote>
+    <blockquote class="box">
       <h3>Alphabet Soup</h3>
 
       <p>If the command to find out who we are is <code>whoami</code>, the command to find
@@ -570,7 +570,7 @@ $</pre>
       the shell thinks we're trying to run a command called <code>ls-F</code>,
       which doesn't exist.</p>
 
-    <blockquote>
+    <blockquote class="box">
       <h3>What's In A Name?</h3>
 
       <p>You may have noticed that all of Vlad's files' names are "something dot
@@ -644,7 +644,7 @@ $</pre>
       the command doesn't change the directory,
       it changes the shell's idea of what directory we are in.</p>
 
-<pre><span class="in">$ cd data</span>
+<pre>$ <span class="in">cd data</span>
 $</pre>
 
     <p><code>cd</code> doesn't print anything,
@@ -653,7 +653,7 @@ $</pre>
       it lists the contents of <code>/users/vlad/data</code>,
       because that's where we now are:</p>
 
-<pre><span class="in">$ pwd</span>
+<pre>$ <span class="in">pwd</span>
 <span class="out">/users/vlad/data</span>
 $ <span class="in">ls</span>
 <span class="out">amino-acids.txt   elements/     morse.txt
@@ -669,7 +669,7 @@ $</pre>
 
     <p>but it's almost always simpler to use <code>cd ..</code> to go up one level:</p>
 
-<pre><span class="in">$ pwd</span>
+<pre>$ <span class="in">pwd</span>
 <span class="out">/users/vlad/data</span>
 $ <span class="in">cd ..</span>
 $</pre>
@@ -681,7 +681,7 @@ $</pre>
       Sure enough,
       if we run <code>pwd</code> after running <code>cd ..</code>, we're back in <code>/users/vlad</code>:</p>
 
-<pre><span class="in">$ pwd</span>
+<pre>$ <span class="in">pwd</span>
 <span class="out">/users/vlad</span>
 $</pre>
 
@@ -703,7 +703,7 @@ $</pre>
       It may seem redundant to have a name for it,
       but we'll see some uses for it soon.</p>
 
-    <blockquote>
+    <blockquote class="box">
       <h3>Orthogonality</h3>
 
       <p>The special names <code>.</code> and <code>..</code> don't belong to <code>ls</code>;
@@ -733,7 +733,9 @@ $</pre>
       (The final straw was when she found herself creating
       a directory called <code>revised-revised-results-3</code>.)</p>
 
-    <blockquote>
+    <blockquote class="box">
+      <h3>Year, Month, Day</h3>
+
       <p>Nelle names her directories "year-month-day",
         with leading zeroes for months and days,
         because the shell displays file and directory names in alphabetical order.
@@ -741,6 +743,7 @@ $</pre>
         December would come before July;
         if she didn't use leading zeroes,
         November ('11') would come before July ('7').</p>
+
     </blockquote>
 
     <p>Each of her physical samples is labelled according to her lab's convention
@@ -895,7 +898,7 @@ $</pre>
 <pre>$ <span class="in">cd thesis</span>
 $ <span class="in">nano draft.txt</span></pre>
 
-    <blockquote>
+    <blockquote class="box">
       <h3>Which Editor?</h3>
 
       <p>When we say, "<code>nano</code> is a text editor," we really do mean "text": it can
@@ -966,7 +969,7 @@ $</pre>
 <pre>$ <span class="in">ls</span>
 $</pre>
 
-    <blockquote>
+    <blockquote class="box">
       <h3>Deleting Is Forever</h3>
 
       <p>Unix doesn't have a trash bin: when we delete files, they are unhooked
@@ -991,7 +994,7 @@ $</pre>
     <p>If we try to remove the entire <code>thesis</code> directory using <code>rm thesis</code>,
       we get an error message:</p>
 
-<pre><span class="in">$ rm thesis</span>
+<pre>$ <span class="in">rm thesis</span>
 <span class="err">rm: cannot remove 'thesis': Is a directory</span>
 $</pre>
 
@@ -1017,7 +1020,7 @@ $</pre>
 <pre>$ <span class="in">rmdir thesis</span>
 $</pre>
 
-    <blockquote>
+    <blockquote class="box">
       <h3>With Great Power Comes Great Responsibility</h3>
 
       <p>Removing the files in a directory just so that we can remove the
@@ -1115,7 +1118,7 @@ $</pre>
 <span class="out">thesis/quotations.txt</span>
 $</pre>
 
-    <blockquote>
+    <blockquote class="box">
       <h3>Another Useful Abbreviation</h3>
 
       <p>The shell interprets the character <code>~</code> (tilde) at the start of a path to
@@ -1237,7 +1240,7 @@ $ <span class="in">wc *.pdb</span>
  107  819 6081 total</span>
 $</pre>
 
-    <blockquote>
+    <blockquote class="box">
       <h3>Wildcards</h3>
 
       <p><code>*</code> is a <a href="#gloss:wildcard">wildcard</a>. It matches zero or more
@@ -1284,7 +1287,7 @@ $</pre>
       but what if there were 6000?
       Our first step toward a solution is to run the command:</p>
 
-<pre><span class="in">$ wc -l *.pdb &gt; lengths</span>
+<pre>$ <span class="in">wc -l *.pdb &gt; lengths</span>
 $</pre>
 
     <p>The <code>&gt;</code> tells the shell to <a href="#gloss:redirect">redirect</a> the command's output
@@ -1319,7 +1322,7 @@ $</pre>
       This does <em>not</em> change the file;
       instead, it sends the sorted result to the screen:</p>
 
-<pre><span class="in">$ sort lengths</span>
+<pre>$ <span class="in">sort lengths</span>
 <span class="out">  9  methane.pdb
  12  ethane.pdb
  15  propane.pdb
@@ -1435,7 +1438,7 @@ $</pre>
       You can <em>and should</em> write your programs this way
       so that you and other people can put those programs into pipes to multiply their power.</p>
 
-    <blockquote>
+    <blockquote class="box">
       <h3>Redirecting Input</h3>
 
       <p>As well as using <code>&gt;</code> to redirect a program's output, we can use <code>&lt;</code> to
@@ -1739,7 +1742,7 @@ $</pre>
       the command that's actually being run is our old friend <code>head</code>,
       so this loop prints out the first three lines of each data file in turn.</p>
 
-    <blockquote>
+    <blockquote class="box">
       <h3>Follow the Prompt</h3>
 
       <p>The shell prompt changes from <code>$</code> to <code>&gt;</code> and back again as we were
@@ -1806,7 +1809,7 @@ done</pre>
       Finally,
       the <code>head</code> and <code>tail</code> combination selects lines 81-100 from whatever file is being processed.</p>
 
-    <blockquote>
+    <blockquote class="box">
       <h3>Spaces in Names</h3>
 
       <p>Filename expansion in loops is another reason you should not use spaces in filenames.
@@ -1871,7 +1874,7 @@ done</pre>
 
 <pre>mv unicorn.dat original-unicorn.dat</pre>
 
-    <blockquote>
+    <blockquote class="box">
       <h3>Measure Twice, Run Once</h3>
 
       <p>A loop is a way to do many things at once&mdash;or to make many mistakes at
@@ -1984,7 +1987,7 @@ NENE01736A.txt
       It looks good,
       so she decides to get some coffee and catch up on her reading.</p>
 
-    <blockquote>
+    <blockquote class="box">
       <h3>Those Who Know History Can Choose to Repeat It</h3>
 
       <p>Another way to repeat previous work is to use the <code>history</code> command to
@@ -2117,7 +2120,7 @@ done</pre>
       we can ask the shell to execute the commands it contains.
       Our shell is called <code>bash</code>, so we run the following command:</p>
 
-<pre><span class="in">$ bash middle.sh</span>
+<pre>$ <span class="in">bash middle.sh</span>
 <span class="out">ATOM     14  C           1      -1.463  -0.666   1.001  1.00  0.00
 ATOM     15  C           1       0.762  -0.929   0.295  1.00  0.00
 ATOM     16  C           1       0.771  -0.937   1.840  1.00  0.00
@@ -2128,7 +2131,7 @@ $</pre>
     <p>Sure enough,
       our script's output is exactly what we would get if we ran that pipeline directly.</p>
 
-    <blockquote>
+    <blockquote class="box">
       <h3>Text vs. Whatever</h3>
 
       <p>We usually call programs like Microsoft Word or LibreOffice Writer "text
@@ -2149,7 +2152,7 @@ $</pre>
       Instead,
       let's edit <code>middle.sh</code> and replace <code>cholesterol.pdb</code> with a special variable called <code>$1</code>:</p>
 
-<pre><span class="in">$ cat middle.sh</span>
+<pre>$ <span class="in">cat middle.sh</span>
 <span class="out">head -20 $1 | tail -5</span>
 $</pre>
 
@@ -2157,7 +2160,7 @@ $</pre>
       <code>$1</code> means "the first filename (or other parameter) on the command line".
       We can now run our script like this:</p>
 
-<pre><span class="in">$ bash middle.sh cholesterol.pdb</span>
+<pre>$ <span class="in">bash middle.sh cholesterol.pdb</span>
 <span class="out">ATOM     14  C           1      -1.463  -0.666   1.001  1.00  0.00
 ATOM     15  C           1       0.762  -0.929   0.295  1.00  0.00
 ATOM     16  C           1       0.771  -0.937   1.840  1.00  0.00
@@ -2167,7 +2170,7 @@ $</pre>
 
     <p>or on a different file like this:</p>
 
-<pre><span class="in">$ bash middle.sh vitamin-a.pdb</span>
+<pre>$ <span class="in">bash middle.sh vitamin-a.pdb</span>
 <span class="out">ATOM     14  C           1       1.788  -0.987  -0.861
 ATOM     15  C           1       2.994  -0.265  -0.829
 ATOM     16  C           1       4.237  -0.901  -1.024
@@ -2179,9 +2182,9 @@ $</pre>
       though.
       Let's fix that by using the special variables <code>$2</code> and <code>$3</code>:</p>
 
-<pre><span class="in">$ cat middle.sh</span>
+<pre>$ <span class="in">cat middle.sh</span>
 <span class="out">head $2 $1 | tail $3</span>
-<span class="in">$ bash middle.sh vitamin-a.pdb -20 -5</span>
+$ <span class="in">bash middle.sh vitamin-a.pdb -20 -5</span>
 <span class="out">ATOM     14  C           1       1.788  -0.987  -0.861
 ATOM     15  C           1       2.994  -0.265  -0.829
 ATOM     16  C           1       4.237  -0.901  -1.024
@@ -2218,7 +2221,7 @@ $ <span class="out">bash sorted.sh *.dat backup/*.dat</span>
      182 girmanis.dat</span>
 $</pre>
 
-      <blockquote>
+      <blockquote class="box">
         <h3>Why Isn't It Doing Anything?</h3>
 
         <p>What happens if a script is supposed to process a bunch of files, but we
@@ -2279,7 +2282,7 @@ wc -l $* | sort -n</pre>
     <p>After a moment's work in an editor to remove the serial numbers on the commands,
       we have a completely accurate record of how we created that figure.</p>
 
-    <blockquote>
+    <blockquote class="box">
       <h3>Unnumbering</h3>
 
       <p>Nelle could also use <code>colrm</code> (short for "column removal") to remove the
@@ -2572,7 +2575,7 @@ OPTIONS
     ...        ...        ...</span>
 $</pre>
 
-    <blockquote>
+    <blockquote class="box">
       <h3>Wildcards</h3>
 
       <p><code>grep</code>'s real power doesn't come from its options, though; it comes from
@@ -2737,7 +2740,7 @@ $</pre>
 <span class="out">./human/heme.pdb:ATOM  25  FE  1  -0.924  0.535  -0.518</span>
 $</pre>
 
-    <blockquote>
+    <blockquote class="box">
       <h3>Binary Files</h3>
 
       <p>We have focused exclusively on finding things in text files. What if
@@ -2896,18 +2899,18 @@ $</pre>
       Let's create a directory for our work:</p>
 
 <pre>$ <span class="in">mkdir planets</span>
-<span class="in">$ cd planets</span>
+$ <span class="in">cd planets</span>
 $</pre>
 
     <p>and tell Git to make it a <a href="../gloss.html#repository">repository</a>:</p>
 
-<pre><span class="in">$ git init</span>
+<pre>$ <span class="in">git init</span>
 $</pre>
 
     <p>If we use <code>ls</code> to show the directory's contents,
       it appears that nothing has changed:</p>
 
-<pre><span class="in">$ ls</span>
+<pre>$ <span class="in">ls</span>
 $</pre>
 
     <p>But if we add the <code>-a</code> flag to show everything,
@@ -3153,7 +3156,7 @@ $</pre>
       However,
       if we do this:</p>
 
-<pre><span class="in">$ git diff --staged</span>
+<pre>$ <span class="in">git diff --staged</span>
 <span class="out">diff --git a/mars.txt b/mars.txt
 index 315bf3a..b36abfd 100644
 --- a/mars.txt
@@ -3400,7 +3403,7 @@ $</pre>
       go into the local <code>planets</code> repository,
       and run this command:</p>
 
-<pre><span class="in">$ git remote add origin https://github.com/vlad/planets</span>
+<pre>$ <span class="in">git remote add origin https://github.com/vlad/planets</span>
 $</pre>
 
     <p>(using your GitHub ID instead of <code>vlad</code>).
@@ -3431,7 +3434,7 @@ $</pre>
 
     <p><img src="git/novice/img/github-repo-after-first-push.svg" alt="GitHub Repository After First Push" /></p>
 
-    <blockquote>
+    <blockquote class="box">
       <h3>The '-u' Flag</h3>
 
       <p>You may see a <code>-u</code> option used with <code>git push</code>.
@@ -6958,7 +6961,7 @@ main()</pre>
 
     <p>This works:</p>
 
-<pre>$ <span class="in">$ readings-04.py --max small-01.csv</span>
+<pre>$ <span class="in">readings-04.py --max small-01.csv</span>
 <span class="out">1.0
 2.0</span></pre>
 
@@ -7237,8 +7240,9 @@ zero.py</span></pre>
       returning the results in a tabular form
       that we can then use as a starting point for further queries.</p>
 
-    <blockquote>
+    <blockquote class="box">
       <h3>Standards Are Wonderful...</h3>
+
       <p>Every database manager&mdash;Oracle,
         IBM DB2, PostgreSQL, MySQL, Microsoft Access, and SQLite&mdash;stores
         data in a different way,
@@ -7246,6 +7250,7 @@ zero.py</span></pre>
         However,
         every database manager can import and export data in a variety of formats,
         so it <em>is</em> possible to move information from one to another.</p>
+
     </blockquote>
 
     <p>Queries are written in a language called <a href="#gloss:sql">SQL</a>,
@@ -7259,9 +7264,9 @@ zero.py</span></pre>
 <table>
 <tr>
 <td valign="top">
-<strong>Person</strong>: people who took readings.
+<div align="center"><strong>Person</strong></div>
 
-<table>
+<table class="sql">
   <tr> <th>ident</th> <th>personal</th> <th>family</th> </tr>
   <tr> <td>dyer</td> <td>William</td> <td>Dyer</td> </tr>
   <tr> <td>pb</td> <td>Frank</td> <td>Pabodie</td> </tr>
@@ -7270,18 +7275,20 @@ zero.py</span></pre>
   <tr> <td>danforth</td> <td>Frank</td> <td>Danforth</td> </tr>
 </table>
 
-<strong>Site</strong>: locations where readings were taken.
+<br/>
+<div align="center"><strong>Site</strong></div>
 
-<table>
+<table class="sql">
   <tr> <th>name</th> <th>lat</th> <th>long</th> </tr>
   <tr> <td>DR-1</td> <td>-49.85</td> <td>-128.57</td> </tr>
   <tr> <td>DR-3</td> <td>-47.15</td> <td>-126.72</td> </tr>
   <tr> <td>MSK-4</td> <td>-48.87</td> <td>-123.4</td> </tr>
 </table>
 
-<strong>Visited</strong>: when readings were taken at specific sites.
+<br/>
+<div align="center"><strong>Visited</strong></div>
 
-<table>
+<table class="sql">
   <tr> <th>ident</th> <th>site</th> <th>dated</th> </tr>
   <tr> <td>619</td> <td>DR-1</td> <td>1927-02-08</td> </tr>
   <tr> <td>622</td> <td>DR-1</td> <td>1927-02-10</td> </tr>
@@ -7294,9 +7301,9 @@ zero.py</span></pre>
 </table>
 </td>
 <td valign="top">
-<strong>Survey</strong>: the actual readings.
+<div align="center"><strong>Survey</strong></div>
 
-<table>
+<table class="sql">
   <tr> <th>taken</th> <th>person</th> <th>quant</th> <th>reading</th> </tr>
   <tr> <td>619</td> <td>dyer</td> <td>rad</td> <td>9.82</td> </tr>
   <tr> <td>619</td> <td>dyer</td> <td>sal</td> <td>0.13</td> </tr>
@@ -7334,7 +7341,7 @@ zero.py</span></pre>
       Our query and its output look like this:</p>
 
 <pre class="in">select family, personal from Person;</pre>
-<table class="out">
+<table class="sql">
 <tr><td>Dyer</td><td>William</td></tr>
 <tr><td>Pabodie</td><td>Frank</td></tr>
 <tr><td>Lake</td><td>Anderson</td></tr>
@@ -7367,7 +7374,7 @@ zero.py</span></pre>
       we could swap the columns in the output by writing our query as:</p>
 
 <pre class="in">select personal, family from Person;</pre>
-<table class="out">
+<table class="sql">
 <tr><td>William</td><td>Dyer</td></tr>
 <tr><td>Frank</td><td>Pabodie</td></tr>
 <tr><td>Anderson</td><td>Lake</td></tr>
@@ -7378,7 +7385,7 @@ zero.py</span></pre>
     <p>or even repeat columns:</p>
 
 <pre class="in">select ident, ident, ident from Person;</pre>
-<table class="out">
+<table class="sql">
 <tr><td>dyer</td><td>dyer</td><td>dyer</td></tr>
 <tr><td>pb</td><td>pb</td><td>pb</td></tr>
 <tr><td>lake</td><td>lake</td><td>lake</td></tr>
@@ -7390,7 +7397,7 @@ zero.py</span></pre>
       we can select all of the columns in a table using <code>*</code>:</p>
 
 <pre class="in">select * from Person;</pre>
-<table class="out">
+<table class="sql">
 <tr><td>dyer</td><td>William</td><td>Dyer</td></tr>
 <tr><td>pb</td><td>Frank</td><td>Pabodie</td></tr>
 <tr><td>lake</td><td>Anderson</td><td>Lake</td></tr>
@@ -7424,7 +7431,7 @@ zero.py</span></pre>
       we get this:</p>
 
 <pre class="in">select quant from Survey;</pre>
-<table class="out">
+<table class="sql">
 <tr><td>rad</td></tr>
 <tr><td>sal</td></tr>
 <tr><td>rad</td></tr>
@@ -7454,7 +7461,7 @@ zero.py</span></pre>
       to our query:</p>
 
 <pre class="in">select distinct quant from Survey;</pre>
-<table class="out">
+<table class="sql">
 <tr><td>rad</td></tr>
 <tr><td>sal</td></tr>
 <tr><td>temp</td></tr>
@@ -7465,7 +7472,7 @@ zero.py</span></pre>
       the distinct pairs of values are returned:</p>
 
 <pre class="in">select distinct taken, quant from Survey;</pre>
-<table class="out">
+<table class="sql">
 <tr><td>619</td><td>rad</td></tr>
 <tr><td>619</td><td>sal</td></tr>
 <tr><td>622</td><td>rad</td></tr>
@@ -7502,7 +7509,7 @@ zero.py</span></pre>
       We can do this in SQL by adding an <code>order by</code> clause to our query:</p>
 
 <pre class="in">select * from Person order by ident;</pre>
-<table class="out">
+<table class="sql">
 <tr><td>danforth</td><td>Frank</td><td>Danforth</td></tr>
 <tr><td>dyer</td><td>William</td><td>Dyer</td></tr>
 <tr><td>lake</td><td>Anderson</td><td>Lake</td></tr>
@@ -7517,7 +7524,7 @@ zero.py</span></pre>
       We can sort in the opposite order using <code>desc</code> (for "descending"):</p>
 
 <pre class="in">select * from person order by ident desc;</pre>
-<table class="out">
+<table class="sql">
 <tr><td>roe</td><td>Valentina</td><td>Roerich</td></tr>
 <tr><td>pb</td><td>Frank</td><td>Pabodie</td></tr>
 <tr><td>lake</td><td>Anderson</td><td>Lake</td></tr>
@@ -7535,7 +7542,7 @@ zero.py</span></pre>
       within each group of equal <code>taken</code> values:</p>
 
 <pre class="in">select taken, person from Survey order by taken asc, person desc;</pre>
-<table class="out">
+<table class="sql">
 <tr><td>619</td><td>dyer</td></tr>
 <tr><td>619</td><td>dyer</td></tr>
 <tr><td>622</td><td>dyer</td></tr>
@@ -7562,7 +7569,7 @@ zero.py</span></pre>
     <p>This is easier to understand if we also remove duplicates:</p>
 
 <pre class="in">select distinct taken, person from Survey order by taken asc, person desc;</pre>
-<table class="out">
+<table class="sql">
 <tr><td>619</td><td>dyer</td></tr>
 <tr><td>622</td><td>dyer</td></tr>
 <tr><td>734</td><td>pb</td></tr>
@@ -7598,7 +7605,7 @@ zero.py</span></pre>
       by using a <code>where</code> clause in our query:</p>
 
 <pre class="in">select * from Visited where site='DR-1';</pre>
-<table class="out">
+<table class="sql">
 <tr><td>619</td><td>DR-1</td><td>1927-02-08</td></tr>
 <tr><td>622</td><td>DR-1</td><td>1927-02-10</td></tr>
 <tr><td>844</td><td>DR-1</td><td>1932-03-22</td></tr>
@@ -7616,7 +7623,7 @@ zero.py</span></pre>
       based on values in columns that aren't then displayed:</p>
 
 <pre class="in">select ident from Visited where site='DR-1';</pre>
-<table class="out">
+<table class="sql">
 <tr><td>619</td></tr>
 <tr><td>622</td></tr>
 <tr><td>844</td></tr>
@@ -7629,15 +7636,16 @@ zero.py</span></pre>
       we can ask for all information from the DR-1 site collected since 1930:</p>
 
 <pre class="in">select * from Visited where (site='DR-1') and (dated&gt;='1930-00-00');</pre>
-<table class="out">
+<table class="sql">
 <tr><td>844</td><td>DR-1</td><td>1932-03-22</td></tr>
 </table>
 
     <p>(The parentheses around the individual tests aren't strictly required,
       but they help make the query easier to read.)</p>
 
-    <blockquote>
+    <blockquote class="box">
       <h3>Handling Dates</h3>
+
       <p>Most database managers have a special data type for dates.
         In fact, many have two:
         one for dates,
@@ -7656,13 +7664,14 @@ zero.py</span></pre>
         it is,
         but not nearly as complicated as figuring out
         <a href="http://en.wikipedia.org/wiki/Swedish_calendar">historical dates in Sweden</a>.</p>
+
     </blockquote>
 
     <p>If we want to find out what measurements were taken by either Lake or Roerich,
       we can combine the tests on their names using <code>or</code>:</p>
 
 <pre class="in">select * from Survey where person='lake' or person='roe';</pre>
-<table class="out">
+<table class="sql">
 <tr><td>734</td><td>lake</td><td>sal</td><td>0.05</td></tr>
 <tr><td>751</td><td>lake</td><td>sal</td><td>0.1</td></tr>
 <tr><td>752</td><td>lake</td><td>rad</td><td>2.19</td></tr>
@@ -7679,7 +7688,7 @@ zero.py</span></pre>
       we can use <code>in</code> to see if a value is in a specific set:</p>
 
 <pre class="in">select * from Survey where person in ('lake', 'roe');</pre>
-<table class="out">
+<table class="sql">
 <tr><td>734</td><td>lake</td><td>sal</td><td>0.05</td></tr>
 <tr><td>751</td><td>lake</td><td>sal</td><td>0.1</td></tr>
 <tr><td>752</td><td>lake</td><td>rad</td><td>2.19</td></tr>
@@ -7698,7 +7707,7 @@ zero.py</span></pre>
       we get this:</p>
 
 <pre class="in">select * from Survey where quant='sal' and person='lake' or person='roe';</pre>
-<table class="out">
+<table class="sql">
 <tr><td>734</td><td>lake</td><td>sal</td><td>0.05</td></tr>
 <tr><td>751</td><td>lake</td><td>sal</td><td>0.1</td></tr>
 <tr><td>752</td><td>lake</td><td>sal</td><td>0.09</td></tr>
@@ -7713,7 +7722,7 @@ zero.py</span></pre>
       We probably want this instead:</p>
 
 <pre class="in">select * from Survey where quant='sal' and (person='lake' or person='roe');</pre>
-<table class="out">
+<table class="sql">
 <tr><td>734</td><td>lake</td><td>sal</td><td>0.05</td></tr>
 <tr><td>751</td><td>lake</td><td>sal</td><td>0.1</td></tr>
 <tr><td>752</td><td>lake</td><td>sal</td><td>0.09</td></tr>
@@ -7727,7 +7736,7 @@ zero.py</span></pre>
       to give a second level of filtering:</p>
 
 <pre class="in">select distinct person, quant from Survey where person='lake' or person='roe';</pre>
-<table class="out">
+<table class="sql">
 <tr><td>lake</td><td>sal</td></tr>
 <tr><td>lake</td><td>rad</td></tr>
 <tr><td>lake</td><td>temp</td></tr>
@@ -7739,7 +7748,7 @@ zero.py</span></pre>
       <code>distinct</code> is applied to the values displayed in the chosen columns,
       not to the entire rows as they are being processed.</p>
 
-    <blockquote>
+    <blockquote class="box">
       <h3>Growing Queries</h3>
 
       <p>What we have just done is how most people grow their SQL queries.
@@ -7813,7 +7822,7 @@ zero.py</span></pre>
       as part of our query:</p>
 
 <pre class="in">select 1.05 * reading from Survey where quant='rad';</pre>
-<table class="out">
+<table class="sql">
 <tr><td>10.311</td></tr>
 <tr><td>8.19</td></tr>
 <tr><td>8.8305</td></tr>
@@ -7835,7 +7844,7 @@ zero.py</span></pre>
       and round to two decimal places:</p>
 
 <pre class="in">select taken, round(5*(reading-32)/9, 2) from Survey where quant='temp';</pre>
-<table>
+<table class="sql">
 <tr><td>734</td><td>-29.72</td></tr>
 <tr><td>735</td><td>-32.22</td></tr>
 <tr><td>751</td><td>-28.06</td></tr>
@@ -7846,7 +7855,7 @@ zero.py</span></pre>
       for example by using the string concatenation operator <code>||</code>:</p>
 
 <pre class="in">select personal || ' ' || family from Person;</pre>
-<table class="out">
+<table class="sql">
 <tr><td>William Dyer</td></tr>
 <tr><td>Frank Pabodie</td></tr>
 <tr><td>Anderson Lake</td></tr>
@@ -7854,7 +7863,7 @@ zero.py</span></pre>
 <tr><td>Frank Danforth</td></tr>
 </table>
 
-    <blockquote>
+    <blockquote class="box">
       <h3>What's in a Name?</h3>
 
       <p>It may seem strange to use <code>personal</code> and <code>family</code> as field names
@@ -7896,7 +7905,7 @@ zero.py</span></pre>
         <li>
           The <code>union</code> operator combines the results of two queries:
 <pre class="in">select * from Person where ident='dyer' union select * from Person where ident='roe';</pre>
-<table class="out">
+<table class="sql">
 <tr><td>dyer</td><td>William</td><td>Dyer</td></tr>
 <tr><td>roe</td><td>Valentina</td><td>Roerich</td></tr>
 </table>
@@ -7918,7 +7927,7 @@ zero.py</span></pre>
         <li>
           The site identifiers in the <code>Visited</code> table have two parts separated by a '-':
 <pre>select distinct site from Visited;</pre>
-<table class="out">
+<table class="sql">
   <tr><td>DR-1</td></tr>
   <tr><td>DR-3</td></tr>
   <tr><td>MSK-4</td></tr>
@@ -7952,7 +7961,7 @@ zero.py</span></pre>
       its date is null:</p>
 
 <pre class="in">select * from Visited;</pre>
-<table class="out">
+<table class="sql">
 <tr><td>619</td><td>DR-1</td><td>1927-02-08</td></tr>
 <tr><td>622</td><td>DR-1</td><td>1927-02-10</td></tr>
 <tr><td>734</td><td>DR-3</td><td>1939-01-07</td></tr>
@@ -7967,7 +7976,7 @@ zero.py</span></pre>
       If we select the records that come before 1930:</p>
 
 <pre class="in">select * from Visited where dated&lt;'1930-00-00';</pre>
-<table class="out">
+<table class="sql">
 <tr><td>619</td><td>DR-1</td><td>1927-02-08</td></tr>
 <tr><td>622</td><td>DR-1</td><td>1927-02-10</td></tr>
 </table>
@@ -7976,7 +7985,7 @@ zero.py</span></pre>
       and if we select the ones that come during or after 1930:</p>
 
 <pre class="in">select * from Visited where dated&gt;='1930-00-00';</pre>
-<table class="out">
+<table class="sql">
 <tr><td>734</td><td>DR-3</td><td>1939-01-07</td></tr>
 <tr><td>735</td><td>DR-3</td><td>1930-01-12</td></tr>
 <tr><td>751</td><td>DR-3</td><td>1930-02-26</td></tr>
@@ -8017,14 +8026,14 @@ select * from Visited where dated!=NULL;</pre>
       we must use a special test <code>is null</code>:</p>
 
 <pre class="in">select * from Visited where dated is NULL;</pre>
-<table class="out">
+<table class="sql">
 <tr><td>752</td><td>DR-3</td><td></td></tr>
 </table>
 
     <p>or its inverse <code>is not null</code>:</p>
 
 <pre class="in">select * from Visited where dated is not NULL;</pre>
-<table class="out">
+<table class="sql">
 <tr><td>619</td><td>DR-1</td><td>1927-02-08</td></tr>
 <tr><td>622</td><td>DR-1</td><td>1927-02-10</td></tr>
 <tr><td>734</td><td>DR-3</td><td>1939-01-07</td></tr>
@@ -8041,7 +8050,7 @@ select * from Visited where dated!=NULL;</pre>
       It's natural to write the query like this:</p>
 
 <pre class="in">select * from Survey where quant='sal' and person!='lake';</pre>
-<table class="out">
+<table class="sql">
 <tr><td>619</td><td>dyer</td><td>sal</td><td>0.13</td></tr>
 <tr><td>622</td><td>dyer</td><td>sal</td><td>0.09</td></tr>
 <tr><td>752</td><td>roe</td><td>sal</td><td>41.6</td></tr>
@@ -8058,7 +8067,7 @@ select * from Visited where dated!=NULL;</pre>
       we need to add an explicit check:</p>
 
 <pre class="in">select * from Survey where quant='sal' and (person!='lake' or person is null);</pre>
-<table class="out">
+<table class="sql">
 <tr><td>619</td><td>dyer</td><td>sal</td><td>0.13</td></tr>
 <tr><td>622</td><td>dyer</td><td>sal</td><td>0.09</td></tr>
 <tr><td>735</td><td></td><td>sal</td><td>0.06</td></tr>
@@ -8105,7 +8114,7 @@ select * from Visited where dated!=NULL;</pre>
       We know how to select all of the dates from the <code>Visited</code> table:</p>
 
 <pre class="in">select dated from Visited;</pre>
-<table class="out">
+<table class="sql">
 <tr><td>1927-02-08</td></tr>
 <tr><td>1927-02-10</td></tr>
 <tr><td>1939-01-07</td></tr>
@@ -8123,14 +8132,14 @@ select * from Visited where dated!=NULL;</pre>
       and produces a single record as output:</p>
 
 <pre class="in">select min(dated) from Visited;</pre>
-<table class="out">
+<table class="sql">
 <tr><td>1927-02-08</td></tr>
 </table>
 
     <p><img src="sql/novice/img/sql-aggregation.svg" alt="SQL Aggregation" /></p>
 
 <pre class="in">select max(dated) from Visited;</pre>
-<table class="out">
+<table class="sql">
 <tr><td>1939-01-07</td></tr>
 </table>
 
@@ -8141,17 +8150,17 @@ select * from Visited where dated!=NULL;</pre>
       and <code>sum</code>:</p>
 
 <pre class="in">select avg(reading) from Survey where quant='sal';</pre>
-<table class="out">
+<table class="sql">
 <tr><td>7.20333333333333</td></tr>
 </table>
 
 <pre class="in">select count(reading) from Survey where quant='sal';</pre>
-<table class="out">
+<table class="sql">
 <tr><td>9</td></tr>
 </table>
 
 <pre class="in">select sum(reading) from Survey where quant='sal';</pre>
-<table class="out">
+<table class="sql">
 <tr><td>64.83</td></tr>
 </table>
 
@@ -8168,7 +8177,7 @@ select * from Visited where dated!=NULL;</pre>
       find the range of sensible salinity measurements:</p>
 
 <pre class="in">select min(reading), max(reading) from Survey where quant='sal' and reading&lt;=1.0;</pre>
-<table class="out">
+<table class="sql">
 <tr><td>0.05</td><td>0.21</td></tr>
 </table>
 
@@ -8176,7 +8185,7 @@ select * from Visited where dated!=NULL;</pre>
       although the output might surprise you:</p>
 
 <pre class="in">select person, count(*) from Survey where quant='sal' and reading&lt;=1.0;</pre>
-<table class="out">
+<table class="sql">
 <tr><td>lake</td><td>7</td></tr>
 </table>
 
@@ -8193,7 +8202,7 @@ select * from Visited where dated!=NULL;</pre>
       rather than zero or some other arbitrary value:</p>
 
 <pre class="in">select person, max(reading), sum(reading) from Survey where quant='missing';</pre>
-<table class="out">
+<table class="sql">
 <tr><td></td><td></td><td></td></tr>
 </table>
 
@@ -8213,14 +8222,14 @@ select * from Visited where dated!=NULL;</pre>
       This behavior lets us write our queries as:</p>
 
 <pre class="in">select min(dated) from Visited;</pre>
-<table class="out">
+<table class="sql">
 <tr><td>1927-02-08</td></tr>
 </table>
 
     <p>instead of always having to filter explicitly:</p>
 
 <pre class="in">select min(dated) from Visited where dated is not null;</pre>
-<table class="out">
+<table class="sql">
 <tr><td>1927-02-08</td></tr>
 </table>
 
@@ -8233,7 +8242,7 @@ select * from Visited where dated!=NULL;</pre>
 <pre class="in">select person, count(reading), round(avg(reading), 2)
 from  Survey
 where quant='rad';</pre>
-<table class="out">
+<table class="sql">
 <tr><td>roe</td><td>8</td><td>6.56</td></tr>
 </table>
 
@@ -8246,7 +8255,7 @@ where quant='rad';</pre>
 from  Survey
 where quant='rad'
 and   person='dyer';</pre>
-<table class="out">
+<table class="sql">
 <tr><td>dyer</td><td>2</td><td>8.81</td></tr>
 </table>
 
@@ -8262,7 +8271,7 @@ and   person='dyer';</pre>
 from     Survey
 where    quant='rad'
 group by person;</pre>
-<table class="out">
+<table class="sql">
 <tr><td>dyer</td><td>2</td><td>8.81</td></tr>
 <tr><td>lake</td><td>2</td><td>1.82</td></tr>
 <tr><td>pb</td><td>3</td><td>6.66</td></tr>
@@ -8286,7 +8295,7 @@ group by person;</pre>
 <pre class="in">select   person, quant, count(reading), round(avg(reading), 2)
 from     Survey
 group by person, quant;</pre>
-<table class="out">
+<table class="sql">
 <tr><td></td><td>sal</td><td>1</td><td>0.06</td></tr>
 <tr><td></td><td>temp</td><td>1</td><td>-26.0</td></tr>
 <tr><td>dyer</td><td>rad</td><td>2</td><td>8.81</td></tr>
@@ -8311,7 +8320,7 @@ from     Survey
 where    person is not null
 group by person, quant
 order by person, quant;</pre>
-<table class="out">
+<table class="sql">
 <tr><td>dyer</td><td>rad</td><td>2</td><td>8.81</td></tr>
 <tr><td>dyer</td><td>sal</td><td>2</td><td>0.11</td></tr>
 <tr><td>lake</td><td>rad</td><td>2</td><td>1.82</td></tr>
@@ -8401,7 +8410,7 @@ order by person, quant;</pre>
       let's start by joining the <code>Site</code> and <code>Visited</code> tables:</p>
 
 <pre class="in">select * from Site join Visited;</pre>
-<table class="out">
+<table class="sql">
 <tr><td>DR-1</td><td>-49.85</td><td>-128.57</td><td>619</td><td>DR-1</td><td>1927-02-08</td></tr>
 <tr><td>DR-1</td><td>-49.85</td><td>-128.57</td><td>622</td><td>DR-1</td><td>1927-02-10</td></tr>
 <tr><td>DR-1</td><td>-49.85</td><td>-128.57</td><td>734</td><td>DR-3</td><td>1939-01-07</td></tr>
@@ -8448,7 +8457,7 @@ order by person, quant;</pre>
       we're only interested in combinations that have the same site name:</p>
 
 <pre class="in">select * from Site join Visited on Site.name=Visited.site;</pre>
-<table class="out">
+<table class="sql">
 <tr><td>DR-1</td><td>-49.85</td><td>-128.57</td><td>619</td><td>DR-1</td><td>1927-02-08</td></tr>
 <tr><td>DR-1</td><td>-49.85</td><td>-128.57</td><td>622</td><td>DR-1</td><td>1927-02-10</td></tr>
 <tr><td>DR-1</td><td>-49.85</td><td>-128.57</td><td>844</td><td>DR-1</td><td>1932-03-22</td></tr>
@@ -8486,7 +8495,7 @@ order by person, quant;</pre>
 <pre class="in">select Site.lat, Site.long, Visited.dated
 from   Site join Visited
 on     Site.name=Visited.site;</pre>
-<table class="out">
+<table class="sql">
 <tr><td>-49.85</td><td>-128.57</td><td>1927-02-08</td></tr>
 <tr><td>-49.85</td><td>-128.57</td><td>1927-02-10</td></tr>
 <tr><td>-49.85</td><td>-128.57</td><td>1932-03-22</td></tr>
@@ -8510,7 +8519,7 @@ from   Site join Visited join Survey
 on     Site.name=Visited.site
 and    Visited.ident=Survey.taken
 and    Visited.dated is not null;</pre>
-<table class="out">
+<table class="sql">
 <tr><td>-49.85</td><td>-128.57</td><td>1927-02-08</td><td>rad</td><td>9.82</td></tr>
 <tr><td>-49.85</td><td>-128.57</td><td>1927-02-08</td><td>sal</td><td>0.13</td></tr>
 <tr><td>-49.85</td><td>-128.57</td><td>1927-02-10</td><td>rad</td><td>7.8</td></tr>
@@ -8566,7 +8575,7 @@ and    Visited.dated is not null;</pre>
       and we can use those record numbers in queries:</p>
 
 <pre class="in">select rowid, * from Person;</pre>
-<table class="out">
+<table class="sql">
 <tr><td>1</td><td>dyer</td><td>William</td><td>Dyer</td></tr>
 <tr><td>2</td><td>pb</td><td>Frank</td><td>Pabodie</td></tr>
 <tr><td>3</td><td>lake</td><td>Anderson</td><td>Lake</td></tr>
@@ -8601,7 +8610,7 @@ and    Visited.dated is not null;</pre>
       For example,
       we could get rid of the <code>Site</code> table and rewrite the <code>Visited</code> table like this:</p>
 
-<table>
+<table class="sql">
   <tr> <td>619</td> <td>-49.85</td> <td>-128.57</td> <td>1927-02-08</td> </tr>
   <tr> <td>622</td> <td>-49.85</td> <td>-128.57</td> <td>1927-02-10</td> </tr>
   <tr> <td>734</td> <td>-47.15</td> <td>-126.72</td> <td>1939-01-07</td> </tr>
@@ -8764,7 +8773,7 @@ insert into JustLatLong select lat, long from site;</pre>
       However,
       this technique is outside the scope of this chapter.</p>
 
-    <blockquote>
+    <blockquote class="box">
       <h3>There's More Than One Way to Do It</h3>
 
       <p>Many applications use a hybrid storage model
@@ -10591,7 +10600,7 @@ connection.close()</pre>
       </li>
     </ul>
 
-    <h1 id="s:misc">Appendix: A Few Odds and Ends</h1>
+    <h1 id="s:misc">A Few Odds and Ends</h1>
 
     FIXME: explain why these are here.
 
@@ -10618,7 +10627,7 @@ connection.close()</pre>
       which is 1404.
     </p>
 
-    <blockquote>
+    <blockquote class="box">
       <h3>Why Integer IDs?</h3>
 
       <p>
@@ -10715,7 +10724,7 @@ $ <span class="in">ls -F</span>
 $
 </pre>
 
-    <blockquote>
+    <blockquote class="box">
       <h3>Necessary But Not Sufficient</h3>
 
       <p>
@@ -11401,7 +11410,7 @@ inner = outer[0]</span></pre>
       there are simply engineering tradeoffs that we have to be aware of.
     </p>
 
-    <blockquote>
+    <blockquote class="box">
       <h3>Copying When You Want To</h3>
 
       <p>
@@ -11517,7 +11526,7 @@ list ['alan']</span></pre>
       and <code>list_val</code>'s value is undisturbed.
     </p>
 
-    <blockquote>
+    <blockquote class="box">
       <h3>Memory Models</h3>
 
       <p>

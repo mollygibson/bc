@@ -11385,71 +11385,6 @@ $</pre>
       but hardly anyone uses them.
     </p>
 
-    <h2>Process Control</h2>
-
-    <p>
-      Our next topic is how to control programs <em>once they're running</em>.
-      This is called <a href="#gloss:job-control">job control</a>,
-      and while it's less important today than it was back in the Dark Ages,
-      it is coming back into its own as more people begin to leverage the power of computer networks.
-    </p>
-
-    <p>
-      When we talk about controlling programs,
-      what we really mean is controlling <em>processes</em>.
-      As we said earlier, a process is just a program that's in memory and executing.
-      Some of the processes on your computer are yours:
-      they're running programs you explicitly asked for, like your web browser.
-      Many others belong to the operating system that manages your computer for you, or, if you're on a shared machine, to other users.
-      You can use the <code>ps</code> command to list them, just as you use <code>ls</code> to list files and directories:
-    </p>
-
-<pre>$ <span class="in">ps</span>
-<span class="out">PID    PPID   PGID   TTY   UID     STIME   COMMAND
-2152      1   2152   con  1000  13:19:07   /usr/bin/bash
-2276   2152   2276   con  1000  14:53:48   /usr/bin/ps</span>
-$</pre>
-
-    <p>
-      Every process has a unique process id (PID).
-      Remember, this is a property of the process, not of the program that process is executing:
-      if you are running three instances of your browser at once, each will have its own process ID.
-    </p>
-
-    <p>
-      The second column in this listing, PPID, shows the ID of each process's parent.
-      Every process on a computer is spawned by another, which is its parent
-      (except, of course, for the bootstrap process that runs automatically when the computer starts up).
-    </p>
-
-    <p>
-      The third column (labelled PGID) is the ID of the <em>process group</em> this process belongs to.
-      We won't discuss process groups in this lecture,
-      but they're often used to manage sets of related processes.
-      Column 4 shows the ID of the terminal this process is running in.
-      Once upon a time, this really would have been a terminal connected to a central timeshared computer.
-      It isn't as important these days, except that if a process is a system service, such as a network monitor,
-      <code>ps</code> will display a question mark for its terminal, since it doesn't actually have one.
-    </p>
-
-    <p>
-      Column 5 is more interesting: it's the user ID of the user this process is being run by.
-      This is the user ID the computer uses when checking permissions:
-      the process is allowed to access exactly the same things as the user, no more, no less.
-    </p>
-
-    <p>
-      Finally, Column 6 shows when the process started running,
-      and Column 7 shows what program the process is executing.
-      Your version of <code>ps</code> may show more or fewer columns,
-      or may show them in a different order,
-      but the same information is generally available everywhere.
-    </p>
-
-    <p>
-      FIXME: explain how to kill a process
-    </p>
-
     <h2>Variables</h2>
 
     <p>
@@ -11649,8 +11584,6 @@ alias backup=/bin/zback -v --nostir -R 20000 $HOME $BACKUP_DIR
       the shell executes it and displays its output (if any).
     </p>
 
-    <p>FIXME: diagram</p>
-
     <p>
       What if we want to run some commands on another machine,
       such as the server in the basement that manages our database of experimental results?
@@ -11662,10 +11595,8 @@ alias backup=/bin/zback -v --nostir -R 20000 $HOME $BACKUP_DIR
       everything we type is passed to a shell running on the remote computer.
       That shell interacts runs those commands on our behalf,
       just as a local shell would,
-      then sends back output for our computer to display:
+      then sends back output for our computer to display.
     </p>
-
-    <p>FIXME: diagram</p>
 
     <p>
       The tool we use to log in remotely is the <a href="#gloss:secure-shell">secure shell</a>, or SSH.
@@ -11782,55 +11713,46 @@ $</pre>
       Consider the following snippet of Python:
     </p>
 
-<pre><span class="in">outer = [ [10, 20, 30], [40, 50, 60] ]
-inner = outer[0]</span></pre>
+<pre><span class="in">first = [10, 20, 30]
+second = first</span></pre>
 
     <p>
       After these two lines have been executed,
       the program's memory looks like this:
     </p>
 
-    <p>FIXME: diagram</p>
+    <img src="python/novice/img/python-alias-01.svg" alt="Initial State of Memory" />
 
     <p>
-      <code>outer</code> refers to a two-element list
-      containing references to a couple of three-element lists,
-      while <code>inner</code> refers to the first of those three-element lists.
+      If we change the last value of the list that <code>first</code> refers to:
     </p>
+
+<pre><span class="in">first[2] = 99</span></pre>
+
+    <img src="python/novice/img/python-alias-02.svg" alt="After Changing List" />
 
     <p>
-      Now let's change the last value of the list that <code>inner</code> refers to:
+      then <code>second</code>'s value changes as well:
     </p>
 
-<pre><span class="in">inner[2] = 99</span></pre>
-
-    <p>FIXME: diagram</p>
-
-    <p>
-      This changes memory as shown above,
-      which means that the values of both <code>inner</code> <em>and</em> <code>outer</code>
-      have changed:
-    </p>
-
-<pre><span class="in">print inner</span>
+<pre><span class="in">print first</span>
 <span class="out">[10, 20, 99]</span>
-<span class="in">print outer</span>
-<span class="out">[[10, 20, 99], [40, 50, 60]]</span></pre>
+<span class="in">print second</span>
+<span class="out">[10, 20, 99]</span></pre>
 
     <p>
-      This is called <a href="glossary.html#alias">aliasing</a>.
-      It is not a bug:
+      This is called <a href="glossary.html#alias">aliasing</a>,
+      and it is not a bug:
       the program is supposed to work this way.
       It doesn't have to, though;
       Python's creator could have decided that:
     </p>
 
-<pre><span class="in">inner = outer[0]</span></pre>
+<pre><span class="in">second = first</span></pre>
 
     <p>
-      would create a copy of <code>outer[0]</code>
-      and assign that to <code>inner</code>
-      rather than aliasing the first element of <code>outer</code>.
+      would create a copy of <code>first</code>
+      and assign that to <code>second</code> instead.
       That would be easier to understand&mdash;there would be no chance that
       assigning to one variable would cause another variable's value to change&mdash;but
       it would also be less efficient.
@@ -11906,13 +11828,13 @@ list ['alan', 'turing']</span></pre>
       that refer to a string and a list:
     </p>
 
-    <p>FIXME: diagram</p>
+    <img src="python/novice/img/python-alias-03.svg" alt="Before Aliasing Function Call" />
 
     <p>
       The call creates a new stack frame with aliases for those values:
     </p>
 
-    <p>FIXME: diagram</p>
+    <img src="python/novice/img/python-alias-04.svg" alt="During Aliasing Function Call" />
 
     <p>
       The <code>a_string + 'turing'</code> creates a new string <code>'alanturing'</code>;
@@ -11921,7 +11843,7 @@ list ['alan', 'turing']</span></pre>
       but doesn't change what the global variable <code>string_val</code> refers to:
     </p>
 
-    <p>FIXME: diagram</p>
+    <img src="python/novice/img/python-alias-05.svg" alt="After Assigning to String" />
 
     <p>
       The statement <code>a_list.append('turing')</code>,
@@ -11929,7 +11851,7 @@ list ['alan', 'turing']</span></pre>
       actually modifies the list that <code>a_list</code> is pointing to:
     </p>
 
-    <p>FIXME: diagram</p>
+    <img src="python/novice/img/python-alias-06.svg" alt="After Assigning to List" />
 
     <p>
       But this is the same thing that the variable <code>list_val</code> in the caller is pointing to.
@@ -11942,7 +11864,7 @@ list ['alan', 'turing']</span></pre>
       because the function actually modified the list in place:
     </p>
 
-    <p>FIXME: diagram</p>
+    <img src="python/novice/img/python-alias-07.svg" alt="After Function Call" />
 
     <p>
       Let's change one line in the function:

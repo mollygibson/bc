@@ -10639,6 +10639,12 @@ $ <span class="in">cat mars.txt</span>
 The two moons may be a problem for Wolfman
 But the Mummy will appreciate the lack of humidity</span></pre>
 
+    <p>We can draw the history of the repository like this
+      (we'll see in a second why there's a box called <code>master</code>):
+    </p>
+
+    <img src="git/novice/img/git-branching-01.svg" alt="Initial State of Repository" />
+
     <p>Let's run this command:</p>
 
 <pre>$ <span class="in">git branch moons</span></pre>
@@ -10652,7 +10658,7 @@ But the Mummy will appreciate the lack of humidity</span></pre>
 <span class="out">* master
   moons</span></pre>
 
-    FIXME: diagram
+    <img src="git/novice/img/git-branching-02.svg" alt="Immediately After Creating Branch" />
 
     <p>
       Git is now maintaining two named bookmarks in our history:
@@ -10670,6 +10676,8 @@ But the Mummy will appreciate the lack of humidity</span></pre>
 $ <span class="in">git branch</span>
 <span class="out">  master
 * moons</span></pre>
+
+    <img src="git/novice/img/git-branching-03.svg" alt="After Switching to Branch" />
 
     <p>Our file looks the same:</p>
 
@@ -10729,7 +10737,7 @@ $ <span class="in">git commit -m &quot;Thinking about the moons&quot;</span>
 
     <p>Our repository is now in the state shown below:</p>
 
-    FIXME: diagram
+    <img src="git/novice/img/git-branching-04.svg" alt="After Committing on Moons Branch" />
 
     <p>
       The <code>moons</code> branch has advanced to record the changes we just made,
@@ -10775,7 +10783,7 @@ $ <span class="in">git commit -m &quot;We will need a cool name for our secret b
 
     <p>Our repository is now in this state:</p>
 
-    FIXME: diagram
+    <img src="git/novice/img/git-branching-05.svg" alt="After Committing on Master Branch" />
 
     <p>
       <code>master</code> and <code>moons</code> have both moved on from their original common state,
@@ -10828,7 +10836,7 @@ $ <span class="in">git merge moons</span></pre>
 
     <p>and our repository looks like this:</p>
 
-    FIXME: diagram
+    <img src="git/novice/img/git-branching-06.svg" alt="After Merging" />
 
     <p>We can visualize the history with this set of arguments to <code>git log</code>:</p>
 
@@ -10890,11 +10898,8 @@ $ <span class="in">git merge moons</span></pre>
       <li>go back to master and create another branch called <code>file-input-produces-complex-values</code> for <em>those</em> changes:</li>
       <li>merge <code>file-input-produces-complex-values</code> into <code>master</code>:</li>
       <li>merge <code>master</code> into <code>better-spatial-correlation</code>:</li>
-      <li>and then finish work on the spatial correlation function and merge it all back into <code>master</code>:</li>
+      <li>and then finish work on the spatial correlation function and merge it all back into <code>master</code>.</li>
     </ol>
-
-
-    <p>FIXME: diagram</p>
 
     <p>
       And if,
@@ -10957,11 +10962,11 @@ origin https://github.com/vlad/undersea.git (push)</span></pre>
       i.e., clones it on GitHub. He does this using the GitHub web interface:
     </p>
 
-    <p>FIXME: screenshot</p>
+    <img src="git/novice/img/git-fork-ui.png" alt="The Fork Button" />
 
     <p>He then clones his GitHub repository, not Dracula's, to give himself a desktop copy:</p>
 
-    <p>FIXME: diagram</p>
+    <img src="git/novice/img/git-forking-01.svg" alt="After Forking on GitHub" />
 
     <p>
       This may seem like unnecessary work,
@@ -10971,24 +10976,19 @@ origin https://github.com/vlad/undersea.git (push)</span></pre>
       then uses <code>git push</code> to copy those changes to GitHub:
     </p>
 
-    <p>FIXME: diagram</p>
+    <img src="git/novice/img/git-forking-02.svg" alt="After Pushing to Fork" />
 
     <p>
       He then creates a <a href="#gloss:pull-request">pull request</a>,
       which notifies Dracula that Wolfman wants to merge some changes into Dracula's repository:
     </p>
 
-    <p>FIXME: screenshot</p>
+    <img src="git/novice/img/git-forking-03.svg" alt="After Creating Pull Request" />
 
     <p>
       A pull request is a merge waiting to happen.
       When Dracula views it online,
-      he can see and comment on the changes Wolfman wants to make:
-    </p>
-
-    <p>FIXME: screenshot</p>
-
-    <p>
+      he can see and comment on the changes Wolfman wants to make.
       Commenting is the crucial step here,
       and half the reason Wolfman went to the trouble of forking the repository on GitHub.
       Dracula,
@@ -11000,10 +11000,8 @@ origin https://github.com/vlad/undersea.git (push)</span></pre>
       and so on.
       Wolfman can then update his code,
       commit locally,
-      and push those changes to GitHub to update the pull request:
+      and push those changes to GitHub to update the pull request.
     </p>
-
-    <p>FIXME: diagram</p>
 
     <p>
       This process is exactly like peer review of papers, though usually much faster.
@@ -11014,14 +11012,9 @@ origin https://github.com/vlad/undersea.git (push)</span></pre>
     </p>
 
     <p>
-      What happens if Wolfman wants to do more work while he's waiting for Dracula to review his first modification?
-      Simple: he creates a new branch in his local repository,
-      pushes it to GitHub, and then issues a pull request from that:
-    </p>
-
-    <p>FIXME: diagram</p>
-
-    <p>
+      If Wolfman wants to do more work while he's waiting for Dracula to review his first modification,
+      he creates a new branch in his local repository,
+      pushes it to GitHub, and then issues a pull request from that.
       We can now see why Git, Mercurial, and other modern version control systems use branching so much:
       it helps people work together,
       but on their own time.

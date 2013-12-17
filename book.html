@@ -2830,7 +2830,7 @@ $</pre>
       but if they work on their own copies and email changes back and forth
       things will be lost, overwritten, or duplicated.</p>
 
-    <p>The right solution is to use <a href="../gloss.html#version-control">version control</a>
+    <p>The right solution is to use <a href="#gloss:version-control">version control</a>
       to manage their work.
       Version control is better than mailing files back and forth because:</p>
 
@@ -2869,7 +2869,7 @@ $</pre>
       can and should be stored in a version control system.</p>
 
     <h2>A Better Kind of Backup</h2>
-
+    <h3 id="git-configure">Configure Git</h3>
     <p>The first time we use Git on a new machine,
       we need to configure a few things:</p>
 
@@ -2896,8 +2896,20 @@ $</pre>
     </ul>
 
     <p>The four commands above only need to be run once:
-      Git will remember the settings until we change them.
-      Once Git is configured,
+      Git will remember the settings until we change them.</p>
+      
+<!-- I was feeling like one more level down of headers (a little more structure)
+would help me follow along with the thought process a little bit better. -->
+
+<h3>First Git Project</h3>
+
+<!-- I'm not a huge fan of the trailing prompt line in the code 
+blocks. When there is text in between them, it doesn't seem necessary and
+makes it seem a little like it is a mistake/typo. A little later
+down you explained why you were doing that (to make it easier to read), 
+but I'm not sure it actually achieved that goal. -->
+
+<p>Once Git is configured,
       we can start using Git.
       Let's create a directory for our work:</p>
 
@@ -2905,7 +2917,7 @@ $</pre>
 $ <span class="in">cd planets</span>
 $</pre>
 
-    <p>and tell Git to make it a <a href="../gloss.html#repository">repository</a>:</p>
+    <p>and tell Git to make it a <a href="gloss:repository">repository</a>:</p>
 
 <pre>$ <span class="in">git init</span>
 $</pre>
@@ -2939,16 +2951,32 @@ $</pre>
 
     <p>We'll explain what <code>branch master</code> means later.
       For the moment,
-      let's add some notes about Mars's suitability as a base.
-      (We'll <code>cat</code> the text in the file after we edit it so that you can see what we're doing,
-      but in real life this isn't necessary.
-      We'll also insert blank lines between groups of shell commands to make them easier to read.)</p>
+      let's add some notes about Mars's suitability as a base in a file 
+    called <code>mars.txt</code> using <code>nano</code> (or your favorite text editor):</p>
 
-<pre>$ <span class="in">nano mars.txt</span>
+
+<!-- I'm not 100% positive who the audience of 
+the book is, but For a book format where there isn't going to be 
+anyone at the computer demonstrating things, it might be confusing to
+have a line 'nano mars.txt', which is meant to imply that it is being
+edited. I tried a little editing this section - not sure if I like this any better. -->
+
+<pre>$ <span class="in">nano mars.txt</span></pre>
+
+<p>We can <code>cat</code> the file to see what content has been added:</p>
+<pre>
 $ <span class="in">cat mars.txt</span>
 <span class="out">Cold and dry, but everything is my favorite color</span>
+</pre>
+
+<p>Listing the contents of the directory using <code>ls</code> we see that we 
+have one file in the directory, <code>mars.txt</code>:
+<pre>
 $ <span class="in">ls</span>
 <span class="out">mars.txt</span>
+</pre>
+<p>Checking the status of our project again, we see that the status has now changed:</p>
+<pre>
 $ <span class="in">git status</span>
 <span class="out"># On branch master
 #
@@ -2963,11 +2991,16 @@ $</pre>
 
     <p>The "untracked files" message means that there's a file in the directory
       that Git isn't keeping track of.
-      We can tell Git that it should do so like this:</p>
+      We can tell Git that it should do so:</p>
 
 <pre>$ <span class="in">git add mars.txt</span></pre>
 
-    <p>and check that the right thing happened like this:</p>
+<!-- I'm not a huge fan of 'like this' in tutorial type documents
+because I feel like it breaks up the flow of the reader and is
+implied by having ':' followed by code block. I guess this is just
+picky preference though.  -->
+
+    <p>and check that the right thing happened:</p>
 
 <pre>$ <span class="in">git status</span>
 <span class="out"># On branch master
@@ -2999,7 +3032,7 @@ $</pre>
       We use the <code>-m</code> flag (for "message")
       to record a comment that will help us remember later on what we did and why.
       If we just run <code>git commit</code> without the <code>-m</code> option,
-      Git will launch <code>nano</code> (or whatever other editor we configured at the start)
+      Git will launch <code>nano</code> (or whatever other editor we <a href="#git-configure">configured at the start</a>)
       so that we can write a longer message.</p>
 
     <p>If we run <code>git status</code> now:</p>
@@ -3011,7 +3044,7 @@ $</pre>
 
     <p>it tells us everything is up to date.
       If we want to know what we've done recently,
-      we can ask Git to show us the project's history:</p>
+      we can ask Git to show us the project's history using <code>git log</code>:</p>
 
 <pre>$ <span class="in">git log</span>
 <span class="out">commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
@@ -3023,6 +3056,11 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 $</pre>
 
     <p>Now suppose Dracula adds more information to the file:</p>
+
+<!-- It might make sense once you have introduced what 'nano mars.txt' implies 
+above, to do it exactly as you have here. This will be more intuitive the second time. 
+(Although I think the trailing empty shell line is possibly not necessary when
+there is text in between).-->
 
 <pre>$ <span class="in">nano mars.txt</span>
 $ <span class="in">cat mars.txt</span>
@@ -3078,7 +3116,9 @@ $</pre>
         <code>df0654a</code> and <code>315bf3a</code> are unique computer-generated labels for those revisions.</li>
       <li>The remaining lines show us the actual differences
         and the lines on which they occur.
-        The numbers between the <code>@@</code> markers indicate which lines we're changing;
+        The numbers between the <code>@@</code> markers indicate which lines we're changing <!-- which lines
+        it is referring to is always really confusing. Maybe not important to understand, but if it is then
+	more explaination is definitely needed here. -->;
         the <code>+</code> on the lines below show that we are adding lines.</li>
     </ol>
 
@@ -3117,12 +3157,12 @@ $</pre>
       To allow for this,
       Git has a special staging area
       where it keeps track of things that have been added to
-      the current <a href="../gloss.html#change-set">change set</a>
+      the current <a href="#gloss:change-set">change set</a>
       but not yet committed.
       <code>git add</code> puts things in this area,
       and <code>git commit</code> then copies them to long-term storage:</p>
 
-    <p><img src="bash/novice/img/git-staging-area.svg" alt="The Git Staging Area" /></p>
+    <p><img src="git/novice/img/git-staging-area.svg" alt="The Git Staging Area" /></p>
 
     <p>The following commands show this in action:</p>
 
@@ -3340,7 +3380,7 @@ $</pre>
       A common mistake is to use the revision number of
       the commit in which we made the change we're trying to get rid of:</p>
 
-    <p><img src="bash/novice/img/git-when-revisions-updated.svg" alt="When Git Updates Revision Numbers" /></p>
+    <p><img src="git/novice/img/git-when-revisions-updated.svg" alt="When Git Updates Revision Numbers" /></p>
 
     <p>The fact that files can be reverted one by one
       tends to change the way people organize their work.

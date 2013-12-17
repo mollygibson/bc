@@ -3612,15 +3612,15 @@ Fast-forward
       Pushing and pulling changes gives us a reliable way
       to share work between different people and machines.</p>
 
-    <h2>Conflicts</h2>
+    <h2>Resolving Conflicts</h2>
 
     <p>As soon as people can work in parallel,
       someone's going to step on someone else's toes.
       This will even happen with a single person:
       if we are working on a piece of software on both our laptop and a server in the lab,
       we could make different changes to each copy.
-      Version control helps us manage these <a href="../gloss.html#conflict">conflicts</a>
-      by giving us tools to <a href="../gloss.html#resolve">resolve</a> overlapping changes.</p>
+      Version control helps us manage these <a href="#gloss:conflict">conflicts</a>
+      by giving us tools to <a href="#gloss:resolve">resolve</a> overlapping changes.</p>
 
     <p>To see how we can resolve conflicts,
       we must first create one.
@@ -3661,8 +3661,8 @@ To https://github.com/vlad/planets
 </pre>
 
     <p>Our repositories are now in this state:</p>
-
-    <p><img src="git/novice/img/git-after-first-conficting-change.svg" alt="After Making First Change" /></p>
+    
+    <p><img src="git/novice/img/git-after-first-conflicting-change.svg" alt="After Making First Change" /></p>
 
     <p>Now let's switch to the copy under <code>/tmp</code>
       and make a different change there
@@ -3716,7 +3716,7 @@ CONFLICT (content): Merge conflict in mars.txt
 Automatic merge failed; fix conflicts and then commit the result.</span>
 </pre>
 
-    <p><code>git pull</code> tells us there's a conflict,
+    <p><code>git pull</code> first tries to auto-merge the files, tells us there's a conflict,
       and marks that conflict in the affected file:</p>
 
 <pre>$ <span class="in">cat mars.txt</span>

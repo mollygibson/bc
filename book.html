@@ -3054,19 +3054,29 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
     Starting to think about Mars</span>
 
 </pre>
+<!-- Need more information here on git log. I've added some:-->
+<p><code>git log</code> lists all <a href="#gloss:revision">revisions</a>  made to a repository in
+reverse chronological order (i.e. the last revision shows up first). 
+Included in <code>git log</code> output for each revision (or commit) is a unique
+40-digit computer-generated identifier (SHA-1 hash), the author's name and email, the date
+written, as well as the commit message for that revision.</p>
+   
 
-    <p>Now suppose Dracula adds more information to the file:</p>
+ <p>Now suppose Dracula adds more information to the file:</p>
 
 <!-- It might make sense once you have introduced what 'nano mars.txt' implies 
-above, to do it exactly as you have here. This will be more intuitive the second time. 
-(Although I think the trailing empty shell line is possibly not necessary when
-there is text in between).-->
+above (i.e. 'edit the file'), to do it exactly as you have below. .-->
 
 <pre>$ <span class="in">nano mars.txt</span>
 $ <span class="in">cat mars.txt</span>
 <span class="out">Cold and dry, but everything is my favorite color
 The two moons may be a problem for Wolfman</span>
 </pre>
+
+<!-- Saying that we don't need to run git add again is kind of misleading.
+We don't have to run it for the same reasons as before, but in order for Git to
+know that we want to commit the file, we need to run git add in order to stage
+the file. --> 
 
     <p>We don't need to run <code>git add</code> again,
       because Git already knows this file is on the list of things it's managing.
@@ -3113,7 +3123,8 @@ index df0654a..315bf3a 100644
         to compare the old and new versions of the file.</li>
       <li>The second line tells exactly which <a href="#gloss:revision">revisions</a> of the file
         Git is comparing;
-        <code>df0654a</code> and <code>315bf3a</code> are unique computer-generated labels for those revisions.</li>
+        <code>df0654a</code> and <code>315bf3a</code> are the first few digis of the unique computer-generated 
+	identifiers for the revisions (just like in <code>git log</code> above).</li>
       <li>The remaining lines show us the actual differences
         and the lines on which they occur.
         The numbers between the <code>@@</code> markers indicate which lines we're changing <!-- which lines
@@ -3164,7 +3175,7 @@ $ <span class="in">git commit -m "Concerns about Mars's moons on my furry friend
 
     <p><img src="git/novice/img/git-staging-area.svg" alt="The Git Staging Area" /></p>
 
-    <p>The following commands show this in action:</p>
+<p> The following commands show this in action:</p>
 
 <pre>$ <span class="in">nano mars.txt</span>
 $ <span class="in">cat mars.txt</span>
@@ -3183,10 +3194,10 @@ index 315bf3a..b36abfd 100644
 </pre>
 
     <p>So far, so good:
-      we've made a change,
-      and <code>git diff</code> tells us what it is.
+      we've made a change
+      and viewed our change using <code>git diff</code>.
       Now let's put that change in the staging area
-      and see what <code>git diff</code> reports:</p>
+      using <code>git add</code> and see what <code>git diff</code> reports:</p>
 
 <pre>$ <span class="in">git add mars.txt</span>
 $ <span class="in">git diff</span>
@@ -3195,9 +3206,13 @@ $ <span class="in">git diff</span>
     <p>There is no output:
       as far as Git can tell,
       there's no difference between what it's been asked to save permanently
-      and what's currently in the directory.
-      However,
-      if we do this:</p>
+      and what's currently in the working directory. This is because the modified file
+      has been copied to the staging area and what <code>git diff</code> is actually
+      doing is showing the differences between our current working directory and the
+      files in the staged area ready to be committed.
+      Therefore,
+      if we look at the differences between the <i>staged</i> files and the
+      last saved revision in the repository using the <code>--staged</code> flag:</p>
 
 <pre>$ <span class="in">git diff --staged</span>
 <span class="out">diff --git a/mars.txt b/mars.txt
@@ -3282,7 +3297,8 @@ index df0654a..b36abfd 100644
       We can also refer to revisions using
       those long strings of digits and letters
       that <code>git log</code> displays.
-      These are unique IDs for the changes,
+      
+These are unique IDs for the changes,
       and "unique" really does mean unique:
       every change to any set of files on any machine
       has a unique 40-character identifier.
@@ -3316,6 +3332,7 @@ index df0654a..b36abfd 100644
 +But the Mummy will appreciate the lack of humidity</span>
 </pre>
 
+<h3>Recovering Previous File Versions</h3>
     <p>All right:
       we can save changes to files and see what we've changed&mdash;how
       can we restore older versions of things?
@@ -3340,6 +3357,14 @@ $ <span class="in">cat mars.txt</span>
 no changes added to commit (use "git add" and/or "git commit -a")</span>
 </pre>
 
+<!-- Why not explain how to do this same thing the way it explains it
+in the git status message? 'git checkout -- mars.txt' or 'git checkout HEAD mars.txt'
+or 'git checkout -- .'?
+The only reason is because revert is a pretty big command that isn't explained very
+well here (maybe out of scope of novice?) and you can reuse another command 
+that has already been introduced to do the 
+same thing - it is more intuitive to me this way at least. -->
+
     <p>We can put things back the way they were like this:</p>
 
 <pre>$ <span class="in">git reset -hard HEAD</span>
@@ -3362,6 +3387,7 @@ But the Mummy will appreciate the lack of humidity</span>
       to back up to earlier revisions,
       <code>git reset --hard 34961b1</code> to back up to a particular revision,
       and so on.</p>
+
 
     <p>But what if we want to recover some files without losing other work we've done since?
       For example,
@@ -3390,6 +3416,10 @@ But the Mummy will appreciate the lack of humidity</span>
       If the introduction and conclusion are stored in separate files,
       on the other hand,
       moving backward and forward in time becomes much easier.</p>
+
+<h3>Reviewing Git Basics</h3>
+<!--I was feeling like a section putting all the information above together is 
+necessary here before moving on the collaboration. -->
 
     <h2>Collaborating</h2>
 

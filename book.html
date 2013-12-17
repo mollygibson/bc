@@ -2877,7 +2877,7 @@ $</pre>
 $ <span class="in">git config --global user.email "vlad@tran.sylvan.ia"</span>
 $ <span class="in">git config --global color.ui "auto"</span>
 $ <span class="in">git config --global core.editor "nano"</span>
-$</pre>
+</pre>
 
     <p>(Please use your own name and email address instead of Dracula's,
       and please make sure you choose an editor that's actually on your system
@@ -2915,18 +2915,18 @@ but I'm not sure it actually achieved that goal. -->
 
 <pre>$ <span class="in">mkdir planets</span>
 $ <span class="in">cd planets</span>
-$</pre>
+</pre>
 
     <p>and tell Git to make it a <a href="gloss:repository">repository</a>:</p>
 
 <pre>$ <span class="in">git init</span>
-$</pre>
+</pre>
 
     <p>If we use <code>ls</code> to show the directory's contents,
       it appears that nothing has changed:</p>
 
 <pre>$ <span class="in">ls</span>
-$</pre>
+</pre>
 
     <p>But if we add the <code>-a</code> flag to show everything,
       we can see that Git has created a hidden directory called <code>.git</code>:</p>
@@ -2947,7 +2947,7 @@ $</pre>
 # Initial commit
 #
 nothing to commit (create/copy files and use "git add" to track)</span>
-$</pre>
+</pre>
 
     <p>We'll explain what <code>branch master</code> means later.
       For the moment,
@@ -2987,7 +2987,7 @@ $ <span class="in">git status</span>
 #
 #       mars.txt
 nothing added to commit but untracked files present (use "git add" to track)</span>
-$</pre>
+</pre>
 
     <p>The "untracked files" message means that there's a file in the directory
       that Git isn't keeping track of.
@@ -3012,7 +3012,7 @@ picky preference though.  -->
 #
 #       new file:   mars.txt
 #</span>
-$</pre>
+</pre>
 
     <p>Git now knows that it's supposed to keep track of this file,
       but it hasn't yet recorded any changes for posterity.
@@ -3023,7 +3023,7 @@ $</pre>
 <span class="out">[master (root-commit) f22b25e] Starting to think about Mars
  1 file changed, 1 insertion(+)
  create mode 100644 mars.txt</span>
-$</pre>
+</pre>
 
     <p>When we run <code>git commit</code>,
       Git takes everything we have told it to save using <code>git add</code>
@@ -3040,7 +3040,7 @@ $</pre>
 <pre>$ <span class="in">git status</span>
 <span class="out"># On branch master
 nothing to commit, working directory clean</span>
-$</pre>
+</pre>
 
     <p>it tells us everything is up to date.
       If we want to know what we've done recently,
@@ -3053,7 +3053,7 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 
     Starting to think about Mars</span>
 
-$</pre>
+</pre>
 
     <p>Now suppose Dracula adds more information to the file:</p>
 
@@ -3066,7 +3066,7 @@ there is text in between).-->
 $ <span class="in">cat mars.txt</span>
 <span class="out">Cold and dry, but everything is my favorite color
 The two moons may be a problem for Wolfman</span>
-$</pre>
+</pre>
 
     <p>We don't need to run <code>git add</code> again,
       because Git already knows this file is on the list of things it's managing.
@@ -3082,7 +3082,7 @@ $</pre>
 #       modified:   mars.txt
 #
 no changes added to commit (use "git add" and/or "git commit -a")</span>
-$</pre>
+</pre>
 
     <p>The last line is the key phrase:
       "no changes added to commit".
@@ -3101,7 +3101,7 @@ index df0654a..315bf3a 100644
 @@ -1 +1,2 @@
  Cold and dry, but everything is my favorite color
 +The two moons may be a problem for Wolfman</span>
-$</pre>
+</pre>
 
     <p>The output is cryptic because
       it is actually a series of commands for tools like editors and <code>patch</code>
@@ -3133,7 +3133,7 @@ $</pre>
 #       modified:   mars.txt
 #
 no changes added to commit (use "git add" and/or "git commit -a")</span>
-$</pre>
+</pre>
 
     <p>Whoops:
       Git won't commit because we didn't use <code>git add</code> first.
@@ -3143,7 +3143,7 @@ $</pre>
 $ <span class="in">git commit -m "Concerns about Mars's moons on my furry friend"</span>
 <span class="out">[master 34961b1] Concerns about Mars's moons on my furry friend
  1 file changed, 1 insertion(+)</span>
-$</pre>
+</pre>
 
     <p>Git insists that we add files to the set we want to commit
       before actually committing anything
@@ -3180,7 +3180,7 @@ index 315bf3a..b36abfd 100644
  Cold and dry, but everything is my favorite color
  The two moons may be a problem for Wolfman
 +But the Mummy will appreciate the lack of humidity</span>
-$</pre>
+</pre>
 
     <p>So far, so good:
       we've made a change,
@@ -3190,7 +3190,7 @@ $</pre>
 
 <pre>$ <span class="in">git add mars.txt</span>
 $ <span class="in">git diff</span>
-$</pre>
+</pre>
 
     <p>There is no output:
       as far as Git can tell,
@@ -3208,7 +3208,7 @@ index 315bf3a..b36abfd 100644
  Cold and dry, but everything is my favorite color
  The two moons may be a problem for Wolfman
 +But the Mummy will appreciate the lack of humidity</span>
-$</pre>
+</pre>
 
     <p>it shows us the difference between
       the last committed change
@@ -3218,14 +3218,14 @@ $</pre>
 <pre>$ <span class="in">git commit -m "Thoughts about the climate"</span>
 <span class="out">[master 005937f] Thoughts about the climate
  1 file changed, 1 insertion(+)</span>
-$</pre>
+</pre>
 
     <p>check our status:</p>
 
 <pre>$ <span class="in">git status</span>
 <span class="out"># On branch master
 nothing to commit, working directory clean</span>
-$</pre>
+</pre>
 
     <p>and look at the history of what we've done so far:</p>
 
@@ -3247,7 +3247,7 @@ Author: Vlad Dracula &lt;vlad@tran.sylvan.ia&gt;
 Date:   Thu Aug 22 09:51:46 2013 -0400
 
     Starting to think about Mars</span>
-$</pre>
+</pre>
 
     <p>If we want to see what we changed when,
       we use <code>git diff</code> again,
@@ -3263,7 +3263,7 @@ index 315bf3a..b36abfd 100644
  Cold and dry, but everything is my favorite color
  The two moons may be a problem for Wolfman
 +But the Mummy will appreciate the lack of humidity</span>
-$</pre>
+</pre>
 
 <pre>$ <span class="in">git diff HEAD~2 mars.txt</span>
 <span class="out">diff -git a/mars.txt b/mars.txt
@@ -3274,7 +3274,7 @@ index df0654a..b36abfd 100644
  Cold and dry, but everything is my favorite color
 +The two moons may be a problem for Wolfman
 +But the Mummy will appreciate the lack of humidity</span>
-$</pre>
+</pre>
 
     <p><code>HEAD</code> means "the most recently saved version".
       <code>HEAD~1</code> (pronounced "head minus one")
@@ -3299,7 +3299,7 @@ index df0654a..b36abfd 100644
  Cold and dry, but everything is my favorite color
 +The two moons may be a problem for Wolfman
 +But the Mummy will appreciate the lack of humidity</span>
-$</pre>
+</pre>
 
     <p>That's the right answer,
       but typing random 40-character strings is annoying,
@@ -3314,7 +3314,7 @@ index df0654a..b36abfd 100644
  Cold and dry, but everything is my favorite color
 +The two moons may be a problem for Wolfman
 +But the Mummy will appreciate the lack of humidity</span>
-$</pre>
+</pre>
 
     <p>All right:
       we can save changes to files and see what we've changed&mdash;how
@@ -3324,7 +3324,7 @@ $</pre>
 <pre>$ <span class="in">nano mars.txt</span>
 $ <span class="in">cat mars.txt</span>
 <span class="out">We will need to manufacture our own oxygen</span>
-$</pre>
+</pre>
 
     <p><code>git status</code> now tells us that the file has been changed,
       but those changes haven't been staged:</p>
@@ -3338,7 +3338,7 @@ $</pre>
 #       modified:   mars.txt
 #
 no changes added to commit (use "git add" and/or "git commit -a")</span>
-$</pre>
+</pre>
 
     <p>We can put things back the way they were like this:</p>
 
@@ -3348,7 +3348,7 @@ $ <span class="in">cat mars.txt</span>
 <span class="out">Cold and dry, but everything is my favorite color
 The two moons may be a problem for Wolfman
 But the Mummy will appreciate the lack of humidity</span>
-$</pre>
+</pre>
 
     <p>The <code>--hard</code> argument to <code>git reset</code> tells it to throw away local changes:
       without that,
@@ -3423,7 +3423,7 @@ $</pre>
 <pre>$ <span class="in">mkdir planets</span>
 $ <span class="in">cd planets</span>
 $ <span class="in">git init</span>
-$</pre>
+</pre>
 
     <p>Our local repository still contains our earlier work on <code>mars.txt</code>,
       but the remote repository on GitHub doesn't contain any files yet:</p>
@@ -3447,7 +3447,7 @@ $</pre>
       and run this command:</p>
 
 <pre>$ <span class="in">git remote add origin https://github.com/vlad/planets</span>
-$</pre>
+</pre>
 
     <p>(using your GitHub ID instead of <code>vlad</code>).
       We can check that the command has worked by running <code>git remote -v</code>:</p>
@@ -3471,7 +3471,7 @@ Total 9 (delta 2), reused 0 (delta 0)
 To https://github.com/vlad/planets
  * [new branch]      master -&gt; master
 Branch master set up to track remote branch master from origin.</span>
-$</pre>
+</pre>
 
     <p>Our local and remote repositories are now in this state:</p>
 
@@ -3493,7 +3493,7 @@ $</pre>
 <span class="out">From https://github.com/vlad/planets
  * branch            master     -&gt; FETCH_HEAD
 Already up-to-date.</span>
-$</pre>
+</pre>
 
     <p>Pulling has no effect in this case
       because the two repositories are already synchronized.
@@ -3505,7 +3505,7 @@ $</pre>
 
 <pre>$ <span class="in">cd /tmp</span>
 $ <span class="in">git clone https://github.com/vlad/planets.git</span>
-$</pre>
+</pre>
 
     <p><code>git clone</code> creates a fresh local copy of a remote repository.
       (We did it in <code>/tmp</code> or some other directory so that we don't overwrite our existing <code>planets</code> directory.)
@@ -3523,7 +3523,7 @@ $ <span class="in">git add pluto.txt</span>
 $ <span class="in">git commit -m "Some notes about Pluto"</span>
 <span class="out"> 1 file changed, 1 insertion(+)
  create mode 100644 pluto.txt</span>
-$</pre>
+</pre>
 
     <p>then push the change to GitHub:</p>
 
@@ -3535,7 +3535,7 @@ Writing objects: 100% (3/3), 306 bytes, done.
 Total 3 (delta 0), reused 0 (delta 0)
 To https://github.com/vlad/planets.git
    9272da5..29aba7c  master -&gt; master</span>
-$</pre>
+</pre>
 
     <p>Our three repositories now look like this:</p>
 
@@ -3556,7 +3556,7 @@ Fast-forward
  pluto.txt | 1 +
  1 file changed, 1 insertion(+)
  create mode 100644 pluto.txt</span>
-$</pre>
+</pre>
 
     <p>In practice,
       we would probably never have two copies of the same remote repository
@@ -3588,7 +3588,7 @@ $</pre>
 <span class="out">Cold and dry, but everything is my favorite color
 The two moons may be a problem for Wolfman
 But the Mummy will appreciate the lack of humidity</span>
-$</pre>
+</pre>
 
     <p>Let's add a line to the copy under our home directory:</p>
 
@@ -3598,7 +3598,7 @@ $ <span class="in">cat mars.txt</span>
 The two moons may be a problem for Wolfman
 But the Mummy will appreciate the lack of humidity
 This line added to our home copy</span>
-$</pre>
+</pre>
 
     <p>and then push the change to GitHub:</p>
 
@@ -3614,7 +3614,7 @@ Writing objects: 100% (3/3), 352 bytes, done.
 Total 3 (delta 1), reused 0 (delta 0)
 To https://github.com/vlad/planets
    29aba7c..dabb4c8  master -&gt; master</span>
-$</pre>
+</pre>
 
     <p>Our repositories are now in this state:</p>
 
@@ -3631,7 +3631,7 @@ $ <span class="in">cat mars.txt</span>
 The two moons may be a problem for Wolfman
 But the Mummy will appreciate the lack of humidity
 We added a different line in the temporary copy</span>
-$</pre>
+</pre>
 
     <p>We can commit the change locally:</p>
 
@@ -3639,7 +3639,7 @@ $</pre>
 $ <span class="in">git commit -m "Adding a line in the temporary copy"</span>
 <span class="out">[master 07ebc69] Adding a line in the temporary copy
  1 file changed, 1 insertion(+)</span>
-$</pre>
+</pre>
 
     <p>but Git won't let us push it to GitHub:</p>
 
@@ -3651,7 +3651,7 @@ hint: Updates were rejected because the tip of your current branch is behind
 hint: its remote counterpart. Merge the remote changes (e.g. 'git pull')
 hint: before pushing again.
 hint: See the 'Note about fast-forwards' in 'git push --help' for details.</span>
-$</pre>
+</pre>
 
     <p>Git detects that the changes made in one copy overlap with those made in the other
       and stops us from trampling on our previous work.
@@ -3670,7 +3670,7 @@ From https://github.com/vlad/planets
 Auto-merging mars.txt
 CONFLICT (content): Merge conflict in mars.txt
 Automatic merge failed; fix conflicts and then commit the result.</span>
-$</pre>
+</pre>
 
     <p><code>git pull</code> tells us there's a conflict,
       and marks that conflict in the affected file:</p>
@@ -3684,7 +3684,7 @@ We added a different line in the temporary copy
 =======
 This line added to our home copy
 &gt;&gt;&gt;&gt;&gt;&gt;&gt; dabb4c8c450e8475aee9b14b4383acc99f42af1d</span>
-$</pre>
+</pre>
 
     <p>Our change&mdash;the one in <code>HEAD</code>&mdash;is preceded by <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>.
       Git has then inserted <code>=======</code> as a separator between the conflicting changes
@@ -3706,7 +3706,7 @@ $</pre>
 The two moons may be a problem for Wolfman
 But the Mummy will appreciate the lack of humidity
 We removed the conflict on this line</span>
-$</pre>
+</pre>
 
     <p>To finish merging,
       we add <code>mars.txt</code> to the changes being made by the merge
@@ -3724,7 +3724,7 @@ $</pre>
 #
 $ git commit -m "Merging changes from GitHub"
 [master 2abf2b1] Merging changes from GitHub</span>
-$</pre>
+</pre>
 
     <p>Our repositories now look like this:</p>
 
@@ -3740,7 +3740,7 @@ Writing objects: 100% (6/6), 697 bytes, done.
 Total 6 (delta 2), reused 0 (delta 0)
 To https://github.com/vlad/planets.git
    dabb4c8..2abf2b1  master -&gt; master</span>
-$</pre>
+</pre>
 
     <p>to get this:</p>
 
@@ -3762,7 +3762,7 @@ Updating dabb4c8..2abf2b1
 Fast-forward
  mars.txt | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)</span>
-$</pre>
+</pre>
 
     <p>we get the merged file:</p>
 
@@ -3771,7 +3771,7 @@ $</pre>
 The two moons may be a problem for Wolfman
 But the Mummy will appreciate the lack of humidity
 We removed the conflict on this line</span>
-$</pre>
+</pre>
 
     <p>We don't need to merge again because GitHub knows someone has already done that.</p>
 

@@ -3417,11 +3417,27 @@ But the Mummy will appreciate the lack of humidity</span>
       on the other hand,
       moving backward and forward in time becomes much easier.</p>
 
-<h3>Reviewing Git Basics</h3>
+<h3>Key Points: Reviewing Git Basics</h3>
 <!--I was feeling like a section putting all the information above together is 
-necessary here before moving on the collaboration. -->
+necessary here before moving on the collaboration. Maybe this is what other sections have as 'Key Points'? 
+Maybe this should go at the end of the Git section?-->
+<p>Before moving onto to <b>Collaborating with Git</b>, let's review some of the basics:</p>
+<ul>
+<li>The first time you use Git on a machine, you will need to <a href="#git-configure">configure Git</a> using <code>git config</code> so Git 
+knows who are and can credit you for your contributions, knows your favorite editor, etc.</li>
+<li>To initalize a new repository, use <code>git init</code>. This will create a hidden folder called <code>.git</code> where important
+information about the project is stored.</li>
+<li>There are three main 'trees' where files are stored: Working Directory (what you see), Staging Area (what will go into
+the next commit), and The Repository (permenant storage). </li>
+<li>The basic workflow for Git includes <code>git add</code> (tell Git to keep track of files and add them to the staging area
+for the next commit) and <code>git commit</code> (add the files in the staging area to the repository for permenant storage).</li>
+<li>To view changes between revisions, use <code>git diff</code>.</li>
+<li>To recover previous versions of files or overwrite changes in your Working Directory, use <code>git checkout HEAD &lt;file&gt;</code>.</li>
+</ul>
 
-    <h2>Collaborating</h2>
+
+
+    <h2>Collaborating with Git</h2>
 
     <p>Version control really comes into its own
       when we begin to collaborate with other people.

@@ -3441,11 +3441,12 @@ necessary here before moving on the collaboration. -->
       Log in to GitHub,
       then create a new repository called <code>planets</code>
       using their GUI:</p>
-
+<!-- I felt like the screenshots needed to be split up a bit by text. It was hard to see were they started and ended. -->
+<p>1. First, click on the icon in the top right corner of your user homepage to create a new repository:</p>
     <p><img src="git/novice/img/github-create-repo-01.png" alt="Creating a Repository on GitHub (Step 1)" /></p>
-
+<p>2. Name your repository and then click <b>Create Repository</b></p>
     <p><img src="git/novice/img/github-create-repo-02.png" alt="Creating a Repository on GitHub (Step 2)" /></p>
-
+<p>3. Github then displays a page with a url, and some information on how to proceed to configure your local repository:</p>
     <p><img src="git/novice/img/github-create-repo-03.png" alt="Creating a Repository on GitHub (Step 3)" /></p>
 
     <p>This effectively does the following on GitHub's servers:</p>
@@ -3466,6 +3467,8 @@ $ <span class="in">git init</span>
       The home page of the repository on GitHub includes
       the string we need to identify it:</p>
 
+<!-- If you are going to explain the http protocol, it might be less confusing to have the image below
+have the http url, rather than ssh, just to keep confusion down. -->
     <p><img src="git/novice/img/github-find-repo-string.png" alt="Where to Find Repository URL on GitHub" /></p>
 
     <p>For now,
@@ -3474,13 +3477,18 @@ $ <span class="in">git init</span>
       since it requires the least setup.
       Copy that URL from the browser,
       go into the local <code>planets</code> repository,
-      and run this command:</p>
+      and run this command in your local planets repository:</p>
 
 <pre>$ <span class="in">git remote add origin https://github.com/vlad/planets</span>
 </pre>
 
     <p>(using your GitHub ID instead of <code>vlad</code>).
-      We can check that the command has worked by running <code>git remote -v</code>:</p>
+
+<p>We just added  the repostiory 
+we just created (<code>https://github.com/vlad/planets</code>) as a remote repositiory (<code>git remote add</code>)
+and gave it the name <code>origin</code> in order to easly refer to it when interacting with Git in the future.
+
+<p>      We can check that the command has worked by running <code>git remote -v</code>:</p>
 
 <pre>$ <span class="in">git remote -v</span>
 <span class="out">origin   https://github.com/vlad/planets.git (push)
@@ -3489,7 +3497,7 @@ origin   https://github.com/vlad/planets.git (fetch)</span></pre>
     <p>There's nothing magic about the name <code>origin</code>,
       but we'll see in a moment why it's a sensible choice.
       Once this is set up,
-      this command will push the changes from our local repository
+      we can 'push' the changes from our local repository
       to the repository on GitHub:</p>
 
 <pre>$ <span class="in">git push origin master</span>
@@ -3502,11 +3510,16 @@ To https://github.com/vlad/planets
  * [new branch]      master -&gt; master
 Branch master set up to track remote branch master from origin.</span>
 </pre>
-
+<p>With this command we just 'pushed' or copied all of the files (on the <code>master</code>
+or default <a href="#gloss:branch">branch</a>; more on branching in intermediate lesson) in our local repository 
+to the remote repository named <code>origin</code>.
     <p>Our local and remote repositories are now in this state:</p>
 
     <p><img src="git/novice/img/github-repo-after-first-push.svg" alt="GitHub Repository After First Push" /></p>
 
+<!-- This seems like a pretty big aside for the novice lesson. There are a lot of flags for the
+commands that are covered and it makes this seem more important than it is. Although I might just not 
+understand how important it is. :) 
     <blockquote class="box">
       <h3>The '-u' Flag</h3>
 
@@ -3516,8 +3529,8 @@ Branch master set up to track remote branch master from origin.</span>
         We discuss branches and branching in our intermediate-level lessons.</p>
 
     </blockquote>
-
-    <p>We can pull changes from the remote repository to the local one as well:</p>
+-->
+    <p>We can 'pull' changes from the remote repository to the local one as well:</p>
 
 <pre>$ <span class="in">git pull origin master</span>
 <span class="out">From https://github.com/vlad/planets
@@ -3556,7 +3569,8 @@ $ <span class="in">git commit -m "Some notes about Pluto"</span>
 </pre>
 
     <p>then push the change to GitHub:</p>
-
+<!-- Need some notes here on why when you cloned the repo you don't
+need to add a remote called origin, why it is already there.-->
 <pre>$ <span class="in">git push origin master</span>
 <span class="out">Counting objects: 4, done.
 Delta compression using up to 4 threads.
@@ -3587,7 +3601,7 @@ Fast-forward
  1 file changed, 1 insertion(+)
  create mode 100644 pluto.txt</span>
 </pre>
-
+<!-- Probably would be useful to have a final view of the repository here after a pull. -->
     <p>In practice,
       we would probably never have two copies of the same remote repository
       on our laptop at once.

@@ -3462,7 +3462,7 @@ $ <span class="in">git init</span>
     <p><img src="git/novice/img/git-freshly-made-github-repo.svg" alt="Freshly-Made GitHub Repository" /></p>
 
     <p>The next step is to connect the two repositories.
-      We do this by making the GitHub repository a <a href="../gloss.html#repository-remote">remote</a>
+      We do this by making the GitHub repository a <a href="#gloss:repository-remote">remote</a>
       for the local repository.
       The home page of the repository on GitHub includes
       the string we need to identify it:</p>
@@ -3544,7 +3544,7 @@ Already up-to-date.</span>
       though,
       this command would download them to our local repository.
       We can simulate this by going to another directory&mdash;for example, <code>/tmp</code>&mdash;and
-      <a href="../gloss.html#repository-clone">cloning</a> our GitHub repository:</p>
+      <a href="#gloss:repository-clone">cloning</a> our Github repository:</p>
 
 <pre>$ <span class="in">cd /tmp</span>
 $ <span class="in">git clone https://github.com/vlad/planets.git</span>
@@ -3700,7 +3700,7 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.</span
     <p>Git detects that the changes made in one copy overlap with those made in the other
       and stops us from trampling on our previous work.
       What we have to do is pull the changes from GitHub,
-      <a href="../gloss.html#repository-merge">merge</a> them into the copy we're currently working in,
+      <a href="#gloss:repository-merge">merge</a> them into the copy we're currently working in,
       and then push that.
       Let's start by pulling:</p>
 
@@ -3911,7 +3911,7 @@ We removed the conflict on this line</span>
       and licenses like the <a href="http://opensource.org/licenses/MIT">MIT</a>
       and <a href="http://opensource.org/licenses/BSD-2-Clause">BSD</a> licenses on the other.
       All of these licenses allow unrestricted sharing and modification of programs,
-      but the GPL is <a href="../gloss.html#infective-license">infective</a>:
+      but the GPL is <a href="#gloss:infective-license">infective</a>:
       anyone who distributes a modified version of the code
       (or anything that includes GPL'd code)
       must make <em>their</em> code freely available as well.</p>
@@ -4593,7 +4593,7 @@ last three characters: gen</span></pre>
           explain what <code>element[1:-1]</code> does.
         </li>
         <li>
-          The expression <code>element[3:3]</code> produces an <a href="../../gloss.html#empty-string">empty string</a>,
+          The expression <code>element[3:3]</code> produces an <a href="#gloss:empty-string">empty string</a>,
           i.e., a string that contains no characters.
           If <code>data</code> holds our array of patient data,
           what does <code>data[3:3, 4:4]</code> produce?
@@ -9701,7 +9701,7 @@ connection.close()</pre>
       as well.</p>
 
     <p>The secondary goal of this lesson is to give them a usable mental model of how programs run
-      (what computer science educators call a <a href="../../gloss.html#notional-machine">notional machine</a>
+      (what computer science educators call a <a href="#gloss:notional-machine">notional machine</a>
       so that they can debug things when they go wrong.
       In particular,
       they must understand how function call stacks work.</p>
@@ -12021,7 +12021,7 @@ list ['alan']</span></pre>
       but things can go wrong for other reasons,
       like missing or badly-formatted files.
       Most modern programming languages allow programmers to use
-      <a href="../../gloss.html#exception">exceptions</a> to separate
+      <a href="#gloss:exception">exceptions</a> to separate
       what the program should do if everything goes right
       from what it should do if something goes wrong.
       Doing this makes both cases easier to read and understand.</p>

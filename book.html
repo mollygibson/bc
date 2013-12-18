@@ -2898,12 +2898,12 @@ $ <span class="in">git config --global core.editor "nano"</span>
     <p>The four commands above only need to be run once:
       Git will remember the settings until we change them.</p>
       
-<!-- I was feeling like one more level down of headers (a little more structure)
+<!-- MG: I was feeling like one more level down of headers (a little more structure)
 would help me follow along with the thought process a little bit better. -->
 
 <h3>First Git Project</h3>
 
-<!-- I'm not a huge fan of the trailing prompt line in the code 
+<!-- MG: I'm not a huge fan of the trailing prompt line in the code 
 blocks. When there is text in between them, it doesn't seem necessary and
 makes it seem a little like it is a mistake/typo. A little later
 down you explained why you were doing that (to make it easier to read), 
@@ -2955,7 +2955,7 @@ nothing to commit (create/copy files and use "git add" to track)</span>
     called <code>mars.txt</code> using <code>nano</code> (or your favorite text editor):</p>
 
 
-<!-- I'm not 100% positive who the audience of 
+<!-- MG: I'm not 100% positive who the audience of 
 the book is, but For a book format where there isn't going to be 
 anyone at the computer demonstrating things, it might be confusing to
 have a line 'nano mars.txt', which is meant to imply that it is being
@@ -2995,7 +2995,7 @@ nothing added to commit but untracked files present (use "git add" to track)</sp
 
 <pre>$ <span class="in">git add mars.txt</span></pre>
 
-<!-- I'm not a huge fan of 'like this' in tutorial type documents
+<!-- MG: I'm not a huge fan of 'like this' in tutorial type documents
 because I feel like it breaks up the flow of the reader and is
 implied by having ':' followed by code block. I guess this is just
 picky preference though.  -->
@@ -3054,7 +3054,7 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
     Starting to think about Mars</span>
 
 </pre>
-<!-- Need more information here on git log. I've added some:-->
+<!-- MG: Need more information here on git log. I've added some:-->
 <p><code>git log</code> lists all <a href="#gloss:revision">revisions</a>  made to a repository in
 reverse chronological order (i.e. the last revision shows up first). 
 Included in <code>git log</code> output for each revision (or commit) is a unique
@@ -3064,7 +3064,7 @@ written, as well as the commit message for that revision.</p>
 
  <p>Now suppose Dracula adds more information to the file:</p>
 
-<!-- It might make sense once you have introduced what 'nano mars.txt' implies 
+<!-- MG: It might make sense once you have introduced what 'nano mars.txt' implies 
 above (i.e. 'edit the file'), to do it exactly as you have below. .-->
 
 <pre>$ <span class="in">nano mars.txt</span>
@@ -3073,7 +3073,7 @@ $ <span class="in">cat mars.txt</span>
 The two moons may be a problem for Wolfman</span>
 </pre>
 
-<!-- Saying that we don't need to run git add again is kind of misleading.
+<!-- MG: Saying that we don't need to run git add again is kind of misleading.
 We don't have to run it for the same reasons as before, but in order for Git to
 know that we want to commit the file, we need to run git add in order to stage
 the file. --> 
@@ -3127,7 +3127,7 @@ index df0654a..315bf3a 100644
 	identifiers for the revisions (just like in <code>git log</code> above).</li>
       <li>The remaining lines show us the actual differences
         and the lines on which they occur.
-        The numbers between the <code>@@</code> markers indicate which lines we're changing <!-- which lines
+        The numbers between the <code>@@</code> markers indicate which lines we're changing <!-- MG: which lines
         it is referring to is always really confusing. Maybe not important to understand, but if it is then
 	more explaination is definitely needed here. -->;
         the <code>+</code> on the lines below show that we are adding lines.</li>
@@ -3357,7 +3357,7 @@ $ <span class="in">cat mars.txt</span>
 no changes added to commit (use "git add" and/or "git commit -a")</span>
 </pre>
 
-<!-- Why not explain how to do this same thing the way it explains it
+<!-- MG: Why not explain how to do this same thing the way it explains it
 in the git status message? 'git checkout -- mars.txt' or 'git checkout HEAD mars.txt'
 or 'git checkout -- .'?
 The only reason is because revert is a pretty big command that isn't explained very
@@ -3418,20 +3418,23 @@ But the Mummy will appreciate the lack of humidity</span>
       moving backward and forward in time becomes much easier.</p>
 
 <h3>Key Points: Reviewing Git Basics</h3>
-<!--I was feeling like a section putting all the information above together is 
+<!--MG: I was feeling like a section putting all the information above together is 
 necessary here before moving on the collaboration. Maybe this is what other sections have as 'Key Points'? 
 Maybe this should go at the end of the Git section?-->
-<p>Before moving onto to <b>Collaborating with Git</b>, let's review some of the basics:</p>
+<p>Before moving on to <b>Collaborating with Git</b>, let's review some of the basics:</p>
 <ul>
 <li>The first time you use Git on a machine, you will need to <a href="#git-configure">configure Git</a> using <code>git config</code> so Git 
 knows who are and can credit you for your contributions, knows your favorite editor, etc.</li>
 <li>To initalize a new repository, use <code>git init</code>. This will create a hidden folder called <code>.git</code> where important
 information about the project is stored.</li>
 <li>There are three main 'trees' where files are stored: Working Directory (what you see), Staging Area (what will go into
-the next commit), and The Repository (permenant storage). </li>
+the next commit), and the Local Repository (permenant storage/committed files). </li>
+<img src="git/novice/img/git-file-trees.svg" />
 <li>The basic workflow for Git includes <code>git add</code> (tell Git to keep track of files and add them to the staging area
 for the next commit) and <code>git commit</code> (add the files in the staging area to the repository for permenant storage).</li>
+<img src="git/novice/img/git-commit-add-review.svg" />
 <li>To view changes between revisions, use <code>git diff</code>.</li>
+<img src="git/novice/img/git-diff-review.svg" />
 <li>To recover previous versions of files or overwrite changes in your Working Directory, use <code>git checkout HEAD &lt;file&gt;</code>.</li>
 </ul>
 
@@ -3457,7 +3460,7 @@ for the next commit) and <code>git commit</code> (add the files in the staging a
       Log in to GitHub,
       then create a new repository called <code>planets</code>
       using their GUI:</p>
-<!-- I felt like the screenshots needed to be split up a bit by text. It was hard to see were they started and ended. -->
+<!-- MG: I felt like the screenshots needed to be split up a bit by text. It was hard to see were they started and ended. -->
 <p>1. First, click on the icon in the top right corner of your user homepage to create a new repository:</p>
     <p><img src="git/novice/img/github-create-repo-01.png" alt="Creating a Repository on GitHub (Step 1)" /></p>
 <p>2. Name your repository and then click <b>Create Repository</b></p>
@@ -3483,7 +3486,7 @@ $ <span class="in">git init</span>
       The home page of the repository on GitHub includes
       the string we need to identify it:</p>
 
-<!-- If you are going to explain the http protocol, it might be less confusing to have the image below
+<!-- MG: If you are going to explain the http protocol, it might be less confusing to have the image below
 have the http url, rather than ssh, just to keep confusion down. -->
     <p><img src="git/novice/img/github-find-repo-string.png" alt="Where to Find Repository URL on GitHub" /></p>
 
@@ -3533,7 +3536,7 @@ to the remote repository named <code>origin</code>.
 
     <p><img src="git/novice/img/github-repo-after-first-push.svg" alt="GitHub Repository After First Push" /></p>
 
-<!-- This seems like a pretty big aside for the novice lesson. There are a lot of flags for the
+<!-- MG: This seems like a pretty big aside for the novice lesson. There are a lot of flags for the
 commands that are covered and it makes this seem more important than it is. Although I might just not 
 understand how important it is. :) 
     <blockquote class="box">
@@ -3585,7 +3588,7 @@ $ <span class="in">git commit -m "Some notes about Pluto"</span>
 </pre>
 
     <p>then push the change to GitHub:</p>
-<!-- Need some notes here on why when you cloned the repo you don't
+<!-- MG: Need some notes here on why when you cloned the repo you don't
 need to add a remote called origin, why it is already there.-->
 <pre>$ <span class="in">git push origin master</span>
 <span class="out">Counting objects: 4, done.
@@ -3617,7 +3620,7 @@ Fast-forward
  1 file changed, 1 insertion(+)
  create mode 100644 pluto.txt</span>
 </pre>
-<!-- Probably would be useful to have a final view of the repository here after a pull. -->
+<!-- MG: Probably would be useful to have a img of the final view of the repository here after a pull. -->
     <p>In practice,
       we would probably never have two copies of the same remote repository
       on our laptop at once.
